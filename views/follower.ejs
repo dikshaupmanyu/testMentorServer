@@ -171,8 +171,15 @@
                       return data;
                     }
 
+                     function checkprice(){   
+                     var price ;
+                      if(dataResult[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResult[i].price;}
 
-                    newtip += '<div class="mentor_srvc"><h2>'+dataResult[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimage() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResult[i].title+'<span>Free</span></h3><p>'+dataResult[i].descriptionOne+'</p><a href="'+dataResult[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                      return price;
+                    }
+
+
+                    newtip += '<div class="mentor_srvc"><h2>'+dataResult[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimage() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResult[i].title+'<span>'+ checkprice() +'</span></h3><p>'+dataResult[i].descriptionOne+'</p><a href="'+dataResult[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
                   // }
                     
 
@@ -202,11 +209,19 @@
                       return data;
                     }
 
+                     function checkpriceCreated(){   
+                     var price ;
+                      if(dataResultcreatedService[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResultcreatedService[i].price;}
+
+                      return price;
+                    }
+
+
 
                   // if(dataResult[i].isActive == true){
 
                    //  alert(dataResult[i].title);
-                    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>Free</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>'+checkpriceCreated() +'</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
                   // }
                     
 
@@ -238,10 +253,18 @@
                       return data;
                     }
 
+                     function checkpricePurchase(){   
+                     var price ;
+                      if(dataResultpurchaseService[i].serviceSubscriptionPlan.price == "0") {price = 'Free'; }else{price =  '$'+dataResultpurchaseService[i].serviceSubscriptionPlan.price;}
+
+                      return price;
+                    }
+
+
 
 
                   // if(dataResult[i].isActive == true){
-                   newtippurchaseService += '<div class="mentor_srvc"><h2>'+dataResultpurchaseService[i].serviceSubscriptionPlan.title+'</h2><div class="mentor_srvc_bx">'+ checkimagePurchase() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultpurchaseService[i].serviceSubscriptionPlan.title+'<span>Free</span></h3><p>'+dataResultpurchaseService[i].serviceSubscriptionPlan.descriptionOne+'</p><a href="'+dataResultpurchaseService[i].serviceSubscriptionPlan.descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                   newtippurchaseService += '<div class="mentor_srvc"><h2>'+dataResultpurchaseService[i].serviceSubscriptionPlan.title+'</h2><div class="mentor_srvc_bx">'+ checkimagePurchase() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultpurchaseService[i].serviceSubscriptionPlan.title+'<span>'+ checkpricePurchase() +'</span></h3><p>'+dataResultpurchaseService[i].serviceSubscriptionPlan.descriptionOne+'</p><a href="'+dataResultpurchaseService[i].serviceSubscriptionPlan.descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
                   // }
                     
 
