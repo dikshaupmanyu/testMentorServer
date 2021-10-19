@@ -40,10 +40,10 @@
               </div> -->
 
             <div class="tab-pane fade" id="mtb_service" role="tabpanel" aria-labelledby="mt_service">
-               <div class="mentor_service_area" id="createdServices">
+              <!--  <div class="mentor_service_area" id="createdServices">
                <h4>Created Services</h4>  
                 <br>
-              </div>
+              </div> -->
               <div class="mentor_service_area" id="purchaseServices">
                <h4>Purchase Services</h4>  
                 <br>
@@ -188,49 +188,49 @@
 
                 }  
 
-                 var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;   
-                 var lenCreatedService = dataResultcreatedService.length;   
-                 if(dataResultcreatedService.length == 0){
+                 // var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;   
+                 // var lenCreatedService = dataResultcreatedService.length;   
+                 // if(dataResultcreatedService.length == 0){
 
-                   // document.getElementById('createdServices').innerHTML="<br><p>You currently have no Services created.</p>";
-                   //  $("#createdServices").css("text-align", "center");
-                   //  $("#createdServices").css("color", "white");
+                 //   // document.getElementById('createdServices').innerHTML="<br><p>You currently have no Services created.</p>";
+                 //   //  $("#createdServices").css("text-align", "center");
+                 //   //  $("#createdServices").css("color", "white");
 
-                 }else{
-
-
-                  let newtipcreatedService = [];
-                  for(var i=0; i< dataResultcreatedService.length; i++) {  
-
-                     function checkimageCreated(){   
-                     var data ;
-                      if(!dataResultcreatedService[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResultcreatedService[i].imageDetails +'"';}
-
-                      return data;
-                    }
-
-                     function checkpriceCreated(){   
-                     var price ;
-                      if(dataResultcreatedService[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResultcreatedService[i].price;}
-
-                      return price;
-                    }
+                 // }else{
 
 
+                 //  let newtipcreatedService = [];
+                 //  for(var i=0; i< dataResultcreatedService.length; i++) {  
 
-                  // if(dataResult[i].isActive == true){
+                 //     function checkimageCreated(){   
+                 //     var data ;
+                 //      if(!dataResultcreatedService[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResultcreatedService[i].imageDetails +'"';}
 
-                   //  alert(dataResult[i].title);
-                    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>'+checkpriceCreated() +'</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
-                  // }
+                 //      return data;
+                 //    }
+
+                 //     function checkpriceCreated(){   
+                 //     var price ;
+                 //      if(dataResultcreatedService[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResultcreatedService[i].price;}
+
+                 //      return price;
+                 //    }
+
+
+
+                 //  // if(dataResult[i].isActive == true){
+
+                 //   //  alert(dataResult[i].title);
+                 //    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>'+checkpriceCreated() +'</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                 //  // }
                     
 
-                  }
-                   $("#createdServices").append(newtipcreatedService);
+                 //  }
+                 //   $("#createdServices").append(newtipcreatedService);
 
 
 
-                 }   
+                 // }   
 
                   var dataResultpurchaseService = fdataResult.serviceSubscriptions;   
                  var lenpurchaseService = dataResultpurchaseService.length;   
