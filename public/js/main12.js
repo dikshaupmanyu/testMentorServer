@@ -92,7 +92,7 @@ var db = firebase.firestore();
 
 // alert(<%= req.session %>);
 
-const docRef = db.collection("/openGroups/roomOne/messages/");
+const docRef = db.collection("/openGroups/demoOpenGroup1/messages/");
 const tasksDOM = document.getElementById("tasks");
 var fullName   = document.getElementById('user_nickname');
 // alert(fullName.value);
@@ -138,7 +138,7 @@ function handleCreate(event) {
     messageId : loggedInVal + "_"+  Date.now(),
     messageType : "text",
     createdDate :  Date.now(),
-    profileImageUrl : "https://apis.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     messageSource : "Web"
     // status: "incomplete"
   };
@@ -205,7 +205,7 @@ $("input[type='file']").on('change', function(e) {
     messageId : loggedInVal + "_"+ Date.now(),
     messageType : "video",
     createdDate : Date.now(),
-    profileImageUrl : "https://apis.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     // status: "incomplete"
     messageSource : "Web"
   };
@@ -238,7 +238,7 @@ $("input[type='file']").on('change', function(e) {
     messageId : loggedInVal + "_"+ Date.now(),
     messageType : "audio",
     createdDate : Date.now(),
-    profileImageUrl : "https://apis.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     // status: "incomplete"
     messageSource : "Web"
   };
@@ -272,7 +272,7 @@ $("input[type='file']").on('change', function(e) {
     messageId : loggedInVal + "_"+ Date.now(),
     messageType : "photo",
     createdDate : Date.now(),
-    profileImageUrl : "https://apis.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     // status: "incomplete"
     messageSource : "Web"
   };
@@ -481,6 +481,8 @@ function fetchTasks() {
               //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
 
 
+
+
               //       } else if(task.messageType === "audio"){
 
               //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
@@ -580,7 +582,7 @@ function fetchTasks() {
 
 // //   var li = document.createElement('li')
 // //   li.id = doc.id;
-// //   li.innerHTML = reviewTemplate('<li class="admin clearfix"><span class="chat-img right clearfix mx-2"><img src="https://apis.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=d9aced23-7b89-4abc-bd71-5523ab83a98a" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + createdDate + '</small><strong class="right primary-font" class="fullName"> ' + userName + '</strong></div><p class="message"> ' + message + '</p></div></li>')
+// //   li.innerHTML = reviewTemplate('<li class="admin clearfix"><span class="chat-img right clearfix mx-2"><img src="https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=d9aced23-7b89-4abc-bd71-5523ab83a98a" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + createdDate + '</small><strong class="right primary-font" class="fullName"> ' + userName + '</strong></div><p class="message"> ' + message + '</p></div></li>')
 // //   reviews.appendChild(li);
 
 // //     });

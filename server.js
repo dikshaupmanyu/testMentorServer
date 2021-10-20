@@ -865,12 +865,11 @@ request.post('https://apistest.tradetipsapp.com/api/auth/appSignIn',
     function (error, response, body) {
         // console.log(response);
     	var dataResult = JSON.parse(body);
-    	// console.log(dataResult);
+    	console.log(dataResult);
     	if(dataResult.accessToken){                  
-        if(req.body.userName != "admin"){
+        if(req.body.userName != "admin" && dataResult.isMentor == "true"){
           // $("#success").show();
           // $('#success').html('Login Sucessfully !');
-
 
         var tokens = dataResult.accessToken; 
         var fcmtoken = dataResult.fcmToken;
