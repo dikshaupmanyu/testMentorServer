@@ -59,6 +59,10 @@
                             <label>Email</label>
                             <input type="email" class="form-control" name="email" id = "emails" style="color:white;" readonly>
                           </div>
+                           <div class="input-group">
+                            <label>Twitter Id</label>
+                            <input type="text" class="form-control" name="twitterId" id = "twitterIds" style="color:white;">
+                          </div>
                           <div class="input-group">
                             <label class="hide-sm">&nbsp;</label>
                             <button class="btn cmn_btn btn_primary" id = "postbtn">Save Changes</button>
@@ -658,12 +662,13 @@
   // alert(tokens);
   
   var LoggedInId = "<%= userid %>";
-  console.log(user_name);
-  console.log(email_id);
-  console.log(LoggedInId);
+  // console.log(user_name);
+  // console.log(email_id);
+  // console.log(LoggedInId);
 
     
   document.getElementById("user_n").value = user_name;
+
 
   var formdata1 = {appuserName: user_name};
    $.ajax({
@@ -674,8 +679,12 @@
                   },
         data: formdata1,
         success: function(data) {
+          // alert(data['twitterId']);
           var user = data['fName'];
+          var twitterId = data['twitterId'];
           document.getElementById("F_name").value = user;
+            document.getElementById("twitterIds").value = twitterId;
+
 }
 });
 
@@ -695,13 +704,14 @@
                   },
         data: formdata,
         success: function(data) {
-          //console.log(data);
+          // console.log(data);
             $('#postbtn').on('click', function() {
             var users_id = data['id'];
             var user1 = data['userName'];
             var paswrd = data['password'];
             var first_name = document.getElementById("F_name").value;
             var email_val = document.getElementById("emails").value;
+            var twitter_val = document.getElementById("twitterIds").value;           
             var file = document.getElementById("file-upload").files[0];
             // alert(file);
             var fullPath = $("#file-upload").val();    
@@ -735,6 +745,7 @@
           formdata.append("email", email_val);
           formdata.append("userName", user1);
           formdata.append("password", paswrd);
+          formdata.append("twitterId", twitter_val);
           if(filename == ""){
             // alert("null");
               formdata.append("imageDetails", "");
