@@ -195,6 +195,45 @@ ul.search-list-loader {
 
               <div class="dashboard_wrapper_left col">
                 <div class="tip_list_head">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+
+   <!--  <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; width: 500px; padding-left: 25px; padding-top: 10px;">
+ <strong>infinetsoft tutorials</strong><hr />
+        <h3 style="color: #3e4b51;">convert html tocanvas 
+        </h3>
+        <p style="color: #3e4b51;">
+            Lorem ipsum dolor sit amet,consectetur adipiscing elit. In scelerisque egestas leo, vel congue maurismattis in. Curabitur quis massa ut metus interdum vehicula in vel massa. Nam miquam, venenatis sit amet libero at, vehicula rutrum nisi. In at aliquam metus.Class aptent taciti sociosqu ad litora torquent per conubia nostra, perinceptos himenaeos. Praesent eget quam laoreet, consequat lacus eget,condimentum neque. Aenean ut vehicula mi, et dictum quam. Integer elementumerat vel sagittis faucibus. Aliquam aliquam, ante et iaculis facilisis, nequeelit tempus neque, et lobortis urna velit porttitor nunc. In rutrum mi sit ametneque porta scelerisque. Pellentesque elementum sapien posuere arcu tinciduntornare. Nullam sed hendrerit nisl. Suspendisse at eros augue. Curabitur tempora lacus nec cursus.
+        </p>
+    </div>
+    <a id="btn-Convert-Html2Images" href="#">convertto image</a> -->
+  <!--  <script>
+
+          function convertsnapshot(id){
+
+             var element = $("#html-content-holder"+id); // global variable
+            alert(JSON.stringify(element));
+            var getCanvas; //global variable
+            html2canvas(element, {
+                onrendered: function (canvas) {
+                    getCanvas = canvas;
+                }
+            });
+ 
+             $("#btn-Convert-Html2Images"+id).on('click', function () {
+                var imgageDatass = getCanvas.toDataURL("image/png");
+                //Now browser starts downloading it instead of just showing it
+                alert(imgageDatass);
+                var newData = imgageDatass.replace(/^data:image\/png/, "data:application/octet-stream");
+                $("#btn-Convert-Html2Images"+id).attr("download", "your_image.png").attr("href", newData);
+             });
+
+          }
+      </script>
+ -->
+
                   <h2>Tips</h2>
                   <!-- <div class="switch-field">
                     <input type="radio" id="tips_all" name="Tips" checked/>
@@ -231,8 +270,8 @@ ul.search-list-loader {
 </div> -->
 
             <div class="scroller-dash-left scrollbar-css">
-               <div class="tips_boxes" id="bothdemo">
-                 </div>
+               <!-- <div class="tips_boxes" id="bothdemo">
+                 </div> -->
                   <div class="tips_boxes" id="tipbothdemo">
                 </div>
     
@@ -287,7 +326,7 @@ ul.search-list-loader {
                       <button  id="stockadd" class="btn">Add</button>
                     </div>
                   </div>
- <ul class="load-wrapp" style="display: none;">
+                     <ul class="load-wrapp" style="display: none;">
                          <div >
                           <div class="load-4">
                             <div class="ring-1"></div>
@@ -392,6 +431,8 @@ ul.search-list-loader {
   var userName = "<%= userName %>";
  // alert(userName);
   //var stock1 = [];
+    var userids = "<%= userid %>";
+
    var myarrdata = new Array();
    var myarr = new Array();
    var mydeletedata = new Array();
@@ -401,7 +442,7 @@ ul.search-list-loader {
   $.ajax({
 
     type: 'POST',
-    url: 'https://apistest.tradetipsapp.com/api/stockDetail/getAllStockOfUserByUserName?userName='+ userName,
+    url: 'https://apistest.tradetipsapp.com/api/stockDetail/getAllStockOfUser?userId='+ userids,
     headers: {
       Authorization: 'Bearer '+ tokens ,
     },
@@ -597,7 +638,7 @@ $(document).ready(function(){
          headers: { Authorization: 'Bearer '+ tokens},
          success: function(data){
            //$('#basic').trigger('clear');
-          // console.log(data);
+         console.log(data);
               for( var i=0;i<data.length; i++){
                  
                  mydeletedata.push(data[i].id);
@@ -810,7 +851,29 @@ $(".scroller-dash-left").scroll(function() {
          
              if(dataResult[i].tip.stockSuggestion == "Buy"){
 
-               text += '<div class="tips_bx buy_bg" data-switch-field="3"><div class="tips_bx_head"><div class="tips_bx_author author_bx"><img onerror="imgError(this);" id="imgcall' + dataResult[i].tip.id + '" src="https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId='+ dataResult[i].tip.appUser.id+'" alt="images"><div class="tips_bx_cmpny_name" id=""><h2><em class="only_id_use">' + dataResult[i].tip.appUser.userName + '</em> <span>'+ stripped1 +'</span></h2></div></div><div class="tips_bx_amount"> <h2 class="hclass" id="flatestPrice' + dataResult[i].tip.id + '"><span>$</span></h2><p>At Time of Tip :  <span class="hclass" id="stockkTipPrice' + dataResult[i].tip.id + '"><span><b style="color:white">$</b></span><b style="color:white">'+ parseFloat(dataResult[i].tip.createTipPrice).toFixed(2) +'</b></span><span id="changeVals' + dataResult[i].tip.id + '"></span></span></div></div><div class="tips_bx_cmpny"><div class="tips_bx_cmpny_name"><span class="bs_btn buy_btn suggestion' + dataResult[i].tip.id + '">' + dataResult[i].tip.stockSuggestion + '</span><h2>' + dataResult[i].tip.stockName + ' <span id="skComnyNames'+ dataResult[i].tip.id +'"></span></h2></div><div class="tips_bx_cmpny_states"><ul><li><h3>Entry</h3><h4 id="entrydatas' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.entryPoint).toFixed(2) +'</h4></li><li><h3>Exit</h3><h4><span id="exitdata' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.exitPoint).toFixed(2) +'</span></h4></li><li><h3>Stop</h3><h4 id="stopdata' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.stopPoint).toFixed(2) +'</h4></li></ul></div></div><div class="tips_bx_txt"> <p>'+ dataResult[i].tip.comment +'</p></div><div class="tips_bx_social"><ul> <li><a href="mentorDetails?id=' + dataResult[i].tip.id + '"><img src="images/tips-comment-icon.png" alt="images">' + dataResult[i].commentCount + ' Comments</a></li><li><a onclick="pinFunction(this.id)" id="' + dataResult[i].tip.id + '" style="color: #fff;cursor:pointer;"><p id="StatusPin' + dataResult[i].tip.id + '" style="display:none;">' + dataResult[i].userPinStatus + '</p><img id="imgstatus' + dataResult[i].tip.id + '" alt="images">Follow Tip</a> </li><li onclick="likeFunction(this.id)" id="' + dataResult[i].tip.id + '"><img id="imgLikestatus' + dataResult[i].tip.id + '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' + dataResult[i].tip.id + '" style="cursor:pointer;"><span id="textvalLike' + dataResult[i].tip.id + '">' + dataResult[i].likeCount + '</span> Likes</a><p id="StatusLike' + dataResult[i].tip.id + '" style="display:none;">' + dataResult[i].userLikeStatus + '</p></li><li><div class="dropdown msg_option_dropdown"><a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/tips-more-icon.png" alt="images"> More</a><div class="dropdown-menu"> <ul><li><a href="mentorDetails?id=' + dataResult[i].tip.id + '"><span><i class="fas fa-folder-open"></i></span> View Detail</a></li><li onClick="copyClipboard(this.id)" id="'+dataResult[i].tip.id +'"><input type = "text" aria-hidden="true" style="position: absolute;left: -999em;" id="divClipboard' +dataResult[i].tip.id+'"><span><i class="fas fa-copy"></i></span>Copy to Clipboard</li><li><a onclick="newhandleRemoveTipResultData(this.id)" id="' + dataResult[i].tip.id + '"><span><i class="fas fa-trash"></i></span> Remove Tip</a></li><li><a><span><i class="fas fa-share"></i></span> Share Tip</a></li></ul></div></div></li></ul></div></div>';
+
+            //  canvaselement[i] = $("#the_text"+dataResult[i].tip.id); // global variable
+            // // alert(JSON.stringify(canvaselement));
+            // var getCanvas; //global variable
+            // html2canvas(canvaselement[i], {
+            //     onrendered: function (canvas) {
+            //         getCanvas = canvas;
+            //     }
+            // });
+ 
+            // $("#btn-Convert-Html2Image"+dataResult[i].tip.id).on('click', function () {
+            //    alert(dataResult[i].tip.id);
+            //     var imgageData = getCanvas.toDataURL("image/png");
+            //     alert(imgageData);
+            //     //Now browser starts downloading it instead of just showing it
+            //     var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+            //     alert(newData);
+            //     $("#btn-Convert-Html2Image"+dataResult[i].tip.id).attr("download", "your_image.png").attr("href", newData);
+            // });
+
+            
+        
+               text += '<div class="tips_bx buy_bg" data-switch-field="3"><div class="tips_bx_head"  id="html-content-holder'+dataResult[i].tip.id+'"><div class="tips_bx_author author_bx"><img onerror="imgError(this);" id="imgcall' + dataResult[i].tip.id + '" src="https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId='+ dataResult[i].tip.appUser.id+'" alt="images"><div class="tips_bx_cmpny_name" id=""><h2><em class="only_id_use">' + dataResult[i].tip.appUser.userName + '</em> <span>'+ stripped1 +'</span></h2></div></div><div class="tips_bx_amount"> <h2 class="hclass" id="flatestPrice' + dataResult[i].tip.id + '"><span>$</span></h2><p>At Time of Tip :  <span class="hclass" id="stockkTipPrice' + dataResult[i].tip.id + '"><span><b style="color:white">$</b></span><b style="color:white">'+ parseFloat(dataResult[i].tip.createTipPrice).toFixed(2) +'</b></span><span id="changeVals' + dataResult[i].tip.id + '"></span></span></div></div><div class="tips_bx_cmpny"><div class="tips_bx_cmpny_name"><span class="bs_btn buy_btn suggestion' + dataResult[i].tip.id + '">' + dataResult[i].tip.stockSuggestion + '</span><h2>' + dataResult[i].tip.stockName + ' <span id="skComnyNames'+ dataResult[i].tip.id +'"></span></h2></div><div class="tips_bx_cmpny_states"><ul><li><h3>Entry</h3><h4 id="entrydatas' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.entryPoint).toFixed(2) +'</h4></li><li><h3>Exit</h3><h4><span id="exitdata' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.exitPoint).toFixed(2) +'</span></h4></li><li><h3>Stop</h3><h4 id="stopdata' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.stopPoint).toFixed(2) +'</h4></li></ul></div></div><div class="tips_bx_txt"> <p>'+ dataResult[i].tip.comment +'</p></div><div class="tips_bx_social"><ul> <li><a href="mentorDetails?id=' + dataResult[i].tip.id + '"><img src="images/tips-comment-icon.png" alt="images">' + dataResult[i].commentCount + ' Comments</a></li><li><a onclick="pinFunction(this.id)" id="' + dataResult[i].tip.id + '" style="color: #fff;cursor:pointer;"><p id="StatusPin' + dataResult[i].tip.id + '" style="display:none;">' + dataResult[i].userPinStatus + '</p><img id="imgstatus' + dataResult[i].tip.id + '" alt="images">Follow Tip</a> </li><li onclick="likeFunction(this.id)" id="' + dataResult[i].tip.id + '"><img id="imgLikestatus' + dataResult[i].tip.id + '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' + dataResult[i].tip.id + '" style="cursor:pointer;"><span id="textvalLike' + dataResult[i].tip.id + '">' + dataResult[i].likeCount + '</span> Likes</a><p id="StatusLike' + dataResult[i].tip.id + '" style="display:none;">' + dataResult[i].userLikeStatus + '</p></li><li><div class="dropdown msg_option_dropdown"><a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/tips-more-icon.png" alt="images"> More</a><div class="dropdown-menu"> <ul><li><a href="mentorDetails?id=' + dataResult[i].tip.id + '"><span><i class="fas fa-folder-open"></i></span> View Detail</a></li><li onClick="copyClipboard(this.id)" id="'+dataResult[i].tip.id +'"><input type = "text" aria-hidden="true" style="position: absolute;left: -999em;" id="divClipboard' +dataResult[i].tip.id+'"><span><i class="fas fa-copy"></i></span>Copy to Clipboard</li><li><a onclick="newhandleRemoveTipResultData(this.id)" id="' + dataResult[i].tip.id + '"><span><i class="fas fa-trash"></i></span> Remove Tip</a></li><li><a href="#"><span><i class="fas fa-share"></i></span> Share Tip</a></li></ul></div></div></li></ul></div></div>';
 
                textboth += '<div class="tips_bx buy_bg" data-switch-field="1" style="display:block;"><div class="tips_bx_head"><div class="tips_bx_author author_bx" ><img onerror="imgError1(this);" id="imgcall1' + dataResult[i].tip.id + '" src="https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId='+ dataResult[i].tip.appUser.id+'" alt="images"><div class="tips_bx_cmpny_name" id=""><h2><em class="only_id_use">' + dataResult[i].tip.appUser.userName + '</em> <span>'+ stripped1 +'</span></h2></div></div><div class="tips_bx_amount"> <h2 class="hclass" id="flatestPrice1' + dataResult[i].tip.id + '"><span>$</span></h2><p>At Time of Tip :  <span class="hclass" id="stockkTipPrice1' + dataResult[i].tip.id + '"><span><b style="color:white">$</b></span><b style="color:white">'+ parseFloat(dataResult[i].tip.createTipPrice).toFixed(2) +'</b></span><span id="changeVals1' + dataResult[i].tip.id + '"></span></span></div></div><div class="tips_bx_cmpny"><div class="tips_bx_cmpny_name"><span class="bs_btn buy_btn suggestion1' + dataResult[i].tip.id + '">' + dataResult[i].tip.stockSuggestion + '</span><h2>' + dataResult[i].tip.stockName + ' <span id="skComnyNames1'+ dataResult[i].tip.id +'"></span></h2></div><div class="tips_bx_cmpny_states"><ul><li><h3>Entry</h3><h4 id="entrydatas1' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.entryPoint).toFixed(2) +'</h4></li><li><h3>Exit</h3><h4><span id="exitdata1' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.exitPoint).toFixed(2) +'</span></h4></li><li><h3>Stop</h3><h4 id="stopdata1' + dataResult[i].tip.id + '"><span>$</span>'+ parseFloat(dataResult[i].tip.stopPoint).toFixed(2) +'</h4></li></ul></div></div><div class="tips_bx_txt"> <p>'+ dataResult[i].tip.comment +'</p></div><div class="tips_bx_social"><ul> <li><a href="mentorDetails?id=' + dataResult[i].tip.id + '"><img src="images/tips-comment-icon.png" alt="images">' + dataResult[i].commentCount + ' Comments</a></li><li><a onclick="pinFunction1(this.id)" id="' + dataResult[i].tip.id + '" style="color: #fff;cursor:pointer;"><p id="StatusPin1' + dataResult[i].tip.id + '" style="display:none;">' + dataResult[i].userPinStatus + '</p><img id="imgstatus1' + dataResult[i].tip.id + '" alt="images">Follow Tip</a> </li><li onclick="likeFunction1(this.id)" id="' + dataResult[i].tip.id + '" style="color: #fff;cursor:pointer;"><img id="imgLikestatus1' + dataResult[i].tip.id + '" alt="images"><a onclick="likeFunction1(this.id)" id="' + dataResult[i].tip.id + '"><span id="textvalLike1' + dataResult[i].tip.id + '">' + dataResult[i].likeCount + '</span> Likes</a><p id="StatusLike1' + dataResult[i].tip.id + '" style="display:none;">' + dataResult[i].userLikeStatus + '</p></li><li><div class="dropdown msg_option_dropdown"><a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/tips-more-icon.png" alt="images"> More</a><div class="dropdown-menu"> <ul><li><a href="mentorDetails?id=' + dataResult[i].tip.id + '"><span><i class="fas fa-folder-open"></i></span> View Detail</a></li><li onClick="copyClipboard1(this.id)" id="'+dataResult[i].tip.id +'"><input type = "text" aria-hidden="true" style="position: absolute;left: -999em;" id="divClipboard1' +dataResult[i].tip.id+'"><span><i class="fas fa-copy"></i></span>Copy to Clipboard</li><li><a onclick="newhandleRemoveTipResultData(this.id)" id="' + dataResult[i].tip.id + '"><span><i class="fas fa-trash"></i></span> Remove Tip</a></li><li><a><span><i class="fas fa-share"></i></span> Share Tip</a></li></ul></div></div></li></ul></div></div>';
 
@@ -1404,7 +1467,7 @@ $(".scroller-dash-left").scroll(function() {
   $(".load-wrapp-list").css('display','block');
  $.ajax({
         type: 'POST',
-        url: 'https://apistest.tradetipsapp.com/api/stockDetail/getAllStockOfUserByUserName?userName='+ userName,
+        url: 'https://apistest.tradetipsapp.com/api/stockDetail/getAllStockOfUser?userId='+ userids,
         headers: {
           Authorization: 'Bearer '+ tokens ,
         },
@@ -1469,9 +1532,12 @@ $(".scroller-dash-left").scroll(function() {
                           redirect: 'follow'
                         };
 
-                      const response = await fetch(`https://apistest.tradetipsapp.com/api/stockDetail/getAllStockOfUserByUserName?userName=${userName}`, requestOptions)
+                      const response = await fetch(`https://apistest.tradetipsapp.com/api/stockDetail/getAllStockOfUser?userId=${userids}`, requestOptions)
 
                       const result = await response.json();
+
+                      console.log(result);
+                     // console.log(tokens);
 
                       if(result.length > 0){
 
@@ -1498,11 +1564,15 @@ $(".scroller-dash-left").scroll(function() {
 
                         const array = await responseone.json();
 
-                         const response = await fetch(`https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=pk_dd324da3fb5f4428a47b05ab12f23ce2&symbols=${array[0].stock_name}`);
+                        console.log(array);
+
+                        if(array[0] != undefined){
+
+                          const response = await fetch(`https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=pk_dd324da3fb5f4428a47b05ab12f23ce2&symbols=${array[0].stock_name}`);
                           const d = await response.json()
                               // return datas;
 
-                          console.log(d[array[0].stock_name]);
+                          // console.log(d[array[0].stock_name]);
 
                         
                         var date = array[0].sma_generation_date;
@@ -1532,6 +1602,11 @@ $(".scroller-dash-left").scroll(function() {
                               }
                           
                           $("#AIdemo").append(texts);
+
+                        }
+
+
+                        
                      }
 
 
