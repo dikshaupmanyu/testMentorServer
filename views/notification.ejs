@@ -56,11 +56,11 @@ $(document).ready(function(){
    var notificationVals = "" ;
     $.ajax({
         type: 'POST',
-        url: 'https://apistest.tradetipsapp.com/api/notificationActivity/getAllNotificationActivityDetailsWithPagination',
+        url: 'https://apistest.tradetipsapp.com/api/notificationActivity/getAllUnreadBundleNotificationActivityMessage',
         headers: {
           Authorization: 'Bearer '+ tokens,
            },
-         data: {limit : 100000 , offset : 0},
+         data: {userName : LoggedInUsername},
       success: function(data) {
 
        var datak = JSON.stringify(data);
@@ -72,7 +72,7 @@ $(document).ready(function(){
        for(i = 0; i < dataResult.length; i ++){
         // alert(dataResult[i].notificationId);
 
-        notificationVals += '<li style="color:white;"><div class="tips_bx avoid_bg"><div class="mentor_feed"><div class="tips_bx_author author_bx"><div class="author_bx_txt"><h2>'+dataResult[i].notificationText+'</h2></div>&nbsp;&nbsp;<a onclick="deletenotification(this.id)" id="' + dataResult[i].notificationId + '" style="cursor:pointer;"><i class="fa fa-trash"></i></a></div></div></li>'; 
+        notificationVals += '<li style="color:white;"><div class="tips_bx avoid_bg"><div class="mentor_feed"><a href="/mentorDetails?id='+ dataResult[i].tipId +'"><div class="tips_bx_author author_bx"><div class="author_bx_txt"><h2>'+dataResult[i].notificationText+'</h2></div></a>&nbsp;&nbsp;<a onclick="deletenotification(this.id)" id="' + dataResult[i].notificationId + '" style="cursor:pointer;"><i class="fa fa-trash"></i></a></div></div></li>'; 
 
          readnotification(dataResult[i].notificationId);       
          
