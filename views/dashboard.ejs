@@ -1547,6 +1547,8 @@ $(".scroller-dash-left").scroll(function() {
 
                        // console.log(result[i].stockSymbol)
 
+                       // for(var i = 0; i > result.length; i++){
+
                         var myHeaders1 = new Headers();
                         myHeaders1.append("Authorization", `Bearer ${tokens}`);    
 
@@ -1564,7 +1566,7 @@ $(".scroller-dash-left").scroll(function() {
 
                         const array = await responseone.json();
 
-                        console.log(array);
+                        // console.log(array[0]);
 
                         if(array[0] != undefined){
 
