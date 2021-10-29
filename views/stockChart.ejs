@@ -60,7 +60,7 @@ credits{
        <a id="symbolprediction" style="color: white;"><button class="btn btn-success">Get 5-Day Prediction</button></a>
     </div> 
   </div>
-  <div class="graph_area">
+  <div class="graph_area" id="PredictionGraphList">
     <div class="row ml-0 mr-0">
       <div class="graph_bx graph_bx_left col">        
         <div class="mentor_tab_area my_tab_content">
@@ -284,10 +284,15 @@ const a = null
 
             if(dataResult == ""){
 
-              // alert("No Record Found");
+             
 
               
               $("#PredictionGraphHeadData").css("display", "none");
+
+              $("#PredictionGraphList").css("display", "none");
+
+               alert("No Record Found");
+              
 
 
             }else{
@@ -295,6 +300,8 @@ const a = null
               // alert("Record Found");
 
                $("#PredictionGraphHeadData").css("display", "block");
+
+                $("#PredictionGraphList").css("display", "block");
 
                  if(dataResult[0].rsiResult == "buy"){
 
