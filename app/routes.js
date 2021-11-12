@@ -51,6 +51,14 @@ module.exports = function(app) {
     res.render('mentorDetails.ejs' , {tipsIds : mentorids});
   });
 
+   app.get('/macdDetails', function(req, res) {
+
+    var mentorids = req.query.id;
+
+    res.render('macdDetails.ejs' , {tipsIds : mentorids});
+  });
+   
+
      app.get('/aiDetails', function(req, res) {
 
     var mentorids = req.query.id;
