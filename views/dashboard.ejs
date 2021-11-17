@@ -2456,6 +2456,7 @@ function likeFunction1(e) {
 
           var imgageData = getCanvas.toDataURL("image/png");
           // alert(imgageData);
+          // console.log(imgageData);
 
           var fimagedata = dataURItoBlob(imgageData);
 
@@ -2484,9 +2485,11 @@ function likeFunction1(e) {
             function setShareLinks() {
             var pageUrl = encodeURIComponent(document.URL);
             var meta = document.getElementsByTagName("meta");
-            alert(meta);
+            // alert(meta);
             // var tweet = encodeURIComponent($("meta[property='og:description']").attr("content"));
             // alert(tweet);
+
+            // var tweetimage = "https://upload.twitter.com/1.1/media/upload.json?media_category=tweet_image";
             
               url = "https://twitter.com/intent/tweet?og:image=" + meta[5].content + "&text=hiii";
               socialWindow(url);
