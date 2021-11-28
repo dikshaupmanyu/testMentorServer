@@ -29,12 +29,13 @@ admin.initializeApp({
   databaseURL: "https://chatdemo-96e4f.firebaseio.com"
 
 });
+
+
+
+
+
 const db = admin.firestore();
 // idToken comes from the client app
-
-
-
-
 
  
 	app.use(compression());
@@ -89,6 +90,7 @@ app.get('/neww', function(req, res) {
 
 app.get('/dashboard',(req,res)=>
 {
+
 if(req.session.loggedIn) 
 {
 var fdata = req.session.tokens;
@@ -96,6 +98,10 @@ var fusername = req.session.username;
 var fuid = req.session.uid; 
 var femail = req.session.email; 
 var Chat_fcmtoken = req.session.fcmtoken;
+const twitter = require('twitter-lite');
+const fs = require('fs');
+const path = require('path');
+
 
 res.render('dashboard.ejs', {fcmtoken : Chat_fcmtoken , tokens : fdata , userName : fusername , userid : fuid , email :femail});
 }
@@ -893,6 +899,67 @@ app.get('/forgetPassword', function(req, res) {
   });
 
    /////////////////////////////////////////////////////////////////////////
+
+   app.post('/imagetweet', function(req, res) {
+
+	 // console.log(req.body.dataUrl);
+
+	 // console.log(req.body.objecturls);
+
+	 const imageDataURI = require('image-data-uri');
+
+		const fs = require('fs');
+		const path = require('path');
+		const config = require('./config');
+
+		const apiClient = config.newClient();
+		const uploadClient = config.newClient('upload');
+
+
+	 let dataURI = req.body.dataUrl;
+
+	 var url = req.body.objecturls;
+
+	 const last = url.split("/")
+	 const lastItem = last[last.length-1];
+     let filePath = 'images/uploadscreenshot/'+lastItem;
+ 	imageDataURI.outputFile(dataURI, filePath)
+    .then(function(resk){
+    	console.log(resk);
+    	const mediaFile = fs.readFileSync(resk);
+    	fs.unlink(resk, (err) => {
+        if (err) {
+            console.log("failed to delete local image:"+err);
+        } else {
+            console.log('successfully deleted local image');                                
+        }
+
+        });
+		const base64image = Buffer.from(mediaFile).toString('base64');
+
+		uploadClient.post('media/upload', { media_data: base64image }).then(media => {
+		console.log('You successfully uploaded media');
+
+		var media_id = media.media_id_string;
+		console.log(media_id);
+
+		apiClient.post('statuses/update', { status: 'Hello world!', media_ids: media_id }).then(tweet => {
+			res.send(tweet);
+			// console.log(tweet);
+			console.log("https://twitter.com/intent/tweet?text="+tweet.text);
+		   
+		    console.log('Your image tweet is posted successfully');
+		}).catch(console.error);
+
+		}).catch(console.error);
+
+    });
+
+
+
+});
+
+   /////////////////////////////////////////////////////////////////////////////////
 var data ;
 app.post('/authenticate'
 ,bodyParser.urlencoded()
