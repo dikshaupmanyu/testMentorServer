@@ -1,5 +1,6 @@
 
 <%- include partials/innerheader %>
+<div id="previewImage"></div>
   <div class="modal" id="myModalMACD">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -696,7 +697,7 @@ $(document).ready(function(){
               // console.log(r);
                    for (k= 0; k< myarr.length; k ++) {
 
-                   texts += '<div class="tips_wtlist_item"  id="item-'+ mydeletedata[k] +'"><div class="tips_wtlist_item_left"><h2>'+ r[myarr[k]].quote.symbol +'<span>'+ r[myarr[k]].quote.companyName +'</span></h2></div><div class="tips_wtlist_item_center"><h3>$ '+ parseFloat(r[myarr[k]].quote.latestPrice).toFixed(2) +'</h3> '+ (r[myarr[k]].quote.change > 0 ? ' </div><div class="tips_wtlist_item_right"><h3><span class="color_buy">'+ parseFloat(r[myarr[k]].quote.change).toFixed(2) +'</span></h3>':'</div><div class="tips_wtlist_item_right"><h3><span class="color_sell">'+ parseFloat(r[myarr[k]].quote.change).toFixed(2) +'</span></h3>')+'</div><div class="tips_wtlist_item_right"><span class="delete_stck"  style="color: white;" onclick="delete_stck(this.id)" id="'+ mydeletedata[k] +' '+ r[myarr[k]].quote.symbol +'"><i class="fa fa-trash"></i></span></div></div>';
+                   texts += '<div class="tips_wtlist_item"  id="item-'+ mydeletedata[k] +'"><div class="tips_wtlist_item_left"><h2>'+ r[myarr[k]].quote.symbol +'<span>'+ r[myarr[k]].quote.companyName +'</span></h2></div><div class="tips_wtlist_item_center"><h3>$ '+ parseFloat(r[myarr[k]].quote.latestPrice).toFixed(2) +'</h3> '+ (r[myarr[k]].quote.change >= 0 ? ' </div><div class="tips_wtlist_item_right"><h3><span class="color_buy">'+ parseFloat(r[myarr[k]].quote.change).toFixed(2) +'</span></h3>':'</div><div class="tips_wtlist_item_right"><h3><span class="color_sell">'+ parseFloat(r[myarr[k]].quote.change).toFixed(2) +'</span></h3>')+'</div><div class="tips_wtlist_item_right"><span class="delete_stck"  style="color: white;" onclick="delete_stck(this.id)" id="'+ mydeletedata[k] +' '+ r[myarr[k]].quote.symbol +'"><i class="fa fa-trash"></i></span></div></div>';
                      // texts += '<div class="tips_wtlist_item" id="item-'+ mydeletedata[k] +'"><div class="tips_wtlist_item_left"><h2>'+ r[myarr[k]].quote.symbol +'<span>'+ r[myarr[k]].quote.companyName +'</span></h2></div><div class="tips_wtlist_item_center"><h3>$ '+ parseFloat(r[myarr[k]].quote.latestPrice).toFixed(2) +'</h3> '+ (r[myarr[k]].quote.change > 0 ? ' </div><div class="tips_wtlist_item_right"><h3><span class="color_buy">'+ parseFloat(r[myarr[k]].quote.change).toFixed(2) +'</span></h3>':'</div><div class="tips_wtlist_item_right"><h3><span class="color_sell">'+ parseFloat(r[myarr[k]].quote.change).toFixed(2) +'</span></h3>')+'</div><div class="tips_wtlist_item_right"><span class="delete_stck" style="    color: white;" onclick="delete_stck(this.id)" id="'+ mydeletedata[k] +'"><i class="fa fa-trash"></i></span></div></div>';
                    }
    
@@ -1613,7 +1614,7 @@ $.ajax({
                    for (k= 0; k< users.length; k ++) {
                     //console.log(users[k]);
                      if(r[users[k]] != undefined){
-                    texts += '<a href="stockChart?stockName='+ r[users[k]].quote.symbol +'&id='+ deletdata[k] +'"><div class="tips_wtlist_item" id="item-'+ deletdata[k] +'"><div class="tips_wtlist_item_left"><h2>'+ r[users[k]].quote.symbol +'<span>'+ r[users[k]].quote.companyName +'</span></h2></div><div class="tips_wtlist_item_center"><h3>$ '+ parseFloat(r[users[k]].quote.latestPrice).toFixed(2) +'</h3> '+ (r[users[k]].quote.change > 0 ? ' </div><div class="tips_wtlist_item_right"><h3><span class="color_buy">'+ parseFloat(r[users[k]].quote.change).toFixed(2) +'</span></h3>':'</div><div class="tips_wtlist_item_right"><h3><span class="color_sell">'+ parseFloat(r[users[k]].quote.change).toFixed(2) +'</span></h3>')+'</div><div class="tips_wtlist_item_right"><span class="delete_stck" style="    color: white;" onclick="delete_stck(this.id)" id="'+ deletdata[k] +' '+ r[users[k]].quote.symbol +'""><i class="fa fa-trash"></i></span></div></div></a>';
+                    texts += '<a href="stockChart?stockName='+ r[users[k]].quote.symbol +'&id='+ deletdata[k] +'"><div class="tips_wtlist_item" id="item-'+ deletdata[k] +'"><div class="tips_wtlist_item_left"><h2>'+ r[users[k]].quote.symbol +'<span>'+ r[users[k]].quote.companyName +'</span></h2></div><div class="tips_wtlist_item_center"><h3>$ '+ parseFloat(r[users[k]].quote.latestPrice).toFixed(2) +'</h3> '+ (r[users[k]].quote.change >= 0 ? ' </div><div class="tips_wtlist_item_right"><h3><span class="color_buy">'+ parseFloat(r[users[k]].quote.change).toFixed(2) +'</span></h3>':'</div><div class="tips_wtlist_item_right"><h3><span class="color_sell">'+ parseFloat(r[users[k]].quote.change).toFixed(2) +'</span></h3>')+'</div><div class="tips_wtlist_item_right"><span class="delete_stck" style="    color: white;" onclick="delete_stck(this.id)" id="'+ deletdata[k] +' '+ r[users[k]].quote.symbol +'""><i class="fa fa-trash"></i></span></div></div></a>';
                    }
                  }
                        $(".load-wrapp-list").css('display','none');
@@ -2434,6 +2435,7 @@ function likeFunction1(e) {
   var getCanvas;
   function btnPreviewImage(e){
      var element = $("#html-content-holder"+e);
+     // var finalelement = $("#html-content-holder"+e).innerHTML();
       // alert("#html-content-holder4e3e4e85-9a20-4bb5-b8da-2ee11fcd02ec");
       // Global variable
         // alert("hii"+e);
@@ -2458,7 +2460,8 @@ function likeFunction1(e) {
             // ctx.fillRect(20, 20, 150, 100);
            
 
-            $("#previewImage"+e).append(canvas);
+            $("#previewImage").append(canvas);
+
             // document.getElementsByTagName("CANVAS").style.backgroundColor = "red";
 
           getCanvas = canvas;
