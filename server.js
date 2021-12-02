@@ -31,9 +31,6 @@ admin.initializeApp({
 });
 
 
-
-
-
 const db = admin.firestore();
 // idToken comes from the client app
 
@@ -943,7 +940,7 @@ app.get('/forgetPassword', function(req, res) {
 		var media_id = media.media_id_string;
 		console.log(media_id);
 
-		apiClient.post('statuses/update', { status: 'Hello world!', media_ids: media_id }).then(tweet => {
+		apiClient.post('statuses/update', { status: '', media_ids: media_id }).then(tweet => {
 			res.send(tweet);
 			// console.log(tweet);
 			console.log("https://twitter.com/intent/tweet?text="+tweet.text);

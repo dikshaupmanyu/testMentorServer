@@ -1,6 +1,8 @@
 
 <%- include partials/innerheader %>
-  <div class="modal" id="myModalMACD">
+<!-- <div id="previewImage"></div>
+ -->  
+ <div class="modal" id="myModalMACD">
     <div class="modal-dialog">
       <div class="modal-content">
       
@@ -28,14 +30,52 @@
   </div>
 <style>
 #previewScreenshot {
-  width: 550px;
+  width: 486px;
   position: absolute;
   opacity: 0;
   z-index: -999;
   pointer-events: none;
 }
+#previewScreenshot .bs_btn {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+}
+#previewScreenshot .tips_bx_cmpny_name h2 {
+  font-size: 15px;
+}
+#previewScreenshot .tips_bx_cmpny_name h2 span {
+  font-size: 12px;
+}
+#previewScreenshot .tips_bx_amount h2 {
+  font-size: 17px;
+}
+#previewScreenshot .tips_bx_cmpny_states ul li{
+  padding-left: 10px;
+  margin-left: 10px;
+}
+#previewScreenshot .tips_bx_cmpny_states ul li:nth-child(1) {
+  padding-left: 10px;
+  margin-left: 10px;
+}
+#previewScreenshot .tips_bx_cmpny_states ul li h4{
+  font-size: 14px;
+}
+#previewScreenshot .tips_bx_cmpny_states ul li h3{
+  font-size: 14px;
+}
+#previewScreenshot .tips_bx_amount p{
+  font-size: 13px;
+}
 #previewScreenshot .dropdown-menu.show {
   display: none !important
+}
+#previewScreenshot .tips_bx_social ul li a {
+  font-size: 13px;
+}
+#previewScreenshot .tips_bx_social ul {
+  padding: 14px 0;
 }
 .dashboard_wrapper_left
 {
