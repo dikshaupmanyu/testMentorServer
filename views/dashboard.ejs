@@ -1,6 +1,5 @@
 
 <%- include partials/innerheader %>
-<div id="previewImage"></div>
   <div class="modal" id="myModalMACD">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -28,6 +27,16 @@
     </div>
   </div>
 <style>
+#previewScreenshot {
+  width: 550px;
+  position: absolute;
+  opacity: 0;
+  z-index: -999;
+  pointer-events: none;
+}
+#previewScreenshot .dropdown-menu.show {
+  display: none !important
+}
 .dashboard_wrapper_left
 {
   /*overflow: scroll;
@@ -303,6 +312,7 @@ ul.search-list-loader {
             <div class="scroller-dash-left scrollbar-css">
                <!-- <div class="tips_boxes" id="bothdemo">
                  </div> -->
+                  <div id="previewScreenshot" class="previewScreenshot"></div>
                   <div class="tips_boxes" id="tipbothdemo">
                 </div>
 
@@ -2434,22 +2444,25 @@ function likeFunction1(e) {
   
   var getCanvas;
   function btnPreviewImage(e){
+
      var element = $("#html-content-holder"+e);
+     var elementPreview = element.clone().prop("id", "previewScreenshot_div");
+     $('#previewScreenshot').html(elementPreview);
      // var finalelement = $("#html-content-holder"+e).innerHTML();
       // alert("#html-content-holder4e3e4e85-9a20-4bb5-b8da-2ee11fcd02ec");
       // Global variable
         // alert("hii"+e);
-        if($("#html-content-holder"+e).hasClass("buy_bg")){
-           document.getElementById("html-content-holder"+e).style.backgroundImage = "url('/images/img_20211127.png')";
-        }else if($("#html-content-holder"+e).hasClass("sell_bg")){
-          document.getElementById("html-content-holder"+e).style.backgroundImage = "url('/images/img_20211127_sell.png')";
-        }else if($("#html-content-holder"+e).hasClass("avoid_bg")){
-          document.getElementById("html-content-holder"+e).style.backgroundImage = "url('/images/img_20211127_avoid.png')";
+        var elementPrev= $("#previewScreenshot_div");
+        if(elementPrev.hasClass("buy_bg")){
+           elementPrev.css("background-image" , "url('/images/img_20211127.png')");
+        }else if(elementPrev.hasClass("sell_bg")){
+          elementPrev.css("background-image" , "url('/images/img_20211127_sell.png')");
+        }else if(elementPrev.hasClass("avoid_bg")){
+          elementPrev.css("background-image" , "url('/images/img_20211127_avoid.png')");
         }
-        
-         $("#html-content-holder"+e).css('background-size', '100% 100%');
-
-        html2canvas(element, {
+        elementPrev.css('background-size', '100% 100%');
+         
+        html2canvas(elementPrev, {
           onrendered: function(canvas) {
             var ctx = canvas.getContext("2d");
             // var grd = ctx.createLinearGradient(0, 0, 170, 0);
@@ -2472,11 +2485,6 @@ function likeFunction1(e) {
           // console.log(imgageData);
           var fimagedata = dataURItoBlob(imgageData);
           const objectURL = URL.createObjectURL(fimagedata);
-
-                     $("#html-content-holder"+e).css('background-image', '');
-                     $("#html-content-holder"+e).css('background-size', '');
-
-
 
            $.ajax({
 
