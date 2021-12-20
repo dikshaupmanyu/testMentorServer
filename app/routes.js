@@ -19,6 +19,67 @@ module.exports = function(app) {
     res.render('mentorProfile.ejs');
   });
 
+     app.post('/imagetweet', function(req, res) {
+
+   // console.log(req.body.dataUrl);
+
+   // console.log(req.body.objecturls);
+
+   const imageDataURI = require('image-data-uri');
+
+    const fs = require('fs');
+    const path = require('path');
+    const config = require('./config');
+
+    const apiClient = config.newClient();
+    const uploadClient = config.newClient('upload');
+
+
+   let dataURI = req.body.dataUrl;
+
+   var url = req.body.objecturls;
+
+   const last = url.split("/")
+   const lastItem = last[last.length-1];
+     let filePath = 'images/uploadscreenshot/'+lastItem;
+  imageDataURI.outputFile(dataURI, filePath)
+    .then(function(resk){
+      console.log(resk);
+      const mediaFile = fs.readFileSync(resk);
+      fs.unlink(resk, (err) => {
+        if (err) {
+            console.log("failed to delete local image:"+err);
+        } else {
+            console.log('successfully deleted local image');                                
+        }
+
+        });
+    const base64image = Buffer.from(mediaFile).toString('base64');
+
+    uploadClient.post('media/upload', { media_data: base64image }).then(media => {
+    console.log('You successfully uploaded media');
+
+    var media_id = media.media_id_string;
+    console.log(media_id);
+
+    apiClient.post('statuses/update', { status: '', media_ids: media_id }).then(tweet => {
+      res.send(tweet);
+      // console.log(tweet);
+      console.log("https://twitter.com/intent/tweet?text="+tweet.text);
+       
+        console.log('Your image tweet is posted successfully');
+    }).catch(console.error);
+
+    }).catch(console.error);
+
+    });
+
+
+
+});
+
+
+
 
    app.get('/stockChart', function(req, res) {
 
