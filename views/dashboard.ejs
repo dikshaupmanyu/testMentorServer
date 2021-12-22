@@ -2528,11 +2528,11 @@ function likeFunction1(e) {
 
           var imagepaths = "images/uploadimage/"+imagenamess+".jpg";
 
-           // alert(imagepaths);
+           alert(imagepaths);
 
         // $("#imgcall1"+e).attr("src", imagepaths);
         // alert("imgcall1"+e);
-        $("#imgcall1"+e).attr("src", imagepaths);
+        $("#previewScreenshot .tips_bx_author img").attr("src", imagepaths);
         
         if(elementPrev.hasClass("buy_bg")){
            elementPrev.css("background-image" , "url('/images/img_20211127.png')");
