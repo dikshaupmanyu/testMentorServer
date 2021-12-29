@@ -2483,13 +2483,37 @@ function likeFunction1(e) {
 // Tweet</a>
   
   var getCanvas;
-  function newCanvasGenerate(e){
+  function btnPreviewImage(e){
 
-    // alert(e);
-
-       var element = $("#html-content-holder"+e);
+     var element = $("#html-content-holder"+e);
 
      // var href = document.getElementById('imgcall1'+e).src ? document.getElementById('imgcall1'+e).src : document.getElementById('imgcall'+e).src;
+
+     var href = document.getElementById('imgcall1'+e).src;
+
+     // alert(href);
+     
+        var userImageUrl ;
+           userImageUrl = href ;
+               
+          var username = "image"+e;
+
+
+      $.ajax({
+
+                type: 'POST',
+                url: '/imageUser',
+                data: {imageUrl : userImageUrl , imageName : username},
+
+              success: function(datan) {
+                // alert(datan);
+                console.log('success ajax');
+
+              }
+
+            });
+
+
 
 
      var elementPreview = element.clone().prop("id", "previewScreenshot_div");
@@ -2499,16 +2523,18 @@ function likeFunction1(e) {
       // Global variable
         // alert("hii"+e);
         var elementPrev= $("#previewScreenshot_div");
-          var imagenamess = "image"+e;
+          // var imagenamess = "image"+e;
 
-          var imagepaths = "/images/uploadimage/"+imagenamess+".jpg";
-          console.log(imagepaths);
+          // var imagepaths = "images/uploadimage/"+imagenamess+".jpg";
+          // console.log(imagepaths);
             // alert(imagepaths);
 
         // $("#imgcall1"+e).attr("src", imagepaths);
         // alert("imgcall1"+e);
-        $("#previewScreenshot .tips_bx_author img").removeAttr("onerror");
-        $("#previewScreenshot .tips_bx_author img").attr("src", imagepaths);        
+
+        // $("#previewScreenshot .tips_bx_author img").attr("src", imagepaths);
+         $("#previewScreenshot .tips_bx_author img").attr("src", "images/Blue_user.png");
+        
         if(elementPrev.hasClass("buy_bg")){
            elementPrev.css("background-image" , "url('/images/img_20211127.png')");
         }else if(elementPrev.hasClass("sell_bg")){
@@ -2573,37 +2599,7 @@ function likeFunction1(e) {
     return new Blob([ab], {type: 'image/png'});
 }
 
-
-  }
-  function btnPreviewImage(e){
-   
-
-     var href = document.getElementById('imgcall1'+e).src;
-
-     // alert(href);
-     
-        var userImageUrl ;
-           userImageUrl = href ;
-               
-          var username = "image"+e;
-
-
-      $.ajax({
-
-                type: 'POST',
-                url: '/imageUser',
-                data: {imageUrl : userImageUrl , imageName : username},
-              success: function(datan) {
-                // alert(datan);
-                setTimeout(function(){
-                  newCanvasGenerate(e);
-                }, 1000);
-              }
-
-            });
-
       }
-
   function newhandleRemoveTipResultData(e){
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${tokens}`);

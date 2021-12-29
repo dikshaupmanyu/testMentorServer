@@ -868,6 +868,34 @@ app.get('/forgetPassword', function(req, res) {
 
   });
 
+/// //////////////////////////////////////////////////////////////
+
+
+
+  app.get('/chatWindowAdminUser', function(req, res) {
+
+    const admin = require('firebase-admin');
+  
+    const db = admin.firestore();
+
+     if(req.session.loggedIn) 
+	   { 
+		var fdata = req.session.tokens;
+		var fusername = req.session.username;
+		var fuid = req.session.uid; 
+		var femail = req.session.email; 
+		var Chat_fcmtoken = req.session.fcmtoken;
+
+		res.render('chatWindowAdminUser.ejs', {tokens : fdata , fcmToken : Chat_fcmtoken , userName : fusername , userid : fuid , email :femail});
+
+	   } else {
+	     res.redirect('/')
+	   }
+
+
+  });
+
+
   ///////////////////////////////////////////////////////////////////////////
 
    app.post('/firebasejs', function(req, res) {
@@ -937,6 +965,8 @@ app.get('/forgetPassword', function(req, res) {
 	  	const data = await download(req.body.imageurl, filepath);
 	  	// console.log(data); // The file is finished downloading.
 	})();
+
+	res.send(200);
 
 });
 
