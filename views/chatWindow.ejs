@@ -1,4 +1,4 @@
-  <%- include partials/innerheader %>
+<%- include partials/innerheader %>
 
    
     <link rel="stylesheet" href="css/style.css">
@@ -248,6 +248,185 @@
     right: .5rem;
 }
 
+   /* //////////////////  for loader ///////////// */
+   #fountainG{
+  position:relative;
+  width:168px;
+  height:20px;
+  margin:auto;
+}
+
+.fountainG{
+  position:absolute;
+  top:180px;
+  background-color:rgb(31,36,135);
+  width:20px;
+  height:20px;
+  animation-name:bounce_fountainG;
+    -o-animation-name:bounce_fountainG;
+    -ms-animation-name:bounce_fountainG;
+    -webkit-animation-name:bounce_fountainG;
+    -moz-animation-name:bounce_fountainG;
+  animation-duration:1.105s;
+    -o-animation-duration:1.105s;
+    -ms-animation-duration:1.105s;
+    -webkit-animation-duration:1.105s;
+    -moz-animation-duration:1.105s;
+  animation-iteration-count:infinite;
+    -o-animation-iteration-count:infinite;
+    -ms-animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    -moz-animation-iteration-count:infinite;
+  animation-direction:normal;
+    -o-animation-direction:normal;
+    -ms-animation-direction:normal;
+    -webkit-animation-direction:normal;
+    -moz-animation-direction:normal;
+  transform:scale(.3);
+    -o-transform:scale(.3);
+    -ms-transform:scale(.3);
+    -webkit-transform:scale(.3);
+    -moz-transform:scale(.3);
+  border-radius:13px;
+    -o-border-radius:13px;
+    -ms-border-radius:13px;
+    -webkit-border-radius:13px;
+    -moz-border-radius:13px;
+}
+
+#fountainG_1{
+  left:0;
+  animation-delay:0.446s;
+    -o-animation-delay:0.446s;
+    -ms-animation-delay:0.446s;
+    -webkit-animation-delay:0.446s;
+    -moz-animation-delay:0.446s;
+}
+
+#fountainG_2{
+  left:21px;
+  animation-delay:0.5525s;
+    -o-animation-delay:0.5525s;
+    -ms-animation-delay:0.5525s;
+    -webkit-animation-delay:0.5525s;
+    -moz-animation-delay:0.5525s;
+}
+
+#fountainG_3{
+  left:42px;
+  animation-delay:0.659s;
+    -o-animation-delay:0.659s;
+    -ms-animation-delay:0.659s;
+    -webkit-animation-delay:0.659s;
+    -moz-animation-delay:0.659s;
+}
+
+#fountainG_4{
+  left:63px;
+  animation-delay:0.7755s;
+    -o-animation-delay:0.7755s;
+    -ms-animation-delay:0.7755s;
+    -webkit-animation-delay:0.7755s;
+    -moz-animation-delay:0.7755s;
+}
+
+#fountainG_5{
+  left:84px;
+  animation-delay:0.882s;
+    -o-animation-delay:0.882s;
+    -ms-animation-delay:0.882s;
+    -webkit-animation-delay:0.882s;
+    -moz-animation-delay:0.882s;
+}
+
+#fountainG_6{
+  left:105px;
+  animation-delay:0.9985s;
+    -o-animation-delay:0.9985s;
+    -ms-animation-delay:0.9985s;
+    -webkit-animation-delay:0.9985s;
+    -moz-animation-delay:0.9985s;
+}
+
+#fountainG_7{
+  left:126px;
+  animation-delay:1.105s;
+    -o-animation-delay:1.105s;
+    -ms-animation-delay:1.105s;
+    -webkit-animation-delay:1.105s;
+    -moz-animation-delay:1.105s;
+}
+
+#fountainG_8{
+  left:147px;
+  animation-delay:1.2115s;
+    -o-animation-delay:1.2115s;
+    -ms-animation-delay:1.2115s;
+    -webkit-animation-delay:1.2115s;
+    -moz-animation-delay:1.2115s;
+}
+
+
+
+@keyframes bounce_fountainG{
+  0%{
+  transform:scale(1);
+    background-color:rgb(39,41,150);
+  }
+
+  100%{
+  transform:scale(.3);
+    background-color:rgb(255,255,255);
+  }
+}
+
+@-o-keyframes bounce_fountainG{
+  0%{
+  -o-transform:scale(1);
+    background-color:rgb(39,41,150);
+  }
+
+  100%{
+  -o-transform:scale(.3);
+    background-color:rgb(255,255,255);
+  }
+}
+
+@-ms-keyframes bounce_fountainG{
+  0%{
+  -ms-transform:scale(1);
+    background-color:rgb(39,41,150);
+  }
+
+  100%{
+  -ms-transform:scale(.3);
+    background-color:rgb(255,255,255);
+  }
+}
+
+@-webkit-keyframes bounce_fountainG{
+  0%{
+  -webkit-transform:scale(1);
+    background-color:rgb(39,41,150);
+  }
+
+  100%{
+  -webkit-transform:scale(.3);
+    background-color:rgb(255,255,255);
+  }
+}
+
+@-moz-keyframes bounce_fountainG{
+  0%{
+  -moz-transform:scale(1);
+    background-color:rgb(39,41,150);
+  }
+
+  100%{
+  -moz-transform:scale(.3);
+    background-color:rgb(255,255,255);
+  }
+}
       </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  -->
@@ -300,9 +479,19 @@
     <script type="text/javascript">
         $('#messages').scrollTop($('#messages')[0].scrollHeight);
     </script> -->
-
+   
 
                 <div class="card-body chat-care">
+                  <div id="fountainG">
+                    <div id="fountainG_1" class="fountainG"></div>
+                    <div id="fountainG_2" class="fountainG"></div>
+                    <div id="fountainG_3" class="fountainG"></div>
+                    <div id="fountainG_4" class="fountainG"></div>
+                    <div id="fountainG_5" class="fountainG"></div>
+                    <div id="fountainG_6" class="fountainG"></div>
+                    <div id="fountainG_7" class="fountainG"></div>
+                    <div id="fountainG_8" class="fountainG"></div>
+                  </div>
                     <ul class="chat" id="tasks">
                     </ul>
                 </div>
@@ -404,6 +593,13 @@
     })
   </script>
 <br>
+<script>
+      var preloader = document.getElementById("fountainG");
+
+      window.addEventListener("load", function(){
+        preloader.style.display ="none"
+      })
+    </script>
 
 </body>
 </html>
