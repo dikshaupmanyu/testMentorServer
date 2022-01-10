@@ -82,6 +82,7 @@
         <div class="form-group">
          <label>Add Mentor Phone Group Cover</label>
           <div id="file-upload-form" class="uploader">
+            <input type="hidden" name="thumbnai" id="thumbnailImage" value=""></input>
             <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
             <label class="file_upload_label" for="file-upload" id="file-drag">
               <img id="file-image" src="#" alt="Preview" class="hidden">
@@ -360,6 +361,46 @@ $('#carousel-thumbs .carousel-item img').on('click', function(e) {
   // var src = $(e.target).attr('data-remote');
   // // alert(src);
   // if (src) $(this).ekkoLightbox();
+  var imgUrl = e.target.src; 
+alert(imgUrl);
+$("#thumbnailImage").val(imgUrl);
+
+function getBase64Image(imgUrl) {
+  return new Promise(
+    function(resolve, reject) {
+
+      var img = new Image();
+      img.src = imgUrl;
+      img.setAttribute('crossOrigin', 'anonymous');
+
+      img.onload = function() {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        resolve(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+      }
+      img.onerror = function() {
+        reject("The image could not be loaded.");
+      }
+
+    });
+
+}
+
+let base64image = getBase64Image(imgUrl).then(function(base64image) {
+  //alert(base64image);
+
+    var file = "data:image/png;base64,"+base64image;
+    //alert(file);
+
+    fileconvert(file);
+   
+   
+
+  });
 });
 </script>     
 
@@ -407,6 +448,7 @@ $("#formoid").submit(function(event){
   var serviceTypeId = $('#serviceTypeIds').val();
   var descriptionOne = $('#description1').val();
   var descriptionTwo = $('#description2').val();
+  var thumbnailImageURL = $('#thumbnailImage').val();
   var serviceTypeId = $('#serviceTypeIds').val();
   var frequency = $('#frequency').val();
   var price = $('#price').val();
@@ -425,6 +467,7 @@ $("#formoid").submit(function(event){
     formdata.append("serviceTypeId", serviceTypeId);
     formdata.append("descriptionOne", descriptionOne);
     formdata.append("descriptionTwo", descriptionTwo);
+    formdata.append("thumbnailImageURL", thumbnailImageURL);
     formdata.append("stripeProductName", stripeProductName);
     formdata.append("frequency", frequency);
     formdata.append("price", price);

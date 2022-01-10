@@ -48,6 +48,12 @@
           
           <h5>Max 200 Characters</h5>
         </div>
+         <!-- <div class="form-group">
+          <label>thumbnail Url</label>
+          <input type="hidden"  class="form-control" placeholder="Enter your Url" name="thumbnailImage" id="thumbnailImage" value="">
+          
+          <h5>Max 200 Characters</h5>
+        </div> -->
        <!--  <div class="form-group">
          <label>Price</label>
           <div class="price_box">
@@ -82,6 +88,7 @@
         <div class="form-group">
          <label>Newsletter Cover</label>
           <div id="file-upload-form" class="uploader">
+            <input type="hidden" name="thumbnai" id="thumbnailImage" value=""></input>
             <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
             <label class="file_upload_label" for="file-upload" id="file-drag">
               <img id="file-image" src="#" alt="Preview" class="hidden">
@@ -301,6 +308,7 @@
   }
 }
 </style>
+
 <script type="text/javascript">
   $('#myCarousel').carousel({
   interval: false
@@ -367,7 +375,8 @@ $('#carousel-thumbs .carousel-item img').on('click', function(e) {
   // if (src) $(this).ekkoLightbox();
   // readURL(this);
 
-   $('#file-image').attr('src', e.target.src);
+  $('#file-image').attr('src', e.target.src);
+  console.log(e.target.src);
   document.getElementById('file-image').style.display= "block";
 // var imgUrl = e.target.src;
 
@@ -380,8 +389,9 @@ $('#carousel-thumbs .carousel-item img').on('click', function(e) {
 //   // alert(reason); // Error!
 // });
 
-var imgUrl = e.target.src;
-//alert(imgUrl);
+var imgUrl = e.target.src; 
+alert(imgUrl);
+$("#thumbnailImage").val(imgUrl);
 
 function getBase64Image(imgUrl) {
   return new Promise(
@@ -506,6 +516,8 @@ $("#formoid").submit(function(event){
   var descriptionOne = $('#description1').val();
   var serviceTypeId = $('#serviceTypeIds').val();
   var descriptionTwo = $('#description2').val();
+  var thumbnailImageURL = $('#thumbnailImage').val();
+  // alert(thumbnailImageURL);
   var frequency = $('#frequency').val();
   var price = $('#price').val();
   var imageDetails = $('#file-image').val();
@@ -515,6 +527,7 @@ $("#formoid").submit(function(event){
   // if(file == undefined){
   //   readURLs(file);
   // }
+
  
   var fullPath = $("#file-upload").val();
 //  alert(fullPath);   
@@ -531,6 +544,7 @@ $("#formoid").submit(function(event){
     formdata.append("stripeProductName", stripeProductName);
     formdata.append("descriptionOne", descriptionOne);
     formdata.append("descriptionTwo", descriptionTwo);
+    formdata.append("thumbnailImageURL", thumbnailImageURL);
     formdata.append("frequency", frequency);
     formdata.append("price", price);
     formdata.append("mentorId", userId);
