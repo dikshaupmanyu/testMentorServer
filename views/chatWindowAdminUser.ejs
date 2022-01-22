@@ -446,6 +446,62 @@
 }
 
 
+.three-dots:after {
+  cursor: pointer;
+  color: black;
+  content: '\2807';
+  font-size: 20px;
+  padding: 0 5px;
+  left:20px
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a div {
+  padding: 2px;
+  font-size: 12px;
+}
+/* 
+.three-dots{
+  right:40px;
+} */
+.dropdown {
+  position:absolute;
+  margin: auto;
+  background-color: #0f2668eb;
+  box-shadow: 0px 0px 3px 3px #0f2668eb;
+  outline: none;
+  opacity: 0;
+  z-index: -1;
+  max-height: 0;
+  transition: opacity 0.1s;
+  z-index :0.1s;
+  max-height: 5s;
+}
+
+.dropdown-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropdown-container:focus {
+  outline: none;
+}
+
+.dropdown-container:focus .dropdown {
+  opacity: 1;
+  right:-38px;
+  z-index: 100;
+  max-height: 100vh;
+  transition: opacity 0.2s;
+   z-index: 0.2s;
+    max-height: 0.2s;
+}
+
+
       </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  -->
@@ -585,6 +641,7 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
  -->
+ 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <!--     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

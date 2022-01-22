@@ -398,6 +398,8 @@ function fetchTasks() {
             if (change.type === "added") {
                
                 var task = change.doc.data();
+                var uniqueId = change.doc.id;
+                // console.log(uniqueId);
 
                  // var loggedInVal = "<%= userid %>";
                  // var loggedInName = "<%= userName %>";
@@ -600,7 +602,7 @@ function reviewTemplateUserList({userName,userId}){
    return `<a class="dropdown-item" href="#">${userName}</a>;`
 }
 
-function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType}) {
+function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,uniqueId}) {
 
    // alert(user_id.value);
   // alert(userId);
@@ -622,7 +624,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
   // var toyear=new Date(createdDate).getFullYear();
   // var original_date=tomonth+'/'+todate+'/'+toyear;
   // alert(original_date);
-  //console.log(createdDate);
+  // alert(uniqueId);
                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
                   //console.log(date);
                 var options = {year: "numeric", month: "long", day: "numeric"};
@@ -768,12 +770,38 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
               <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="dropdown">
+              <a data-toggle="modal" data-target="#myModal"><div>Reply</div></a>
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <a onClick='copyClipboard(this.id)' id='${createdDate}'><div style="color:white;cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${createdDate}'><div style="color:white;cursor:pointer;">Flag</div></a>
+              </div>
+            </div>
+              
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important">
-                  ${message}
-              </p>
+                      <span id="textMessage${createdDate}">${message}<span>
+                  </p>
           </div>
       </li>
       `
@@ -845,3 +873,51 @@ function imgError(image) {
     image.src = "images/userIcon.png";
     return true;
 }
+
+function copyClipboard(e){
+  var copyText = document.getElementById("textMessage"+e).innerText;
+  // alert(copyText);
+   var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = copyText;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+    alert("Message Copied !!");                             
+                                 
+}
+
+function flagData(e){
+
+  alert(e);
+
+//   const q = query(collection(db, "cities"), where("capital", "==", true));
+
+// const querySnapshot = await getDocs(q);
+// querySnapshot.forEach((doc) => {
+//   // doc.data() is never undefined for query doc snapshots
+//   console.log(doc.id, " => ", doc.data());
+// });
+
+
+   db.collection('/openGroups/demoOpenGroup1/messages/')
+      .where('createdDate', '==', e)
+      .get()
+      .then(snapshot => { 
+
+        var arr2 = [];
+        // var idns = [];
+        snapshot.docChanges().forEach(function(change) {
+           // if(change.doc.data().messageFlag == "true"){
+             // console.log(change.doc.messageSocialReferenceId);
+            arr2.push(change.doc.data());
+            // idns.push(change.doc.id);
+
+           // }
+        }); 
+
+        console.log(arr2);
+
+     });                            
+}
+

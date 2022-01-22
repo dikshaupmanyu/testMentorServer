@@ -758,8 +758,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
         if(messageType == "text"){
 
-
-
            return `
 
             <li class="admin clearfix">
@@ -771,8 +769,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                  <p class='message'>
-                      ${message}
+                  <p class='message' onClick='copyClipboard(this.id)' id="${createdDate}">
+                      <span id='divClipboard${createdDate}'>${message}<span>
                   </p>
               </div>
           </li>
@@ -924,4 +922,19 @@ function imgError(image) {
     image.onerror = "";
     image.src = "images/userIcon.png";
     return true;
+}
+
+function copyClipboard(e){
+  var copyText = document.getElementById("divClipboard"+ e);
+  // alert(copyText);
+ 
+  copyText.select();
+  // copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  // document.body.removeChild(copyText);
+  //alert("Copied the text: " + copyText.value);
+  $(".successmsg").html('<span>Text Copied to Clipboard.</span>');
+ setTimeout(function(){$(".successmsg").empty()}, 3000);
+                                 
+                                 
 }
