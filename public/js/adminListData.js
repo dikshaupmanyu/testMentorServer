@@ -772,7 +772,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="dropdown">
+              <div class="drop_down">
               <a data-toggle="modal" data-target="#myModal"><div>Reply</div></a>
               <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
