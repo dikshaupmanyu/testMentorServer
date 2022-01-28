@@ -680,7 +680,7 @@ function fetchTasks() {
 // //   }
 // // });
 
-function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType}) {
+function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {
 
    // alert(user_id.value);
   // alert(userId);
@@ -701,7 +701,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
   // var tomonth=new Date(createdDate).getMonth()+1;
   // var toyear=new Date(createdDate).getFullYear();
   // var original_date=tomonth+'/'+todate+'/'+toyear;
-  // alert(original_date);
+  // alert(messageId);
   //console.log(createdDate);
                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
                   //console.log(date);
@@ -846,12 +846,38 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
               <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="drop_down">
+              <a data-toggle="modal" data-target="#myModal"><div>Reply</div></a>
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <a onClick='copyClipboard(this.id)' id='${createdDate}'><div style="color:white;cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${messageId}'><div style="color:white;cursor:pointer;">Flag</div></a>
+              </div>
+            </div>
+              
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important">
-                  ${message}
-              </p>
+                      <span id="textMessage${createdDate}">${message}<span>
+                  </p>
           </div>
       </li>
       `
@@ -925,16 +951,54 @@ function imgError(image) {
 }
 
 function copyClipboard(e){
-  var copyText = document.getElementById("divClipboard"+ e);
+  var copyText = document.getElementById("textMessage"+e).innerText;
   // alert(copyText);
- 
-  copyText.select();
-  // copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-  // document.body.removeChild(copyText);
-  //alert("Copied the text: " + copyText.value);
-  $(".successmsg").html('<span>Text Copied to Clipboard.</span>');
- setTimeout(function(){$(".successmsg").empty()}, 3000);
+   var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = copyText;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+    alert("Message Copied !!");                             
                                  
-                                 
+}
+
+function flagData(e){
+
+  // alert(e);
+
+     
+// alert(docRef);
+
+
+docRef.where("messageId", "==", e)
+.get()
+.then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      alert(doc.id);
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+
+//         var id = doc.id;
+
+//   const cityRef = docRef.doc(id);
+
+// // Set the 'capital' field of the city
+// const res = cityRef.update({messageFlag: false});
+
+//       alert(res);
+
+//       res.then(function(result) {
+//     // here you can use the result of promiseB
+//     console.log(result);
+// });
+
+
+    });
+})
+.catch(function(error) {
+    console.log("Error getting documents: ", error);
+});
+
+                     
 }

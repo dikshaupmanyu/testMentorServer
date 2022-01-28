@@ -887,37 +887,35 @@ function copyClipboard(e){
                                  
 }
 
-function flagData(e){
+// function flagData(e){
 
-  alert(e);
+//     var messageId = e;
+// const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 
-//   const q = query(collection(db, "cities"), where("capital", "==", true));
-
-// const querySnapshot = await getDocs(q);
-// querySnapshot.forEach((doc) => {
-//   // doc.data() is never undefined for query doc snapshots
-//   console.log(doc.id, " => ", doc.data());
+//       const arr2s = docRef.doc(messageId).update({
+//     messageFlag: false
+//     }).then(function(result) {
+//     // here you can use the result of promiseB
+//      alert(result);
 // });
 
+     
 
-   db.collection('/openGroups/demoOpenGroup1/messages/')
-      .where('createdDate', '==', e)
-      .get()
-      .then(snapshot => { 
 
-        var arr2 = [];
-        // var idns = [];
-        snapshot.docChanges().forEach(function(change) {
-           // if(change.doc.data().messageFlag == "true"){
-             // console.log(change.doc.messageSocialReferenceId);
-            arr2.push(change.doc.data());
-            // idns.push(change.doc.id);
+// docRef.where("messageId", "==", e)
+// .get()
+// .then(function(querySnapshot) {
+//     querySnapshot.forEach(function(doc) {
+//         // doc.data() is never undefined for query doc snapshots
+//         console.log(doc.id, " => ", doc.data());
 
-           // }
-        }); 
 
-        console.log(arr2);
+//     });
+// })
+// .catch(function(error) {
+//     console.log("Error getting documents: ", error);
+// });
 
-     });                            
-}
+                     
+// }
 
