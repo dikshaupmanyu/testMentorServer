@@ -599,7 +599,7 @@ function fetchUserList() {
 
 function reviewTemplateUserList({userName,userId}){
   // alert(userName);
-   return `<a class="dropdown-item" href="#">${userName}</a>;`
+   return `<a class="dropdown-item" href="#">${userName}</a>`
 }
 
 function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,uniqueId}) {

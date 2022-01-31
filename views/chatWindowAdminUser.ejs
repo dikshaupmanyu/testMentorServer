@@ -692,6 +692,15 @@ a div {
 
   <script src='js/inputEmoji.js'></script>
   <script>
+    
+    
+    $("#tasksuserlisttotal").on("click", function () {
+      $("body").addClass("open__sidebar");
+    });
+    $(".app_header").on("click", function () {
+      $("body").removeClass("open__sidebar");
+    });
+ 
     $(function () {
       $('#btn-input').emoji({place: 'after'});
 

@@ -874,7 +874,7 @@ button:focus {
 }
 .app_header {
     position: fixed;
-    z-index: 8;
+    z-index: 9;
     width: 100%;
     top: 0;
     left: 0;
@@ -882,13 +882,17 @@ button:focus {
     align-items: center;
     background: transparent;
     padding: 35px 0px;
-    transition: all .2s ease-in-out;
+}
+.open__sidebar .app_header {
+    z-index: 8;
 }
 .header_sticky {
     background: #031139;
     box-shadow: 0px 10px 20px rgb(0 0 0 / 20%);
     transition: all .2s ease-in-out;
     z-index: 12;
+    transition: all .2s ease-in-out;
+
 }
 .app_header_logo {
     min-width: 370px;
