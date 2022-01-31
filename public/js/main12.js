@@ -362,20 +362,20 @@ function createTask(task) {
 
       if(task.messageType === "photo"){
 
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
+        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
 
 
       } else if(task.messageType === "audio"){
 
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
+        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
 
       } else if(task.messageType === "video"){
 
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
+        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
 
       } else {
 
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
+        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
 
       }
 
@@ -385,22 +385,22 @@ function createTask(task) {
 
       if(task.messageType === "photo"){
 
-          elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
+          elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
 
 
       } else if(task.messageType === "audio"){
 
-         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
+         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
 
        
       } else if(task.messageType === "video"){
 
-         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
+         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
 
        
       } else{
 
-         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
+         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
 
        
       }
@@ -478,7 +478,7 @@ function fetchTasks() {
 
               //       if(task.messageType === "photo"){
 
-              //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
+              //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
 
 
 
@@ -850,15 +850,18 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
               <div class="drop_down">
               <a data-toggle="modal" data-target="#myModal"><div>Reply</div></a>
+              <a onClick='copyClipboard(this.id)' id='${createdDate}'><div style="cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${messageId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
               <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                      <p>Some text in the modal.</p>
+                      <p class="text-dark">Some text in the modal.</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -867,9 +870,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                 </div>
               </div>
-              <a onClick='copyClipboard(this.id)' id='${createdDate}'><div style="color:white;cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${messageId}'><div style="color:white;cursor:pointer;">Flag</div></a>
-              </div>
+             
+             
             </div>
               
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>

@@ -92,7 +92,7 @@
 
       .chat-care
       {
-        overflow-y: scroll;
+        overflow: hidden auto;
           height: 350px;
           /*height: 100%;*/
       }
@@ -252,6 +252,7 @@
     bottom: 9px;
     left: .5rem;
     background: #eee;
+    object-fit: cover;
 }
 .chat-care .chat-img.right .img-circle {
     left: auto;
@@ -470,17 +471,23 @@ a div {
 .drop_down {
   position:absolute;
   margin: auto;
-  background-color: #0f2668eb;
-  box-shadow: 0px 0px 3px 3px #0f2668eb;
+  background-color: #fff;
+  /* box-shadow: 0px 0px 3px 3px #000; */
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 36%);
+  padding: 10px 15px;
   outline: none;
   opacity: 0;
   z-index: -1;
-  max-height: 0;
   transition: opacity 0.1s;
   z-index :0.1s;
-  max-height: 5s;
-}
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px !important;
 
+}
+.drop_down  a{
+  font-size: 15px !important;
+}
 .dropdown-container{
   display: flex;
   justify-content: flex-end;
