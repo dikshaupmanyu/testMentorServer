@@ -89,7 +89,7 @@
             <div class="form-group">
              <label>Add Cover</label>
               <div id="file-upload-form" class="uploader">
-                <input type="hidden" name="thumbnai" id="thumbnailImage" value=""></input>
+                <input type="text" name="thumbnai" id="thumbnailImage" value=""></input>
                 <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
                 <label class="file_upload_label" for="file-upload" id="file-drag">
                   <img id="file-image" src="#" alt="Preview" class="">
@@ -579,11 +579,19 @@ function ImgDelete(){
                   document.getElementById("description2").value = dataResult.descriptionTwo;
                   document.getElementById("frequency").value = dataResult.frequency;
                   document.getElementById("price").value = dataResult.price;
-                  document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.imageDetails;
-                   
-                 
+                  document.getElementById("thumbnailImage").value = "https://apistest.tradetipsapp.com"+dataResult.thumbnailImageURL;
+                  // document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.imageDetails;
+                  if(dataResult.imageDetails){
+                      document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.imageDetails;
+                  }else{
 
-              }
+                      document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.thumbnailImageURL;
+                  
+                   }
+
+                     
+                    
+                    }
 
             });
 
