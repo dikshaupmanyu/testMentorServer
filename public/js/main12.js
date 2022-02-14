@@ -365,7 +365,7 @@ function fetchTasks() {
       // console.log(change.doc.data().flag);
      
    
-     docRef.orderBy("createdDate", "asc").limit(50).onSnapshot(function(snapshot) {
+     docRef.orderBy("createdDate", "asc").limit(100).onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
         
          const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
@@ -598,6 +598,9 @@ function fetchTasks() {
 // // });
 function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},countReply,loggedInName,loggedInVal,taskId) {
 
+ // console.log("userid " + userId);
+ // console.log("logged In " + loggedInName);
+
                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
                   //console.log(date);
                 var options = {year: "numeric", month: "long", day: "numeric"};
@@ -649,7 +652,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   const stripped1 = x.replace(newdate2[4], date1);
                   //console.log(stripped1);
    
-   if(loggedInVal == userId){
+   if(loggedInName == userId){
 
         if(messageType == "text"){
 
@@ -663,7 +666,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
@@ -691,7 +694,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
@@ -716,7 +719,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
@@ -740,7 +743,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
@@ -773,7 +776,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
@@ -802,7 +805,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
@@ -830,7 +833,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
@@ -857,7 +860,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="">
+              <div class="drop_down">
               <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
@@ -1027,6 +1030,10 @@ function flagData(e){
      var loggedInNamess = userNamess.value;
      console.log("usernames   " + loggedInNamess);
 
+
+ 
+
+
     docRef.doc(id).get().then(function(doc) {
   
        console.log(doc.id, " => ", doc.data());
@@ -1039,31 +1046,30 @@ function flagData(e){
 
         console.log(doc.data().flag);
 
-        if(doc.data().flag == undefined){
+         var txt;
+          if (confirm("Are you sure you want to flag this chat ?")) {
+              if(doc.data().flag == undefined){
 
-          const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-          console.log("if value " + res);
-          $("li#"+id).css("display","none");
+                  const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+                  console.log("if value " + res);
+                  $("li#"+id).css("display","none");
 
-        }else{
+                }else{
 
-          const fruits = doc.data().flag;
-          fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
+                  const fruits = doc.data().flag;
+                  fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
+                    console.log("else value " + JSON.stringify(fruits));
+                  const res = cityRef.update({flag: fruits});
 
-          // for(i=0;i<doc.data().flag.length; i++){
-            console.log("else value " + JSON.stringify(fruits));
-          const res = cityRef.update({flag: fruits});
+                   console.log("else value update " + res);
+                   $("li#"+id).css("display","none");
 
-           console.log("else value update " + res);
-           $("li#"+id).css("display","none");
+                }
+          } else {
+            txt = "You pressed Cancel!";
+          }
 
-
-          // }
-
-         
-
-
-        }
+      
 
 
 
