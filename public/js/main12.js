@@ -39,70 +39,19 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
-
+ 
 var db = firebase.firestore();
-// alert(JSON.stringify(db));
 
-// var fcmtoken = "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImV4cCI6MTYyNTA1Mzg3MywiaWF0IjoxNjI1MDUwMjczLCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay1vbHYxYkB0cmFkZXRpcHMtOWJhYTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1vbHYxYkB0cmFkZXRpcHMtOWJhYTMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJ1aWQiOiJkOWFjZWQyMy03Yjg5LTRhYmMtYmQ3MS01NTIzYWI4M2E5OGEifQ.Xh3uMkM6xGtv0x61FvLWxMSw6eVhQwucnKgrT2QoDy7ZE-NZE0yb_6SqrZS2dDZMlWiosAIMpGi-Czs2zBgbp2rHLfMsk5gZ6RJM5dPMJgZuG-V4jZfZK-EWlJLrEVfUVu_g_IW4ql1tUASQCSxsRh5d64I70BsPuIEW3nxvtS8dL74yaAZAm77dEJMINl47EzJKLiW5snSePd_EZ3jDCqGb5gq8Z0KX3I-TDhnY4ijI2KGpFKN6KcrMnNTOP4khx8o9luJRYF5uHbUpRLJVkVMIsvzdRVE2HzXZcX9-MbYQ2j0a36HrUXxL15SV8B7RUwMBP659Tl2cVwmEPjWMFA";
-
-// firebase.auth().signInWithCustomToken(fcmtoken)
-//   .then((userCredential) => {
-//     // Signed in
-//     // console.log(userCredential);
-//     var user = userCredential.user;
-//     // var ids = userCredential.uid;
-//     console.log(user.uid);
-//     // ...
-//   })
-//   .catch((error) => {
-//     console.log("error is" + error);
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     // ...
-//   });
-
-// const messaging = firebase.messaging();
-// // Add the public key generated from the console here.
-
-// // Get registration token. Initially this makes a network call, once retrieved
-// // subsequent calls to getToken will return from cache.
-
-// messaging.usePublicVapidKey('BN2e4vqb2-OY-QX6Z0531oQ1pSiiEUNQU2SEcSaEiMvJFcy8unSAW6gPrFJQeHz0VQyPu2JLqVuaFDnfeDmpy3o');
-
-// messaging.getToken().then((currentToken) => {
-//   if (currentToken) {
-//     // Send the token to your server and update the UI if necessary
-//     // ...
-//   } else {
-//     // Show permission request UI
-//     console.log('No registration token available. Request permission to generate one.');
-//     // ...
-//   }
-// }).catch((err) => {
-//   console.log('An error occurred while retrieving token. ', err);
-//   // ...
-// });
-
-
-// var sData = localStorage.getItem('allTokenData');
-// var storageData= JSON.parse(sData);
-// var loggedInVal = storageData.uid;
-// alert(loggedInVal);
-
-// alert(<%= req.session %>);
 
 const docRef = db.collection("/openGroups/demoOpenGroup1/messages/");
 const tasksDOM = document.getElementById("tasks");
+
 var fullName   = document.getElementById('user_nickname');
-// alert(fullName.value);
 var message    = document.getElementById('btn-input');
 var userId     = document.getElementById('user_id');
 // alert(userId.value);
 
 var hiddenId   = document.getElementById('hiddenId');
-
-
 
 
 var date = document.getElementById('dateval');
@@ -119,17 +68,12 @@ function cleanData(snapshots) {
 function handleCreate(event) {
 
    event.preventDefault();
-   // alert(JSON.stringify(event));
-    //alert(user_id.value);
-   // alert(user_nickname.value);
-   var loggedInVal = user_id.value;
-   // alert(loggedInVal);
-   var loggedInName = user_nickname.value;
-    // alert(loggedInName);
+   var loggedInVal = document.getElementById('user_id').value;
+   var loggedInName = document.getElementById('user_nickname').value;
   // var today = Date.now();
    //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
        
-   if(message.value != ""){
+  if(message.value != ""){
 
     let task = {
     userName: loggedInName,
@@ -141,38 +85,95 @@ function handleCreate(event) {
     profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     messageSource : "Web"
     // status: "incomplete"
-  };
+    };
 
-  // alert(JSON.stringify(task));
-  return docRef
-    .add(task)
-    .then((ref) => {
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
+    return docRef
+      .add(task)
+      .then((ref) => {
+        console.log(ref.id);
+        task.id = ref.id;
+        // fullName.value = '';
+        message.value  = '';
+        // date.value = '';
+        // return createTask(task);
+      });
 
-   }else{
-   // alert("Message not empty");
+   } else {
     $(".successmsg").html('<span>Message not empty.</span>');
    }    
  
 }
 
+
+
+// function handleCreateReply(event) {
+
+//   // alert("reply select");
+
+// var fullName   = document.getElementById('user_nickname');
+// // alert(fullName.value);
+// var message    = document.getElementById('btn-input-msg');
+// var userId     = document.getElementById('user_id');
+// // alert(userId.value);
+// var docId     = document.getElementById('uniqueReplyId');
+
+//    event.preventDefault();
+ 
+//    var loggedInVal = userId.value;
+//    // alert(loggedInVal);
+//    var loggedInName = fullName.value;
+//    // alert(loggedInName);
+//    var uniqueDocId = docId.value;
+//    // alert(uniqueDocId);
+
+//    const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/");
+
+       
+//    if(message.value != ""){
+
+//     let taskreply = {
+//     userName: loggedInName,
+//     userId : loggedInVal,
+//     message: message.value,
+//     messageId : loggedInVal + "_"+  Date.now(),
+//     messageType : "text",
+//     createdDate :  Date.now(),
+//     profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+//     messageSource : "Web"
+//     // status: "incomplete"
+//   };
+
+//   // alert(JSON.stringify(task));
+//   return docRefreply
+//     .add(taskreply)
+//     .then((refs) => {
+//       taskreply.id = refs.id;
+//       // fullName.value = '';
+//       message.value  = '';
+//       // date.value = '';
+//       // return createTask(task);
+//     });
+
+//    }else{
+//    // alert("Message not empty");
+//     $(".successmsg").html('<span>Message not empty.</span>');
+//    }    
+ 
+// }
 // function handleStatusUpdate(task) {
 //   //
 // }
 
 $('i.fa.fa-paperclip.attachment.btn.btn-primary').click(function () {
-  // alert("calll");
+   // alert("calll");
   $("input[type='file']").trigger('click');
-  // alert("data");
+   // alert("data");
 });
 
+ 
+   
+
 $("input[type='file']").on('change', function(e) {
-   // alert("hii");
   var val = $(this).val();
   // alert(val);
   // $(this).siblings('span').text(val);
@@ -181,15 +182,13 @@ $("input[type='file']").on('change', function(e) {
   $(this).siblings('input#btn-input').text(val);
 
   const file = e.target.files[0];
-  console.log(file);
-  console.log(file.type);
+  // console.log(file);
+  // console.log(file.type);
 
   var loggedInVal = user_id.value;
    var loggedInName = user_nickname.value;
   // alert(loggedInName);
-  var today = Date.now();
-  var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
-
+ 
   if(file.type == "video/mp4"){
 
     firebase.storage().ref('message_videos/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
@@ -291,20 +290,21 @@ $("input[type='file']").on('change', function(e) {
     });
 
   }
-return firebase
-    .app()
-    .storage()
-    .ref('message_images')
-    .child(file.name)
-    .put(file)
-    // .then(snapshot => {
-    //   // snapshot represents the uploaded file
-    //   console.log(snapshot);
-    // })
-    .getDownloadURL()
-    .then(imgUrl => {
-      console.log(imgUrl);
-    });
+
+// return firebase
+//     .app()
+//     .storage()
+//     .ref('message_images')
+//     .child(file.name)
+//     .put(file)
+//     .then(snapshot => {
+//       // snapshot represents the uploaded file
+//       console.log(snapshot);
+//     })
+//     .getDownloadURL()
+//     .then(imgUrl => {
+//       console.log(imgUrl);
+//     });
 
 var remoteimageurl = e.target.files[0]
 var filename = file.name
@@ -346,185 +346,77 @@ function createTask(task) {
   // ...
 });
 
-  const elem = document.createElement("li");
-  // elem.id = task.id;
-  // elem.innerHTML = reviewTemplate(task)
-  elem.setAttribute("id", task.id);
-  // elem.setAttribute("class", "admin clearfix");
-  let taskElem;
-
-  // alert(task.createdDate);
-
-  if (task.userId === loggedInVal) {
-
-    // taskElem = document.createElement("li");
-    elem.setAttribute("class", "admin clearfix");
-
-      if(task.messageType === "photo"){
-
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
-
-
-      } else if(task.messageType === "audio"){
-
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
-
-      } else if(task.messageType === "video"){
-
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
-
-      } else {
-
-        elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
-
-      }
-
-  } else {
-    // taskElem = document.createElement("li");
-    elem.setAttribute("class", "agent clearfix");
-
-      if(task.messageType === "photo"){
-
-          elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
-
-
-      } else if(task.messageType === "audio"){
-
-         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
-
-       
-      } else if(task.messageType === "video"){
-
-         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
-
-       
-      } else{
-
-         elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
-
-       
-      }
-
-  }
-  tasksDOM.append(elem);
-
-  // if (task.status === "incomplete") {
-  //   const updateBtn = document.createElement("button");
-  //   updateBtn.setAttribute("class", "btn btn-success col-2 text-white mr-1");
-  //   updateBtn.innerHTML =
-  //     '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-  //   updateBtn.addEventListener("click", function () {
-  //     return handleStatusUpdate(task);
-  //   });
-  //   elem.append(updateBtn);
-  // }
-
-  // const deleteBtn = document.createElement("button");
-  // deleteBtn.setAttribute("class", "btn btn-danger col-2 text-white");
-  // deleteBtn.innerHTML =
-  //   '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>';
-  // deleteBtn.addEventListener("click", function () {
-  //   return handleDelete(task.id);
-  // });
-  // elem.append(deleteBtn);
-
-  // tasksDOM.append(elem);
 }
 
 
+
+
 // Firebase functions
+
+
+
 function fetchTasks() {
-
-  // alert("fetch data");
-  // return docRef
-  //   .get()
-  //   .then((snapshots) => cleanData(snapshots));
-    // .then((tasks) => tasks.map((task) => createTask(task)));
-
-     docRef.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
+  
+//   docRef.where("createdDate", "==", 1642517230000)
+// .get()
+// .then(function(querySnapshot) {
+//     querySnapshot.docChanges().forEach(function(change) {
+      // console.log(doc.id);
+      // console.log(change.doc.data().flag);
+     
+   
+     docRef.orderBy("createdDate", "asc").limit(50).onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
+        
+         const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
 
-         
+        
+          docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
 
             if (change.type === "added") {
-                // console.log(task);
-               
-                // console.log("New city: ", change.doc.data().createdDate);
-
+              
                 var task = change.doc.data();
 
-                 // var loggedInVal = "<%= userid %>";
-                 // var loggedInName = "<%= userName %>";
-                    var loggedInVal = user_id.value;
-                   // alert(loggedInVal);
-                   var loggedInName = user_nickname.value;
-                // alert(loggedInName)
-                const elem = document.createElement("li");
-                elem.id = task.messageId;
-                elem.innerHTML = reviewTemplate(task);
-                tasksDOM.append(elem);
+              
 
-                 $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
+                  var userIdcs     = document.getElementById('user_id');
+                    // console.log(userIdcs.value);
+                    var userNamescs = document.getElementById("user_nickname");
+                   // console.log(userNamecss.value);
+                    var loggedInVal = userIdcs.value;
+                    // console.log(loggedInVal);
+                   var loggedInName = userNamescs.value;
+                    // console.log(loggedInName);
 
-                // $('#tasks').scrollTop($('#tasks')[0].scrollHeight);
-              //   elem.setAttribute("id", task.messageId);
-              //   // elem.setAttribute("class", "admin clearfix");
-              //   let taskElem;
+                      var taskId = change.doc.id;
+                      // console.log(taskId);
 
-              //   if (task.userId === loggedInVal) {
+                    if(task.flag){
+                       const result = task.flag.some(obj => obj.messageFlagedUserId === loggedInVal);
+                        console.log("checking flag result  " + result);
+                        if(result == true){
+                          const elem = document.createElement("li");
+                          elem.id = change.doc.id;
+                          elem.innerHTML = "";
+                          tasksDOM.append(elem);
 
-              //     // taskElem = document.createElement("li");
-              //     elem.setAttribute("class", "admin clearfix");
+                        }else{
+                            var countReply = snapshots.size;
+                            const elem = document.createElement("li");
+                            elem.id = change.doc.id;
+                            elem.innerHTML = reviewTemplate(task,countReply,loggedInVal,loggedInName,taskId);
+                            tasksDOM.append(elem);
+                        }
+                      }else{
+                            var countReply = snapshots.size;
+                            const elem = document.createElement("li");
+                            elem.id = change.doc.id;
+                            elem.innerHTML = reviewTemplate(task,countReply,loggedInVal,loggedInName,taskId);
+                            tasksDOM.append(elem);
+                      }
 
-              //       if(task.messageType === "photo"){
+              $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
 
-              //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
-
-
-
-
-              //       } else if(task.messageType === "audio"){
-
-              //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
-
-              //       } else if(task.messageType === "video"){
-
-              //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
-
-              //       } else {
-
-              //         elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
-
-              //       }
-
-              //   } else {
-              //     // taskElem = document.createElement("li");
-              //     elem.setAttribute("class", "agent clearfix");
-
-              //       if(task.messageType === "photo"){
-
-              //           elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive" style="width:100%;"/></p></div>'
-
-
-              //       } else if(task.messageType === "audio"){
-
-              //          elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
-
-                     
-              //       } else if(task.messageType === "video"){
-
-              //          elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
-
-                     
-              //       } else{
-
-              //          elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle" style="width: 100%;"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
-
-                     
-              //       }
-
-              //   }
-               // elem.append(taskElem);
 
               // const deleteBtn = document.createElement("button");
               // deleteBtn.setAttribute("class", "btn btn-danger col-2 text-white");
@@ -544,14 +436,39 @@ function fetchTasks() {
                 // console.log("Removed city: ", change.doc.data());
             }
 
-        });
-    });
 
+         });
+     });
 
+});
 }
 
  fetchTasks();
 
+//  function fetchTasksReply(id , userid , userName , messageId) {
+//       const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+    
+//      docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
+//       // alert(snapshot.size);
+//         snapshot.docChanges().forEach(function(change) {
+//             // alert(JSON.stringify(change.doc.data()));
+//             if (change.type === "added") {
+//               const tasksDOMReply = document.getElementById("tasksReply");
+//                 var taskreply = change.doc.data();
+//                     var loggedInVal = userid;
+//                     var loggedInName = userName;
+//                     const elemreply = document.createElement("li");
+//                     elemreply.id = taskreply.messageId;
+//                     elemreply.innerHTML = reviewTemplateReply(taskreply);
+//                     tasksDOMReply.append(elemreply);
+
+//             }
+
+//         });
+//     });
+
+
+// }
 
 
 
@@ -679,30 +596,8 @@ function fetchTasks() {
 // //     db.ref('reviews/' + id).remove();
 // //   }
 // // });
+function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},countReply,loggedInName,loggedInVal,taskId) {
 
-function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {
-
-   // alert(user_id.value);
-  // alert(userId);
-  // fetch(profileImageUrl, { method: 'HEAD' })
-  //   .then(res => {
-  //       if (res.ok) {
-  //           alert('Image exists.');
-  //       } else {
-  //           alert('Image does not exist.');
-  //       }
-  //   }).catch(err => alert('Error:', err));
-    var loggedInVal = user_id.value;
-   //alert(loggedInName);
-   var loggedInName = user_nickname.value;
-  // alert(loggedInVal);
-  // alert(userId);
-  // var todate=new Date(createdDate).getDate();
-  // var tomonth=new Date(createdDate).getMonth()+1;
-  // var toyear=new Date(createdDate).getFullYear();
-  // var original_date=tomonth+'/'+todate+'/'+toyear;
-  // alert(messageId);
-  //console.log(createdDate);
                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
                   //console.log(date);
                 var options = {year: "numeric", month: "long", day: "numeric"};
@@ -766,10 +661,18 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+              </div>
                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                  <p class='message' onClick='copyClipboard(this.id)' id="${createdDate}">
+                  <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
                       <span id='divClipboard${createdDate}'>${message}<span>
                   </p>
               </div>
@@ -786,6 +689,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+              </div>
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -804,6 +714,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+              </div>
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -821,6 +738,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+             
+              </div>
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -848,31 +773,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="header clearfix">
               <div class="dropdown-container" tabindex="-1">
               <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <a data-toggle="modal" data-target="#myModal"><div>Reply</div></a>
-              <a onClick='copyClipboard(this.id)' id='${createdDate}'><div style="cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${messageId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-              <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    <h4 class="modal-title">Modal Header</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                      <p class="text-dark">Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-
-                </div>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
               </div>
              
-             
-            </div>
+              </div>
               
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
@@ -893,6 +800,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
               <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+             
+              </div>
+              <div class="header clearfix">
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
@@ -911,6 +827,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+             <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+             
+              </div>
               <div class="header clearfix">
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
@@ -930,6 +855,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
               <div class="header clearfix">
+              <div class="dropdown-container" tabindex="-1">
+              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
+              <div class="">
+              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+              </div>
+             
+              </div>
+              <div class="header clearfix">
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
@@ -945,6 +879,121 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
  
 };
+
+
+
+function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {
+
+                var loggedInVal = userId;
+                var loggedInName = userName;
+                
+                // alert(profileImageUrl);
+                // alert(userId);
+                const date = new Date(createdDate); //new Date(createdDate).toDateString();
+                  //console.log(date);
+                var options = {year: "numeric", month: "long", day: "numeric"};
+                var newdate = date.toGMTString('en-US', options);  
+                  //console.log(newdate);
+                const stripped = newdate.replace(/GMT/g, 'EST');
+                  //console.log(stripped);
+                  // alert(date);
+                var newdate1 = stripped.toString(stripped);  
+                var newdate2 = newdate1.split(/(\s+)/);
+                 newdate2.splice(11, 18);
+                 newdate2.splice(0, 2);
+                 newdate2.splice(3,3);
+                  //console.log(newdate2);
+                 function moveArrayItemToNewIndex(arr, old_index, new_index) {
+                 if (new_index >= arr.length) {
+                      var k = new_index - arr.length + 1;
+                      while (k--) {
+                          arr.push(undefined);
+                      }
+                  }
+                 arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+                 return arr;
+                 };
+
+                moveArrayItemToNewIndex(newdate2, 0, 2);
+                var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
+                //console.log(result1);
+                result1.splice(1, 0, ' ');
+                var newdate3 = result1.toString(result1);
+                var result = newdate3.replace(/,/g, "");
+                //console.log(result);
+                x = result.substring(0, 6) + "," + result.substring(6, result.length);
+                //console.log(x);
+                function formatAMPM(date) {
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var ampm = hours >= 12 ? 'PM' : 'AM';
+                    hours = hours % 12;
+                    hours = hours ? hours : 12; // the hour '0' should be '12'
+                    minutes = minutes < 10 ? '0'+minutes : minutes;
+                    var strTime = hours + ':' + minutes + ' ' + ampm;
+                    return strTime;
+                  }
+
+                  var date1 = formatAMPM(date);
+                  //console.log(date1);
+                  //console.log(newdate2);
+                  const stripped1 = x.replace(newdate2[4], date1);
+                  //console.log(stripped1);
+
+   
+                   if(loggedInVal == userId){
+
+                        if(messageType == "text"){
+
+                           return `
+
+                            <li class="admin clearfix">
+                              <span class="chat-img right clearfix mx-2">
+                                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                              </span>
+                              <div class="chat-body clearfix">
+                                  <div class="header clearfix">
+                                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                                  </div>
+                                  <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
+                                      <span id='divClipboard${createdDate}'>${message}<span>
+                                  </p>
+                              </div>
+                          </li>
+                          `
+
+                        }
+
+                   }else{
+
+                     if(messageType == "text"){
+
+
+                         return `
+
+                         <li class="agent clearfix">
+                              <span class="chat-img right clearfix mx-2">
+                                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                              </span>
+                              <div class="chat-body clearfix">
+                                  <div class="header clearfix">
+                                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                                  </div>
+                                  <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
+                                      <span id='divClipboard${createdDate}'>${message}<span>
+                                  </p>
+                              </div>
+                          </li>
+                      `
+                     } 
+
+                   }
+
+ 
+};
+
 
 function imgError(image) {
     image.onerror = "";
@@ -966,41 +1015,93 @@ function copyClipboard(e){
 }
 
 function flagData(e){
+  var userIds     = document.getElementById('user_id');
+  // console.log(userIds.value);
+  var userNamess = document.getElementById("user_nickname");
+ // console.log(userNamess.value);
+  var id=e;
 
-  // alert(e);
 
-     
-// alert(docRef);
+     var loggedInValss = userIds.value;
+     console.log("id  " + loggedInValss);
+     var loggedInNamess = userNamess.value;
+     console.log("usernames   " + loggedInNamess);
+
+    docRef.doc(id).get().then(function(doc) {
+  
+       console.log(doc.id, " => ", doc.data());
+
+        var id = doc.id;
+
+        var fulldata = doc.data();
+
+        const cityRef = docRef.doc(id);
+
+        console.log(doc.data().flag);
+
+        if(doc.data().flag == undefined){
+
+          const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+          console.log("if value " + res);
+          $("li#"+id).css("display","none");
+
+        }else{
+
+          const fruits = doc.data().flag;
+          fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
+
+          // for(i=0;i<doc.data().flag.length; i++){
+            console.log("else value " + JSON.stringify(fruits));
+          const res = cityRef.update({flag: fruits});
+
+           console.log("else value update " + res);
+           $("li#"+id).css("display","none");
 
 
-docRef.where("messageId", "==", e)
-.get()
-.then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-      alert(doc.id);
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+          // }
 
-//         var id = doc.id;
+         
 
-//   const cityRef = docRef.doc(id);
 
-// // Set the 'capital' field of the city
-// const res = cityRef.update({messageFlag: false});
+        }
 
-//       alert(res);
 
-//       res.then(function(result) {
-//     // here you can use the result of promiseB
-//     console.log(result);
-// });
 
+      // if(doc.data().flag.messageFlagedUserId == loggedInValss && doc.data().flag.messageFlagedUserName == loggedInNamess){
+
+      //   const res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+      //   console.log("if value " + res);
+
+      // }else{
+
+      //  res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+      //   console.log("else value " + res);
+
+      // }
 
     });
-})
-.catch(function(error) {
-    console.log("Error getting documents: ", error);
-});
-
                      
 }
+
+
+// function replyData(e){
+//     docRef.where("messageId", "==", e)
+//     .get()
+//     .then(function(querySnapshot) {
+
+//         querySnapshot.forEach(function(doc) {
+//                 fetchTasksReply(doc.id , doc.data().userId , doc.data().userName , e);
+//                 $('#uniqueReplyId').val(doc.id);
+//                 // $("#user_nickname").val(doc.data().userName);
+//                 // $('#user_id').val(doc.data().userId);
+
+//         });
+//     })
+//     .catch(function(error) {
+//         console.log("Error getting documents: ", error);
+//     });                     
+// }
+
+
+  
+

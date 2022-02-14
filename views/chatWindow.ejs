@@ -10,21 +10,19 @@
 
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-
     <script>
         window.addEventListener("load", function() {
 
            // alert("<%= fcmToken %>");
 
              var fcmToken = "<%= fcmToken %>";
+             // alert(fcmToken);
 
             var userName =  "<%= userName %>";
-            
-
-            var tokens = "<%= tokens %>";
-            // alert(tokens);
+            // alert(userName);
             
             var LoggedInId = "<%= userid %>";
+            // alert(LoggedInId);
 
             $("#user_nickname").val(userName);
             $('#user_id').val(LoggedInId);
@@ -561,8 +559,6 @@ a div {
         $('#messages').scrollTop($('#messages')[0].scrollHeight);
     </script> -->
    
-
-                <div class="card-body chat-care">
                   <div id="fountainG">
                     <div id="fountainG_1" class="fountainG"></div>
                     <div id="fountainG_2" class="fountainG"></div>
@@ -573,11 +569,14 @@ a div {
                     <div id="fountainG_7" class="fountainG"></div>
                     <div id="fountainG_8" class="fountainG"></div>
                   </div>
+                <div class="card-body chat-care">
+                
                     <ul class="chat" id="tasks">
                     </ul>
                 </div>
                 <div class="card-footer" style="padding: 0px;">
                    <form onsubmit="return handleCreate(event)">
+                    
                       <div class="input-group">
                         <input type="hidden" id="user_id">
                         <input type="hidden" id="user_nickname">
@@ -614,6 +613,7 @@ a div {
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
  -->
+ 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <!--     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -653,8 +653,19 @@ a div {
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+    
+
   <script src='js/inputEmoji.js'></script>
   <script>
+    
+    
+    $("#tasksuserlisttotal").on("click", function () {
+      $("body").addClass("open__sidebar");
+    });
+    $(".app_header").on("click", function () {
+      $("body").removeClass("open__sidebar");
+    });
+ 
     $(function () {
       $('#btn-input').emoji({place: 'after'});
 
@@ -681,6 +692,7 @@ a div {
         preloader.style.display ="none"
       })
     </script>
+
 
 </body>
 </html>
