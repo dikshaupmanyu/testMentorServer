@@ -676,7 +676,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
-                      <span id='divClipboard${createdDate}'>${message}<span>
+                      <span id='divClipboard${taskId}'>${message}<span>
                   </p>
               </div>
           </li>
@@ -788,7 +788,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important">
-                      <span id="textMessage${createdDate}">${message}<span>
+                      <span id="textMessage${taskId}">${message}<span>
                   </p>
           </div>
       </li>
