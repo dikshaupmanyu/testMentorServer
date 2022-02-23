@@ -24,6 +24,8 @@ var bodyParser = require('body-parser');
 const serviceAccount = require('./serviceAccountKey.json');
 //initialize admin SDK using serciceAcountKey
 
+
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://chatdemo-96e4f.firebaseio.com"
@@ -867,6 +869,31 @@ app.get('/forgetPassword', function(req, res) {
 
 
   });
+
+  app.get('/replyMsg', function(req, res) {
+
+  	const admin = require('firebase-admin');
+  
+    const db = admin.firestore();
+
+     if(req.session.loggedIn) 
+	   { 
+		var fdata = req.session.tokens;
+		var fusername = req.session.username;
+		var fuid = req.session.uid; 
+		var femail = req.session.email; 
+		var Chat_fcmtoken = req.session.fcmtoken;
+		var uniquereplyId = req.query.messageId;
+
+		res.render('replyMsg.ejs', {uniquereply : uniquereplyId , tokens : fdata , fcmToken : Chat_fcmtoken , userName : fusername , userid : fuid , email :femail});
+
+	   } else {
+	     res.redirect('/')
+	   }
+
+
+  });
+
 
 /// //////////////////////////////////////////////////////////////
 
