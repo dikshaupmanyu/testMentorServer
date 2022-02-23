@@ -9,6 +9,7 @@
 
 
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link src="../public/css/chatWindow.css" rel="stylesheet">
 
     <script>
         window.addEventListener("load", function() {
@@ -114,6 +115,8 @@
           background-color: #0f2668eb;
           border-radius: 12.5px;
           padding: 15px;
+          padding-top: 5px;
+          padding-bottom: 10px;
       }
       .chat-care .chat-body strong
       {
@@ -220,7 +223,7 @@
   margin-bottom: 25px;
 }
 .header.clearfix small.text-muted {
-    bottom: -25px;
+    bottom: -40px;
     position: absolute;
     left: 3px;
     color: #777 !important;
@@ -443,68 +446,90 @@
   }
 }
 
+/* .message{
+    cursor: pointer;
+  }
+  .chat-body .clearfix{
+    cursor: pointer;
+  }
+  .chat-body .clearfix:hover{
+    cursor: pointer;
+    visibility: visible
+  } */
+  
+  .content {
+              /* display: flex; */
+              position: absolute;
+              font-size: 14px;
+              width:150px;
+              height: 120px;
+              text-align: center;
+              display: none;
+              background-color:#49494947;
+              /* background-color:#77839647; */
+              box-sizing: border-box;
+              z-index: 9000;
+              border-radius:3px;
+              margin-left: 15px;
+              top:20px;    
+   }
+  
+  .content-2 {
+              /* display: flex; */
+              position: absolute;
+              font-size: 14px;
+              width:150px;
+              height: 81px;
+              text-align: center;
+              display: none;
+              background:#77839647;
+              box-sizing: border-box;
+              z-index: 9000;
+              border-radius:3px;
+              margin-left: 15px;
+              top:20px;    
+   }
 
-.three-dots:after {
-  cursor: pointer;
-  color: black;
-  content: '\2807';
-  font-size: 20px;
-  padding: 0 5px;
-  left:20px
-}
+   .overlay{
+     display:grid;
+     justify-items: end;
+   }
+      
+   .overlay-1{
+     display:flex;
+   }
 
-a {
-  text-decoration: none;
-  color: white;
-}
+  .pop{
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid black;
+  }
+  .pop:hover{
+  color:rgb(19, 19, 168)
+  }
 
-a div {
-  padding: 2px;
-  font-size: 12px;
-}
-/* 
-.three-dots{
-  right:40px;
-} */
-.drop_down {
-  position:absolute;
-  margin: auto;
-  background-color: #fff;
-  /* box-shadow: 0px 0px 3px 3px #000; */
-  box-shadow: 0 0 10px 0 rgb(0 0 0 / 36%);
-  padding: 10px 15px;
-  outline: none;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.1s;
-  z-index :0.1s;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px !important;
+  /* .agent .clearfix{
+   display: inline-block;
+  } */
 
-}
-.drop_down  a{
-  font-size: 15px !important;
-}
-.dropdown-container{
-  display: flex;
-  justify-content: flex-end;
-}
+  .chat-body:hover .chev_ron{
+    /* color:black !important; */
+    display:block;
+  }
 
-.dropdown-container:focus {
-  outline: none;
-}
+  .chevron{
+    color:black;
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    cursor: pointer;
+    /* display:none; */
+  }
 
-.dropdown-container:focus .drop_down {
-  opacity: 1;
-  right:-38px;
-  z-index: 100;
-  max-height: 100vh;
-  transition: opacity 0.2s;
-   z-index: 0.2s;
-    max-height: 0.2s;
-}
-
+  .chev_ron{
+    display:none;
+  }
+  
 
       </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -597,7 +622,13 @@ a div {
                      
                       </div>
                    </form>
+                  <!-- <div class="container">
+                    <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+                    <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
+                    <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+                  </div> -->
                 </div>
+                
           </div>
 
         </div>
@@ -696,3 +727,7 @@ a div {
 
 </body>
 </html>
+
+<!-- <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+              <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a> -->

@@ -100,6 +100,15 @@ module.exports = function(app) {
 
   });
 
+  app.get('/replyMsg', function(req, res) {
+
+   
+        res.render('replyMsg.ejs');
+
+
+
+  });
+
   app.get('/chatCodee', function(req, res) {
 
     res.render('chatCodee.ejs');

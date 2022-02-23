@@ -659,26 +659,26 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
            return `
 
             <li class="admin clearfix">
+           
               <span class="chat-img right clearfix mx-2">
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
-              <div class="chat-body clearfix">
+              <div class="chat-body clearfix" onclick="togglePopup()">
                   <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-              </div>
                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
                       <span id='divClipboard${taskId}'>${message}<span>
                   </p>
+                  <div class="content">
+                  <span style="color:grey">Choose An Option</span>
+                  <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
+                  <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
+                  <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+                </div>
               </div>
+             
           </li>
           `
 
@@ -692,13 +692,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-              </div>
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -717,13 +710,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-              </div>
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -741,14 +727,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </span>
               <div class="chat-body clearfix">
                   <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-             
-              </div>
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -772,25 +750,37 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <span class="chat-img left clearfix mx-2">
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;" >
+          <div class="chev_ron">
+            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </span>
+          </div>
+          <div class="overlay">
+              <div class="overlay-1">
+              <div class="content"  id='popup${taskId}'>
+              <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+              <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
+              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+              </div>
+              </div>
+          </div>
+         
               <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-             
-              </div>
-              
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-              <p class='message' style="color: #000 !important">
+              <p class='message' style="color: #000 !important" >
                       <span id="textMessage${taskId}">${message}<span>
-                  </p>
+               </p>
+
+              
           </div>
+          
+          
       </li>
       `
      } else if(messageType == "video"){
@@ -802,17 +792,23 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-              <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
+            <div class="chev_ron">
+              <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+        <div class="overlay">
+            <div class="overlay-1">
+              <div class="content-2"  id='popup${taskId}'>
+                <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+                <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
               </div>
-             
-              </div>
+            </div>
+        </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
            
@@ -830,17 +826,23 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-             <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-             
-              </div>
+          <div class="chev_ron">
+            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </span>
+            </div>
+            <div class="overlay">
+                <div class="overlay-1">
+                  <div class="content-2"  id='popup${taskId}'>
+                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+                    <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+                  </div>
+                </div>
+            </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -857,17 +859,24 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chev_ron"> 
+            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </span>
+          </div>
+            <div class="overlay">
+                <div class="overlay-1">
+                  <div class="content-2"  id='popup${taskId}'>
+                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+                    <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+                  </div>
+                </div>
+            </div>
+
               <div class="header clearfix">
-              <div class="dropdown-container" tabindex="-1">
-              <img class="three-dots" src="https://img.icons8.com/fluency-systems-filled/15/000000/dots-loading.png"/>
-              <div class="drop_down">
-              <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-              </div>
-             
-              </div>
-              <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
@@ -997,6 +1006,31 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
  
 };
 
+// $(document).ready(function(){
+//   $(".message").dblclick(function(){
+//     alert("The paragraph was double-clicked.");
+//   });
+// });
+
+function togglePopup(e) {
+  // alert(e)
+  // document.getElementById("popup").style.display = "block";
+  // var blur = document.getElementById("blur");
+  // blur.classList.toggle("active")
+  $("#popup"+e).toggle()
+  
+    $('body').css('overflow', 'hidden');
+  
+  
+  // document.querySelector('body').style.overflow = "hidden";
+  // $('body').css('ovesrflow', 'hidden');
+  //  var popup = document.getElementById("popup");
+}
+
+
+
+
+
 
 function imgError(image) {
     image.onerror = "";
@@ -1014,7 +1048,7 @@ function copyClipboard(e){
     document.execCommand("copy");
     document.body.removeChild(elem);
     alert("Message Copied !!");                             
-                                 
+
 }
 
 function flagData(e){
@@ -1089,7 +1123,14 @@ function flagData(e){
                      
 }
 
-
+// $(document).ready(function () {
+//   $(".agent clearfix").click(function () {
+//       // $("div#overlay").fadeIn('500');
+//       // $("div#popup").delay('800');
+//       // $("div#popup").fadeIn('500');
+//       $('.app_content').css('overflow', 'hidden');  //ADD THIS
+//   });
+// });
 // function replyData(e){
 //     docRef.where("messageId", "==", e)
 //     .get()
