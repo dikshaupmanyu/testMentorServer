@@ -306,21 +306,21 @@ $("input[type='file']").on('change', function(e) {
 //       console.log(imgUrl);
 //     });
 
-var remoteimageurl = e.target.files[0]
-var filename = file.name
+// var remoteimageurl = e.target.files[0]
+// var filename = file.name
 
-fetch(remoteimageurl).then(res => {
-  return res.blob();
-}).then(blob => {
-    //uploading blob to firebase storage
-  firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-  })
-}).catch(error => {
-  console.error(error);
-});
+// fetch(remoteimageurl).then(res => {
+//   return res.blob();
+// }).then(blob => {
+//     //uploading blob to firebase storage
+//   firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
+//     return snapshot.ref.getDownloadURL()
+//  }).then(url => {
+//    console.log("Firebase storage image uploaded : ", url);
+//   })
+// }).catch(error => {
+//   console.error(error);
+// });
 
 
  
