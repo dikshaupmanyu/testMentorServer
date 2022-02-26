@@ -701,9 +701,25 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${taskId}'>
+                    <div  class="Pop"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
+                    <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                  </div>
+                </div>
+            </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
-                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                    
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
@@ -725,9 +741,24 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+              <div class="Overlay">
+                  <div class="Overlay-1">
+                    <div class="Content-2"  id='Popup${taskId}'>
+                      <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                    </div>
+                  </div>
+              </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
-                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                       
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                     <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -744,9 +775,24 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+              <div class="Overlay">
+                  <div class="Overlay-1">
+                    <div class="Content-2"  id='Popup${taskId}'>
+                      <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                    </div>
+                  </div>
+              </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
-                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                  <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
@@ -762,9 +808,24 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+                  <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                  </span>
+                </div>
+                  <div class="Overlay">
+                      <div class="Overlay-1">
+                        <div class="Content-2"  id='Popup${taskId}'>
+                          <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span>Reply </a> </div> 
+                          <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                        </div>
+                      </div>
+                  </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
-                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                 <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>              </div>
@@ -801,13 +862,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="content"  id='popup${taskId}'>
               <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+              <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
               </div>
           </div>
          
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >
@@ -840,12 +901,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
                 <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
-                <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+                <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
             </div>
         </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
            
@@ -874,12 +935,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+                    <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -907,13 +968,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
+                    <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
 
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
@@ -1050,21 +1111,43 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 // });
 
 function togglePopup(e) {
-  // alert(e)
-  // document.getElementById("popup").style.display = "block";
-  // var blur = document.getElementById("blur");
-  // blur.classList.toggle("active")
   $("#popup"+e).toggle()
-  
-    $('body').css('overflow', 'hidden');
-  
-  
-  // document.querySelector('body').style.overflow = "hidden";
-  // $('body').css('ovesrflow', 'hidden');
-  //  var popup = document.getElementById("popup");
+}
+
+function TogglePopup(e) {
+  $("#Popup"+e).toggle()
 }
 
 
+// to close popup outside
+$(document).mouseup(function (e) {
+  if ($(e.target).closest(".content").length
+              === 0) {
+      $(".content").hide();
+    }
+});
+
+$(document).mouseup(function (e) {
+  if ($(e.target).closest(".content-2").length
+              === 0) {
+      $(".content-2").hide();
+    }
+});
+
+
+$(document).mouseup(function (e) {
+  if ($(e.target).closest(".Content").length
+              === 0) {
+      $(".Content").hide();
+    }
+});
+
+$(document).mouseup(function (e) {
+  if ($(e.target).closest(".Content-2").length
+              === 0) {
+      $(".Content-2").hide();
+    }
+});
 
 
 

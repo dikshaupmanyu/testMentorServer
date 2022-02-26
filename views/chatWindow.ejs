@@ -115,7 +115,7 @@
           background-color: #0f2668eb;
           border-radius: 12.5px;
           padding: 15px;
-          padding-top: 5px;
+          padding-top: 7px;
           padding-bottom: 10px;
       }
       .chat-care .chat-body strong
@@ -446,27 +446,16 @@
   }
 }
 
-/* .message{
-    cursor: pointer;
-  }
-  .chat-body .clearfix{
-    cursor: pointer;
-  }
-  .chat-body .clearfix:hover{
-    cursor: pointer;
-    visibility: visible
-  } */
-  
-  .content {
-              /* display: flex; */
+ 
+.content {
               position: absolute;
               font-size: 14px;
               width:150px;
               height: 120px;
               text-align: center;
               display: none;
-              background-color:#49494947;
-              /* background-color:#77839647; */
+              background-color:#0f2668eb;
+              color:white;
               box-sizing: border-box;
               z-index: 9000;
               border-radius:3px;
@@ -482,7 +471,8 @@
               height: 81px;
               text-align: center;
               display: none;
-              background:#77839647;
+              background:#0f2668eb;
+              color:white;
               box-sizing: border-box;
               z-index: 9000;
               border-radius:3px;
@@ -503,14 +493,20 @@
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
     border-bottom: 0.5px solid black;
+    cursor:pointer;
+  }
+  .pop2{
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    cursor:pointer;
   }
   .pop:hover{
-  color:rgb(19, 19, 168)
+    background-color:#77839647
+  }
+  .pop2:hover{
+  background-color:#77839647
   }
 
-  /* .agent .clearfix{
-   display: inline-block;
-  } */
 
   .chat-body:hover .chev_ron{
     /* color:black !important; */
@@ -529,8 +525,88 @@
   .chev_ron{
     display:none;
   }
-  
 
+  /*  for user  */
+  .Content {
+              position: absolute;
+              font-size: 14px;
+              width:150px;
+              height: 120px;
+              text-align: center;
+              display: none;
+              background-color:#0f2668eb;
+              color:white;
+              box-sizing: border-box;
+              z-index: 9000;
+              border-radius:3px;
+              margin-right: 15px;
+              top:20px;    
+   }
+  
+  .Content-2 {
+              /* display: flex; */
+              position: absolute;
+              font-size: 14px;
+              width:150px;
+              height: 81px;
+              text-align: center;
+              display: none;
+              background:#0f2668eb;
+              color:white;
+              box-sizing: border-box;
+              z-index: 9000;
+              border-radius:3px;
+              margin-left: 15px;
+              top:20px;    
+   }
+
+   .Overlay{
+     display:grid;
+     justify-items: start;
+   }
+      
+   .Overlay-1{
+     display:flex;
+     flex-direction: row-reverse;
+   }
+
+  .Pop{
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid black;
+    cursor:pointer;
+  }
+  .Pop2{
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    cursor:pointer;
+  }
+  .Pop:hover{
+    background-color:#77839647
+  }
+  .Pop2:hover{
+  background-color:#77839647
+  }
+
+
+  .chat-body:hover .Chev_ron{
+    /* color:black !important; */
+    display:block;
+  }
+
+  .Chevron{
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    cursor: pointer;
+    /* display:none; */
+  }
+
+  .Chev_ron{
+    display:none;
+  }
+  
       </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  -->
