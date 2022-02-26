@@ -189,7 +189,7 @@ $("input[type='file']").on('change', function(e) {
    var loggedInName = user_nickname.value;
   // alert(loggedInName);
  
-  if(file.type == "video/mp4"){
+  if(file.type == "video/mp4/MOV/WMV/FLV/AVI/AVCHD/WebM/MKV"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -222,7 +222,7 @@ $("input[type='file']").on('change', function(e) {
 
     });
 
-  }else if(file.type == "audio/mpeg"){
+  }else if(file.type == "audio/mpeg/MP3/WAV/WMA/AAC/M4A/FLAC"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -236,6 +236,40 @@ $("input[type='file']").on('change', function(e) {
     message: url,
     messageId : loggedInVal + "_"+ Date.now(),
     messageType : "audio",
+    createdDate : Date.now(),
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    // status: "incomplete"
+    messageSource : "Web"
+  };
+  return docRef
+    .add(task)
+    .then((ref) => {
+      console.log(ref.id);
+      task.id = ref.id;
+      // fullName.value = '';
+      message.value  = '';
+      // date.value = '';
+      // return createTask(task);
+    });
+
+
+    });
+
+  
+  }else if(file.type == "document/DOC/DOCX/HTML/ODT/PDF/PPT/TXT"){
+
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+      return snapshot.ref.getDownloadURL()
+   }).then(url => {
+     console.log("Firebase storage image uploaded : ", url);
+       
+       
+  let task = {
+    userName: loggedInName,
+    userId : loggedInVal,
+    message: url,
+    messageId : loggedInVal + "_"+ Date.now(),
+    messageType : "document",
     createdDate : Date.now(),
     profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     // status: "incomplete"
@@ -713,7 +747,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Content"  id='Popup${taskId}'>
                     <div  class="Pop"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
-                    <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                    <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -752,7 +786,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
                       <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
-                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
               </div>
@@ -786,7 +820,41 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
                       <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
-                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    </div>
+                  </div>
+              </div>
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                     
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+              </div>
+          </li>
+          `
+        
+        }else if(messageType == "document"){
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+              <div class="Overlay">
+                  <div class="Overlay-1">
+                    <div class="Content-2"  id='Popup${taskId}'>
+                      <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
               </div>
@@ -818,8 +886,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
-                          <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span>Reply </a> </div> 
-                          <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete <i class="fa fa-trash" aria-hidden="true"></i></div></a>
+                          <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                          <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                         </div>
                       </div>
                   </div>
@@ -916,6 +984,39 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       `
      }else if(messageType == "photo"){
+
+         return `
+
+        <li class="agent clearfix">
+          <span class="chat-img left clearfix mx-2">
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+          </span>
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chev_ron">
+            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </span>
+            </div>
+            <div class="overlay">
+                <div class="overlay-1">
+                  <div class="content-2"  id='popup${taskId}'>
+                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
+                  </div>
+                </div>
+            </div>
+              <div class="header clearfix">
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+              </div>
+              <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+
+          </div>
+      </li>
+      `
+     }else if(messageType == "document"){
 
          return `
 
