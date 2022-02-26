@@ -355,16 +355,16 @@ function createTask(task) {
 }
 
 
-function totalreplycount(id ,res){
+// function totalreplycount(id ,res){
 
-  const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
-   docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
-      // console.log("size         "  +  snapshots.size);
-      res.status(200).send({length: snapshots.size});
-   });
+  // const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+  //  docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+  //     // console.log("size         "  +  snapshots.size);
+  //     res.status(200).send({length: snapshots.size});
+  //  });
 
 
-}
+// }
 
 // Firebase functions
 
@@ -380,26 +380,33 @@ function fetchTasks() {
       // console.log(change.doc.data().flag);
      
    
-     docRef.orderBy("createdDate", "asc").limit(100).onSnapshot(function(snapshot) {
-        snapshot.docChanges().forEach(function(change) {
-          
-          var taskIds = change.doc.id;
-              $.ajax({
+     docRef.orderBy("createdDate", "desc").limit(100).onSnapshot(function(snapshot) {
+        snapshot.docChanges().reverse().forEach(function(change) {
 
-                type: 'GET',
-                url: '/totalreplycount',
-                data: {ids : taskIds},
+ const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
+   docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+      // console.log(snapshots.size);
+      $("#sizedata"+change.doc.id).html(snapshots.size);
+      $("#sizedatan"+change.doc.id).html(snapshots.size);
+   });
+        
+          // var taskIds = change.doc.id;
+          //     $.ajax({
 
-              success: function(datas) {
+          //       type: 'GET',
+          //       url: '/totalreplycount',
+          //       data: {ids : taskIds},
 
-                console.log("final data  "  + JSON.stringify(datas));
+          //     success: function(datas) {
 
-              }
+          //       console.log("final data  "  + JSON.stringify(datas));
 
-            });
+          //     }
+
+          //   });
 
 
-         var countReplyss;
+         // var countReplyss;
 
        
 
@@ -431,17 +438,17 @@ function fetchTasks() {
                           tasksDOM.append(elem);
 
                         }else{
-                            var countReply = countReplyss;
+                            // var countReply = countReplyss;
                             const elem = document.createElement("li");
                             elem.id = change.doc.id;
-                            elem.innerHTML = reviewTemplate(task,countReply,loggedInVal,loggedInName,taskId);
+                            elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,taskId);
                             tasksDOM.append(elem);
                         }
                       }else{
-                            var countReply = countReplyss;
+                            // var countReply = countReplyss;
                             const elem = document.createElement("li");
                             elem.id = change.doc.id;
-                            elem.innerHTML = reviewTemplate(task,countReply,loggedInVal,loggedInName,taskId);
+                            elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,taskId);
                             tasksDOM.append(elem);
                       }
 
@@ -626,7 +633,7 @@ function fetchTasks() {
 // //     db.ref('reviews/' + id).remove();
 // //   }
 // // });
-function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},countReply,loggedInName,loggedInVal,taskId) {
+function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInName,loggedInVal,taskId) {
 
  // console.log("userid " + userId);
  // console.log("logged In " + loggedInName);
@@ -792,7 +799,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+              <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
               </div>
@@ -800,7 +807,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
          
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1} </small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >
@@ -832,13 +839,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
-                <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+                <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
                 <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
               </div>
             </div>
         </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
            
@@ -866,13 +873,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
                   </div>
                 </div>
             </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -899,14 +906,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  ${countReply} Reply </a> </div> 
+                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer; padding-top:0.6rem; padding-bottom:0.6rem">Flag</div></a>
                   </div>
                 </div>
             </div>
 
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank">  ${countReply} Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
