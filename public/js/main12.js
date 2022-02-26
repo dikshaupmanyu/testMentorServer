@@ -191,7 +191,7 @@ $("input[type='file']").on('change', function(e) {
  
   if(file.type == "video/mp4"){
 
-    firebase.storage().ref('message_videos/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
    }).then(url => {
      console.log("Firebase storage image uploaded : ", url);
@@ -224,7 +224,7 @@ $("input[type='file']").on('change', function(e) {
 
   }else if(file.type == "audio/mpeg"){
 
-    firebase.storage().ref('message_audios/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
    }).then(url => {
      console.log("Firebase storage image uploaded : ", url);
@@ -258,7 +258,7 @@ $("input[type='file']").on('change', function(e) {
   } else {
 
 
-    firebase.storage().ref('message_images/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
    }).then(url => {
      console.log("Firebase storage image uploaded : ", url);
@@ -313,7 +313,7 @@ fetch(remoteimageurl).then(res => {
   return res.blob();
 }).then(blob => {
     //uploading blob to firebase storage
-  firebase.storage().ref('message_images/').child(filename).put(blob).then(function(snapshot) {
+  firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
     return snapshot.ref.getDownloadURL()
  }).then(url => {
    console.log("Firebase storage image uploaded : ", url);
@@ -327,10 +327,16 @@ fetch(remoteimageurl).then(res => {
 });
 
 function handleDelete(id) {
-  return docRef
-    .doc(id)
-    .delete()
-    .then(() => document.getElementById(id).remove());
+    var txt;
+          if (confirm("Are you sure you want to delete this chat ?")) {
+             return docRef
+            .doc(id)
+            .delete()
+            .then(() => document.getElementById(id).remove());
+          } else {
+            txt = "You pressed Cancel!";
+          }
+ 
 }
 
 // dom functions
@@ -349,7 +355,16 @@ function createTask(task) {
 }
 
 
+function totalreplycount(id ,res){
 
+  const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+   docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+      // console.log("size         "  +  snapshots.size);
+      res.status(200).send({length: snapshots.size});
+   });
+
+
+}
 
 // Firebase functions
 
@@ -367,11 +382,26 @@ function fetchTasks() {
    
      docRef.orderBy("createdDate", "asc").limit(100).onSnapshot(function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
-        
-         const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
+          
+          var taskIds = change.doc.id;
+              $.ajax({
 
-        
-          docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+                type: 'GET',
+                url: '/totalreplycount',
+                data: {ids : taskIds},
+
+              success: function(datas) {
+
+                console.log("final data  "  + JSON.stringify(datas));
+
+              }
+
+            });
+
+
+         var countReplyss;
+
+       
 
             if (change.type === "added") {
               
@@ -401,14 +431,14 @@ function fetchTasks() {
                           tasksDOM.append(elem);
 
                         }else{
-                            var countReply = snapshots.size;
+                            var countReply = countReplyss;
                             const elem = document.createElement("li");
                             elem.id = change.doc.id;
                             elem.innerHTML = reviewTemplate(task,countReply,loggedInVal,loggedInName,taskId);
                             tasksDOM.append(elem);
                         }
                       }else{
-                            var countReply = snapshots.size;
+                            var countReply = countReplyss;
                             const elem = document.createElement("li");
                             elem.id = change.doc.id;
                             elem.innerHTML = reviewTemplate(task,countReply,loggedInVal,loggedInName,taskId);
@@ -438,9 +468,9 @@ function fetchTasks() {
 
 
          });
-     });
+      });
 
-});
+// });
 }
 
  fetchTasks();
@@ -663,20 +693,17 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <span class="chat-img right clearfix mx-2">
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
-              <div class="chat-body clearfix" onclick="togglePopup()">
+              <div class="chat-body clearfix">
                   <div class="header clearfix">
                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
                       <span id='divClipboard${taskId}'>${message}<span>
+
                   </p>
-                  <div class="content">
-                  <span style="color:grey">Choose An Option</span>
-                  <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-                  <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
-                  <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
-                </div>
+                  
               </div>
              
           </li>
@@ -693,6 +720,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="chat-body clearfix">
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                     <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -711,6 +739,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="chat-body clearfix">
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                  <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
@@ -728,6 +757,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="chat-body clearfix">
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                 <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>              </div>
@@ -894,117 +924,117 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
 
 
-function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {
+// function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {
 
-                var loggedInVal = userId;
-                var loggedInName = userName;
+//                 var loggedInVal = userId;
+//                 var loggedInName = userName;
                 
-                // alert(profileImageUrl);
-                // alert(userId);
-                const date = new Date(createdDate); //new Date(createdDate).toDateString();
-                  //console.log(date);
-                var options = {year: "numeric", month: "long", day: "numeric"};
-                var newdate = date.toGMTString('en-US', options);  
-                  //console.log(newdate);
-                const stripped = newdate.replace(/GMT/g, 'EST');
-                  //console.log(stripped);
-                  // alert(date);
-                var newdate1 = stripped.toString(stripped);  
-                var newdate2 = newdate1.split(/(\s+)/);
-                 newdate2.splice(11, 18);
-                 newdate2.splice(0, 2);
-                 newdate2.splice(3,3);
-                  //console.log(newdate2);
-                 function moveArrayItemToNewIndex(arr, old_index, new_index) {
-                 if (new_index >= arr.length) {
-                      var k = new_index - arr.length + 1;
-                      while (k--) {
-                          arr.push(undefined);
-                      }
-                  }
-                 arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-                 return arr;
-                 };
+//                 // alert(profileImageUrl);
+//                 // alert(userId);
+//                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
+//                   //console.log(date);
+//                 var options = {year: "numeric", month: "long", day: "numeric"};
+//                 var newdate = date.toGMTString('en-US', options);  
+//                   //console.log(newdate);
+//                 const stripped = newdate.replace(/GMT/g, 'EST');
+//                   //console.log(stripped);
+//                   // alert(date);
+//                 var newdate1 = stripped.toString(stripped);  
+//                 var newdate2 = newdate1.split(/(\s+)/);
+//                  newdate2.splice(11, 18);
+//                  newdate2.splice(0, 2);
+//                  newdate2.splice(3,3);
+//                   //console.log(newdate2);
+//                  function moveArrayItemToNewIndex(arr, old_index, new_index) {
+//                  if (new_index >= arr.length) {
+//                       var k = new_index - arr.length + 1;
+//                       while (k--) {
+//                           arr.push(undefined);
+//                       }
+//                   }
+//                  arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+//                  return arr;
+//                  };
 
-                moveArrayItemToNewIndex(newdate2, 0, 2);
-                var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
-                //console.log(result1);
-                result1.splice(1, 0, ' ');
-                var newdate3 = result1.toString(result1);
-                var result = newdate3.replace(/,/g, "");
-                //console.log(result);
-                x = result.substring(0, 6) + "," + result.substring(6, result.length);
-                //console.log(x);
-                function formatAMPM(date) {
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
-                    var ampm = hours >= 12 ? 'PM' : 'AM';
-                    hours = hours % 12;
-                    hours = hours ? hours : 12; // the hour '0' should be '12'
-                    minutes = minutes < 10 ? '0'+minutes : minutes;
-                    var strTime = hours + ':' + minutes + ' ' + ampm;
-                    return strTime;
-                  }
+//                 moveArrayItemToNewIndex(newdate2, 0, 2);
+//                 var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
+//                 //console.log(result1);
+//                 result1.splice(1, 0, ' ');
+//                 var newdate3 = result1.toString(result1);
+//                 var result = newdate3.replace(/,/g, "");
+//                 //console.log(result);
+//                 x = result.substring(0, 6) + "," + result.substring(6, result.length);
+//                 //console.log(x);
+//                 function formatAMPM(date) {
+//                     var hours = date.getHours();
+//                     var minutes = date.getMinutes();
+//                     var ampm = hours >= 12 ? 'PM' : 'AM';
+//                     hours = hours % 12;
+//                     hours = hours ? hours : 12; // the hour '0' should be '12'
+//                     minutes = minutes < 10 ? '0'+minutes : minutes;
+//                     var strTime = hours + ':' + minutes + ' ' + ampm;
+//                     return strTime;
+//                   }
 
-                  var date1 = formatAMPM(date);
-                  //console.log(date1);
-                  //console.log(newdate2);
-                  const stripped1 = x.replace(newdate2[4], date1);
-                  //console.log(stripped1);
+//                   var date1 = formatAMPM(date);
+//                   //console.log(date1);
+//                   //console.log(newdate2);
+//                   const stripped1 = x.replace(newdate2[4], date1);
+//                   //console.log(stripped1);
 
    
-                   if(loggedInVal == userId){
+//                    if(loggedInVal == userId){
 
-                        if(messageType == "text"){
+//                         if(messageType == "text"){
 
-                           return `
+//                            return `
 
-                            <li class="admin clearfix">
-                              <span class="chat-img right clearfix mx-2">
-                                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-                              </span>
-                              <div class="chat-body clearfix">
-                                  <div class="header clearfix">
-                                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
-                                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                                  </div>
-                                  <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
-                                      <span id='divClipboard${createdDate}'>${message}<span>
-                                  </p>
-                              </div>
-                          </li>
-                          `
+//                             <li class="admin clearfix">
+//                               <span class="chat-img right clearfix mx-2">
+//                                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+//                               </span>
+//                               <div class="chat-body clearfix">
+//                                   <div class="header clearfix">
+//                                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+//                                       <strong class="right primary-font" class='fullName'>${userName}</strong>
+//                                   </div>
+//                                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
+//                                       <span id='divClipboard${createdDate}'>${message}<span>
+//                                   </p>
+//                               </div>
+//                           </li>
+//                           `
 
-                        }
+//                         }
 
-                   }else{
+//                    }else{
 
-                     if(messageType == "text"){
+//                      if(messageType == "text"){
 
 
-                         return `
+//                          return `
 
-                         <li class="agent clearfix">
-                              <span class="chat-img right clearfix mx-2">
-                                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-                              </span>
-                              <div class="chat-body clearfix">
-                                  <div class="header clearfix">
-                                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
-                                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                                  </div>
-                                  <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
-                                      <span id='divClipboard${createdDate}'>${message}<span>
-                                  </p>
-                              </div>
-                          </li>
-                      `
-                     } 
+//                          <li class="agent clearfix">
+//                               <span class="chat-img right clearfix mx-2">
+//                                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+//                               </span>
+//                               <div class="chat-body clearfix">
+//                                   <div class="header clearfix">
+//                                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+//                                       <strong class="right primary-font" class='fullName'>${userName}</strong>
+//                                   </div>
+//                                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
+//                                       <span id='divClipboard${createdDate}'>${message}<span>
+//                                   </p>
+//                               </div>
+//                           </li>
+//                       `
+//                      } 
 
-                   }
+//                    }
 
  
-};
+// };
 
 // $(document).ready(function(){
 //   $(".message").dblclick(function(){

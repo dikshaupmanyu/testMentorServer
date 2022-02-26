@@ -897,6 +897,25 @@ app.get('/forgetPassword', function(req, res) {
 
 /// //////////////////////////////////////////////////////////////
 
+app.get('/totalreplycount', (req, res) => {
+    // res.send('Hello World, from express');
+   const admin = require('firebase-admin');
+    const db = admin.firestore();
+    var id = req.query.ids;
+    console.log(id);
+    const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+   docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+      console.log("size         "  +  snapshots.size);
+      res.status(200).send({length: snapshots.size});
+   });
+
+});
+
+
+
+///////////////////////////////////////////////////////////////
+
+
 
 
   app.get('/chatWindowAdminUser', function(req, res) {
