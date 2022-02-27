@@ -123,7 +123,7 @@ $("input[type='file']").on('change', function(e) {
    var loggedInName = user_nickname.value;
   // alert(loggedInName);
  
-  if(file.type == "video/mp4"){
+   if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv" || file.type == "video/avi" || file.type == "video/avchd" || file.type == "video/mkv"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -156,7 +156,7 @@ $("input[type='file']").on('change', function(e) {
 
     });
 
-  }else if(file.type == "audio/mpeg"){
+  }else if(file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -182,6 +182,40 @@ $("input[type='file']").on('change', function(e) {
       task.id = ref.id;
       // fullName.value = '';
       // message.value  = '';
+      // date.value = '';
+      // return createTask(task);
+    });
+
+
+    });
+
+  }  else if(file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword"){
+
+
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+      return snapshot.ref.getDownloadURL()
+   }).then(url => {
+     console.log("Firebase storage image uploaded : ", url);
+       
+       
+  let task = {
+    userName: loggedInName,
+    userId : loggedInVal,
+    message: url,
+    messageId : loggedInVal + "_"+ Date.now(),
+    messageType : "document",
+    createdDate : Date.now(),
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    // status: "incomplete"
+    messageSource : "Web"
+  };
+  return docRef
+    .add(task)
+    .then((ref) => {
+      console.log(ref.id);
+      task.id = ref.id;
+      // fullName.value = '';
+      message.value  = '';
       // date.value = '';
       // return createTask(task);
     });
@@ -239,21 +273,21 @@ $("input[type='file']").on('change', function(e) {
 //       console.log(imgUrl);
 //     });
 
-var remoteimageurl = e.target.files[0]
-var filename = file.name
+// var remoteimageurl = e.target.files[0]
+// var filename = file.name
 
-fetch(remoteimageurl).then(res => {
-  return res.blob();
-}).then(blob => {
-    //uploading blob to firebase storage
-  firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-  })
-}).catch(error => {
-  console.error(error);
-});
+// fetch(remoteimageurl).then(res => {
+//   return res.blob();
+// }).then(blob => {
+//     //uploading blob to firebase storage
+//   firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
+//     return snapshot.ref.getDownloadURL()
+//  }).then(url => {
+//    console.log("Firebase storage image uploaded : ", url);
+//   })
+// }).catch(error => {
+//   console.error(error);
+// });
 
 
  
@@ -404,7 +438,25 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
               </div>
           </li>
           `
-        } else {
+        } else if(messageType == "document"){
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+              </div>
+          </li>
+          `
+        } 
+        else {
 
           return `
 
@@ -483,7 +535,24 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
           </div>
       </li>
       `
-     }else{
+     }else if(messageType == "document"){
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+              </div>
+          </li>
+          `
+        } else{
 
          return `
 
