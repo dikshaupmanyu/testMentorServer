@@ -451,7 +451,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
               </div>
           </li>
           `
@@ -548,7 +548,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
               </div>
           </li>
           `

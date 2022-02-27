@@ -868,7 +868,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
               </div>
           </li>
           `
@@ -1049,7 +1049,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
 
           </div>
       </li>
