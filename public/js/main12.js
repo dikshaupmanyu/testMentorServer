@@ -182,14 +182,16 @@ $("input[type='file']").on('change', function(e) {
   $(this).siblings('input#btn-input').text(val);
 
   const file = e.target.files[0];
-  // console.log(file);
-  // console.log(file.type);
+   console.log(file);
+   console.log(file.type);
 
   var loggedInVal = user_id.value;
    var loggedInName = user_nickname.value;
   // alert(loggedInName);
  
-  if(file.type == "video/mp4/MOV/WMV/FLV/AVI/AVCHD/WebM/MKV"){
+  // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
+   
+   if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv" || file.type == "video/avi" || file.type == "video/avchd" || file.type == "video/mkv"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -222,7 +224,8 @@ $("input[type='file']").on('change', function(e) {
 
     });
 
-  }else if(file.type == "audio/mpeg/MP3/WAV/WMA/AAC/M4A/FLAC"){
+  // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
+  }else if(file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -256,7 +259,9 @@ $("input[type='file']").on('change', function(e) {
     });
 
   
-  }else if(file.type == "document/DOC/DOCX/HTML/ODT/PDF/PPT/TXT"){
+  // }else if(file.type == "document/doc" || "document/docx" || "document/html" || "document/odt" || "document/pdf" || "document/ppt" || "document/txt"){
+  }else if(file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword"){
+
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -863,7 +868,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+                 <p class='message'><a href="${message}">click here to download pdf</a></p>
               </div>
           </li>
           `
@@ -1044,7 +1049,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-              <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+                 <p class='message'><a href="${message}">click here to download pdf</a></p>
 
           </div>
       </li>
