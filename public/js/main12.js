@@ -395,6 +395,14 @@ function fetchTasks() {
       // console.log(snapshots.size);
       $("#sizedata"+change.doc.id).html(snapshots.size);
       $("#sizedatan"+change.doc.id).html(snapshots.size);
+
+      if(snapshots.size == 0){
+        $("#finalVal"+change.doc.id).css("display", "block");
+        $("#finalValn"+change.doc.id).css("display", "none");
+      }else{
+        $("#finalValn"+change.doc.id).css("display", "block");
+        $("#finalVal"+change.doc.id).css("display", "none");
+      }
    });
         
           // var taskIds = change.doc.id;
@@ -723,14 +731,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div  class="Pop"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -763,13 +771,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
               </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                        
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -797,13 +805,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
               </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -831,13 +839,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
               </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -869,13 +877,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
-                          <div  class="Pop" ><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                          <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                           <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                         </div>
                       </div>
                   </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -917,7 +925,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+              <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
@@ -925,7 +933,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
          
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >
@@ -957,13 +965,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
-                <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
                 <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
             </div>
         </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
            
@@ -991,13 +999,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -1024,13 +1032,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
                <p class='message'><a href="${message}" target="_blank">
@@ -1061,14 +1069,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop"><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
 
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
