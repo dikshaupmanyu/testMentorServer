@@ -191,7 +191,7 @@ $("input[type='file']").on('change', function(e) {
  
   // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
    
-   if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv" || file.type == "video/avi" || file.type == "video/avchd" || file.type == "video/mkv"){
+   if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv"|| file.type == "video/mkv"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -225,42 +225,9 @@ $("input[type='file']").on('change', function(e) {
     });
 
   // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
-  }else if(file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac"){
-
-    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-      return snapshot.ref.getDownloadURL()
-   }).then(url => {
-     console.log("Firebase storage image uploaded : ", url);
-       
-       
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "audio",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
-
-
-    });
-
-  
+ 
   // }else if(file.type == "document/doc" || "document/docx" || "document/html" || "document/odt" || "document/pdf" || "document/ppt" || "document/txt"){
-  }else if(file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword"){
+  }else if(file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword" || file.type == "application/ms-powerpoint" || file.type == "application/plain" || file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac"){
 
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
@@ -727,7 +694,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   //console.log(newdate2);
                   const stripped1 = x.replace(newdate2[4], date1);
                   //console.log(stripped1);
-   
+                  
+                  var fileName = message.substring(message.lastIndexOf('%') + 3);
+                  // console.log(fileName)
+     var fName = fileName.substring(0, fileName.indexOf("?"));
+    //  console.log(fName+"this is fNAME")
+
    if(loggedInName == userId){
 
         if(messageType == "text"){
@@ -901,7 +873,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>              </div>
+                  
+                  <p class='message'><a href="${message}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="25" height="25"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+                   ${fName}</a></p>
           </li>
           `
 
@@ -1049,7 +1027,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+              <p class='message' style="color:black"><a href="${message}" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="25" height="25"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#000000"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+               ${fName}</a></p>
 
           </div>
       </li>
@@ -1084,7 +1067,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
-              <p class='message' style="color: #000 !important"><audio controls><source src="${message}" type="audio/mpeg"></audio></p>            
+              <p class='message'><a href="${message}" target="_blank" style="color:black">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="25" height="25"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#000000"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>${fName}</a></p>
 
           </div>
       </li>

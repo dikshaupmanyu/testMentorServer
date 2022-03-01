@@ -2792,6 +2792,30 @@ function likeFunction1(e) {
 
 </script>
 
+<script>
+  $(".scroller-dash-left").scroll(function() {
+
+if ($(this).scrollTop())
+ {
+  
+     $('.dropdown-menu.show').style.visibility ="hidden";
+    
+ }
+// else
+//  {
+//   $('.dropdown-menu.show').show();
+//  }
+});
+
+
+</script>
+
+<!-- <script>
+ 
+  $(".btn.dropdown-toggle").scrollTop(function(){
+    document.getElementsByClassName("dropdown-menu.show").css.visi= "none"
+  })
+</script> -->
 
 <!-- <script>
 function openCity(evt, cityName) {
@@ -2807,4 +2831,4 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
-</script> -->
+</> -->

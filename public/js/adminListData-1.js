@@ -145,7 +145,7 @@ $("input[type='file']").on('change', function(e) {
   var today = Date.now();
   var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
 
-  if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv"  || file.type == "video/mkv"){
+  if(file.type == "video/mp4"){
 
     firebase.storage().ref('message_videos/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -178,7 +178,7 @@ $("input[type='file']").on('change', function(e) {
 
     });
 
-  }else if(file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac"){
+  }else if(file.type == "audio/mpeg"){
 
     firebase.storage().ref('message_audios/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
@@ -192,38 +192,6 @@ $("input[type='file']").on('change', function(e) {
     message: url,
     messageId : loggedInVal + "_"+ Date.now(),
     messageType : "audio",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
-
-
-    });
-  }else if(file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword" || file.type == "application/ms-powerpoint" || file.type == "application/plain"){
-
-    firebase.storage().ref('message_documents/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-      return snapshot.ref.getDownloadURL()
-   }).then(url => {
-     console.log("Firebase storage image uploaded : ", url);
-       
-       
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "document",
     createdDate : Date.now(),
     profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
     // status: "incomplete"
@@ -314,15 +282,15 @@ fetch(remoteimageurl).then(res => {
 });
 
 function handleDelete(id) {
-  var txt;
-          if(confirm('Are you sure you want to delete')){
-            return docRef
-            .doc(id)
-            .delete()
-            .then(() => document.getElementById(id).remove());
-          } else {
-            txt = "You pressed Cancel!";
-          }
+    var txt;
+    if(confirm('Are you sure you want to delete')){
+      return docRef
+      .doc(id)
+      .delete()
+      .then(() => document.getElementById(id).remove());
+    } else {
+      txt = "You pressed Cancel!";
+    }
 }
 
 // dom functions
@@ -345,7 +313,7 @@ function createTask(task) {
   // elem.setAttribute("class", "admin clearfix");
   let taskElem;
 
-  // // alert(task.createdDate);
+  // alert(task.createdDate);
 
   if (task.userId === loggedInVal) {
 
@@ -427,15 +395,16 @@ function createTask(task) {
 // Firebase functions
 function fetchTasks() {
 
-     docRef.orderBy("createdDate", "asc").limit(100).onSnapshot(function(snapshot) {
-        snapshot.docChanges().reverse().forEach(function(change) {
+     docRef.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
 
-          const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
-          docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
-              // console.log(snapshots.size);
-              $("#sizedata"+change.doc.id).html(snapshots.size);
-              $("#sizedatan"+change.doc.id).html(snapshots.size);
-          });
+            const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
+            docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+                // console.log(snapshots.size);
+                $("#sizedata"+change.doc.id).html(snapshots.size);
+                $("#sizedatan"+change.doc.id).html(snapshots.size);
+            });
+           
          
 
             if (change.type === "added") {
@@ -444,39 +413,35 @@ function fetchTasks() {
                 var uniqueId = change.doc.id;
                 // console.log(uniqueId);
 
-                var userIdcs     = document.getElementById('user_id');
-                // console.log(userIdcs.value);
-                var userNamescs = document.getElementById("user_nickname");
-               // console.log(userNamecss.value);
-                var loggedInVal = userIdcs.value;
-                // console.log(loggedInVal);
-               var loggedInName = userNamescs.value;
-                // console.log(loggedInName);
-
-
+                 // var loggedInVal = "<%= userid %>";
+                 // var loggedInName = "<%= userName %>";
+                    var loggedInVal = user_id.value;
+                   // alert(loggedInVal);
+                   var loggedInName = user_nickname.value;
+                // alert(loggedInName)
                 if(task.flag){
-                  const result = task.flag.some(obj => obj.messageFlagedUserId === loggedInVal);
-                   console.log("checking flag result  " + result);
-                   if(result == true){
-                     const elem = document.createElement("li");
-                     elem.id = change.doc.id;
-                     elem.innerHTML = "";
-                     tasksDOM.append(elem);
-
+                    const result = task.flag.some(obj => obj.messageFlagedUserId === loggedInVal);
+                     console.log("checking flag result  " + result);
+                     if(result == true){
+                       const elem = document.createElement("li");
+                       elem.id = change.doc.id;
+                       elem.innerHTML = "";
+                       tasksDOM.append(elem);
+  
+                     }else{
+                         // var countReply = countReplyss;
+                         const elem = document.createElement("li");
+                         elem.id = change.doc.id;
+                         elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,uniqueId);
+                         tasksDOM.append(elem);
+                     }
                    }else{
-                       // var countReply = countReplyss;
-                       const elem = document.createElement("li");
-                       elem.id = change.doc.id;
-                       elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,uniqueId);
-                       tasksDOM.append(elem);
+                         // var countReply = countReplyss;
+                         const elem = document.createElement("li");
+                         elem.id = change.doc.id;
+                         elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,uniqueId);
+                         tasksDOM.append(elem);
                    }
-                 }else{
-                       // var countReply = countReplyss;
-                       const elem = document.createElement("li");
-                       elem.id = change.doc.id;
-                       elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,uniqueId);
-                       tasksDOM.append(elem);
-                 }
 
                  $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
 
@@ -668,7 +633,7 @@ function reviewTemplateUserList({userName,userId}){
    return `<a class="dropdown-item" href="#">${userName}</a>`
 }
 
-function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageID},loggedInVal,loggedInName,uniqueId) {
+function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInName,loggedInVal,uniqueId) {
 
    // alert(user_id.value);
   // alert(userId);
@@ -750,347 +715,346 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
            return `
 
-            <li class="admin clearfix">
-              <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-              </span>
-              <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
-            <div class="Overlay">
-                <div class="Overlay-1">
-                  <div class="Content"  id='Popup${uniqueId}'>
-                    <div  class="Pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-                    <a onClick='copyClipboard(this.id)' id='${uniqueId}'><div class="Pop">Copy</div></a>
-                    <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                  </div>
-                </div>
-            </div>
-                  <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                  </div>
-                  <p class='message' onClick='copyClipboard(this.id)' id="${uniqueId}">
-                  <span id='divClipboard${uniqueId}'>${message}<span>
+           <li class="admin clearfix">
+           <span class="chat-img right clearfix mx-2">
+               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+           </span>
+           <div class="chat-body clearfix">
+           <div class="Chev_ron">
+           <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
+             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+             </svg>
+           </span>
+         </div>
+         <div class="Overlay">
+             <div class="Overlay-1">
+               <div class="Content"  id='Popup${uniqueId}'>
+                 <div  class="Pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+                 <a onClick='copyClipboard(this.id)' id='${uniqueId}'><div class="Pop">Copy</div></a>
+                 <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+               </div>
+             </div>
+         </div>
+               <div class="header clearfix">
+                   <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+                   <strong class="right primary-font" class='fullName'>${userName}</strong>
+               </div>
+               <p class='message' onClick='copyClipboard(this.id)' id="${uniqueId}">
+               <span id="textMessage${uniqueId}">${message}<span>
 
-              </p>
-              </div>
-          </li>
-          `
+           </p>
+           </div>
+       </li>
+       `
 
-        }else if(messageType == "photo"){
-
-           return `
-
-            <li class="admin clearfix">
-              <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-              </span>
-              <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
-              <div class="Overlay">
-                  <div class="Overlay-1">
-                    <div class="Content-2"  id='Popup${uniqueId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-                      <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                    </div>
-                  </div>
-              </div>
-                  <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                  </div>
-                    <p class='message'><img src="${message}" class="img-responsive w-100"/></p>
-              </div>
-          </li>
-          `
-
-        }else if(messageType == "video"){
-
-          return `
-
-            <li class="admin clearfix">
-              <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-              </span>
-              <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
-              <div class="Overlay">
-                  <div class="Overlay-1">
-                    <div class="Content-2"  id='Popup${uniqueId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-                      <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                    </div>
-                  </div>
-              </div>
-                  <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                  </div>
-                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
-              </div>
-          </li>
-          `
-        }else if(messageType == "document"){
-
-          return `
-
-            <li class="admin clearfix">
-              <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-              </span>
-              <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
-              <div class="Overlay">
-                  <div class="Overlay-1">
-                    <div class="Content-2"  id='Popup${uniqueId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-                      <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                    </div>
-                  </div>
-              </div>
-                  <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                  </div>
-                  <p class='message'><a href="${message}">click here to download pdf</a></p>
-              </div>
-          </li>
-          `
-        } else {
-
-          return `
-
-            <li class="admin clearfix">
-              <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-              </span>
-              <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
-              <div class="Overlay">
-                  <div class="Overlay-1">
-                    <div class="Content-2"  id='Popup${uniqueId}'>
-                      <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-                      <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                    </div>
-                  </div>
-              </div>
-                  <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-                      <strong class="right primary-font" class='fullName'>${userName}</strong>
-                  </div>
-                <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p></div>
-          </li>
-          `
-
-        }
-
-   }else{
-
-
-
-
-     if(messageType == "text"){
-
-
-         return `
-
-        <li class="agent clearfix">
-          <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-          </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-          <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </span>
-        </div>
-        <div class="overlay">
-            <div class="overlay-1">
-            <div class="content"  id='popup${uniqueId}'>
-            <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-            <a onClick='copyClipboard(this.id)' id='${uniqueId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
-            <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
-            </div>
-            </div>
-        </div>
-       
-            <div class="header clearfix">
-                <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1} </small>
-                <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
-            </div>
-              <p class='message text-dark'>
-                      <span id="textMessage${uniqueId}">${message}<span>
-                  </p>
-          </div>
-      </li>
-      `
-     } else if(messageType == "video"){
-
-         return `
-
-        <li class="agent clearfix">
-          <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-          </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-          <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </span>
-        </div>
-    <div class="overlay">
-        <div class="overlay-1">
-          <div class="content-2"  id='popup${uniqueId}'>
-            <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-            <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
-          </div>
-        </div>
-    </div>
-          <div class="header clearfix">
-              <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-              <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
-          </div>
-           
-             <p class='message text-dark'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
-
-          </div>
-      </li>
-      `
      }else if(messageType == "photo"){
 
-         return `
+        return `
 
-        <li class="agent clearfix">
-          <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-          </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-          <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </span>
-        </div>
-    <div class="overlay">
-        <div class="overlay-1">
-          <div class="content-2"  id='popup${uniqueId}'>
-            <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-            <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
-          </div>
-        </div>
-    </div>
-          <div class="header clearfix">
-              <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-              <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
-          </div>
-              <p class='message text-dark'><img src="${message}" class="img-responsive w-100"/></p>
+         <li class="admin clearfix">
+           <span class="chat-img right clearfix mx-2">
+               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+           </span>
+           <div class="chat-body clearfix">
+           <div class="Chev_ron">
+           <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
+             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+             </svg>
+           </span>
+         </div>
+           <div class="Overlay">
+               <div class="Overlay-1">
+                 <div class="Content-2"  id='Popup${uniqueId}'>
+                   <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+                   <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                 </div>
+               </div>
+           </div>
+               <div class="header clearfix">
+                   <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+                   <strong class="right primary-font" class='fullName'>${userName}</strong>
+               </div>
+                 <p class='message'><img src="${message}" class="img-responsive w-100"/></p>
+           </div>
+       </li>
+       `
 
-          </div>
-      </li>
-      `
+     }else if(messageType == "video"){
+
+       return `
+
+         <li class="admin clearfix">
+           <span class="chat-img right clearfix mx-2">
+               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+           </span>
+           <div class="chat-body clearfix">
+           <div class="Chev_ron">
+           <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
+             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+             </svg>
+           </span>
+         </div>
+           <div class="Overlay">
+               <div class="Overlay-1">
+                 <div class="Content-2"  id='Popup${uniqueId}'>
+                   <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+                   <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                 </div>
+               </div>
+           </div>
+               <div class="header clearfix">
+                   <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+                   <strong class="right primary-font" class='fullName'>${userName}</strong>
+               </div>
+              <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+           </div>
+       </li>
+       `
      }else if(messageType == "document"){
 
-         return `
+       return `
 
-        <li class="agent clearfix">
-          <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-          </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-          <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </span>
-        </div>
-    <div class="overlay">
-        <div class="overlay-1">
-          <div class="content-2"  id='popup${uniqueId}'>
-            <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-            <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
-          </div>
-        </div>
-    </div>
-          <div class="header clearfix">
-              <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-              <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
-          </div>
-          <p class='message'><a href="${message}">click here to download pdf</a></p>
+         <li class="admin clearfix">
+           <span class="chat-img right clearfix mx-2">
+               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+           </span>
+           <div class="chat-body clearfix">
+           <div class="Chev_ron">
+           <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
+             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+             </svg>
+           </span>
+         </div>
+           <div class="Overlay">
+               <div class="Overlay-1">
+                 <div class="Content-2"  id='Popup${uniqueId}'>
+                   <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+                   <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                 </div>
+               </div>
+           </div>
+               <div class="header clearfix">
+                   <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+                   <strong class="right primary-font" class='fullName'>${userName}</strong>
+               </div>
+               <p class='message'><a href="${message}">click here to download pdf</a></p>
+           </div>
+       </li>
+       `
+     } else {
 
-          </div>
-      </li>
-      `
-     }else{
+       return `
 
-         return `
+         <li class="admin clearfix">
+           <span class="chat-img right clearfix mx-2">
+               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+           </span>
+           <div class="chat-body clearfix">
+           <div class="Chev_ron">
+           <span class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}">
+             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+             </svg>
+           </span>
+         </div>
+           <div class="Overlay">
+               <div class="Overlay-1">
+                 <div class="Content-2"  id='Popup${uniqueId}'>
+                   <div  class="Pop" ><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+                   <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                 </div>
+               </div>
+           </div>
+               <div class="header clearfix">
+                   <small class="left text-muted"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+                   <strong class="right primary-font" class='fullName'>${userName}</strong>
+               </div>
+             <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p></div>
+       </li>
+       `
 
-        <li class="agent clearfix">
-          <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
-          </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-          <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </span>
-        </div>
-    <div class="overlay">
-        <div class="overlay-1">
-          <div class="content-2"  id='popup${uniqueId}'>
-            <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
-            <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
-          </div>
-        </div>
-    </div>
-          <div class="header clearfix">
-              <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
-              <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
-          </div>
-             
-              <p class='message text-dark'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>            
-
-          </div>
-      </li>
-      `
      }
+
+}else{
+
+
+
+
+  if(messageType == "text"){
+
+
+      return `
+
+     <li class="agent clearfix">
+       <span class="chat-img left clearfix mx-2">
+           <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+       </span>
+       <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+       <div class="chev_ron">
+       <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
+         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+         </svg>
+       </span>
+     </div>
+     <div class="overlay">
+         <div class="overlay-1">
+         <div class="content"  id='popup${uniqueId}'>
+         <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank"><span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+         <a onClick='copyClipboard(this.id)' id='${uniqueId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
+         <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
+         </div>
+         </div>
+     </div>
+    
+         <div class="header clearfix">
+             <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1} </small>
+             <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+         </div>
+           <p class='message text-dark'>
+                   <span id="textMessage${uniqueId}">${message}<span>
+               </p>
+       </div>
+   </li>
+   `
+  } else if(messageType == "video"){
+
+      return `
+
+     <li class="agent clearfix">
+       <span class="chat-img left clearfix mx-2">
+           <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+       </span>
+       <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+       <div class="chev_ron">
+       <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
+         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+         </svg>
+       </span>
+     </div>
+ <div class="overlay">
+     <div class="overlay-1">
+       <div class="content-2"  id='popup${uniqueId}'>
+         <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+         <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
+       </div>
+     </div>
+ </div>
+       <div class="header clearfix">
+           <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+           <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+       </div>
+        
+          <p class='message text-dark'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+
+       </div>
+   </li>
+   `
+  }else if(messageType == "photo"){
+
+      return `
+
+     <li class="agent clearfix">
+       <span class="chat-img left clearfix mx-2">
+           <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+       </span>
+       <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+       <div class="chev_ron">
+       <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
+         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+         </svg>
+       </span>
+     </div>
+ <div class="overlay">
+     <div class="overlay-1">
+       <div class="content-2"  id='popup${uniqueId}'>
+         <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+         <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
+       </div>
+     </div>
+ </div>
+       <div class="header clearfix">
+           <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+           <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+       </div>
+           <p class='message text-dark'><img src="${message}" class="img-responsive w-100"/></p>
+
+       </div>
+   </li>
+   `
+  }else if(messageType == "document"){
+
+      return `
+
+     <li class="agent clearfix">
+       <span class="chat-img left clearfix mx-2">
+           <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+       </span>
+       <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+       <div class="chev_ron">
+       <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
+         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+         </svg>
+       </span>
+     </div>
+ <div class="overlay">
+     <div class="overlay-1">
+       <div class="content-2"  id='popup${uniqueId}'>
+         <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+         <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
+       </div>
+     </div>
+ </div>
+       <div class="header clearfix">
+           <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+           <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+       </div>
+       <p class='message'><a href="${message}">click here to download pdf</a></p>
+
+       </div>
+   </li>
+   `
+  }else{
+
+      return `
+
+     <li class="agent clearfix">
+       <span class="chat-img left clearfix mx-2">
+           <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+       </span>
+       <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+       <div class="chev_ron">
+       <span class="chevron" onclick="togglePopup(this.id)" id="${uniqueId}">
+         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+         </svg>
+       </span>
+     </div>
+ <div class="overlay">
+     <div class="overlay-1">
+       <div class="content-2"  id='popup${uniqueId}'>
+         <div  class="pop"><a href="replyMsg?messageId=${uniqueId}" target="_blank">  <span id="sizedata${uniqueId}"></span> Reply </a> </div> 
+         <a onClick='flagData(this.id)' id='${uniqueId}'><div class="pop2">Flag</div></a>
+       </div>
+     </div>
+ </div>
+       <div class="header clearfix">
+           <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${uniqueId}" target="_blank"> <span id="sizedatan${uniqueId}"></span> Reply </a> </div></span>${stripped1}</small>
+           <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+       </div>
+          
+           <p class='message text-dark'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>            
+
+       </div>
+   </li>
+   `     }
 
    }
 
@@ -1099,50 +1063,48 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
 
 function TogglePopup(e){
-  $("#Popup"+e).toggle()
-}
-
-function togglePopup(e) {
-  $("#popup"+e).toggle()
-}
-
-
-// to close popup outside
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".content").length
-              === 0) {
-      $(".content").hide();
-    }
-});
-
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".content-2").length
-              === 0) {
-      $(".content-2").hide();
-    }
-});
-
-
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".Content").length
-              === 0) {
-      $(".Content").hide();
-    }
-});
-
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".Content-2").length
-              === 0) {
-      $(".Content-2").hide();
-    }
-});
-
+    $("#Popup"+e).toggle()
+  }
+  
+  function togglePopup(e) {
+    $("#popup"+e).toggle()
+  }
 
 function imgError(image) {
     image.onerror = "";
     image.src = "images/userIcon.png";
     return true;
 }
+
+// to close popup outside
+$(document).mouseup(function (e) {
+    if ($(e.target).closest(".content").length
+                === 0) {
+        $(".content").hide();
+      }
+  });
+  
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest(".content-2").length
+                === 0) {
+        $(".content-2").hide();
+      }
+  });
+  
+  
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest(".Content").length
+                === 0) {
+        $(".Content").hide();
+      }
+  });
+  
+  $(document).mouseup(function (e) {
+    if ($(e.target).closest(".Content-2").length
+                === 0) {
+        $(".Content-2").hide();
+      }
+  });
 
 function copyClipboard(e){
   var copyText = document.getElementById("textMessage"+e).innerText;
@@ -1154,61 +1116,94 @@ function copyClipboard(e){
     document.execCommand("copy");
     document.body.removeChild(elem);
     alert("Message Copied !!");                             
-
+                                 
 }
+
 
 
 function flagData(e){
-  var userIds     = document.getElementById('user_id');
-  // console.log(userIds.value);
-  var userNamess = document.getElementById("user_nickname");
- // console.log(userNamess.value);
-  var id=e;
-
-
-     var loggedInValss = userIds.value;
-     console.log("id  " + loggedInValss);
-     var loggedInNamess = userNamess.value;
-     console.log("usernames   " + loggedInNamess);
-
-
-    docRef.doc(id).get().then(function(doc) {
+    var userIds     = document.getElementById('user_id');
+    // console.log(userIds.value);
+    var userNamess = document.getElementById("user_nickname");
+   // console.log(userNamess.value);
+    var id=e;
   
-       console.log(doc.id, " => ", doc.data());
+  
+       var loggedInValss = userIds.value;
+       console.log("id  " + loggedInValss);
+       var loggedInNamess = userNamess.value;
+       console.log("usernames   " + loggedInNamess);
+  
+  
+      docRef.doc(id).get().then(function(doc) {
+    
+         console.log(doc.id, " => ", doc.data());
+  
+          var id = doc.id;
+  
+          var fulldata = doc.data();
+  
+          const cityRef = docRef.doc(id);
+  
+          console.log(doc.data().flag);
+  
+           var txt;
+            if (confirm("Are you sure you want to flag this chat ?")) {
+                if(doc.data().flag == undefined){
+  
+                    const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+                    console.log("if value " + res);
+                    $("li#"+id).css("display","none");
+  
+                  }else{
+  
+                    const fruits = doc.data().flag;
+                    fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
+                      console.log("else value " + JSON.stringify(fruits));
+                    const res = cityRef.update({flag: fruits});
+  
+                     console.log("else value update " + res);
+                     $("li#"+id).css("display","none");
+  
+                  }
+            } else {
+              txt = "You pressed Cancel!";
+            }
+  
+  
+      });
+                       
+  }
+  
+  
+// function flagData(e){
 
-        var id = doc.id;
+//     var messageId = e;
+// const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 
-        var fulldata = doc.data();
+//       const arr2s = docRef.doc(messageId).update({
+//     messageFlag: false
+//     }).then(function(result) {
+//     // here you can use the result of promiseB
+//      alert(result);
+// });
 
-        const cityRef = docRef.doc(id);
-
-        console.log(doc.data().flag);
-
-         var txt;
-          if (confirm("Are you sure you want to flag this chat ?")) {
-              if(doc.data().flag == undefined){
-
-                  const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-                  console.log("if value " + res);
-                  $("li#"+id).css("display","none");
-
-                }else{
-
-                  const fruits = doc.data().flag;
-                  fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
-                    console.log("else value " + JSON.stringify(fruits));
-                  const res = cityRef.update({flag: fruits});
-
-                   console.log("else value update " + res);
-                   $("li#"+id).css("display","none");
-
-                }
-          } else {
-            txt = "You pressed Cancel!";
-          }
+     
 
 
-    });
+// docRef.where("messageId", "==", e)
+// .get()
+// .then(function(querySnapshot) {
+//     querySnapshot.forEach(function(doc) {
+//         // doc.data() is never undefined for query doc snapshots
+//         console.log(doc.id, " => ", doc.data());
+
+
+//     });
+// })
+// .catch(function(error) {
+//     console.log("Error getting documents: ", error);
+// });
+
                      
-}
-
+// }
