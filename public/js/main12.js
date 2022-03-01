@@ -731,14 +731,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -925,7 +925,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter"><span id="sizedata${taskId}"></span> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
@@ -933,7 +933,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
          
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >

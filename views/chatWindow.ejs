@@ -460,7 +460,7 @@
               background-color:#0f2668eb;
               color:white;
               box-sizing: border-box;
-              z-index: 9000;
+              z-index: 100;
               border-radius:3px;
               margin-left: 15px;
               top:15px;    
@@ -477,7 +477,7 @@
               background:#0f2668eb;
               color:white;
               box-sizing: border-box;
-              z-index: 9000;
+              z-index: 100;
               border-radius:3px;
               margin-left: 15px;
               top:15px;    
@@ -540,7 +540,7 @@
               background-color:#0f2668eb;
               color:white;
               box-sizing: border-box;
-              z-index: 9000;
+              z-index: 100;
               border-radius:3px;
               margin-right: 15px;
               top:15px;    
@@ -557,7 +557,7 @@
               background:#0f2668eb;
               color:white;
               box-sizing: border-box;
-              z-index: 9000;
+              z-index: 100;
               border-radius:3px;
               margin-right: 15px;
               top:15px;    
@@ -707,6 +707,30 @@
                     <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a>
                   </div> -->
                 </div>
+
+                <!-- ///////////// -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ////// -->
                 
           </div>
 
