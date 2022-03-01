@@ -840,7 +840,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><a href="${message}">click here to download pdf</a></p>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
               </div>
           </li>
           `
@@ -1027,12 +1027,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
+<<<<<<< HEAD
               <p class='message' style="color:black"><a href="${message}" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
               width="25" height="25"
               viewBox="0 0 172 172"
               style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#000000"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
                ${fName}</a></p>
+=======
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+>>>>>>> cbc85cdeb02734d139e0fd228e74837d8ebe93fb
 
           </div>
       </li>
