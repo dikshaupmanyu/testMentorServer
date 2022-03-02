@@ -108,23 +108,34 @@ function handleCreate(event) {
 
 // popup functions
 function popupCreate(event) {
+   // alert("calling " + JSON.stringify(event));
+     
 
+ var docId     = document.getElementById('btn-input-replyId'+event).value;
+   // alert(docId);
+   // var ids = docId.value;
+   // docRef.doc(ids).get().then(function(doc) {
+  
+   //     console.log(doc.id, " => ", doc.data());
+
+   //      });
   var fullName   = document.getElementById('user_nickname');
   // alert(fullName.value);
-   var message    = document.getElementById('btn-input');
+   var message    = document.getElementById('btn-input-replymsg'+event);
+   // alert(message.value);
    var userId     = document.getElementById('user_id');
    // alert(userId.value);
-   var docId     = document.getElementById('msgreplyId');
    
-   event.preventDefault();
+    
    var loggedInVal = userId.value;
    // alert(loggedInVal);
    var loggedInName = fullName.value;
    // alert(loggedInName);
-   var uniqueDocId = docId.value;
+   var uniqueDocId = docId;
    // alert(uniqueDocId);
 
    const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/"); 
+   // alert(docReply);
    
   if(message.value != ""){
 
@@ -143,18 +154,27 @@ function popupCreate(event) {
     return docReply
       .add(taskR)
       .then((ref) => {
-        console.log(ref.id);
+        // console.log(ref);
+     // console.log("div#exampleModalCenter"+uniqueDocId);
+
+     $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
+
         taskR.id = ref.id;
         // fullName.value = '';
         message.value  = '';
-        console.log(message.value)
+        // console.log(message.value)
         // date.value = '';
         // return createTask(task);
       });
 
+  
    } else {
     $(".successmsg").html('<span>Message not empty.</span>');
    }    
+
+  
+
+   event.preventDefault();
  
 }
 
@@ -753,7 +773,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
@@ -764,9 +784,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -811,7 +832,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                   <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -821,9 +843,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -868,7 +891,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -878,15 +902,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
-                    </form>
+                  </form>
                   </div>
                 </div>
           `
@@ -930,7 +955,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -940,15 +966,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
-                    </form>
+                  </form>
                   </div>
                 </div>
           `
@@ -991,7 +1018,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1001,15 +1029,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
-                    </form>
+                  </form>
                   </div>
                 </div>
           `
@@ -1064,7 +1093,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                   <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
@@ -1075,15 +1104,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit" id="">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
-                    </form>
+                  </form>
                   </div>
                 </div>
       `
@@ -1122,7 +1152,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1132,9 +1163,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1178,7 +1210,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1188,15 +1221,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
-                    </form>
+                  </form>
                   </div>
                 </div>
       `
@@ -1238,7 +1272,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                  <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1248,15 +1283,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
-                    </form>
+                  </form>
                   </div>
                 </div>
       `
@@ -1300,7 +1336,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form onsubmit="return popupCreate(event)">
+                   <form id="${taskId}">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1310,9 +1347,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
