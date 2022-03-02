@@ -106,60 +106,61 @@ function handleCreate(event) {
 
 
 
-// function handleCreateReply(event) {
+// popup functions
+function popupCreate(event) {
 
-//   // alert("reply select");
+  var fullName   = document.getElementById('user_nickname');
+  // alert(fullName.value);
+   var message    = document.getElementById('btn-input');
+   var userId     = document.getElementById('user_id');
+   // alert(userId.value);
+   var docId     = document.getElementById('msgreplyId');
+   
+   event.preventDefault();
+   var loggedInVal = userId.value;
+   // alert(loggedInVal);
+   var loggedInName = fullName.value;
+   // alert(loggedInName);
+   var uniqueDocId = docId.value;
+   // alert(uniqueDocId);
 
-// var fullName   = document.getElementById('user_nickname');
-// // alert(fullName.value);
-// var message    = document.getElementById('btn-input-msg');
-// var userId     = document.getElementById('user_id');
-// // alert(userId.value);
-// var docId     = document.getElementById('uniqueReplyId');
+   const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/"); 
+   
+  if(message.value != ""){
 
-//    event.preventDefault();
+    let taskR = {
+    userName: loggedInName,
+    userId : loggedInVal,
+    message: message.value,
+    messageId : loggedInVal + "_"+  Date.now(),
+    messageType : "text",
+    createdDate :  Date.now(),
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    messageSource : "Web"
+    // status: "incomplete"
+    };
+
+    return docReply
+      .add(taskR)
+      .then((ref) => {
+        console.log(ref.id);
+        taskR.id = ref.id;
+        // fullName.value = '';
+        message.value  = '';
+        console.log(message.value)
+        // date.value = '';
+        // return createTask(task);
+      });
+
+   } else {
+    $(".successmsg").html('<span>Message not empty.</span>');
+   }    
  
-//    var loggedInVal = userId.value;
-//    // alert(loggedInVal);
-//    var loggedInName = fullName.value;
-//    // alert(loggedInName);
-//    var uniqueDocId = docId.value;
-//    // alert(uniqueDocId);
+}
 
-//    const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/");
 
-       
-//    if(message.value != ""){
 
-//     let taskreply = {
-//     userName: loggedInName,
-//     userId : loggedInVal,
-//     message: message.value,
-//     messageId : loggedInVal + "_"+  Date.now(),
-//     messageType : "text",
-//     createdDate :  Date.now(),
-//     profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-//     messageSource : "Web"
-//     // status: "incomplete"
-//   };
 
-//   // alert(JSON.stringify(task));
-//   return docRefreply
-//     .add(taskreply)
-//     .then((refs) => {
-//       taskreply.id = refs.id;
-//       // fullName.value = '';
-//       message.value  = '';
-//       // date.value = '';
-//       // return createTask(task);
-//     });
-
-//    }else{
-//    // alert("Message not empty");
-//     $(".successmsg").html('<span>Message not empty.</span>');
-//    }    
- 
-// }
 // function handleStatusUpdate(task) {
 //   //
 // }
@@ -752,6 +753,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -769,6 +772,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                  </form>
                   </div>
                 </div>
           `
@@ -807,6 +811,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -824,6 +829,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                  </form>
                   </div>
                 </div>
           `
@@ -862,6 +868,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -879,6 +886,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
           `
@@ -922,6 +930,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -939,6 +948,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
           `
@@ -981,6 +991,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -998,6 +1009,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
           `
@@ -1052,6 +1064,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
+                  
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1061,14 +1075,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
-                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <input id="btn-input" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary" type="submit" id="">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
       `
@@ -1107,6 +1122,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1124,6 +1140,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                  </form>
                   </div>
                 </div>
       `
@@ -1161,6 +1178,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1178,6 +1196,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
       `
@@ -1219,6 +1238,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1236,6 +1256,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
       `
@@ -1279,6 +1300,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form onsubmit="return popupCreate(event)">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
@@ -1296,6 +1318,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                       </div>
                     </div>
+                  </form>
                   </div>
                 </div>
       `
