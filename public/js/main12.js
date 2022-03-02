@@ -246,44 +246,8 @@ $("input[type='file']").on('change', function(e) {
 
     });
 
-  // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
- 
-  // }else if(file.type == "document/doc" || "document/docx" || "document/html" || "document/odt" || "document/pdf" || "document/ppt" || "document/txt"){
-  }else if(file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword" || file.type == "application/ms-powerpoint" || file.type == "application/plain" || file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac"){
-
-
-    firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
-      return snapshot.ref.getDownloadURL()
-   }).then(url => {
-     console.log("Firebase storage image uploaded : ", url);
-       
-       
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "document",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
-
-
-    });
-
-  } else {
+   }
+  else if (file.type == "image/jpeg"|| file.type == "image/png" || file.type == "image/gif" || file.type == "image/jpg" || file.type == "image/webp") {
 
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
@@ -291,7 +255,7 @@ $("input[type='file']").on('change', function(e) {
    }).then(url => {
      console.log("Firebase storage image uploaded : ", url);
        
-       
+   
   let task = {
     userName: loggedInName,
     userId : loggedInVal,
@@ -316,8 +280,49 @@ $("input[type='file']").on('change', function(e) {
 
 
     });
-
   }
+else{
+
+
+  firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
+    return snapshot.ref.getDownloadURL()
+ }).then(url => {
+   console.log("Firebase storage image uploaded : ", url);
+     
+     
+let task = {
+  userName: loggedInName,
+  userId : loggedInVal,
+  message: url,
+  messageId : loggedInVal + "_"+ Date.now(),
+  messageType : "audio",
+  createdDate : Date.now(),
+  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+  // status: "incomplete"
+  messageSource : "Web"
+};
+return docRef
+  .add(task)
+  .then((ref) => {
+    console.log(ref.id);
+    task.id = ref.id;
+    // fullName.value = '';
+    message.value  = '';
+    // date.value = '';
+    // return createTask(task);
+  });
+
+
+  });
+
+}
+
+ 
+  // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
+ 
+  // }else if(file.type == "document/doc" || "document/docx" || "document/html" || "document/odt" || "document/pdf" || "document/ppt" || "document/txt"){
+
+    // (file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword" || file.type == "application/ms-powerpoint" || file.type == "application/plain" || file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac")
 
 // return firebase
 //     .app()
@@ -351,7 +356,7 @@ $("input[type='file']").on('change', function(e) {
 // });
 
 
- 
+
 });
 
 function handleDelete(id) {
@@ -752,7 +757,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -764,7 +769,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                   <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
-                      <span id='divClipboard${taskId}'>${message}<span>
+                      <span id='textMessage${taskId}'>${message}<span>
 
                   </p>
                   
@@ -817,7 +822,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -876,7 +881,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -935,7 +940,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -998,7 +1003,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
-                          <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                          <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
                           <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                         </div>
                       </div>
@@ -1071,7 +1076,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
@@ -1136,7 +1141,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
-                <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
                 <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
             </div>
@@ -1195,7 +1200,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1253,7 +1258,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1315,7 +1320,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1367,6 +1372,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
  
 };
 
+$("#submit").click(function(){
+  $(".model-content").css("display", "none")
+})
 
 
 // function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {

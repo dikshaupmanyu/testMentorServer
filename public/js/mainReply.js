@@ -69,6 +69,7 @@ var docId     = document.getElementById('msgreplyId');
       taskreply.id = refs.id;
       // fullName.value = '';
       message.value  = '';
+      console.log(message.value)
       // date.value = '';
       // return createTask(task);
     });
