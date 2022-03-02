@@ -731,14 +731,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -750,6 +750,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
              
           </li>
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           `
 
         }else if(messageType == "photo"){
@@ -771,7 +792,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -784,6 +805,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/></p>
               </div>
           </li>
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           `
 
         }else if(messageType == "video"){
@@ -805,7 +847,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -818,6 +860,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
               </div>
           </li>
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           `
         
         }else if(messageType == "document"){
@@ -839,7 +902,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+                      <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -857,6 +920,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    ${fName}</a></p>
               </div>
           </li>
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           `
         } else {
 
@@ -877,7 +961,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
-                          <div  class="Pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                          <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                           <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                         </div>
                       </div>
@@ -895,6 +979,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
                    ${fName}</a></p>
           </li>
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           `
 
         }
@@ -925,7 +1030,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter"><span id="sizedata${taskId}"></span> Reply </a> </div> 
+              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"><span id="sizedata${taskId}"></span> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
@@ -933,7 +1038,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
          
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >
@@ -945,6 +1050,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           
           
       </li>
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       `
      } else if(messageType == "video"){
 
@@ -965,7 +1091,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
-                <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
                 <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
               </div>
             </div>
@@ -979,6 +1105,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
           </div>
       </li>
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       `
      }else if(messageType == "photo"){
 
@@ -999,7 +1146,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1012,6 +1159,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
           </div>
       </li>
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       `
      }else if(messageType == "document"){
 
@@ -1032,7 +1200,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1049,6 +1217,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    ${fName}</a></p>
           </div>
       </li>
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       `
      }else{
 
@@ -1069,7 +1258,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" id='finalVal${taskId}'><a href="replyMsg?messageId=${taskId}" target="_blank">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
+                    <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  <span id="sizedata${taskId}"></span> Reply </a> </div> 
                     <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1088,6 +1277,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
           </div>
       </li>
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <input id="btn-input" type="text" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       `
      }
 
