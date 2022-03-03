@@ -186,13 +186,10 @@ function popupCreate(event) {
 // }
 
 $('i.fa.fa-paperclip.attachment.btn.btn-primary').click(function () {
-   // alert("calll");
+  //  alert("calll");
   $("input[type='file']").trigger('click');
    // alert("data");
 });
-
- 
-   
 
 $("input[type='file']").on('change', function(e) {
   var val = $(this).val();
@@ -324,38 +321,146 @@ return docRef
 
     // (file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword" || file.type == "application/ms-powerpoint" || file.type == "application/plain" || file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac")
 
-// return firebase
-//     .app()
-//     .storage()
-//     .ref('message_images')
-//     .child(file.name)
-//     .put(file)
-//     .then(snapshot => {
-//       // snapshot represents the uploaded file
-//       console.log(snapshot);
-//     })
-//     .getDownloadURL()
-//     .then(imgUrl => {
-//       console.log(imgUrl);
-//     });
-
-// var remoteimageurl = e.target.files[0]
-// var filename = file.name
-
-// fetch(remoteimageurl).then(res => {
-//   return res.blob();
-// }).then(blob => {
-//     //uploading blob to firebase storage
-//   firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
-//     return snapshot.ref.getDownloadURL()
-//  }).then(url => {
-//    console.log("Firebase storage image uploaded : ", url);
-//   })
-// }).catch(error => {
-//   console.error(error);
-// });
+});
 
 
+
+$('i.fa.fa-paperclip.attachments.btn.btn-primary').click(function () {
+  alert("calll");
+ $("input[type='file']").trigger('click');
+  alert("data");
+});
+
+// for reply
+$("input[type='file']").on('change', function(e) {
+  var val = $(this).val();
+  // alert(val);
+  // $(this).siblings('span').text(val);
+  // $('#btn-input').text(val);
+
+  $(this).siblings('input#btn-input-replymsg').text(val);
+
+  const file = e.target.files[0];
+   console.log(file);
+ console.log(file.name);
+   console.log(file.type);
+
+  var loggedInVal = user_id.value;
+   var loggedInName = user_nickname.value;
+  // alert(loggedInName);
+ 
+  // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
+   
+   if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv"|| file.type == "video/mkv"){
+
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+      return snapshot.ref.getDownloadURL()
+   }).then(url => {
+     console.log("Firebase storage image uploaded : ", url);
+       
+       
+  let task = {
+    userName: loggedInName,
+    userId : loggedInVal,
+    message: url,
+    messageId : loggedInVal + "_"+ Date.now(),
+    messageType : "video",
+    createdDate : Date.now(),
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    // status: "incomplete"
+    messageSource : "Web"
+  };
+  return docRef
+    .add(task)
+    .then((ref) => {
+      console.log(ref.id);
+      task.id = ref.id;
+      // fullName.value = '';
+      message.value  = '';
+      // date.value = '';
+      // return createTask(task);
+    });
+
+
+    });
+
+   }
+  else if (file.type == "image/jpeg"|| file.type == "image/png" || file.type == "image/gif" || file.type == "image/jpg" || file.type == "image/webp") {
+
+
+    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+      return snapshot.ref.getDownloadURL()
+   }).then(url => {
+     console.log("Firebase storage image uploaded : ", url);
+       
+   
+  let task = {
+    userName: loggedInName,
+    userId : loggedInVal,
+    message: url,
+    messageId : loggedInVal + "_"+ Date.now(),
+    messageType : "photo",
+    createdDate : Date.now(),
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    // status: "incomplete"
+    messageSource : "Web"
+  };
+  return docRef
+    .add(task)
+    .then((ref) => {
+      console.log(ref.id);
+      task.id = ref.id;
+      // fullName.value = '';
+      message.value  = '';
+      // date.value = '';
+      // return createTask(task);
+    });
+
+
+    });
+  }
+else{
+
+
+  firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
+    return snapshot.ref.getDownloadURL()
+ }).then(url => {
+   console.log("Firebase storage image uploaded : ", url);
+     
+     
+let task = {
+  userName: loggedInName,
+  userId : loggedInVal,
+  message: url,
+  messageId : loggedInVal + "_"+ Date.now(),
+  messageType : "audio",
+  createdDate : Date.now(),
+  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+  // status: "incomplete"
+  messageSource : "Web"
+};
+return docRef
+  .add(task)
+  .then((ref) => {
+    console.log(ref.id);
+    task.id = ref.id;
+    // fullName.value = '';
+    message.value  = '';
+    // date.value = '';
+    // return createTask(task);
+  });
+
+
+  });
+
+}
+
+ 
+  // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
+ 
+  // }else if(file.type == "document/doc" || "document/docx" || "document/html" || "document/odt" || "document/pdf" || "document/ppt" || "document/txt"){
+
+    // (file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "application/doc" || file.type == "application/docx" || file.type == "application/html" || file.type == "application/odt" || file.type == "application/pdf" || file.type == "application/ppt" || file.type == "application/txt" || file.type == "application/ms-doc" || file.type == "application/msword" || file.type == "application/ms-powerpoint" || file.type == "application/plain" || file.type == "audio/mpeg" || file.type == "audio/mp3" || file.type == "audio/wav" || file.type == "audio/aac" || file.type == "audio/m4a" || file.type == "audio/flac")
 
 });
 
@@ -792,6 +897,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
+                        <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
@@ -851,6 +962,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
+                        <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
@@ -909,6 +1026,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -974,6 +1097,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
+                        <input type="file" style="display: none;" />
+                       
+                           <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                     
+                        </span>
+                        <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
@@ -1036,6 +1165,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1112,6 +1247,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
+                        <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
@@ -1171,6 +1312,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
                         <span class="input-group-btn">
+                        <input type="file" style="display: none;" />
+                       
+                           <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                     
+                        </span>
+                        <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
@@ -1226,8 +1373,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                       
                       <div class="modal-footer">
+                      
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1290,6 +1444,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1354,6 +1514,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                             <input type="file" style="display: none;" />
+                            
+                                <i class="fa fa-paperclip attachments btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
+                          
+                        </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
