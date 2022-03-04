@@ -1193,7 +1193,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="content"  id='popup${taskId}'>
               <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${taskId}'  data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
+              <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
               </div>
               </div>
           </div>
@@ -1240,9 +1240,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenterFlag${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div>
@@ -1251,10 +1249,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                        <div class="Flag">
                           <div class="reasonFlag">
-                          <a><div class="flag">Offensive</div></a>
-                          <a><div class="flag">Irrelaavent</div></a>
-                          <a><div class="flag">Other</div></a>
-                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Offensive")' id='${taskId}' value="Offensive">Offensive</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Irrevalent")' id='${taskId}' value="Irrevalent">Irrelaavent</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Other")' id='${taskId}' value="Other">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancel</div></a>
                           </div>
                       </div>
                     
@@ -1283,7 +1281,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
                 <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
-                <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
+                <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
               </div>
             </div>
         </div>
@@ -1326,8 +1324,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal fade" id="exampleModalCenterFlag${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div>
@@ -1336,10 +1333,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                        <div class="Flag">
                           <div class="reasonFlag">
-                          <a><div class="flag">Offensive</div></a>
-                          <a><div class="flag">Irrelaavent</div></a>
-                          <a><div class="flag">Other</div></a>
-                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Offensive")' id='${taskId}' value="Offensive">Offensive</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Irrevalent")' id='${taskId}' value="Irrevalent">Irrelaavent</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Other")' id='${taskId}' value="Other">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancel</div></a>
                           </div>
                       </div>
                     
@@ -1367,7 +1364,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
+                    <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
@@ -1410,8 +1407,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenterFlag${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div>
@@ -1420,10 +1416,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                        <div class="Flag">
                           <div class="reasonFlag">
-                          <a><div class="flag">Offensive</div></a>
-                          <a><div class="flag">Irrelaavent</div></a>
-                          <a><div class="flag">Other</div></a>
-                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Offensive")' id='${taskId}' value="Offensive">Offensive</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Irrevalent")' id='${taskId}' value="Irrevalent">Irrelaavent</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Other")' id='${taskId}' value="Other">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancel</div></a>
                           </div>
                       </div>
                     
@@ -1451,7 +1447,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
+                    <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
@@ -1497,8 +1493,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenterFlag${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div>
@@ -1507,10 +1502,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                        <div class="Flag">
                           <div class="reasonFlag">
-                          <a><div class="flag">Offensive</div></a>
-                          <a><div class="flag">Irrelaavent</div></a>
-                          <a><div class="flag">Other</div></a>
-                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Offensive")' id='${taskId}' value="Offensive">Offensive</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Irrevalent")' id='${taskId}' value="Irrevalent">Irrelaavent</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Other")' id='${taskId}' value="Other">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancel</div></a>
                           </div>
                       </div>
                     
@@ -1538,7 +1533,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
+                    <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
@@ -1586,8 +1581,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
                 </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenterFlag${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div>
@@ -1596,10 +1590,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                        <div class="Flag">
                           <div class="reasonFlag">
-                          <a><div class="flag">Offensive</div></a>
-                          <a><div class="flag">Irrelaavent</div></a>
-                          <a><div class="flag">Other</div></a>
-                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Offensive")' id='${taskId}' value="Offensive">Offensive</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Irrevalent")' id='${taskId}' value="Irrevalent">Irrelaavent</div></a>
+                          <a><div class="flag" onClick='flagData(this.id ,"Other")' id='${taskId}' value="Other">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancel</div></a>
                           </div>
                       </div>
                     
@@ -1798,77 +1792,77 @@ function copyClipboard(e){
 
 }
 
-// function flagData(e){
-//   var userIds     = document.getElementById('user_id');
-//   // console.log(userIds.value);
-//   var userNamess = document.getElementById("user_nickname");
-//  // console.log(userNamess.value);
-//   var id=e;
-
-
-//      var loggedInValss = userIds.value;
-//      console.log("id  " + loggedInValss);
-//      var loggedInNamess = userNamess.value;
-//      console.log("usernames   " + loggedInNamess);
+function flagData(e,f){
+  // alert(e);
+  // alert(f);
+  var userIds     = document.getElementById('user_id');
+  // console.log(userIds.value);
+  var userNamess = document.getElementById("user_nickname");
+ // console.log(userNamess.value);
+  var id=e;
+     var loggedInValss = userIds.value;
+     console.log("id  " + loggedInValss);
+     var loggedInNamess = userNamess.value;
+     console.log("usernames   " + loggedInNamess);
 
 
  
 
 
-//     docRef.doc(id).get().then(function(doc) {
+    docRef.doc(id).get().then(function(doc) {
   
-//        console.log(doc.id, " => ", doc.data());
+       console.log(doc.id, " => ", doc.data());
 
-//         var id = doc.id;
+        var id = doc.id;
 
-//         var fulldata = doc.data();
+        var fulldata = doc.data();
 
-//         const cityRef = docRef.doc(id);
+        const cityRef = docRef.doc(id);
 
-//         console.log(doc.data().flag);
+        console.log(doc.data().flag);
 
-//          var txt;
-//           if (confirm("This comment has been sent for review to the chat room moderator. Thank you.")) {
-//               if(doc.data().flag == undefined){
+         var txt;
+          if (confirm("This comment has been sent for review to the chat room moderator. Thank you.")) {
+              if(doc.data().flag == undefined){
 
-//                   const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-//                   console.log("if value " + res);
-//                   $("li#"+id).css("display","none");
+                  const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : f, messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+                  console.log("if value " + res);
+                  $("li#"+id).css("display","none");
 
-//                 }else{
+                }else{
 
-//                   const fruits = doc.data().flag;
-//                   fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
-//                     console.log("else value " + JSON.stringify(fruits));
-//                   const res = cityRef.update({flag: fruits});
+                  const fruits = doc.data().flag;
+                  fruits.push({messageFlag : true, messageFlagMsg : f, messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
+                    console.log("else value " + JSON.stringify(fruits));
+                  const res = cityRef.update({flag: fruits});
 
-//                    console.log("else value update " + res);
-//                    $("li#"+id).css("display","none");
+                   console.log("else value update " + res);
+                   $("li#"+id).css("display","none");
 
-//                 }
-//           } else {
-//             txt = "You pressed Cancel!";
-//           }
+                }
+          } else {
+            txt = "You pressed Cancel!";
+          }
 
       
 
 
 
-//       // if(doc.data().flag.messageFlagedUserId == loggedInValss && doc.data().flag.messageFlagedUserName == loggedInNamess){
+      // if(doc.data().flag.messageFlagedUserId == loggedInValss && doc.data().flag.messageFlagedUserName == loggedInNamess){
 
-//       //   const res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-//       //   console.log("if value " + res);
+      //   const res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+      //   console.log("if value " + res);
 
-//       // }else{
+      // }else{
 
-//       //  res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-//       //   console.log("else value " + res);
+      //  res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+      //   console.log("else value " + res);
 
-//       // }
+      // }
 
-//     });
+    });
                      
-// }
+ }
 
 ////////////////////////////////////////////////////////
 
