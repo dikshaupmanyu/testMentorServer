@@ -100,6 +100,7 @@ function handleCreate(event) {
 
    } else {
     $(".successmsg").html('<span>Message not empty.</span>');
+    setTimeout(function(){$(".successmsg").empty()}, 5000);
    }    
  
 }
@@ -238,6 +239,8 @@ else{
 
   
   }
+  $(".successmsg").html('<span>Uploading File....</span>');
+  setTimeout(function(){$(".successmsg").empty()}, 8000);
 }
 
 
@@ -305,6 +308,7 @@ function popupCreate(event) {
   
    } else {
     $(".successmsg").html('<span>Message not empty.</span>');
+    setTimeout(function(){$(".successmsg").empty()}, 5000);
    }    
 
   
@@ -439,7 +443,8 @@ $("#imageUploaddata").on('change', function(e) {
 
   }
 
- 
+  $(".successmsg").html('<span style="left:-999em">Uploading File....</span>');
+  setTimeout(function(){$(".successmsg").empty()}, 5000);
   // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
  
   // }else if(file.type == "document/doc" || "document/docx" || "document/html" || "document/odt" || "document/pdf" || "document/ppt" || "document/txt"){
