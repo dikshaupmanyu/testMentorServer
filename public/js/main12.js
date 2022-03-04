@@ -864,7 +864,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 </div>
             </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -890,7 +890,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                             <input type="file" class="fa fa-paperclip attachment btn btn-primary" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -932,7 +932,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
               </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                        
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -953,7 +953,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
                         <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -995,7 +995,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
               </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank">  Replies : <span id="sizedatan${taskId}"></span> </a> </div></span>${stripped1}</small>
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -1016,7 +1016,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                             <input type="file" class="fa fa-paperclip attachment btn btn-primary" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1058,7 +1058,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
               </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -1084,7 +1084,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1125,7 +1125,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                   </div>
                   <div class="header clearfix">
-                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -1151,7 +1151,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1204,7 +1204,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
          
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1} </small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1} </small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >
@@ -1230,7 +1230,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1245,6 +1245,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
+
+              
       `
      } else if(messageType == "video"){
 
@@ -1271,7 +1273,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             </div>
         </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
            
@@ -1293,7 +1295,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."   autocomplete="off"/>
                         <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1334,7 +1336,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 </div>
             </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span> </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
@@ -1356,7 +1358,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                       
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1397,7 +1399,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 </div>
             </div>
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"><span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
                <p class='message'><a href="${message}" target="_blank">
@@ -1422,7 +1424,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1464,7 +1466,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             </div>
 
               <div class="header clearfix">
-                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> <span id="sizedatan${taskId}"></span> Reply </a> </div></span>${stripped1}</small>
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
@@ -1490,7 +1492,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." />
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
                          <span class="input-group-btn">
                             <input class="fa fa-paperclip attachment btn btn-primary" type="file" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                              
@@ -1768,6 +1770,8 @@ function flagData(e){
     });
                      
 }
+
+////////////////////////////////////////////////////////
 
 // $(document).ready(function () {
 //   $(".agent clearfix").click(function () {
