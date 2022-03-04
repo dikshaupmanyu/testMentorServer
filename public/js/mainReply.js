@@ -294,6 +294,21 @@ $("input[type='file']").on('change', function(e) {
  
 });
 
+function handleDelete(id) {
+  var txt;
+        if (confirm("Are you sure you want to delete this chat ?")) {
+           return docRef
+          .doc(id)
+          .delete()
+          .then(() => document.getElementById(id).remove());
+        } else {
+          txt = "You pressed Cancel!";
+        }
+
+}
+
+
+
 // Firebase functions
 
 
@@ -329,7 +344,7 @@ $("input[type='file']").on('change', function(e) {
 }
 
 
-function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName) {
+function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId) {
 
 
                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
@@ -393,6 +408,20 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+              <div class="Overlay-1">
+                <div class="Content"  id='Popup${docId}'>
+                  <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                </div>
+              </div>
+            </div>
                   <div class="header clearfix">
                       <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
@@ -413,6 +442,20 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
@@ -431,6 +474,20 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
@@ -448,6 +505,20 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
@@ -466,6 +537,20 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
                   <div class="header clearfix">
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
@@ -579,6 +664,8 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
  
 };
 
+
+
 function imgError(image) {
     image.onerror = "";
     image.src = "images/userIcon.png";
@@ -586,3 +673,7 @@ function imgError(image) {
 }
 
 });
+
+function TogglePopup(e) {
+  $("#Popup"+e).toggle()
+}
