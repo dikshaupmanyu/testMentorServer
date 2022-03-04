@@ -315,18 +315,13 @@ function popupCreate(event) {
 
 
 
-
-// function handleStatusUpdate(task) {
-//   //
-// }
-
 $('i.fa.fa-paperclip.attachment.btn.btn-primary').click(function () {
-  //  alert("calll");
-  $("input[type='file']").trigger('click');
+   // alert("calll");
+  $("#imageUploaddata").trigger('click');
    // alert("data");
 });
 
-$("input[type='file']").on('change', function(e) {
+$("#imageUploaddata").on('change', function(e) {
   var val = $(this).val();
   // alert(val);
   // $(this).siblings('span').text(val);
@@ -334,120 +329,115 @@ $("input[type='file']").on('change', function(e) {
 
   $(this).siblings('input#btn-input').text(val);
 
-  const file = e.target.files[0];
+   const file = e.target.files[0];
    console.log(file);
- console.log(file.name);
+   console.log(file.name);
    console.log(file.type);
 
-  var loggedInVal = user_id.value;
+   var loggedInVal = user_id.value;
    var loggedInName = user_nickname.value;
-  // alert(loggedInName);
- 
-  // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
-   
-   if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv"|| file.type == "video/mkv"){
+  
+  if(file.type == "video/mp4" || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv"|| file.type == "video/mkv"){
 
     firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+      return snapshot.ref.getDownloadURL()
+      }).then(url => {
+     console.log("Firebase storage image uploaded : ", url);
+       
+       
+    let task = {
+      userName: loggedInName,
+      userId : loggedInVal,
+      message: url,
+      messageId : loggedInVal + "_"+ Date.now(),
+      messageType : "video",
+      createdDate : Date.now(),
+      profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+      // status: "incomplete"
+      messageSource : "Web"
+    };
+    return docRef
+      .add(task)
+      .then((ref) => {
+        console.log(ref.id);
+        task.id = ref.id;
+        // fullName.value = '';
+        message.value  = '';
+        // date.value = '';
+        // return createTask(task);
+      });
+
+
+      });
+
+   } else if (file.type == "image/jpeg"|| file.type == "image/png" || file.type == "image/gif" || file.type == "image/jpg" || file.type == "image/webp") {
+
+
+        firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
+          return snapshot.ref.getDownloadURL()
+       }).then(url => {
+         console.log("Firebase storage image uploaded : ", url);
+           
+       
+      let task = {
+        userName: loggedInName,
+        userId : loggedInVal,
+        message: url,
+        messageId : loggedInVal + "_"+ Date.now(),
+        messageType : "photo",
+        createdDate : Date.now(),
+        profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+        // status: "incomplete"
+        messageSource : "Web"
+      };
+      return docRef
+        .add(task)
+        .then((ref) => {
+          console.log(ref.id);
+          task.id = ref.id;
+          // fullName.value = '';
+          message.value  = '';
+          // date.value = '';
+          // return createTask(task);
+        });
+
+
+        });
+  } else {
+
+
+    firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
       return snapshot.ref.getDownloadURL()
    }).then(url => {
      console.log("Firebase storage image uploaded : ", url);
        
        
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "video",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
+    let task = {
+      userName: loggedInName,
+      userId : loggedInVal,
+      message: url,
+      messageId : loggedInVal + "_"+ Date.now(),
+      messageType : "audio",
+      createdDate : Date.now(),
+      profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+      // status: "incomplete"
+      messageSource : "Web"
+    };
+    return docRef
+      .add(task)
+      .then((ref) => {
+        console.log(ref.id);
+        task.id = ref.id;
+        // fullName.value = '';
+        message.value  = '';
+        // date.value = '';
+        // return createTask(task);
+      });
 
 
     });
 
-   }
-  else if (file.type == "image/jpeg"|| file.type == "image/png" || file.type == "image/gif" || file.type == "image/jpg" || file.type == "image/webp") {
-
-
-    firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-      return snapshot.ref.getDownloadURL()
-   }).then(url => {
-     console.log("Firebase storage image uploaded : ", url);
-       
-   
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "photo",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
-
-
-    });
   }
-else{
-
-
-  firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-     
-     
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "audio",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
-    });
-
-
-  });
-
-}
 
  
   // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
