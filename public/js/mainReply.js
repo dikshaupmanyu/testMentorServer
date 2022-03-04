@@ -47,6 +47,7 @@ var docId     = document.getElementById('msgreplyId');
 
    const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/");
 
+   const docRef = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/");
        
    if(message.value != ""){
 
@@ -259,53 +260,10 @@ $("input[type='file']").on('change', function(e) {
     });
 
   }
-// return firebase
-//     .app()
-//     .storage()
-//     .ref('message_images')
-//     .child(file.name)
-//     .put(file)
-//     // .then(snapshot => {
-//     //   // snapshot represents the uploaded file
-//     //   console.log(snapshot);
-//     // })
-//     .getDownloadURL()
-//     .then(imgUrl => {
-//       console.log(imgUrl);
-//     });
-
-// var remoteimageurl = e.target.files[0]
-// var filename = file.name
-
-// fetch(remoteimageurl).then(res => {
-//   return res.blob();
-// }).then(blob => {
-//     //uploading blob to firebase storage
-//   firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
-//     return snapshot.ref.getDownloadURL()
-//  }).then(url => {
-//    console.log("Firebase storage image uploaded : ", url);
-//   })
-// }).catch(error => {
-//   console.error(error);
-// });
-
 
  
 });
 
-function handleDelete(id) {
-  var txt;
-        if (confirm("Are you sure you want to delete this chat ?")) {
-           return docRef
-          .doc(id)
-          .delete()
-          .then(() => document.getElementById(id).remove());
-        } else {
-          txt = "You pressed Cancel!";
-        }
-
-}
 
 
 
@@ -321,23 +279,31 @@ function handleDelete(id) {
       const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
     
      docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
+      if(snapshot.size == 0){
+          const elemreply = document.createElement("li");
+                elemreply.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto;'><h2 class='text-center'><b>No reply yet</b></h2><br><p class='text-center'>Start the conversation</p>";
+                tasksDOMReply.append(elemreply);
+      }else{
         snapshot.docChanges().forEach(function(change) {
-            console.log(JSON.stringify(change.doc.data()));
+            // alert(change);
             if (change.type === "added") {
-              const tasksDOMReply = document.getElementById("tasksreply");
+                const tasksDOMReply = document.getElementById("tasksreply");
                 var taskreply = change.doc.data();
-                    var loggedInVal = document.getElementById('user_id').value;
-                    var loggedInName = document.getElementById('user_nickname').value;
-                    const elemreply = document.createElement("li");
-                    elemreply.id = taskreply.messageId;
-                    elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName);
-                    tasksDOMReply.append(elemreply);
+                var taskId = change.doc.id;
+                var loggedInVal = document.getElementById('user_id').value;
+                var loggedInName = document.getElementById('user_nickname').value;
+                const elemreply = document.createElement("li");
+                elemreply.id = change.doc.id;
+                elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId);
+                tasksDOMReply.append(elemreply);
 
-                      $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
+                $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
 
             }
 
         });
+      }
+        
     });
 
 
@@ -418,7 +384,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
               <div class="Overlay-1">
                 <div class="Content"  id='Popup${docId}'>
-                  <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                 </div>
               </div>
             </div>
@@ -452,7 +418,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -484,7 +450,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -515,7 +481,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -547,7 +513,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onClick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -666,14 +632,38 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
 
 
 
-function imgError(image) {
-    image.onerror = "";
-    image.src = "images/userIcon.png";
-    return true;
-}
+
+
+
 
 });
 
 function TogglePopup(e) {
   $("#Popup"+e).toggle()
 }
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "images/userIcon.png";
+    return true;
+}
+
+
+function handleDelete(e) {
+  // alert(e);
+  var url_string = window.location.href; 
+  var urls = new URL(url_string);
+  var docId = urls.searchParams.get("messageId");
+      const docRefs = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
+        var txt;
+        if (confirm("Are you sure you want to delete this chat ?")) {
+           return docRefs
+          .doc(e)
+          .delete()
+          .then(() => document.getElementById(e).remove());
+        } else {
+          txt = "You pressed Cancel!";
+        }    
+
+}
+
