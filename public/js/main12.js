@@ -1278,7 +1278,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
                 <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
-                <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
+                <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
               </div>
             </div>
         </div>
@@ -1320,6 +1320,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div>
+                        <h5 class="header-flag" id="exampleModalLongTitle">Reason For Flag</h5>
+                      </div>
+
+                       <div class="Flag">
+                          <div class="reasonFlag">
+                          <a><div class="flag">Offensive</div></a>
+                          <a><div class="flag">Irrelaavent</div></a>
+                          <a><div class="flag">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          </div>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
       `
      }else if(messageType == "photo"){
 
@@ -1341,7 +1362,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
+                    <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
@@ -1383,6 +1404,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div>
+                        <h5 class="header-flag" id="exampleModalLongTitle">Reason For Flag</h5>
+                      </div>
+
+                       <div class="Flag">
+                          <div class="reasonFlag">
+                          <a><div class="flag">Offensive</div></a>
+                          <a><div class="flag">Irrelaavent</div></a>
+                          <a><div class="flag">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          </div>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
       `
      }else if(messageType == "document"){
 
@@ -1404,7 +1446,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
+                    <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
@@ -1449,6 +1491,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div>
+                        <h5 class="header-flag" id="exampleModalLongTitle">Reason For Flag</h5>
+                      </div>
+
+                       <div class="Flag">
+                          <div class="reasonFlag">
+                          <a><div class="flag">Offensive</div></a>
+                          <a><div class="flag">Irrelaavent</div></a>
+                          <a><div class="flag">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          </div>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
       `
      }else{
 
@@ -1470,7 +1533,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
                     <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
-                    <a onClick='flagData(this.id)' id='${taskId}'><div class="pop2">Flag</div></a>
+                    <a onClick='flagData(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenterFlag"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
             </div>
@@ -1515,6 +1578,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       </div>
                     </div>
                   </form>
+                  </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenterFlag" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div>
+                        <h5 class="header-flag" id="exampleModalLongTitle">Reason For Flag</h5>
+                      </div>
+
+                       <div class="Flag">
+                          <div class="reasonFlag">
+                          <a><div class="flag">Offensive</div></a>
+                          <a><div class="flag">Irrelaavent</div></a>
+                          <a><div class="flag">Other</div></a>
+                          <a><div class="flag1" type="button" data-dismiss="modal">Cancle</div></a>
+                          </div>
+                      </div>
+                    
+                    </div>
                   </div>
                 </div>
       `
