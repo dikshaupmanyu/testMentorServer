@@ -1705,81 +1705,81 @@ function copyClipboard(e){
     elem.select();
     document.execCommand("copy");
     document.body.removeChild(elem);
-    alert("Message Copied !!");                             
+    alert("Message has been copied to clipboard..");                             
 
 }
 
-function flagData(e){
-  var userIds     = document.getElementById('user_id');
-  // console.log(userIds.value);
-  var userNamess = document.getElementById("user_nickname");
- // console.log(userNamess.value);
-  var id=e;
+// function flagData(e){
+//   var userIds     = document.getElementById('user_id');
+//   // console.log(userIds.value);
+//   var userNamess = document.getElementById("user_nickname");
+//  // console.log(userNamess.value);
+//   var id=e;
 
 
-     var loggedInValss = userIds.value;
-     console.log("id  " + loggedInValss);
-     var loggedInNamess = userNamess.value;
-     console.log("usernames   " + loggedInNamess);
+//      var loggedInValss = userIds.value;
+//      console.log("id  " + loggedInValss);
+//      var loggedInNamess = userNamess.value;
+//      console.log("usernames   " + loggedInNamess);
 
 
  
 
 
-    docRef.doc(id).get().then(function(doc) {
+//     docRef.doc(id).get().then(function(doc) {
   
-       console.log(doc.id, " => ", doc.data());
+//        console.log(doc.id, " => ", doc.data());
 
-        var id = doc.id;
+//         var id = doc.id;
 
-        var fulldata = doc.data();
+//         var fulldata = doc.data();
 
-        const cityRef = docRef.doc(id);
+//         const cityRef = docRef.doc(id);
 
-        console.log(doc.data().flag);
+//         console.log(doc.data().flag);
 
-         var txt;
-          if (confirm("Are you sure you want to flag this chat ?")) {
-              if(doc.data().flag == undefined){
+//          var txt;
+//           if (confirm("This comment has been sent for review to the chat room moderator. Thank you.")) {
+//               if(doc.data().flag == undefined){
 
-                  const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-                  console.log("if value " + res);
-                  $("li#"+id).css("display","none");
+//                   const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+//                   console.log("if value " + res);
+//                   $("li#"+id).css("display","none");
 
-                }else{
+//                 }else{
 
-                  const fruits = doc.data().flag;
-                  fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
-                    console.log("else value " + JSON.stringify(fruits));
-                  const res = cityRef.update({flag: fruits});
+//                   const fruits = doc.data().flag;
+//                   fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
+//                     console.log("else value " + JSON.stringify(fruits));
+//                   const res = cityRef.update({flag: fruits});
 
-                   console.log("else value update " + res);
-                   $("li#"+id).css("display","none");
+//                    console.log("else value update " + res);
+//                    $("li#"+id).css("display","none");
 
-                }
-          } else {
-            txt = "You pressed Cancel!";
-          }
+//                 }
+//           } else {
+//             txt = "You pressed Cancel!";
+//           }
 
       
 
 
 
-      // if(doc.data().flag.messageFlagedUserId == loggedInValss && doc.data().flag.messageFlagedUserName == loggedInNamess){
+//       // if(doc.data().flag.messageFlagedUserId == loggedInValss && doc.data().flag.messageFlagedUserName == loggedInNamess){
 
-      //   const res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-      //   console.log("if value " + res);
+//       //   const res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+//       //   console.log("if value " + res);
 
-      // }else{
+//       // }else{
 
-      //  res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-      //   console.log("else value " + res);
+//       //  res = cityRef.add({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
+//       //   console.log("else value " + res);
 
-      // }
+//       // }
 
-    });
+//     });
                      
-}
+// }
 
 ////////////////////////////////////////////////////////
 
