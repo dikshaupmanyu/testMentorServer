@@ -517,23 +517,22 @@
   }
 
 
-  .chat-body:hover .chev_ron{
-    /* color:black !important; */
-    display:block;
-  }
 
   .chevron{
     color:black;
-    display:flex;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
-    cursor: pointer;
     /* display:none; */
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 1000;
   }
 
-  .chev_ron{
-    display:none;
+  
+  .chat-body:hover .chevron{
+    visibility:visible;
   }
+  /* .chev_ron{
+    display:none;
+  } */
 
   /*  for user  */
   .Content {
@@ -728,7 +727,7 @@
                     </ul>
                 </div>
                 <div class="card-footer" style="padding: 0px;">
-                   <form onsubmit="return handleCreate(event)">
+                   <form onsubmit=" return handleCreate(event)">
                     
                       <div class="input-group">
                         <input type="hidden" id="msgreplyId">

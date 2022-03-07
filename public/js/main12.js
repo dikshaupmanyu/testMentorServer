@@ -518,11 +518,11 @@ function fetchTasks() {
       $("#sizedatan"+change.doc.id).html(snapshots.size);
 
       if(snapshots.size == 0){
-        $("#finalVal"+change.doc.id).css("display", "block");
+        // $("#finalVal"+change.doc.id).css("display", "block");
         $("#finalValn"+change.doc.id).css("display", "none");
       }else{
         $("#finalValn"+change.doc.id).css("display", "block");
-        $("#finalVal"+change.doc.id).css("display", "none");
+        // $("#finalVal"+change.doc.id).css("display", "none");
       }
    });
         
@@ -852,7 +852,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
+                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -887,8 +887,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
-                            <input type="file" class="fa fa-paperclip attachment btn btn-primary" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
-                             
+                         
+                            <input type="file" class="fa fa-paperclip attachment btn btn-primary" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:none"/>
+
+                            <i class="fa fa-paperclip attachment btn btn-primary" onChange='getoutput(event,this.id)' id='${taskId}' name='inputfile'></i>
                         </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1114,7 +1116,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
-                          <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
+                          <div  class="Pop" id='finalVal${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply</a> </div> 
                           <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                         </div>
                       </div>
@@ -1181,17 +1183,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </span>
           
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;" >
-          <div class="chev_ron">
-            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </span>
-          </div>
+          
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
+              <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
               </div>
@@ -1203,8 +1199,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important" >
-                      <span id="textMessage${taskId}">${message}<span>
-               </p>
+
+              <span id="textMessage${taskId}">
+                        ${message} <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/>
+              </span>
+               
+              </p>
 
               
           </div>
@@ -1270,17 +1270,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-            <div class="chev_ron">
-              <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
-                <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
+                <div  class="pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply</a> </div> 
                 <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
               </div>
             </div>
@@ -1290,7 +1283,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
            
-             <p class='message' style="color: #000 !important"><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+             <p class='message' style="color: #000 !important">
+             <video controls style="width:100%;">
+              <source src="${message}" <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/> type="video/mp4">
+             </video>
+             </p>
 
           </div>
       </li>
@@ -1353,13 +1350,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </span>
-            </div>
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
@@ -1372,7 +1362,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span> </a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-              <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+              <p class='message' style="color: #000 !important">
+              <div>
+             <img  class="chevron"  src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/>
+             <img src="${message}" onclick="togglePopup(this.id)" id="${taskId}"  style="width:200px;"/>
+             </div>
+             
+              </p>
 
           </div>
       </li>
