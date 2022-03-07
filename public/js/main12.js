@@ -842,13 +842,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
@@ -863,8 +856,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                  <p class='message' onClick='copyClipboard(this.id)' id="${taskId}">
-                      <span id='textMessage${taskId}'>${message}<span>
+                  <p class='message' id="${taskId}">
+                      <span id='textMessage${taskId}'>${message} <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                      width="24" height="24"
+                      viewBox="0 0 172 172"
+                      style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg><span>
 
                   </p>
                   
@@ -913,13 +909,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
@@ -933,7 +922,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                        
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                    <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+                    <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="24" height="24"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
+                    </p>
               </div>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
@@ -976,13 +969,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
+
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
@@ -996,7 +983,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 width="24" height="24"
+                 viewBox="0 0 172 172"
+                 style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
+                 </p>
               </div>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
@@ -1039,13 +1030,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-              <div class="Chev_ron">
-              <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </span>
-            </div>
+
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
@@ -1059,7 +1044,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                  <p class='message'><a href="${message}" target="_blank">
+                  <p class='message'><a href="${message}" target="_blank">  <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="24" height="24"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                   width="25" height="25"
                   viewBox="0 0 172 172"
@@ -1106,13 +1094,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-              <div class="Chev_ron">
-                  <span class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                  </span>
-                </div>
+
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
@@ -1127,7 +1109,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
                   
-                  <p class='message'><a href="${message}" target="_blank">
+                  <p class='message'><a href="${message}" target="_blank">  <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="24" height="24"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                   width="25" height="25"
                   viewBox="0 0 172 172"
@@ -1284,9 +1269,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
            
              <p class='message' style="color: #000 !important">
-             <video controls style="width:100%;">
-              <source src="${message}" <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/> type="video/mp4">
+             <video controls style="width:200px;">
+              <source src="${message}"type="video/mp4">
              </video>
+             <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/> 
              </p>
 
           </div>
@@ -1363,10 +1349,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important">
-              <div>
-             <img  class="chevron"  src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/>
-             <img src="${message}" onclick="togglePopup(this.id)" id="${taskId}"  style="width:200px;"/>
-             </div>
+             <img src="${message}"   style="width:200px;"/> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
+            
              
               </p>
 
@@ -1432,13 +1416,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron">
-            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </span>
-            </div>
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
@@ -1451,12 +1428,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-               <p class='message'><a href="${message}" target="_blank">
+               <p class='message'><a href="${message}" target="_blank"> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                   width="25" height="25"
                   viewBox="0 0 172 172"
                   style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
-                   ${fName}</a></p>
+                   ${fName}</a>
+              </p>
           </div>
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
@@ -1518,13 +1496,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
-          <div class="chev_ron"> 
-            <span class="chevron" onclick="togglePopup(this.id)" id="${taskId}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </span>
-          </div>
+
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
@@ -1539,7 +1511,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
-              <p class='message'><a href="${message}" target="_blank" style="color:black">
+              <p class='message'><a href="${message}" target="_blank" style="color:black"> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
               width="25" height="25"
               viewBox="0 0 172 172"

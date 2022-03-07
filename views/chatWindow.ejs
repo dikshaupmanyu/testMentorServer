@@ -119,10 +119,9 @@
           max-width: 80%;
           background-color: #0f2668eb;
           border-radius: 12.5px;
-          padding: 15px;
-          padding-top: 7px;
-          padding-bottom: 10px;
-          /* padding-left: 10px; */
+          padding: 11px;
+          padding-right: 20px;
+          padding-left: 20px;
       }
       .chat-care .chat-body strong
       {
@@ -524,6 +523,9 @@
     visibility: hidden;
     cursor: pointer;
     z-index: 1000;
+    position:absolute;
+    right:-0.5px;
+    top:4px;
   }
 
   
@@ -599,23 +601,20 @@
   }
 
 
-  .chat-body:hover .Chev_ron{
-    /* color:black !important; */
-    display:block;
+  .chat-body:hover .Chevron{
+      visibility:visible;
   }
 
   .Chevron{
     color:white;
-    display:flex;
-    flex-direction:column;
-    justify-content: flex-start;
+    visibility: hidden;
     cursor: pointer;
-    /* display:none; */
+    position:absolute;
+    left: -0.5px;
+    top:4px;
   }
 
-  .Chev_ron{
-    display:none;
-  }
+
 
   .right.text-muted a{
     color:#0f2668eb;
