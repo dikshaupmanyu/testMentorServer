@@ -866,17 +866,17 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-                <div class="Overlay">
-                    <div class="Overlay-1">
-                      <div class="Content"  id='Popup${taskId}'>
-                        <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
-                        <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
-                        <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                      </div>
-                    </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${taskId}'>
+                    <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
+                    <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
+                    <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
                 </div>
+            </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a onClick='replypopup(this.id)' id='${taskId}' role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -924,7 +924,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
-              
           `
 
         }else if(messageType == "photo"){
@@ -956,18 +955,21 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     </p>
               </div>
           </li>
-          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                    <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onClick='closepopup(this.id)' id='${taskId}'>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                        <ul class="chat" id="tasksreply${taskId}">
+                        </ul>
+                      </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
@@ -1017,18 +1019,21 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  </p>
               </div>
           </li>
-          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                   <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
@@ -1082,18 +1087,21 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    ${fName}</a></p>
               </div>
           </li>
-          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                   <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
@@ -1146,18 +1154,21 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
                    ${fName}</a></p>
           </li>
-          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document"  style="top:25px;">
                   <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onClick='closepopup(this.id)' id='${taskId}'>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
@@ -1223,8 +1234,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           
           
       </li>
-      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                    <form id="${taskId}">
                   
                     <div class="modal-content">
@@ -1234,7 +1245,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
@@ -1304,8 +1318,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
           </div>
       </li>
-      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                   <form id="${taskId}">
                   
                     <div class="modal-content">
@@ -1315,7 +1329,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."   autocomplete="off"/>
@@ -1383,8 +1400,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
           </div>
       </li>
-      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                   <form id="${taskId}">
                   
                     <div class="modal-content">
@@ -1394,7 +1411,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                       
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
@@ -1464,8 +1484,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </p>
           </div>
       </li>
-      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                   <form id="${taskId}">
                   
                     <div class="modal-content">
@@ -1475,7 +1495,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
@@ -1546,8 +1569,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
           </div>
       </li>
-      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog modal-dialog-centered" role="document" style="top:25px;">
                    <form id="${taskId}">
                   
                     <div class="modal-content">
@@ -1557,7 +1580,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <ul class="chat" id="tasksreply${taskId}">
+                      </ul>
+                    </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
