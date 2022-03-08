@@ -866,17 +866,17 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
               </span>
               <div class="chat-body clearfix">
-            <div class="Overlay">
-                <div class="Overlay-1">
-                  <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
-                    <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
-                    <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
-                  </div>
+                <div class="Overlay">
+                    <div class="Overlay-1">
+                      <div class="Content"  id='Popup${taskId}'>
+                        <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
+                        <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
+                        <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                      </div>
+                    </div>
                 </div>
-            </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a onClick='replypopup(this.id)' id='${taskId}' role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -924,6 +924,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
+              
           `
 
         }else if(messageType == "photo"){
