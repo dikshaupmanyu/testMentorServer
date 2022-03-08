@@ -124,6 +124,9 @@ function getoutput(event,id) {
   const file = event.target.files[0];
 
   const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+
+
+
  
   // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
    
@@ -151,7 +154,7 @@ function getoutput(event,id) {
     .then((ref) => {
       console.log(ref.id);
 
-      $("div#exampleModalCenter"+id).css("display", "none");
+      // $("div#exampleModalCenter"+id).css("display", "none");
 
       taskreplys.id = ref.id;
       // fullName.value = '';
@@ -188,7 +191,7 @@ function getoutput(event,id) {
     .add(taskreplys)
     .then((ref) => {
       console.log(ref.id);
-           $("div#exampleModalCenter"+id).css("display", "none");
+           // $("div#exampleModalCenter"+id).css("display", "none");
 
       taskreplys.id = ref.id;
       // fullName.value = '';
@@ -225,7 +228,7 @@ else{
     .then((ref) => {
       console.log(ref.id);
 
-      $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
+      // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
 
       taskreplys.id = ref.id;
       // fullName.value = '';
@@ -295,7 +298,7 @@ function popupCreate(event) {
         // console.log(ref);
      // console.log("div#exampleModalCenter"+uniqueDocId);
 
-     $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
+     // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
 
         taskR.id = ref.id;
         // fullName.value = '';
@@ -467,6 +470,14 @@ function handleDelete(id) {
  
 }
 
+function replypopup(id) {
+   // alert(id);
+   fetchTasksReply(id);
+
+ 
+}
+
+
 // dom functions
 function createTask(task) {
   // alert(task);
@@ -511,20 +522,22 @@ function fetchTasks() {
      docRef.orderBy("createdDate", "desc").limit(100).onSnapshot(function(snapshot) {
         snapshot.docChanges().reverse().forEach(function(change) {
 
- const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
-   docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
-      // console.log(snapshots.size);
-      $("#sizedata"+change.doc.id).html(snapshots.size);
-      $("#sizedatan"+change.doc.id).html(snapshots.size);
+         const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
+           docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
+           
 
-      if(snapshots.size == 0){
-        // $("#finalVal"+change.doc.id).css("display", "block");
-        $("#finalValn"+change.doc.id).css("display", "none");
-      }else{
-        $("#finalValn"+change.doc.id).css("display", "block");
-        // $("#finalVal"+change.doc.id).css("display", "none");
-      }
-   });
+              $("#sizedata"+change.doc.id).html(snapshots.size);
+              $("#sizedatan"+change.doc.id).html(snapshots.size);
+
+              if(snapshots.size == 0){
+                // $("#finalVal"+change.doc.id).css("display", "block");
+                $("#finalValn"+change.doc.id).css("display", "none");
+              }else{
+                $("#finalValn"+change.doc.id).css("display", "block");
+                // $("#finalVal"+change.doc.id).css("display", "none");
+              }
+              
+           });
         
           // var taskIds = change.doc.id;
           //     $.ajax({
@@ -618,31 +631,41 @@ function fetchTasks() {
 
  fetchTasks();
 
-//  function fetchTasksReply(id , userid , userName , messageId) {
-//       const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+
+ function fetchTasksReply(id) {
+
+    var docId     = id;
+      const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
     
-//      docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
-//       // alert(snapshot.size);
-//         snapshot.docChanges().forEach(function(change) {
-//             // alert(JSON.stringify(change.doc.data()));
-//             if (change.type === "added") {
-//               const tasksDOMReply = document.getElementById("tasksReply");
-//                 var taskreply = change.doc.data();
-//                     var loggedInVal = userid;
-//                     var loggedInName = userName;
-//                     const elemreply = document.createElement("li");
-//                     elemreply.id = taskreply.messageId;
-//                     elemreply.innerHTML = reviewTemplateReply(taskreply);
-//                     tasksDOMReply.append(elemreply);
+     docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
+        snapshots.docChanges().forEach(function(changes) {
+            // alert(snapshots.size);
+            if (changes.type === "added") {
+                const tasksDOMReply = document.getElementById("tasksreply"+docId);
+                var taskreply = changes.doc.data();
+                var taskId = changes.doc.id;
+                var userIdcs     = document.getElementById('user_id');
+                    // console.log(userIdcs.value);
+                    var userNamescs = document.getElementById("user_nickname");
+                   // console.log(userNamecss.value);
+                    var loggedInVal = userIdcs.value;
+                    // console.log(loggedInVal);
+                   var loggedInName = userNamescs.value;
+                    // console.log(loggedInName);
+                const elemreply = document.createElement("li");
+                elemreply.id = changes.doc.id;
+                elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId);
+                tasksDOMReply.append(elemreply);
+            }
 
-//             }
-
-//         });
-//     });
+        });
 
 
-// }
 
+    });
+
+
+}
 
 
 
@@ -845,7 +868,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" id='finalVal${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
+                    <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -868,25 +891,27 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  
                   <form id="${taskId}">
                   
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      
+                       <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                         <ul class="chat" id="tasksreply${taskId}">
+                         </ul>
+                      </div>
                       <div class="modal-footer">
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          <span class="input-group-btn">
                          
-                            <input type="file" class="fa fa-paperclip attachment btn btn-primary" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:none"/>
-
-                            <i class="fa fa-paperclip attachment btn btn-primary" onChange='getoutput(event,this.id)' id='${taskId}' name='inputfile'></i>
+                            <input type="file" class="fa fa-paperclip attachment btn btn-primary" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         </span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1576,6 +1601,327 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
  
 };
 
+function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId) {
+
+                const date = new Date(createdDate); //new Date(createdDate).toDateString();
+                  //console.log(date);
+                var options = {year: "numeric", month: "long", day: "numeric"};
+                var newdate = date.toGMTString('en-US', options);  
+                  //console.log(newdate);
+                const stripped = newdate.replace(/GMT/g, 'EST');
+                  //console.log(stripped);
+                  // alert(date);
+                var newdate1 = stripped.toString(stripped);  
+                var newdate2 = newdate1.split(/(\s+)/);
+                 newdate2.splice(11, 18);
+                 newdate2.splice(0, 2);
+                 newdate2.splice(3,3);
+                  //console.log(newdate2);
+                 function moveArrayItemToNewIndex(arr, old_index, new_index) {
+                 if (new_index >= arr.length) {
+                      var k = new_index - arr.length + 1;
+                      while (k--) {
+                          arr.push(undefined);
+                      }
+                  }
+                 arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+                 return arr;
+                 };
+
+                moveArrayItemToNewIndex(newdate2, 0, 2);
+                var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
+                //console.log(result1);
+                result1.splice(1, 0, ' ');
+                var newdate3 = result1.toString(result1);
+                var result = newdate3.replace(/,/g, "");
+                //console.log(result);
+                x = result.substring(0, 6) + "," + result.substring(6, result.length);
+                //console.log(x);
+                function formatAMPM(date) {
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var ampm = hours >= 12 ? 'PM' : 'AM';
+                    hours = hours % 12;
+                    hours = hours ? hours : 12; // the hour '0' should be '12'
+                    minutes = minutes < 10 ? '0'+minutes : minutes;
+                    var strTime = hours + ':' + minutes + ' ' + ampm;
+                    return strTime;
+                  }
+
+                  var date1 = formatAMPM(date);
+                  //console.log(date1);
+                  //console.log(newdate2);
+                  const stripped1 = x.replace(newdate2[4], date1);
+                  //console.log(stripped1);
+   
+   if(loggedInVal == userId){
+        if(messageType == "text"){
+
+           return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+              <div class="Overlay-1">
+                <div class="Content"  id='Popup${docId}'>
+                  <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                </div>
+              </div>
+            </div>
+                  <div class="header clearfix">
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                  <p class='message' onClick='copyClipboard(this.id)' id="${createdDate}">
+                      <span id='divClipboard${createdDate}'>${message}<span>
+                  </p>
+              </div>
+          </li>
+          `
+
+        }else if(messageType == "photo"){
+
+           return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                    <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+              </div>
+          </li>
+          `
+
+        }else if(messageType == "video"){
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+              </div>
+          </li>
+          `
+        } else if(messageType == "document"){
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+              </div>
+          </li>
+          `
+        } 
+        else {
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+              <div class="Chev_ron">
+              <span class="Chevron" onclick="TogglePopup(this.id)" id="${docId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="Overlay">
+                <div class="Overlay-1">
+                  <div class="Content"  id='Popup${docId}'>
+                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  </div>
+                </div>
+            </div>
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>              </div>
+          </li>
+          `
+
+        }
+
+   }else{
+
+     if(messageType == "text"){
+
+
+         return `
+
+        <li class="agent clearfix">
+          <span class="chat-img left clearfix mx-2">
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+          </span>
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+              <div class="header clearfix">              
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+              </div>
+              <p class='message' style="color: #000 !important">
+                      <span id="textMessage${createdDate}">${message}<span>
+                  </p>
+          </div>
+      </li>
+      `
+     } else if(messageType == "video"){
+
+         return `
+
+        <li class="agent clearfix">
+          <span class="chat-img left clearfix mx-2">
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+          </span>
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          
+              <div class="header clearfix">
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+              </div>
+           
+             <p class='message' style="color: #000 !important"><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
+
+          </div>
+      </li>
+      `
+     }else if(messageType == "photo"){
+
+         return `
+
+        <li class="agent clearfix">
+          <span class="chat-img left clearfix mx-2">
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+          </span>
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+              <div class="header clearfix">
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+              </div>
+              <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+
+          </div>
+      </li>
+      `
+     }else if(messageType == "document"){
+
+          return `
+
+            <li class="admin clearfix">
+              <span class="chat-img right clearfix mx-2">
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              </span>
+              <div class="chat-body clearfix">
+                  <div class="header clearfix">
+                      <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                      <strong class="right primary-font" class='fullName'>${userName}</strong>
+                  </div>
+                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+              </div>
+          </li>
+          `
+        } else{
+
+         return `
+
+        <li class="agent clearfix">
+          <span class="chat-img left clearfix mx-2">
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+          </span>
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+              <div class="header clearfix">
+                  <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
+                  <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
+              </div>
+             
+              <p class='message' style="color: #000 !important"><audio controls><source src="${message}" type="audio/mpeg"></audio></p>            
+
+          </div>
+      </li>
+      `
+     }
+
+   }
+
+ 
+};
+
+
+
 $("#submit").click(function(){
   $(".model-content").css("display", "none")
 })
@@ -1860,6 +2206,16 @@ function flagData(e,f){
 //     });                     
 // }
 
+function closepopup(id){
+  alert('#exampleModalCenter'+id);
+  $('#exampleModalCenter'+id).on('hidden.bs.modal', function() {
+  // $(this).find('form#'+id).trigger('reset');
+    location.reload();
+
+    // $(this).removeData('bs.modal');
+
+});
+}
 
   
 
