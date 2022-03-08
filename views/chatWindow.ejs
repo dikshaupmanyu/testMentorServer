@@ -657,6 +657,27 @@
     font-size:20px;
     text-align:center;
   }
+
+  .btn-primary-1{
+    width:3%;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .form-control{
+    width:87%;
+  }
+  /* #exampleModalLongTitle{
+    display: flex;
+    justify-content: center;
+  }
+  .modal-title{
+    display: flex;
+    justify-content: center;
+  }
+  .attachment{
+    color:black
+  } */
       </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  -->
@@ -865,6 +886,25 @@
        })
 
     })
+
+    
+$(function () {
+  $('#btn-input-replymsg').emoji({place: 'after'});
+
+  $('.emoji-button').on("click", function(e){
+    if($('.emojis').is(":visible")){
+      console.log('click')
+    }
+  })
+
+  $('emojis').on("hide", function() {
+      //alert('hide');
+   })
+   $('emojis').on("show", function() {
+      //alert('show');
+   })
+
+})
   </script>
 <br>
 <script>
