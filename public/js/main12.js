@@ -656,6 +656,7 @@ function fetchTasks() {
                 elemreply.id = changes.doc.id;
                 elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId);
                 tasksDOMReply.append(elemreply);
+
             }
 
         });
@@ -875,7 +876,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 </div>
             </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a href="replyMsg?messageId=${taskId}" target="_blank">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -890,7 +891,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
              
           </li>
-          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true">
+          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                   <div class="modal-dialog modal-lg" role="document" style="top:25px;">
                   
                   <form id="${taskId}">
@@ -2206,15 +2207,20 @@ function flagData(e,f){
 //     });                     
 // }
 
+
 function closepopup(id){
-  alert('#exampleModalCenter'+id);
-  $('#exampleModalCenter'+id).on('hidden.bs.modal', function() {
-  // $(this).find('form#'+id).trigger('reset');
-    location.reload();
+  // alert(id);
+   $('ul#tasksreply'+id).empty()
+  // alert('exampleModalCenter'+id);
+  // alert('exampleModalCenteraJWnlbLqkTu8K5P7Dtf8');
+  // var finaldataval = '#exampleModalCenter'+id;
+//   $('#exampleModalCenter'+id).on('hidden.bs.modal', function() {
+    // $(this).find('form#'+id).trigger('reset');
+    // alert('hidden event fired!');
 
-    // $(this).removeData('bs.modal');
+//      $(this).removeData();
 
-});
+// });
 }
 
   
