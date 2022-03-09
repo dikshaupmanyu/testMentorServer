@@ -922,7 +922,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               var options = {year: "numeric", month: "long", day: "numeric"};
               var newdate = date.toGMTString('en-US', options);  
                 //console.log(newdate);
-              const stripped = newdate.replace(/GMT/g, 'EST');
+              const stripped = newdate.replace(/GMT/g, '');
                 //console.log(stripped);
                 // alert(date);
               var newdate1 = stripped.toString(stripped);  
@@ -1752,7 +1752,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
   var options = {year: "numeric", month: "long", day: "numeric"};
   var newdate = date.toGMTString('en-US', options);  
     //console.log(newdate);
-  const stripped = newdate.replace(/GMT/g,"EST" );
+  const stripped = newdate.replace(/GMT/g,"" );
     //console.log(stripped);
     // alert(date);
   var newdate1 = stripped.toString(stripped);  
