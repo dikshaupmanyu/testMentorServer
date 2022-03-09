@@ -470,11 +470,25 @@ function handleDelete(id) {
  
 }
 
-function replypopup(id) {
-    // alert(id);
-   fetchTasksReply(id);
+function handleDeleteReply(obj1,obj2) {
 
+    const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+obj2+"/replies/");
+    var txt;
+          if (confirm("Are you sure you want to delete this chat ?")) {
+             return docRefreply
+            .doc(obj1)
+            .delete()
+            .then(() => document.getElementById(obj1).remove());
+          } else {
+            txt = "You pressed Cancel!";
+          }
  
+}
+
+function replypopup(id) {
+   fetchTasksReply(id);
+   
+
 }
 
 
@@ -654,7 +668,7 @@ function fetchTasks() {
                     // console.log(loggedInName);
                 const elemreply = document.createElement("li");
                 elemreply.id = changes.doc.id;
-                elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId);
+                elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
                 tasksDOMReply.append(elemreply);
 
             }
@@ -664,6 +678,8 @@ function fetchTasks() {
 
 
     });
+
+
 
 
 }
@@ -1632,7 +1648,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
  
 };
 
-function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId) {
+function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId,mainId) {
+
+                // alert(mainId);
 
                 const date = new Date(createdDate); //new Date(createdDate).toDateString();
                   //console.log(date);
@@ -1707,7 +1725,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
               <div class="Overlay-1">
                 <div class="Content"  id='Popup${docId}'>
-                  <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                  <a onclick="handleDeleteReply('${docId}','${mainId}')"  style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                 </div>
               </div>
             </div>
@@ -1741,7 +1759,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick="handleDeleteReply('${docId}','${mainId}')" style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -1773,7 +1791,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick="handleDeleteReply('${docId}','${mainId}')" style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -1804,7 +1822,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick="handleDeleteReply('${docId}','${mainId}')" style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
@@ -1836,7 +1854,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${docId}'>
-                    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+                    <a onclick="handleDeleteReply('${docId}','${mainId}')" style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>

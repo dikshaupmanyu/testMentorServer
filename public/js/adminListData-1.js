@@ -133,7 +133,8 @@ var loggedInVal = user_id.value;
 
 const file = event.target.files[0];
 
-const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+id+"/replies/");
+
+const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+id+"/replies/");
 
 // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
  
@@ -506,6 +507,21 @@ function handleDelete(id) {
   }
 }
 
+function handleDeleteReply(obj1,obj2) {
+    
+    const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+obj2+"/replies/");
+    var txt;
+          if (confirm("Are you sure you want to delete this chat ?")) {
+             return docRefreply
+            .doc(obj1)
+            .delete()
+            .then(() => document.getElementById(obj1).remove());
+          } else {
+            txt = "You pressed Cancel!";
+          }
+ 
+}
+
 
 function replypopup(id) {
   // alert(id);
@@ -620,7 +636,7 @@ function fetchTasks() {
    docRef.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
       snapshot.docChanges().forEach(function(change) {
 
-          const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+change.doc.id+"/replies/");
+          const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+change.doc.id+"/replies/");
           docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
               // console.log(snapshots.size);
               $("#sizedata"+change.doc.id).html(snapshots.size);
@@ -688,7 +704,7 @@ fetchTasks();
 function fetchTasksReply(id) {
 
   var docId     = id;
-    const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
+    const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+docId+"/replies/");
   
    docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
       snapshots.docChanges().forEach(function(changes) {
@@ -707,7 +723,7 @@ function fetchTasksReply(id) {
                   // console.log(loggedInName);
               const elemreply = document.createElement("li");
               elemreply.id = changes.doc.id;
-              elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId);
+              elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
               tasksDOMReply.append(elemreply);
 
           }
@@ -1745,7 +1761,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 // //////////////////////////////////////////////////////
 
 
-function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId) {
+function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId,mainId) {
 
   const date = new Date(createdDate); //new Date(createdDate).toDateString();
     //console.log(date);
@@ -1818,7 +1834,7 @@ return `
 <div class="Overlay">
 <div class="Overlay-1">
   <div class="Content_R"  id='Popup${docId}'>
-    <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+    <a onclick="handleDeleteReply('${docId}','${mainId}')"  style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
   </div>
 </div>
 </div>
@@ -1852,7 +1868,7 @@ return `
 <div class="Overlay">
   <div class="Overlay-1">
     <div class="Content_R"  id='Popup${docId}'>
-      <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+      <a onclick="handleDeleteReply('${docId}','${mainId}')" style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
     </div>
   </div>
 </div>
@@ -1884,7 +1900,7 @@ return `
 <div class="Overlay">
   <div class="Overlay-1">
     <div class="Content_R"  id='Popup${docId}'>
-      <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+      <a onclick="handleDeleteReply('${docId}','${mainId}')" style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
     </div>
   </div>
 </div>
@@ -1915,7 +1931,7 @@ return `
 <div class="Overlay">
   <div class="Overlay-1">
     <div class="Content_R"  id='Popup${docId}'>
-      <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+      <a onclick="handleDeleteReply('${docId}','${mainId}')"  style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
     </div>
   </div>
 </div>
@@ -1947,7 +1963,7 @@ return `
 <div class="Overlay">
   <div class="Overlay-1">
     <div class="Content_R"  id='Popup${docId}'>
-      <a onclick='handleDelete(this.id)' id='${docId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
+      <a onclick="handleDeleteReply('${docId}','${mainId}')"  style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
     </div>
   </div>
 </div>
