@@ -802,16 +802,18 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   //console.log(date);
                 var options = {year: "numeric", month: "long", day: "numeric"};
                 var newdate = date.toGMTString('en-US', options);  
-                  //console.log(newdate);
-                const stripped = newdate.replace(/GMT/g, 'EST');
-                  //console.log(stripped);
+                // console.log(newdate);
+                // const stripped = newdate.replace(/GMT/g, 'EST');
+                const stripped = newdate.replace(/GMT/g, '');
+                // console.log(stripped);
                   // alert(date);
                 var newdate1 = stripped.toString(stripped);  
+                // console.log(newdate1);
                 var newdate2 = newdate1.split(/(\s+)/);
                  newdate2.splice(11, 18);
                  newdate2.splice(0, 2);
                  newdate2.splice(3,3);
-                  //console.log(newdate2);
+                // console.log(newdate2);
                  function moveArrayItemToNewIndex(arr, old_index, new_index) {
                  if (new_index >= arr.length) {
                       var k = new_index - arr.length + 1;
@@ -831,7 +833,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 var result = newdate3.replace(/,/g, "");
                 //console.log(result);
                 x = result.substring(0, 6) + "," + result.substring(6, result.length);
-                //console.log(x);
+                // console.log(x);
                 function formatAMPM(date) {
                     var hours = date.getHours();
                     var minutes = date.getMinutes();
@@ -847,7 +849,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   //console.log(date1);
                   //console.log(newdate2);
                   const stripped1 = x.replace(newdate2[4], date1);
-                  //console.log(stripped1);
+                  // console.log(stripped1);
                   
                   var fileName = message.substring(message.lastIndexOf('%') + 3);
                   // console.log(fileName)
