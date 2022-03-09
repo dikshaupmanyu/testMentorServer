@@ -508,7 +508,7 @@ function handleDelete(id) {
 }
 
 function handleDeleteReply(obj1,obj2) {
-    
+
     const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+obj2+"/replies/");
     var txt;
           if (confirm("Are you sure you want to delete this chat ?")) {
@@ -707,6 +707,14 @@ function fetchTasksReply(id) {
     const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+docId+"/replies/");
   
    docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
+     if(snapshots.size == 0){
+          const tasksDOMReply = document.getElementById("tasksreply"+docId);
+          const elemreplys = document.createElement("li");
+                elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto;'><h2 class='text-center'><b>No reply yet</b></h2><br><p class='text-center'>Start the conversation</p>";
+                // alert(elemreplys);
+                tasksDOMReply.append(elemreplys);
+      }else{
+
       snapshots.docChanges().forEach(function(changes) {
           // alert(snapshots.size);
           if (changes.type === "added") {
@@ -731,7 +739,7 @@ function fetchTasksReply(id) {
       });
 
 
-
+    }
   });
 
 
