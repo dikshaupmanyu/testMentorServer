@@ -1,5 +1,6 @@
 <%- include partials/innerheader %>
 
+
    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/emoji.css">
@@ -7,6 +8,9 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css" integrity="sha512-0Nyh7Nf4sn+T48aTb6VFkhJe0FzzcOlqqZMahy/rhZ8Ii5Q9ZXG/1CbunUuEbfgxqsQfWXjnErKZosDSHVKQhQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link src="../public/css/chatWindow.css" rel="stylesheet">
@@ -658,14 +662,56 @@
     text-align:center;
   }
 
-  .btn-primary-1{
-    width:3%;
+  .btn-primary_1{
+    width:5.4%;
+    /* height:32px; */
+    aspect-ratio: 0.999 / 0.75;
+    display:flex;
     background-color: #007bff;
     border-color: #007bff;
+    color:white
+  }
+
+  .btn-primary_1:hover{
+    background-color: #2e93ff;
+  }
+  .fa-paperclip:before {
+    font-size: 23px;
+    color: white;
   }
 
   .form-control{
-    width:87%;
+    width:86%;
+  }
+
+  .msg-body h5{
+    font-size:18px ;
+    color:#0f2668eb;
+  }
+
+  .msg-detail{
+    color:black;
+    font-size:15px
+  }
+
+  .modal-footer{
+    padding:0.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-direction:row;
+    flex-wrap: wrap;
+  }
+  .modal-header{
+    padding:0.5rem;
+  }
+
+  .modal-content{
+    height:32rem;
+  }
+
+  .modal-close{
+    cursor: pointer;
   }
   /* #exampleModalLongTitle{
     display: flex;
@@ -888,23 +934,6 @@
     })
 
     
-$(function () {
-  $('#btn-input-replymsg').emoji({place: 'after'});
-
-  $('.emoji-button').on("click", function(e){
-    if($('.emojis').is(":visible")){
-      console.log('click')
-    }
-  })
-
-  $('emojis').on("hide", function() {
-      //alert('hide');
-   })
-   $('emojis').on("show", function() {
-      //alert('show');
-   })
-
-})
   </script>
 <br>
 <script>
@@ -915,7 +944,15 @@ $(function () {
       })
     </script>
 
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.js" integrity="sha512-aGWPnmdBhJ0leVHhQaRASgb0InV/Z2BWsscdj1Vwt29Oic91wECPixuXsWESpFfCcYPLfOlBZzN2nqQdMxlGTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $("#btn-input-replymsg").emojioneArea({
+
+  })
+</script> -->
 </body>
 </html>
 

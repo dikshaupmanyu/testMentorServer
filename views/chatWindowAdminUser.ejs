@@ -674,14 +674,55 @@ text-align:center;
 }
 
 
-.btn-primary-1{
-    width:3%;
+.btn-primary_1{
+    width:5.4%;
+    /* height:32px; */
+    aspect-ratio: 0.99 / 0.75;
+    display:flex;
     background-color: #007bff;
     border-color: #007bff;
+    color:white
+  }
+
+  .btn-primary-1:hover{
+    background-color: #2e93ff;
+  }
+  .fa-paperclip:before {
+    font-size: 23px;
+    color: white;
   }
 
   .form-control{
-    width:87%;
+    width:86%;
+  }
+  
+  .msg-body h5{
+    font-size:18px ;
+    color:#0f2668eb;
+  }
+
+  .msg-detail{
+    color:black;
+    font-size:15px
+  }
+  .modal-footer{
+    padding:0.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-direction:row;
+    flex-wrap: wrap;
+  }
+  .modal-header{
+    padding:0.5rem;
+  }
+
+  .modal-content{
+    height:32rem;
+  }
+
+  .modal-close{
+    cursor: pointer;
   }
 </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -792,12 +833,12 @@ text-align:center;
                         <input type="hidden" id="user_fcm_token">
                        <!--  <input type="hidden" id="dateval"> -->
                         <span class="input-group-btn">
-                             <input type="file" style="display: none;">
+                             <input type="file"  id="imageUploaddata" style="display: none;">
                              <!-- <span class="name">No file selected</span> -->
                                 <i class="fa fa-paperclip attachment btn btn-primary" aria-hidden="true" style="height: 38px;"></i>
                           
                         </span>
-                        <input id="btn-input" type="text" class="form-control input-lg" placeholder="Type your message here..." />
+                        <input id="btn-input" type="text" class="form-control input-lg" placeholder="Type your message here..." autocomplete="off"/>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -868,6 +909,7 @@ text-align:center;
   <script>
     
     
+   
     $("#tasksuserlisttotal").on("click", function () {
       $("body").addClass("open__sidebar");
     });
@@ -892,6 +934,7 @@ text-align:center;
        })
 
     })
+
   </script>
 <br>
 <script>

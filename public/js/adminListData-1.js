@@ -283,7 +283,8 @@ var loggedInName = fullName.value;
 var uniqueDocId = docId;
 // alert(uniqueDocId);
 
-const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/"); 
+// const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/"); 
+const docReply = db.collection("/basilPrivateGroup/Test/messages/"+uniqueDocId+"/replies/"); 
 // alert(docReply);
 
 if(message.value != ""){
@@ -641,6 +642,15 @@ function fetchTasks() {
               // console.log(snapshots.size);
               $("#sizedata"+change.doc.id).html(snapshots.size);
               $("#sizedatan"+change.doc.id).html(snapshots.size);
+
+              if(snapshots.size == 0){
+                // $("#finalVal"+change.doc.id).css("display", "block");
+                $("#finalValn"+change.doc.id).css("display", "none");
+              }else{
+                $("#finalValn"+change.doc.id).css("display", "block");
+                // $("#finalVal"+change.doc.id).css("display", "none");
+              }
+
           });
          
        
@@ -710,7 +720,7 @@ function fetchTasksReply(id) {
      if(snapshots.size == 0){
           const tasksDOMReply = document.getElementById("tasksreply"+docId);
           const elemreplys = document.createElement("li");
-                elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto;'><h2 class='text-center'><b>No reply yet</b></h2><br><p class='text-center'>Start the conversation</p>";
+                elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:32.5%'><h2 class='text-center'><b>No Replies Yet</b></h2><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
       }else{
@@ -1043,15 +1053,16 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
+                 <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+                      </div>
                   <div class="modal-body" style="height:250px;overflow-y:scroll;">
                     <ul class="chat" id="tasksreply${uniqueId}">
                     </ul>
                  </div>
                  <div class="modal-footer">
+                 <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
 
-                       <input type="file"  id='files${uniqueId}'  class="fa fa-paperclip attachment btn btn-primary-1 name='inputfile' onChange='getoutput(event,this.id)' style="visiblity:hidden"/>
-                       
-                   
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                   
@@ -1089,7 +1100,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                        
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                    <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    <p class='message'><img src="${message}" class="img-responsive" style="width:200px;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${uniqueId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     width="24" height="24"
                     viewBox="0 0 172 172"
                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
@@ -1108,12 +1119,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+                      </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${uniqueId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          
@@ -1173,12 +1187,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <span aria-hidden="true">&times;</span>
                </button>
              </div>
+             <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
               <div class="modal-body" style="height:250px;overflow-y:scroll;">
                 <ul class="chat" id="tasksreply${uniqueId}">
                 </ul>
              </div>
              <div class="modal-footer">
-             <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+             <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1239,12 +1256,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <span aria-hidden="true">&times;</span>
                </button>
              </div>
+             <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
               <div class="modal-body" style="height:250px;overflow-y:scroll;">
                 <ul class="chat" id="tasksreply${uniqueId}">
                 </ul>
              </div>
              <div class="modal-footer">
-             <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+             <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1306,12 +1326,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <span aria-hidden="true">&times;</span>
                </button>
              </div>
+             <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
               <div class="modal-body" style="height:250px;overflow-y:scroll;">
                 <ul class="chat" id="tasksreply${uniqueId}">
                 </ul>
              </div>
              <div class="modal-footer">
-             <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+             <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1385,12 +1408,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
+                 <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
                   <div class="modal-body" style="height:250px;overflow-y:scroll;">
                     <ul class="chat" id="tasksreply${uniqueId}">
                     </ul>
                  </div>
                  <div class="modal-footer">
-                 <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                 <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1469,12 +1495,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
+                 <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
                   <div class="modal-body" style="height:250px;overflow-y:scroll;">
                     <ul class="chat" id="tasksreply${uniqueId}">
                     </ul>
                  </div>
                  <div class="modal-footer">
-                 <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                 <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1551,12 +1580,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
+                 <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
                   <div class="modal-body" style="height:250px;overflow-y:scroll;">
                     <ul class="chat" id="tasksreply${uniqueId}">
                     </ul>
                  </div>
                  <div class="modal-footer">
-                 <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                 <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1634,12 +1666,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
+                 <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
                   <div class="modal-body" style="height:250px;overflow-y:scroll;">
                     <ul class="chat" id="tasksreply${uniqueId}">
                     </ul>
                  </div>
                  <div class="modal-footer">
-                 <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                 <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1719,12 +1754,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
+                 <div class="msg-body">
+                <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+              </div>
                   <div class="modal-body" style="height:250px;overflow-y:scroll;">
                     <ul class="chat" id="tasksreply${uniqueId}">
                     </ul>
                  </div>
                  <div class="modal-footer">
-                 <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                 <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -2040,7 +2078,7 @@ return `
     <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
     <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
 </div>
-<p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+<p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:200px;"/></p>
 
 </div>
 </li>

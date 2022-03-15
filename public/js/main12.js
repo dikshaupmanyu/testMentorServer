@@ -656,10 +656,13 @@ function fetchTasks() {
        if(snapshots.size == 0){
           const tasksDOMReply = document.getElementById("tasksreply"+docId);
           const elemreplys = document.createElement("li");
-                elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto;'><h2 class='text-center'><b>No reply yet</b></h2><br><p class='text-center'>Start the conversation</p>";
+              console.log(elemreplys)
+                elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:22.5%'><h3 class='text-center'><b>No Replies Yet</b></h3><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
-      }else{
+                $('ul#tasksreply'+id).show()         
+      }
+      else{
 
         snapshots.docChanges().forEach(function(changes) {
             // alert(snapshots.size);
@@ -679,7 +682,7 @@ function fetchTasks() {
                 elemreply.id = changes.doc.id;
                 elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
                 tasksDOMReply.append(elemreply);
-
+                // $('ul#tasksreply'+id).empty()
             }
 
         });
@@ -925,22 +928,25 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
                           <span aria-hidden="true">&times;</span>
                         </button>
+                      </div>
+                       
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-
-                            <input type="file"  id='files${taskId}'  class="fa fa-paperclip attachment btn btn-primary-1 name='inputfile' onChange='getoutput(event,this.id)' style="visiblity:hidden"/>
-                            
-                        
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+               
+               
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"  data-emojiable="true" data-emoji-input="unicode"/>
                        
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -976,7 +982,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                        
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                    <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    <p class='message'><img src="${message}" class="img-responsive" style="width:200px;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     width="24" height="24"
                     viewBox="0 0 172 172"
                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
@@ -988,19 +994,23 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content"> 
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                          
@@ -1055,17 +1065,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1123,17 +1136,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1190,17 +1206,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1270,17 +1289,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                          &times
                         </button>
                       </div>
-                       <div class="modal-body" style="height:250px;overflow-y:scroll;">
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+                      </div>
+                      <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1354,17 +1376,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                          &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1436,17 +1461,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                          &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1519,17 +1547,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                          &times
                         </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1604,17 +1635,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Chat Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        &times
+                      </button>
+                      </div>
+                      <div class="msg-body">
+                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary-1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
 
@@ -1776,7 +1810,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                    <p class='message'><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+                    <p class='message'><img src="${message}" class="img-responsive" style="width:200px;"/></p>
               </div>
           </li>
           `
@@ -1932,7 +1966,7 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
-              <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:100%;"/></p>
+              <p class='message' style="color: #000 !important"><img src="${message}" class="img-responsive" style="width:200px;"/></p>
 
           </div>
       </li>
@@ -2105,23 +2139,11 @@ $("#submit").click(function(){
 //   });
 // });
 
-$(function () {
-  $('#btn-input-replymsg').emoji({place: 'after'});
+// $('#btn-input-replymsg').emojiPicker({
+//   height: '300px',
+//   width:  '450px'
+// });
 
-  $('.emoji-button').on("click", function(e){
-    if($('.emojis').is(":visible")){
-      console.log('click')
-    }
-  })
-
-  $('emojis').on("hide", function() {
-      //alert('hide');
-   })
-   $('emojis').on("show", function() {
-      //alert('show');
-   })
-
-})
 
 function togglePopup(e) {
   $("#popup"+e).toggle()
