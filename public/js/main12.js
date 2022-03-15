@@ -899,7 +899,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -922,7 +922,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -990,7 +990,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
           </li>
          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1059,7 +1059,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1108,7 +1108,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">Reply </a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -1130,7 +1130,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1178,7 +1178,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="Overlay">
                       <div class="Overlay-1">
                         <div class="Content-2"  id='Popup${taskId}'>
-                          <div  class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply</a> </div> 
+                          <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                           <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                         </div>
                       </div>
@@ -1200,7 +1200,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    ${fName}</a></p>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1258,7 +1258,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           <div class="overlay">
               <div class="overlay-1">
               <div class="content"  id='popup${taskId}'>
-              <div  class="pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply</a> </div> 
+              <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
               <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
               <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
               </div>
@@ -1283,7 +1283,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           
       </li>
               <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1350,7 +1350,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
-                <div  class="pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply</a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                 <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
               </div>
             </div>
@@ -1370,7 +1370,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1437,7 +1437,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1455,7 +1455,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1522,7 +1522,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Reply </a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1541,7 +1541,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
@@ -1609,7 +1609,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
-                    <div  class="pop" onClick='replypopup(this.id)' id='${taskId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
                   </div>
                 </div>
@@ -1629,7 +1629,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:25px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
                   
                   <form id="${taskId}">
                   
