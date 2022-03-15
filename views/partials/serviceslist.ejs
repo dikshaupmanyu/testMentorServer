@@ -1,4 +1,5 @@
   <a href="recommendedService" id="recomndDataService"><button class="btn cmn_btn btn_small btn_primary" type="button">Create Recommended Service</button></a>
+    <a href="macdtipService" id="macdDataService"><button class="btn cmn_btn btn_small btn_primary" type="button">Create MACD Service</button></a>
   <br>
   <button class="btn cmn_btn btn_small btn_primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create New Service</button>
           <div class="dropdown-menu"  id="listservice">           
@@ -20,14 +21,16 @@
 
   // alert(userName);
 
-  if(loginName === "Golu"){
+  if(loginName === "TradeTipsApp"){
 
    $('#recomndDataService').css("display", "block");
-   $('#MACDtips').css("display" , "block");
+   $('#macdDataService').css("display" , "block");
 
   }else{
 
    $('#recomndDataService').css("display", "none");
+      $('#macdDataService').css("display" , "none");
+
   }
 
 
@@ -41,7 +44,7 @@
 
                const dataResult = data;
                   let tiplist = [];
-                  if(loginName === "Golu"){
+                  if(loginName === "TradeTipsApp"){
                      for(var i=0; i< dataResult.length; i++){
 
                  
@@ -50,7 +53,7 @@
                        // newtip.push(dataResult[i]);
                       }
                   }else{
-                     for(var i=0; i< dataResult.length-8; i++){
+                     for(var i=0; i< dataResult.length-1; i++){
 
                  
                   tiplist += ' <a class="dropdown-item" id="' + dataResult[i].serviceType + '" href="/' + dataResult[i].serviceType + '">' + dataResult[i].title + '</a>';
@@ -80,5 +83,9 @@
   <style type="text/css">
     #Recommended {
       display: none;
+    }
+
+    #MACDTips{
+    display: none;
     }
   </style>

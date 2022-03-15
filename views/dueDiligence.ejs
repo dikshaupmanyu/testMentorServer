@@ -487,7 +487,7 @@ $("#formoid").submit(function(event){
   var serviceTypeId = $('#serviceTypeIds').val();
   var descriptionTwo = $('#description2').val();
   var thumbnailImageURL = $('#thumbnailImage').val();
-  var frequency = $('#frequency').val();
+  // var frequency = $('#frequency').val();
   var price = $('#price').val();
   var imageDetails = $('#file-image').val();
   // alert(imageDetails);
@@ -501,7 +501,7 @@ $("#formoid").submit(function(event){
   // alert(fullPath);   
   var filename = fullPath.replace(/^.*[\\\/]/, '');
   // alert(filename);
-  var frequencyss = $("#frequency option:selected").text();
+  var frequencyss = $("#frequency option:selected").val();
   var stripeProductName = userName +'_'+ serviceName +'_'+ frequencyss;
   // alert(stripeProductName);
 
@@ -514,7 +514,7 @@ $("#formoid").submit(function(event){
     formdata.append("descriptionOne", descriptionOne);
     formdata.append("descriptionTwo", descriptionTwo);
     formdata.append("thumbnailImageURL", thumbnailImageURL);
-    formdata.append("frequency", frequency);
+    formdata.append("frequency", frequencyss);
     formdata.append("price", price);
     formdata.append("mentorId", userId);
     if(filename == ""){

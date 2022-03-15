@@ -477,7 +477,7 @@ $("#file-upload").change(function() {
     formdata.append("descriptionTwo", descriptionTwo);
     formdata.append("thumbnailImageURL", thumbnailImageURL);
     formdata.append("stripeProductName", stripeProductName);
-    formdata.append("frequency", frequency);
+    formdata.append("frequency", frequencyss);
     formdata.append("price", price);
     formdata.append("mentorId", userId);
     if(filename == ""){
@@ -601,7 +601,7 @@ $("#formoid").submit(function(event){
   var descriptionTwo = $('#description2').val();
   var thumbnailImageURL = $('#thumbnailImage').val();
   // alert(thumbnailImageURL);
-  var frequency = $('#frequency').val();
+  // var frequency = $('#frequency').val();
   var price = $('#price').val();
   var imageDetails = $('#file-image').val();
   var file = document.getElementById("file-upload").files[0];
@@ -609,7 +609,7 @@ $("#formoid").submit(function(event){
   var fullPath = $("#file-upload").val();    
   var filename = fullPath.replace(/^.*[\\\/]/, '');
   // alert(filename);
-  var frequencyss = $("#frequency option:selected").text();
+  var frequencyss = $("#frequency option:selected").val();
   var stripeProductName = userName +'_'+ serviceName +'_'+ frequencyss;
   // alert(stripeProductName);
 
@@ -621,7 +621,7 @@ $("#formoid").submit(function(event){
     formdata.append("descriptionTwo", descriptionTwo);
     formdata.append("thumbnailImageURL", thumbnailImageURL);
     formdata.append("stripeProductName", stripeProductName);
-    formdata.append("frequency", frequency);
+    formdata.append("frequency", frequencyss);
     formdata.append("price", price);
     formdata.append("mentorId", userId);
     if(filename == ""){
