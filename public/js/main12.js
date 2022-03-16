@@ -1594,7 +1594,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     
                     </div>
                   </div>
-                </div>
+                </div> 
       `
      }else{
 
