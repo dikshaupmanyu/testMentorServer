@@ -1,6 +1,6 @@
 <%- include partials/innerheader %>
 
-
+import { EmojiButton } from '@joeattardi/emoji-button';
    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/emoji.css">
@@ -14,6 +14,8 @@
 
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link src="../public/css/chatWindow.css" rel="stylesheet">
+ 
+
 
     <script>
         window.addEventListener("load", function() {
@@ -673,7 +675,7 @@
     color:white
   }
 
-  .btn-primary_1:hover{
+  /* .btn-primary_1:hover{
     background-color: #2e93ff;
   }
   .fa-paperclip:before {
@@ -713,6 +715,33 @@
 
   .modal-close{
     cursor: pointer;
+  } */
+
+
+  .modal-content{
+    top:40px;
+    right:100px;
+    width: 650px;
+    height: 500px;
+  }
+
+  .modal-header{
+    padding:7.5px;
+    padding-top:20px;
+  }
+
+  .modal-footer{
+    padding: 6px;
+  }
+  .form-control{
+    width:78%;
+  }
+
+  .fg-emoji-container{
+    width:250px;
+    height:300px;
+    top:215px;
+    left:650px;
   }
   /* #exampleModalLongTitle{
     display: flex;
@@ -725,6 +754,9 @@
   .attachment{
     color:black
   } */
+
+  
+
       </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  -->
@@ -893,7 +925,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase.js"></script>
 
 
-    <script src="js/main12.js"></script>
+    <script src="js/main12-copy.js"></script>
 
       <script type="text/javascript" src="js/custom.js"></script>
 
@@ -945,15 +977,22 @@
       })
     </script>
 
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.js" integrity="sha512-aGWPnmdBhJ0leVHhQaRASgb0InV/Z2BWsscdj1Vwt29Oic91wECPixuXsWESpFfCcYPLfOlBZzN2nqQdMxlGTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/vanillaEmojipicker.js"></script>
 <script>
-  $("#btn-input-replymsg").emojioneArea({
 
-  })
-</script> -->
+    new EmojiPicker({
+        trigger: [
+            {
+                selector: '#emoji-button',
+                insertInto: ['#btn-input-replymsg'] // '.selector' can be used without array
+            }
+        ],
+        closeButton: true,
+        //specialButtons: green
+    });
+
+</script>
 
 </body>
 </html>

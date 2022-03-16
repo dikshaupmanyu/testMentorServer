@@ -899,7 +899,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
+                    <a role="button" data-toggle="modal" data-target="#myModal${taskId}""  > <div  class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -921,44 +921,56 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
              
           </li>
-          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:40px;">
-                  
-                  <form id="${taskId}">
-                  
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                       
-                      <div class="msg-body">
-                        <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
-                      </div>
-                       <div class="modal-body" style="height:250px;overflow-y:scroll;">
-                         <ul class="chat" id="tasksreply${taskId}">
-                         </ul>
-                      </div>
-                      <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
-               
-               
-                        <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
-                        <button id="emoji-button">?</button>
-                       
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
-                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            </button>
-                        </span>
-                      </div>
-                    </div>
-                  </form>
-                  </div>
+
+          <div class="container">
+        
+        
+          <!-- The Modal -->
+          <div class="modal" id="myModal${taskId}">
+            <div class="modal-dialog">
+
+            <form id="${taskId}">
+              <div class="modal-content">
+              
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModal${taskId}">Reply</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                
+                <!-- Modal body -->
+                <div class="msg-body">
+                  <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
+                </div>
+
+                <div class="modal-body">
+                <ul class="chat" id="tasksreply${taskId}">
+                </ul>
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                    <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                    <input id="btn-input-replymsg" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
+                    <button id="emoji-button">?</button>
+                  
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+                
+              </div>
+            </div>
+            </form>
+          </div>
+          
+        </div>
+
+        
+
           `
 
         }else if(messageType == "photo"){
@@ -2323,6 +2335,14 @@ function closepopup(id){
 // });
 }
 
+// $("#btn-input-reply").emojioneArea({
+//     hideSource: false,
+//   });
 
-  
+
+// $(function () {
+    
+//       $('#btn-input-reply').emoji();
+    
+//     })
 
