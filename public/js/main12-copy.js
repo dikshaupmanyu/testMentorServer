@@ -950,10 +950,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+
                     <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                     <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                     <input id="btn-input-replymsg" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
-                    <button id="emoji-button">?</button>
+                    <input type="button" id="emoji-button" value="??">
                   
                     <span class="input-group-btn">
                         <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
