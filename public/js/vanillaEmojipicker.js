@@ -7781,9 +7781,9 @@ const EmojiPicker = function(options) {
 
             functions.rePositioning(document.querySelector('.fg-emoji-container'));
 
-            setTimeout(() => {
-                document.querySelector('.fg-emoji-picker-search input').focus();
-            }, 500)
+            // setTimeout(() => {
+            //     document.querySelector('.fg-emoji-picker-search input').focus();
+            // }, 500)
         },
 
 

@@ -953,8 +953,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                     <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                     <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                    <input id="btn-input-replymsg" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
-                    <input type="button" id="emoji-button" value="??">
+                    <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
+                    <input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}">
                   
                     <span class="input-group-btn">
                         <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -973,8 +973,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
         
 
           `
+    
 
-        }else if(messageType == "photo"){
+         }else if(messageType == "photo"){
 
            return `
 
@@ -2206,6 +2207,23 @@ function imgError(image) {
     image.src = "images/userIcon.png";
     return true;
 }
+
+function emojifunction(e) 
+ {
+   alert(e);
+   alert("hii");
+     new EmojiPicker({
+        trigger: [
+            {
+                selector: '#emoji-buttons'+e,
+                insertInto: ['#btn-input-replymsg'+e] // '.selector' can be used without array
+            }
+        ],
+        closeButton: false,
+        //specialButtons: green
+    });
+ }
+
 
 function copyClipboard(e){
   var copyText = document.getElementById("textMessage"+e).innerText;
