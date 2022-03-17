@@ -934,7 +934,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </button>
                       </div>
                        
-                      <div class="msg-body">
+                      <div class="msg-body" style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -947,7 +947,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off" />
-                        <input type="button" id="emoji-button" value="??">
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
+                      
+                 
                        
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1005,7 +1009,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1016,7 +1020,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                         
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
                          
                         
                         <span class="input-group-btn">
@@ -1073,7 +1079,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1084,7 +1090,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
                         
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1144,7 +1152,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1155,7 +1163,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
 
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1214,7 +1224,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1225,7 +1235,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
 
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1297,7 +1309,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                       <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1308,7 +1320,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
 
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1384,7 +1398,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1395,7 +1409,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
        
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1469,7 +1485,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1480,7 +1496,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
                      
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1555,7 +1573,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                           &times
                         </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1566,7 +1584,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
                    
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1643,7 +1663,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         &times
                       </button>
                       </div>
-                      <div class="msg-body">
+                      <div class="msg-body"  style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
                        <div class="modal-body" style="height:250px;overflow-y:scroll;">
@@ -1654,7 +1674,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
+                        </label>
                    
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -2187,6 +2209,21 @@ $(document).mouseup(function (e) {
     }
 });
 
+function emojifunction(e) 
+ {
+  //  alert(e);
+  //  alert("hii");
+     new EmojiPicker({
+        trigger: [
+            {
+                selector: '#emoji-buttons'+e,
+                insertInto: ['#btn-input-replymsg'+e] // '.selector' can be used without array
+            }
+        ],
+        closeButton: false,
+        //specialButtons: green
+    });
+ }
 
 
 

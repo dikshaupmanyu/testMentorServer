@@ -2210,8 +2210,8 @@ function imgError(image) {
 
 function emojifunction(e) 
  {
-   alert(e);
-   alert("hii");
+  //  alert(e);
+  //  alert("hii");
      new EmojiPicker({
         trigger: [
             {
