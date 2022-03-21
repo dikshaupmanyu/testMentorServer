@@ -910,7 +910,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='reply${taskId}'>Reply</div></a>  
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -940,7 +940,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}'>
+                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -948,7 +948,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="msg-body" style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
-                       <div class="modal-body"  style="height:250px;overflow:auto;">
+                       <div class="modal-body"  style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
