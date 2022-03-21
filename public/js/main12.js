@@ -254,7 +254,7 @@ function popupCreate(event) {
    // alert("calling " + JSON.stringify(event));
      
 
-   var docId     = document.getElementById('btn-input-replyId').value;
+   var docId     = document.getElementById('btn-input-replyId'+event).value;
    // alert(docId);
    // var ids = docId.value;
    // docRef.doc(ids).get().then(function(doc) {
@@ -264,7 +264,7 @@ function popupCreate(event) {
    //      });
    var fullName   = document.getElementById('user_nickname');
   // alert(fullName.value);
-   var message    = document.getElementById('btn-input-replymsg');
+   var message    = document.getElementById('btn-input-replymsg'+event);
    // alert(message.value);
    var userId     = document.getElementById('user_id');
    // alert(userId.value);
@@ -2169,16 +2169,11 @@ $("#submit").click(function(){
  
 // };
 
-// document.getElementById("btn-input-replymsg")
-//     .addEventListener("keyup", function(e) {
-//         if (e.keyCode === 13) {
-//             document.getElementsByClassName("btn-submit").click();
-//         }
-//     });
- 
-// document.getElementsByClassName("btn-submit").onclick = function() {
-//     alert('You clicked an enter key!');
-// }
+// document.getElementsByClassName('btn.btn-primary').addEventListener('keypress', function(event) {
+//   if (event.keyCode == 13) {
+//       event.preventDefault();
+//   }
+// });
 
 function togglePopup(e) {
   $("#popup"+e).toggle()
