@@ -1,6 +1,6 @@
 <%- include partials/innerheader %>
 
-import { EmojiButton } from '@joeattardi/emoji-button';
+
    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/emoji.css">
@@ -717,12 +717,24 @@ import { EmojiButton } from '@joeattardi/emoji-button';
     cursor: pointer;
   }
 
+  .modal-body{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .fg-emoji-container{
     width:250px;
     height:300px;
     top:215px;
     left:750px;
   }
+
+  .modal-title{
+    line-height: 2;
+  }
+.close{
+  line-height: 1.9;
+}
 
 /* 
   .modal-content{

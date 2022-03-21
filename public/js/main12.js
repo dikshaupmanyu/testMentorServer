@@ -248,11 +248,13 @@ else{
 
 
 // popup functions
+
+
 function popupCreate(event) {
    // alert("calling " + JSON.stringify(event));
      
 
-   var docId     = document.getElementById('btn-input-replyId'+event).value;
+   var docId     = document.getElementById('btn-input-replyId').value;
    // alert(docId);
    // var ids = docId.value;
    // docRef.doc(ids).get().then(function(doc) {
@@ -262,7 +264,7 @@ function popupCreate(event) {
    //      });
    var fullName   = document.getElementById('user_nickname');
   // alert(fullName.value);
-   var message    = document.getElementById('btn-input-replymsg'+event);
+   var message    = document.getElementById('btn-input-replymsg');
    // alert(message.value);
    var userId     = document.getElementById('user_id');
    // alert(userId.value);
@@ -277,7 +279,8 @@ function popupCreate(event) {
 
    const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/"); 
    // alert(docReply);
-   
+
+
   if(message.value != ""){
 
     let taskR = {
@@ -661,7 +664,7 @@ function fetchTasks() {
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
                 $('ul#tasksreply'+id).show()       
-         
+               
       }
       else{
 
@@ -684,6 +687,7 @@ function fetchTasks() {
                 elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
                 tasksDOMReply.append(elemreply);
                 // $('ul#tasksreply'+id).empty()
+
               }
               
               
@@ -691,7 +695,10 @@ function fetchTasks() {
             });
             
           }
-          $('#MB').scrollTop($('#MB')[0].scrollHeight);
+          // window.scrollTo(0, document.querySelector("#modal-body").scrollHeight);
+          
+
+         
           
         });
 
@@ -903,7 +910,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='reply${taskId}'>Reply</div></a>  
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
@@ -941,7 +948,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="msg-body" style="padding:5px; padding-left:8px">
                         <h5>${userName} : <label class="msg-detail"> ${message}</label></h5> 
                       </div>
-                       <div class="modal-body" id="MB" style="height:250px;overflow-y:scroll;">
+                       <div class="modal-body"  style="height:250px;overflow:auto;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
                       </div>
@@ -2162,17 +2169,16 @@ $("#submit").click(function(){
  
 // };
 
-// $(document).ready(function(){
-//   $(".message").dblclick(function(){
-//     alert("The paragraph was double-clicked.");
-//   });
-// });
-
-// $('#btn-input-replymsg').emojiPicker({
-//   height: '300px',
-//   width:  '450px'
-// });
-
+// document.getElementById("btn-input-replymsg")
+//     .addEventListener("keyup", function(e) {
+//         if (e.keyCode === 13) {
+//             document.getElementsByClassName("btn-submit").click();
+//         }
+//     });
+ 
+// document.getElementsByClassName("btn-submit").onclick = function() {
+//     alert('You clicked an enter key!');
+// }
 
 function togglePopup(e) {
   $("#popup"+e).toggle()
