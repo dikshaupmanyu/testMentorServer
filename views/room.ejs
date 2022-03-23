@@ -5,6 +5,53 @@
 
  -->
 
+ <style>
+     .header-flag{
+   padding-top:1rem;
+   padding-bottom :1rem;
+   border-bottom:2px solid ;
+   color:black;
+    text-align:center;
+    font-size:23px;
+  }
+  .reasonFlag{
+              font-size: 20px;
+              text-align: center;
+              box-sizing: border-box; 
+              /* padding:16px; */
+   }
+
+   .pin{
+     /* padding:4px; */
+     text-align: center;
+     margin:15px;
+     /* font-size: 12px; */
+   }
+
+   #Btn{
+     margin-bottom:15px; 
+     width:56%;
+     /* padding:4px; */
+   }
+
+   .close{
+     position:absolute;
+     top:2px;
+     left:95%;
+   }
+
+   .modal-content{
+     width:85%;
+   }
+   /* .flag{
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.1px solid black;
+    cursor:pointer;
+    color:red;
+    
+  } */
+ </style>
   <div class="app_main">
                   
             <%- include partials/innersidebar %>
@@ -29,10 +76,32 @@
            
               <button type="button" class="btn cmn_btn btn_small btn_primary" id="login-button">Enter Strategy Room</button>
               </a>
-              <a href="/chatWindowAdminUser">
+              <a data-toggle="modal" data-target="#exampleModalCenterpin">
            
               <button type="button" class="btn cmn_btn btn_small btn_primary" id="login-button">Enter @basilnsage Room</button>
               </a>
+
+              <div class="modal fade" id="exampleModalCenterpin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div>
+                      <h5 class="header-flag" id="exampleModalLongTitle">Enter Room Code</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                     <div class="pincode">
+                        <div class="reasonFlag">
+                          <input type="text" class="pin" placeholder="Enter Code Here"/>
+                          <br>
+                          <a href="http:/chatWindowAdminUser"><button type="button" class="Btn btn btn-primary" id="Btn">Submit</button></a>
+                        </div>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

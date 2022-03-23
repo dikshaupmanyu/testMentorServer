@@ -98,11 +98,12 @@ function handleCreate(event) {
         // return createTask(task);
       });
 
-   } else {
+   } 
+   else {
     $(".successmsg").html('<span>Message not empty.</span>');
     setTimeout(function(){$(".successmsg").empty()}, 5000);
    }    
- 
+
 }
 
 
@@ -282,6 +283,7 @@ function popupCreate(event) {
 
 
   if(message.value != ""){
+    alert("message")
 
     let taskR = {
     userName: loggedInName,
@@ -306,20 +308,22 @@ function popupCreate(event) {
         taskR.id = ref.id;
         // fullName.value = '';
         message.value  = '';
-        // console.log(message.value)
+        // alert("")
         // date.value = '';
         // return createTask(task);
       });
 
   
-   } else {
+   }
+   if(message.value == "") {
+      // alert("empty")
     $(".successmsg").html('<span>Message not empty.</span>');
     setTimeout(function(){$(".successmsg").empty()}, 5000);
    }    
 
   
 
-   event.preventDefault();
+  //  event.preventDefault();
  
 }
 
@@ -937,7 +941,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -965,8 +969,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  
                        
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
-                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
+                                <i class="fa fa-paper-plane" aria-hidden="true" ></i>
                             </button>
                         </span>
                       </div>
@@ -1012,7 +1016,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content"> 
+                    <div class="modal-content" id="modal-content-1"> 
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         
@@ -1083,7 +1087,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1156,7 +1160,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1228,7 +1232,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1313,7 +1317,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1402,7 +1406,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1489,7 +1493,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1577,7 +1581,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -1667,7 +1671,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${taskId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
@@ -2175,6 +2179,7 @@ $("#submit").click(function(){
 //   }
 // });
 
+
 function togglePopup(e) {
   $("#popup"+e).toggle()
 }
@@ -2229,6 +2234,7 @@ function emojifunction(e)
         //specialButtons: green
     });
  }
+
 
 
 
@@ -2367,6 +2373,11 @@ function closepopup(id){
 // });
 }
 
-
+$(document).keypress(function (e) {
   
-
+  if (e.which == 13) {
+   e.preventDefault();
+   $('.Btn').click();
+  //  alert('Click button was trigger');
+  }
+ });

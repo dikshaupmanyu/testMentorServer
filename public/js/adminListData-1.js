@@ -1062,10 +1062,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  </div>
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
-
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                  
+                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                   </label>
+
                    <span class="input-group-btn">
                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1130,7 +1132,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                         <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                         
+                        <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                        😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                        </label> 
                          
                         
                         <span class="input-group-btn">
@@ -1198,7 +1202,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+               <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+               😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+               </label>
                
                <span class="input-group-btn">
                    <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1267,7 +1273,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+               <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+               😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+               </label>
 
                <span class="input-group-btn">
                    <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1337,7 +1345,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+               <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+               😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+               </label>
 
                <span class="input-group-btn">
                    <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1419,7 +1429,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                   </label>
 
                    <span class="input-group-btn">
                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1506,7 +1518,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                   </label>
   
                    <span class="input-group-btn">
                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1591,7 +1605,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                   </label>
                 
                    <span class="input-group-btn">
                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1677,7 +1693,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                   </label>
               
                    <span class="input-group-btn">
                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1765,7 +1783,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)'/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
                    <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-
+                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
+                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
+                   </label>
               
                    <span class="input-group-btn">
                        <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -2176,6 +2196,23 @@ $(document).mouseup(function (e) {
       $(".Content-2").hide();
     }
 });
+
+
+function emojifunction(e) 
+ {
+  //  alert(e);
+  //  alert("hii");
+     new EmojiPicker({
+        trigger: [
+            {
+                selector: '#emoji-buttons'+e,
+                insertInto: ['#btn-input-replymsg'+e] // '.selector' can be used without array
+            }
+        ],
+        closeButton: false,
+        //specialButtons: green
+    });
+ }
 
 function imgError(image) {
   image.onerror = "";

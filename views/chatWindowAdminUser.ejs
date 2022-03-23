@@ -700,7 +700,7 @@ text-align:center;
   }
 
   .form-control{
-    width:86%;
+    width:82%;
   }
   
   .msg-body h5{
@@ -730,6 +730,30 @@ text-align:center;
 
   .modal-close{
     cursor: pointer;
+  }
+
+  .close{
+    line-height: 2.2;
+  }
+  .modal-body{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .fg-emoji-container{
+    width:250px;
+    height:300px;
+    top:215px;
+    left:750px;
+  }
+
+  .modal-title{
+    line-height: 2.5;
+  }
+
+  .msg-body{
+    padding:5px;
+    padding-left: 8px;
   }
 </style>
 <!--       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -944,6 +968,8 @@ text-align:center;
 
   </script>
 <br>
+<script src="js/vanillaEmojipicker.js"></script>
+
 <script>
       var preloader = document.getElementById("fountainG");
 
@@ -951,13 +977,7 @@ text-align:center;
         preloader.style.display ="none"
       })
     </script>
-<!-- emoji picker -->
-<script>
 
-  $("#btn-input-replymsg").emojioneArea({
-    pickerPosition: "top"
-  });
-</script>
 
 
 </body>
