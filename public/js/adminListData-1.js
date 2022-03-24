@@ -723,8 +723,10 @@ function fetchTasksReply(id) {
                 elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:32.5%'><h2 class='text-center'><b>No Replies Yet</b></h2><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
+
       }else{
 
+        $('ul#tasksreply'+id).empty();       
       snapshots.docChanges().forEach(function(changes) {
           // alert(snapshots.size);
           if (changes.type === "added") {

@@ -4,6 +4,8 @@
 
 
  -->
+ <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
  <style>
      .header-flag{
@@ -74,11 +76,11 @@
 
               <a href="/chatWindow">
            
-              <button type="button" class="btn cmn_btn btn_small btn_primary" id="login-button">Enter Strategy Room</button>
+              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-1">Enter Strategy Room</button>
               </a>
               <a data-toggle="modal" data-target="#exampleModalCenterpin">
            
-              <button type="button" class="btn cmn_btn btn_small btn_primary" id="login-button">Enter @basilnsage Room</button>
+              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-2">Enter @basilnsage Room</button>
               </a>
 
               <div class="modal fade" id="exampleModalCenterpin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -93,9 +95,11 @@
 
                      <div class="pincode">
                         <div class="reasonFlag">
-                          <input type="text" class="pin" placeholder="Enter Code Here"/>
+                          <form onsubmit="return CodeSubmit(event)">
+                          <input type="password" id="pcode" class="pin" placeholder="Enter Code Here"/>
                           <br>
-                          <a href="http:/chatWindowAdminUser"><button type="button" class="Btn btn btn-primary" id="Btn">Submit</button></a>
+                         <button type="submit" class="Btn btn btn-primary" id="Btn">Submit</button>
+                         </form>
                         </div>
                     </div>
                   
@@ -107,6 +111,19 @@
         </div>
 
   </div>
+  <script  src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+
+<script  src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+<script  src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+
+<script  src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+<script  src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase.js"></script>
+
+
+      <script src="js/codelist.js"></script>
+
 
      <%- include partials/innerfooter %>
 

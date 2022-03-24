@@ -283,7 +283,7 @@ function popupCreate(event) {
 
 
   if(message.value != ""){
-    alert("message")
+    // alert("message")
 
     let taskR = {
     userName: loggedInName,
@@ -659,9 +659,10 @@ function fetchTasks() {
       const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
     
      docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
-      // alert(snapshots.size);
+      alert(snapshots.size);
        if(snapshots.size == 0){
           const tasksDOMReply = document.getElementById("tasksreply"+docId);
+
           const elemreplys = document.createElement("li");
               console.log(elemreplys)
                 elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:22.5%'><h3 class='text-center'><b>No Replies Yet</b></h3><br><p class='text-center'>Enter your messages here.</p>";
@@ -672,8 +673,11 @@ function fetchTasks() {
       }
       else{
 
+        $('ul#tasksreply'+id).empty();  
+
         snapshots.docChanges().forEach(function(changes) {
             // alert(snapshots.size);
+
             if (changes.type === "added") {
                 const tasksDOMReply = document.getElementById("tasksreply"+docId);
                 var taskreply = changes.doc.data();
