@@ -1021,7 +1021,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
        <div class="Overlay">
            <div class="Overlay-1">
              <div class="Content"  id='Popup${uniqueId}'>
-               <div class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> Reply</a> </div> 
+             <a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"><div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'>  Reply</div>  </a> 
                <a onClick='copyClipboard(this.id)' id='${uniqueId}'><div class="Pop">Copy</div></a>
                <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
              </div>
@@ -1094,7 +1094,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2" id='Popup${uniqueId}'>
-                      <div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">  Reply </a> </div> 
+                    <a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"><div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'>  Reply</div>  </a> 
                       <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -1164,7 +1164,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
      <div class="Overlay">
          <div class="Overlay-1">
            <div class="Content-2"  id='Popup${uniqueId}'>
-             <div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">Reply </a> </div> 
+           <a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"><div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'>  Reply</div>  </a> 
              <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
            </div>
          </div>
@@ -1231,7 +1231,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
      <div class="Overlay">
          <div class="Overlay-1">
            <div class="Content-2"  id='Popup${uniqueId}'>
-             <div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">Reply </a> </div> 
+           <a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"><div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'>  Reply</div>  </a> 
              <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
            </div>
          </div>
@@ -1303,7 +1303,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          <div class="Overlay">
              <div class="Overlay-1">
                <div class="Content-2"  id='Popup${uniqueId}'>
-                 <div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">  Reply</a> </div> 
+               <a  role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"><div  class="Pop" onClick='replypopup(this.id)' id='${uniqueId}'>  Reply</div>  </a> 
                  <a onClick='handleDelete(this.id)' id='${uniqueId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                </div>
              </div>
@@ -1384,7 +1384,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
      <div class="overlay">
          <div class="overlay-1">
          <div class="content"  id='popup${uniqueId}'>
-         <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> Reply</a> </div> 
+         <a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'> Reply</div> </a> 
          <a onClick='copyClipboard(this.id)' id='${uniqueId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
          <a data-toggle="modal" data-target="#exampleModalCenterFlag${uniqueId}"><div class="pop2">Flag</div></a>
          </div>
@@ -1478,7 +1478,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
    <div class="overlay">
        <div class="overlay-1">
          <div class="content-2"  id='popup${uniqueId}'>
-           <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">  Reply</a> </div> 
+         <a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'> Reply</div> </a> 
            <a data-toggle="modal" data-target="#exampleModalCenterFlag${uniqueId}"><div class="pop2">Flag</div></a>
          </div>
        </div>
@@ -1567,7 +1567,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
        <div class="overlay">
            <div class="overlay-1">
              <div class="content-2"  id='popup${uniqueId}'>
-               <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">  Reply </a> </div> 
+             <a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'> Reply</div> </a> 
                <a data-toggle="modal" data-target="#exampleModalCenterFlag${uniqueId}"><div class="pop2">Flag</div></a>
              </div>
            </div>
@@ -1654,7 +1654,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
        <div class="overlay">
            <div class="overlay-1">
              <div class="content-2"  id='popup${uniqueId}'>
-               <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> Reply </a> </div> 
+             <a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'> Reply</div> </a> 
                <a data-toggle="modal" data-target="#exampleModalCenterFlag${uniqueId}"><div class="pop2">Flag</div></a>
              </div>
            </div>
@@ -1743,7 +1743,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
        <div class="overlay">
            <div class="overlay-1">
              <div class="content-2"  id='popup${uniqueId}'>
-               <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'><a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}">  Reply </a> </div> 
+             <a role="button" data-toggle="modal" data-target="#exampleModalCenter${uniqueId}"> <div  class="pop" onClick='replypopup(this.id)' id='${uniqueId}'> Reply</div> </a> 
                <a data-toggle="modal" data-target="#exampleModalCenterFlag${uniqueId}"><div class="pop2">Flag</div></a>
              </div>
            </div>
