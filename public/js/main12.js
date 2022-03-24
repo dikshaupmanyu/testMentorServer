@@ -99,10 +99,10 @@ function handleCreate(event) {
       });
 
    } 
-   else {
-    $(".successmsg").html('<span>Message not empty.</span>');
-    setTimeout(function(){$(".successmsg").empty()}, 5000);
-   }    
+  //  else {
+  //   $(".successmsg").html('<span>Message not empty.</span>');
+  //   setTimeout(function(){$(".successmsg").empty()}, 5000);
+  //  }    
 
 }
 
@@ -315,11 +315,11 @@ function popupCreate(event) {
 
   
    }
-   if(message.value == "") {
-      // alert("empty")
-    $(".successmsg").html('<span>Message not empty.</span>');
-    setTimeout(function(){$(".successmsg").empty()}, 5000);
-   }    
+  //  if(message.value == "") {
+  //     // alert("empty")
+  //   $(".successmsg").html('<span>Message not empty.</span>');
+  //   setTimeout(function(){$(".successmsg").empty()}, 5000);
+  //  }    
 
   
 
