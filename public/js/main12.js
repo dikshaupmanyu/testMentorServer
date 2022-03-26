@@ -665,8 +665,9 @@ function fetchTasks() {
           const tasksDOMReply = document.getElementById("tasksreply"+docId);
 
           const elemreplys = document.createElement("li");
-              console.log(elemreplys);
+              // console.log(elemreplys);
                elemreplys.id = "testingIds";
+              //  alert(elemreplys)
                 elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:22.5%'><h3 class='text-center'><b>No Replies Yet</b></h3><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
@@ -675,8 +676,8 @@ function fetchTasks() {
       }
       else{
 
-        
         $('li#testingIds').empty();
+        // alert(elemreplys)
         snapshots.docChanges().forEach(function(changes) {
             // alert(snapshots.size);
 
@@ -684,20 +685,32 @@ function fetchTasks() {
                 const tasksDOMReply = document.getElementById("tasksreply"+docId);
                 var taskreply = changes.doc.data();
                 var taskId = changes.doc.id;
+                // alert(taskId)
                 var userIdcs     = document.getElementById('user_id');
-                    // console.log(userIdcs.value);
+                    // console.log("userIdcs"+userIdcs.value);
                     var userNamescs = document.getElementById("user_nickname");
-                   // console.log(userNamecss.value);
+                  // console.log("userName "+userNamecs/.value);
                     var loggedInVal = userIdcs.value;
-                    // console.log(loggedInVal);
+                    // console.log("loggedVal"+loggedInVal);
                    var loggedInName = userNamescs.value;
+<<<<<<< Updated upstream
                     // console.log(loggedInName);
                 // $('ul#tasksreply'+id).show();   
+=======
+                    // console.log("loggedInName "+loggedInName);
+                    $('ul#tasksreply'+id).show();  
+       
+>>>>>>> Stashed changes
                 const elemreply = document.createElement("li");
                 elemreply.id = changes.doc.id;
+                // elemreply.id = "replyIds";
+                console.log(elemreply.id)
+                
                 elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
                 tasksDOMReply.append(elemreply);
-                // $('ul#tasksreply'+id).empty()
+                // alert(tasksDOMReply)
+                
+                // $('ul#replyIds'+id).empty()
 
               }
               
@@ -712,9 +725,6 @@ function fetchTasks() {
          
           
         });
-
-
-
 
 }
 
@@ -921,14 +931,14 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}" > <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
                 </div>
             </div>
                   <div class="header clearfix">
-                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a onClick='replypopup(this.id)' id='${taskId}' role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
+                      <small class="left text-muted" style = "display:inline-block;"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}" onClick='replypopup(this.id)' id='${taskId}' > Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1}</small>
                     
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
@@ -1001,7 +1011,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2" id='Popup${taskId}'>
-                      <div  class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">  Reply </a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}" > <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -1072,7 +1082,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               <div class="Overlay">
                   <div class="Overlay-1">
                     <div class="Content-2"  id='Popup${taskId}'>
-                      <div  class="Pop" onClick='replypopup(this.id)' id='${taskId}'><a  role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}">Reply </a> </div> 
+                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}" > <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
                       <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                     </div>
                   </div>
@@ -1347,7 +1357,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
 
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1436,7 +1446,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
        
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1523,7 +1533,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
                      
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1611,7 +1621,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
                    
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1701,7 +1711,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
                    
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>

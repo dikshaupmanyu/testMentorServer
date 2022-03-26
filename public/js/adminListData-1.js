@@ -1439,7 +1439,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    </label>
 
                    <span class="input-group-btn">
-                       <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
+                       <button class=" Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
                        </button>
                    </span>
@@ -1528,7 +1528,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    </label>
   
                    <span class="input-group-btn">
-                       <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
+                       <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
                        </button>
                    </span>
@@ -1615,7 +1615,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    </label>
                 
                    <span class="input-group-btn">
-                       <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
+                       <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
                        </button>
                    </span>
@@ -1703,7 +1703,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    </label>
               
                    <span class="input-group-btn">
-                       <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
+                       <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
                        </button>
                    </span>
@@ -1793,7 +1793,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    </label>
               
                    <span class="input-group-btn">
-                       <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
+                       <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
                        </button>
                    </span>
