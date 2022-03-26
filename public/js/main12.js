@@ -670,7 +670,7 @@ function fetchTasks() {
                 elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:22.5%'><h3 class='text-center'><b>No Replies Yet</b></h3><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
-                $('ul#tasksreply'+id).show();       
+                // $('ul#tasksreply'+id).show();       
                
       }
       else{
@@ -692,7 +692,7 @@ function fetchTasks() {
                     // console.log(loggedInVal);
                    var loggedInName = userNamescs.value;
                     // console.log(loggedInName);
-                $('ul#tasksreply'+id).show();   
+                // $('ul#tasksreply'+id).show();   
                 const elemreply = document.createElement("li");
                 elemreply.id = changes.doc.id;
                 elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
