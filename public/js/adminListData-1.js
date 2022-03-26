@@ -259,7 +259,7 @@ setTimeout(function(){$(".successmsg").empty()}, 8000);
 // popup functions
 function popupCreate(event) {
 // alert("calling " + JSON.stringify(event));
-  
+   $('ul#tasksreply'+event).show();
 
 var docId     = document.getElementById('btn-input-replyId'+event).value;
 // alert(docId);

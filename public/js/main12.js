@@ -254,6 +254,7 @@ else{
 function popupCreate(event) {
    // alert("calling " + JSON.stringify(event));
      
+    $('ul#tasksreply'+event).show();
 
    var docId     = document.getElementById('btn-input-replyId'+event).value;
    // alert(docId);
@@ -660,9 +661,9 @@ function fetchTasks() {
     
      docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
       // alert(snapshots.size);
-
-       if(snapshots.size == 0){
           const tasksDOMReply = document.getElementById("tasksreply"+docId);
+               
+       if(snapshots.size == 0){
 
           const elemreplys = document.createElement("li");
               // console.log(elemreplys);
@@ -671,20 +672,22 @@ function fetchTasks() {
                 elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:22.5%'><h3 class='text-center'><b>No Replies Yet</b></h3><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
-                // $('ul#tasksreply'+id).show();       
+                $('ul#tasksreply'+id).show();       
                
       }
       else{
+          $('li#testingIds').empty();
 
-        $('li#testingIds').empty();
         // alert(elemreplys)
         snapshots.docChanges().forEach(function(changes) {
-            // alert(snapshots.size);
-
-            if (changes.type === "added") {
-                const tasksDOMReply = document.getElementById("tasksreply"+docId);
+             // alert(snapshots.size);
+          
+          // const tasksDOMReplys = document.getElementById("tasksreply"+docId);
                 var taskreply = changes.doc.data();
                 var taskId = changes.doc.id;
+
+
+            if (changes.type === "added") {
                 // alert(taskId)
                 var userIdcs     = document.getElementById('user_id');
                     // console.log("userIdcs"+userIdcs.value);
@@ -693,24 +696,12 @@ function fetchTasks() {
                     var loggedInVal = userIdcs.value;
                     // console.log("loggedVal"+loggedInVal);
                    var loggedInName = userNamescs.value;
-<<<<<<< Updated upstream
-                    // console.log(loggedInName);
-                // $('ul#tasksreply'+id).show();   
-=======
-                    // console.log("loggedInName "+loggedInName);
-                    $('ul#tasksreply'+id).show();  
-       
->>>>>>> Stashed changes
+                  // $('ul#tasksreply'+id).show();     
                 const elemreply = document.createElement("li");
                 elemreply.id = changes.doc.id;
-                // elemreply.id = "replyIds";
-                console.log(elemreply.id)
-                
                 elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
                 tasksDOMReply.append(elemreply);
-                // alert(tasksDOMReply)
-                
-                // $('ul#replyIds'+id).empty()
+             
 
               }
               
@@ -931,7 +922,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
             <div class="Overlay">
                 <div class="Overlay-1">
                   <div class="Content"  id='Popup${taskId}'>
-                    <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}" > <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
+                    <a onClick='replypopup(this.id)' id='${taskId}' data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop">Reply</div></a>  
                     <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="Pop">Copy</div></a>
                     <a onClick='handleDelete(this.id)' id='${taskId}' style="color:white;cursor:pointer;"><div class="Pop2">Delete</div></a>
                   </div>
