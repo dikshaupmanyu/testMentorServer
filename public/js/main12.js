@@ -655,7 +655,7 @@ function fetchTasks() {
 
 
  function fetchTasksReply(id) {
-
+ $('ul#tasksreply'+id).empty();
     var docId     = id;
       const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
     
@@ -679,6 +679,8 @@ function fetchTasks() {
           $('li#testingIds').empty();
 
         // alert(elemreplys)
+          // $('ul#tasksreply'+docId).show();
+
         snapshots.docChanges().forEach(function(changes) {
              // alert(snapshots.size);
           
@@ -697,10 +699,10 @@ function fetchTasks() {
                     // console.log("loggedVal"+loggedInVal);
                    var loggedInName = userNamescs.value;
                   // $('ul#tasksreply'+id).show();     
-                const elemreply = document.createElement("li");
-                elemreply.id = changes.doc.id;
-                elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
-                tasksDOMReply.append(elemreply);
+                const elemreplys = document.createElement("li");
+                elemreplys.id = changes.doc.id;
+                elemreplys.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
+                tasksDOMReply.append(elemreplys);
              
 
               }
