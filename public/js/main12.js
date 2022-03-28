@@ -301,7 +301,8 @@ function popupCreate(event) {
     return docReply
       .add(taskR)
       .then((ref) => {
-        // console.log(ref);
+      // alert(ref);
+       // alert(ref.id);
      // console.log("div#exampleModalCenter"+uniqueDocId);
 
      // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
@@ -311,7 +312,7 @@ function popupCreate(event) {
         message.value  = '';
         // alert("")
         // date.value = '';
-        // return createTask(task);
+       return fetchTasksReply(taskR.id);
       });
 
   
@@ -494,8 +495,10 @@ function handleDeleteReply(obj1,obj2) {
 }
 
 function replypopup(id) {
+   // closepopup(id);
+   // alert("reply value");
    fetchTasksReply(id);
-   
+  
 
 }
 
@@ -655,7 +658,7 @@ function fetchTasks() {
 
 
  function fetchTasksReply(id) {
- $('ul#tasksreply'+id).empty();
+   // $('ul#tasksreply'+id).reset();
     var docId     = id;
       const docRefreply = db.collection("/openGroups/demoOpenGroup1/messages/"+docId+"/replies/");
     
@@ -664,6 +667,10 @@ function fetchTasks() {
           const tasksDOMReply = document.getElementById("tasksreply"+docId);
                
        if(snapshots.size == 0){
+
+         if($('li#testingIds').size() > 0){
+                  $('li#testingIds').remove();
+                }    
 
           const elemreplys = document.createElement("li");
               // console.log(elemreplys);
@@ -676,21 +683,20 @@ function fetchTasks() {
                
       }
       else{
-          $('li#testingIds').empty();
-
-        // alert(elemreplys)
-          // $('ul#tasksreply'+docId).show();
+          // $('li#testingIds').empty();
+           if($('li#testingIds').size() > 0){
+                  $('li#testingIds').remove();
+                }    
 
         snapshots.docChanges().forEach(function(changes) {
              // alert(snapshots.size);
           
-          // const tasksDOMReplys = document.getElementById("tasksreply"+docId);
+           const tasksDOMReplys = document.getElementById("tasksreply"+docId);
                 var taskreply = changes.doc.data();
                 var taskId = changes.doc.id;
 
 
             if (changes.type === "added") {
-                // alert(taskId)
                 var userIdcs     = document.getElementById('user_id');
                     // console.log("userIdcs"+userIdcs.value);
                     var userNamescs = document.getElementById("user_nickname");
@@ -699,10 +705,16 @@ function fetchTasks() {
                     // console.log("loggedVal"+loggedInVal);
                    var loggedInName = userNamescs.value;
                   // $('ul#tasksreply'+id).show();     
+                if($("li#"+taskId).size() > 0){
+                  $("li#"+taskId).remove();
+                }    
+                // alert($("li#"+taskId).size());
                 const elemreplys = document.createElement("li");
                 elemreplys.id = changes.doc.id;
                 elemreplys.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
-                tasksDOMReply.append(elemreplys);
+                tasksDOMReplys.append(elemreplys);
+                
+                
              
 
               }
@@ -2066,10 +2078,6 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
 
 
 
-$("#submit").click(function(){
-  $(".model-content").css("display", "none")
-})
-
 
 // function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId}) {
 
@@ -2369,8 +2377,9 @@ function flagData(e,f){
 
 
 function closepopup(id){
-  // alert(id);
-   $('ul#tasksreply'+id).empty()
+ // alert(id);
+   $('ul#tasksreply'+id).empty();
+     $('li#testingIds').empty();
   // alert('exampleModalCenter'+id);
   // alert('exampleModalCenteraJWnlbLqkTu8K5P7Dtf8');
   // var finaldataval = '#exampleModalCenter'+id;
