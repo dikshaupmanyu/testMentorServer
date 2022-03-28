@@ -43,6 +43,21 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
+
+function getGroupDetail() {
+
+       var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
+       monthlies.then((res) => {
+        // console.log(res.data().groupCode);
+        document.getElementById('room-button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+
+       });
+
+
+}
+
+ getGroupDetail();
+
 const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 const tasksDOM = document.getElementById("tasks");
 var fullName   = document.getElementById('user_nickname');

@@ -43,6 +43,9 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
+
+
+
 const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 const tasksDOM = document.getElementById("tasks");
 var fullName   = document.getElementById('user_nickname');

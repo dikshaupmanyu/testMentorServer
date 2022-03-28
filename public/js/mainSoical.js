@@ -42,6 +42,19 @@ firebase.initializeApp(config);
  
 var db = firebase.firestore();
 
+function getSoicalChatroomOne() {
+
+       var monthlies = db.collection("/socialchat").doc("Test").get();
+       monthlies.then((res) => {
+        console.log(res.data().groupTitle);
+        document.getElementById('room-button-3').innerText = "Enter " + res.data().groupTitle ;
+
+       });
+
+
+}
+
+ getSoicalChatroomOne();
 
 const docRef = db.collection("/socialchat/Test/messages/");
 const tasksDOM = document.getElementById("tasks");

@@ -42,6 +42,21 @@ firebase.initializeApp(config);
  
 var db = firebase.firestore();
 
+function getGroupDetailroomOne() {
+
+       var monthlies = db.collection("/openGroups").doc("demoOpenGroup1").get();
+       monthlies.then((res) => {
+        // console.log(res.data().groupCode);
+        document.getElementById('room-button-1').innerText = "Enter " + res.data().groupTitle + " Room";
+
+       });
+
+
+}
+
+ getGroupDetailroomOne();
+
+
 
 const docRef = db.collection("/openGroups/demoOpenGroup1/messages/");
 const tasksDOM = document.getElementById("tasks");
