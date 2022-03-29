@@ -9,7 +9,7 @@
              <div class="tip_list_head">
                   <h2>Notification</h2>
              </div> 
-             <a onclick="deleteAllnotification();" style="cursor:pointer;"><button type="button" class="btn cmn_btn btn_small btn_primary" id="login-button">Delete All Notification</button></a>
+             <a onclick="deleteAllnotification();" style="cursor:pointer;"><button type="button" class="btn cmn_btn btn_small btn_primary" id="login-button" style="display:none">Delete All Notification</button></a>
              <br>
              <div class="post_new_tips_wrapper" style="background: none;width: 80%;">
               <ul style="list-style: none;" id="notifyList">
@@ -54,6 +54,7 @@ window.addEventListener("load", function() {
 $(document).ready(function(){  
 
    var notificationVals = "" ;
+
     $.ajax({
         type: 'POST',
         url: 'https://apistest.tradetipsapp.com/api/notificationActivity/getAllUnreadBundleNotificationActivityMessage',
@@ -68,18 +69,34 @@ $(document).ready(function(){
 
       
        // var len = dataResult.length;
+       if(dataResult.length > 0){
+          //  alert("button is visible Successfully")
+           document.getElementById('login-button').style.display = "block";
 
-       for(i = 0; i < dataResult.length; i ++){
+           for(i = 0; i < dataResult.length; i ++){
         // alert(dataResult[i].notificationId);
 
         notificationVals += '<li style="color:white;"><div class="tips_bx avoid_bg"><div class="mentor_feed"><a href="/mentorDetails?id='+ dataResult[i].tipId +'"><div class="tips_bx_author author_bx"><div class="author_bx_txt"><h2>'+dataResult[i].notificationText+'</h2></div></a>&nbsp;&nbsp;<a onclick="deletenotification(this.id)" id="' + dataResult[i].notificationId + '" style="cursor:pointer;"><i class="fa fa-trash"></i></a></div></div></li>'; 
 
-         readnotification(dataResult[i].notificationId);       
-         
+         readnotification(dataResult[i].notificationId);  
+  
        }    
           // window.location.reload();
 
-          $("#notifyList").append(notificationVals);  
+          $("#notifyList").append(notificationVals);
+         }
+         else{
+            // alert("li is creating")
+          const notificationVal = document.createElement('li');
+            console.log(notificationVal);
+          notificationVal.innerHTML = "<img src='/images/noreply-1.png' style='margin:0 auto; display:flex; margin-bottom:20px;  width:25.5%'><h3 class='text-center'><b>No New Notification</b></h3><br><p class='text-center'>Check this section for all updates and general announcements.</p>";
+         
+          $("#notifyList").append(notificationVal);
+         
+          $('#notifylist').show();    
+        }
+
+         
      
      }
 
@@ -171,3 +188,11 @@ function deleteAllnotification() {
 </script>
 
 
+<script>
+  // $(document).ready(function(){
+  //   if("notifyList".length > 0){
+
+  //     $("login-button").style.display= "block"
+  //   }
+  // })
+</script>

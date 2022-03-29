@@ -1078,7 +1078,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          
                         
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1147,7 +1147,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
                         
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1220,7 +1220,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
 
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1292,7 +1292,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </label>
 
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
@@ -1824,6 +1824,9 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   //console.log(newdate2);
                   const stripped1 = x.replace(newdate2[4], date1);
                   //console.log(stripped1);
+                  var fileName = message.substring(message.lastIndexOf('%') + 3);
+                  // console.log(fileName)
+     var fName = fileName.substring(0, fileName.indexOf("?"));
    
    if(loggedInVal == userId){
         if(messageType == "text"){
@@ -1950,7 +1953,12 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+                  <p class='message'><a href="${message}" target="_blank"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="25" height="25"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+                   ${fName}</a></p>
               </div>
           </li>
           `
@@ -1982,7 +1990,12 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>              </div>
+               <p class='message'><a href="${message}" target="_blank"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="25" height="25"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+                   ${fName}</a></p>
           </li>
           `
 
@@ -2061,7 +2074,12 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                       <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+                  <p class='message'><a href="${message}" target="_blank"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="25" height="25"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+                   ${fName}</a></p>
               </div>
           </li>
           `
@@ -2079,7 +2097,12 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
              
-              <p class='message' style="color: #000 !important"><audio controls><source src="${message}" type="audio/mpeg"></audio></p>            
+              <p class='message'><a href="${message}" target="_blank"> 
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="25" height="25"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+               ${fName}</a></p>
 
           </div>
       </li>

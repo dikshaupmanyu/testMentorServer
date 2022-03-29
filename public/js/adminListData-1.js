@@ -733,24 +733,33 @@ function fetchTasksReply(id) {
   var docId     = id;
     const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+docId+"/replies/");
   
-   docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
+    docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
+     const tasksDOMReply = document.getElementById("tasksreply"+docId);
      if(snapshots.size == 0){
-          const tasksDOMReply = document.getElementById("tasksreply"+docId);
+
+      if($('li#testingIds').size() > 0){
+        $('li#testingIds').remove();
+      }    
           const elemreplys = document.createElement("li");
                 elemreplys.id = "testingIds";
                 elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:32.5%'><h2 class='text-center'><b>No Replies Yet</b></h2><br><p class='text-center'>Enter your messages here.</p>";
                 // alert(elemreplys);
                 tasksDOMReply.append(elemreplys);
+                $('ul#tasksreply'+id).show();      
 
       }else{
 
-         $('li#testingIds').empty();       
+        if($('li#testingIds').size() > 0){
+          $('li#testingIds').remove();
+        }    
+
       snapshots.docChanges().forEach(function(changes) {
           // alert(snapshots.size);
+          const tasksDOMReply = document.getElementById("tasksreply"+docId);
+          var taskreply = changes.doc.data();
+          var taskId = changes.doc.id;
+
           if (changes.type === "added") {
-              const tasksDOMReply = document.getElementById("tasksreply"+docId);
-              var taskreply = changes.doc.data();
-              var taskId = changes.doc.id;
               var userIdcs     = document.getElementById('user_id');
                   // console.log(userIdcs.value);
                   var userNamescs = document.getElementById("user_nickname");
@@ -759,6 +768,10 @@ function fetchTasksReply(id) {
                   // console.log(loggedInVal);
                  var loggedInName = userNamescs.value;
                   // console.log(loggedInName);
+                  if($("li#"+taskId).size() > 0){
+                    $("li#"+taskId).remove();
+                  }    
+
               const elemreply = document.createElement("li");
               elemreply.id = changes.doc.id;
               elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
@@ -1021,7 +1034,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                 //console.log(newdate2);
                 const stripped1 = x.replace(newdate2[4], date1);
                 //console.log(stripped1);
- 
+                
+                var fileName = message.substring(message.lastIndexOf('%') + 3);
+                // console.log(fileName)
+                var fName = fileName.substring(0, fileName.indexOf("?"));
+                //  console.log(fName+"this is fNAME")
  if(loggedInVal == userId){
 
       if(messageType == "text"){
@@ -1066,7 +1083,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
              <form id="${uniqueId}">
              
-               <div class="modal-content">
+               <div class="modal-content" id="modal-content-1">
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1134,7 +1151,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   
                   <form id="${uniqueId}">
                   
-                    <div class="modal-content">
+                    <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1204,7 +1221,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          
          <form id="${uniqueId}">
          
-           <div class="modal-content">
+           <div class="modal-content" id="modal-content-1">
              <div class="modal-header">
                <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1275,7 +1292,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          
          <form id="${uniqueId}">
          
-           <div class="modal-content">
+           <div class="modal-content" id="modal-content-1">
              <div class="modal-header">
                <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1347,7 +1364,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          
          <form id="${uniqueId}">
          
-           <div class="modal-content">
+           <div class="modal-content" id="modal-content-1">
              <div class="modal-header">
                <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1431,7 +1448,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
              <form id="${uniqueId}">
              
-               <div class="modal-content">
+               <div class="modal-content" id="modal-content-1">
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1520,7 +1537,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
              <form id="${uniqueId}">
              
-               <div class="modal-content">
+               <div class="modal-content" id="modal-content-1">
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1607,7 +1624,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
              <form id="${uniqueId}">
              
-               <div class="modal-content">
+               <div class="modal-content" id="modal-content-1">
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1695,7 +1712,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
              <form id="${uniqueId}">
              
-               <div class="modal-content">
+               <div class="modal-content" id="modal-content-1">
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1785,7 +1802,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
              <form id="${uniqueId}">
              
-               <div class="modal-content">
+               <div class="modal-content" id="modal-content-1">
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle${uniqueId}">Chat Reply</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${uniqueId}'>
@@ -1899,6 +1916,11 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
     //console.log(newdate2);
     const stripped1 = x.replace(newdate2[4], date1);
     //console.log(stripped1);
+
+    var fileName = message.substring(message.lastIndexOf('%') + 3);
+    // console.log(fileName)
+var fName = fileName.substring(0, fileName.indexOf("?"));
+//  console.log(fName+"this is fNAME")
 
 if(loggedInVal == userId){
 if(messageType == "text"){
@@ -2025,7 +2047,12 @@ return `
         <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
         <strong class="right primary-font" class='fullName'>${userName}</strong>
     </div>
-   <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+    <p class='message'><a href="${message}" target="_blank">  
+         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+         width="25" height="25"
+         viewBox="0 0 172 172"
+         style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+          ${fName}</a></p>
 </div>
 </li>
 `
@@ -2057,7 +2084,12 @@ return `
         <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
         <strong class="right primary-font" class='fullName'>${userName}</strong>
     </div>
-  <p class='message'><audio controls><source src="${message}" type="audio/mpeg"></audio></p>              </div>
+    <p class='message'><a href="${message}" target="_blank"> 
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+    width="25" height="25"
+    viewBox="0 0 172 172"
+    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+     ${fName}</a></p>
 </li>
 `
 
@@ -2136,7 +2168,12 @@ return `
         <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
         <strong class="right primary-font" class='fullName'>${userName}</strong>
     </div>
-   <p class='message'><a href="${message}" target="_blank">click here to download pdf</a></p>
+    <p class='message'><a href="${message}" target="_blank">  
+         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+         width="25" height="25"
+         viewBox="0 0 172 172"
+         style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+          ${fName}</a></p>
 </div>
 </li>
 `
@@ -2154,8 +2191,12 @@ return `
     <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
 </div>
 
-<p class='message' style="color: #000 !important"><audio controls><source src="${message}" type="audio/mpeg"></audio></p>            
-
+<p class='message'><a href="${message}" target="_blank">  
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="25" height="25"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
+ ${fName}</a></p>
 </div>
 </li>
 `
@@ -2345,6 +2386,7 @@ function flagData(e){
 function closepopup(id){
   // alert(id);
    $('ul#tasksreply'+id).empty()
+   $('li#testingIds').empty();
   // alert('exampleModalCenter'+id);
   // alert('exampleModalCenteraJWnlbLqkTu8K5P7Dtf8');
   // var finaldataval = '#exampleModalCenter'+id;
