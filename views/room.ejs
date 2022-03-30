@@ -86,7 +86,7 @@
               <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-2">Enter @basilnsage Room</button>
               </a>
  -->
-               <a id="notmodalcalling" data-toggle="modal">
+               <a id="notmodalcalling">
            
               <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-2">Enter @basilnsage Room</button>
               </a>
@@ -186,8 +186,10 @@
 
          window.addEventListener("load", function() {
 
+
+
            // document.getElementById("modalcalling").style.display = "block";
-           document.getElementById("notmodalcalling").setAttribute("data-target", "#exampleModalCenterpin");
+         
 
           var config = {
   apiKey: "AIzaSyA0o46jRmw6OghL2fcpdIcNWDeG1EQ5upQ",
@@ -218,39 +220,63 @@ firebase.initializeApp(config);
 
 
 var db = firebase.firestore();
+ var loggedInName =  "<%= userName %>";
+      // alert(loggedInName);
+            
+            var loggedInVal = "<%= userid %>";
+            // alert(LoggedInId);
+  var nummers = db.collection("/basilPrivateGroup/Test/groupMembersInfo/").where('userName', '==', loggedInName);
+nummers.get().then(function (querySnapshot) {
+   if(querySnapshot){
+     querySnapshot.forEach(function (doc) {
+        console.log(doc.id, ' => ', doc.data());
+        document.getElementById("notmodalcalling").href = "/chatWindowAdminUser";
+    });
+   }
 
-  const docRefUserList = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
-   docRefUserList.onSnapshot(function(snapshot) {
+   if(querySnapshot.empty){
+    console.log("not available");
+      document.getElementById("notmodalcalling").setAttribute("data-target", "#exampleModalCenterpin");
+           document.getElementById("notmodalcalling").setAttribute("data-toggle", "modal");
+   }
+   
+});
+  // const docRefUserList = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
+
+  //  docRefUserList.onSnapshot(function(snapshot) {
        
-        // alert(snapshot.docChanges().length);
-        let text = document.getElementById("nickdatavalue");
-      snapshot.docChanges().forEach(function(change) {
+  //       // alert(snapshot.docChanges().length);
+  //       let text = document.getElementById("nickdatavalue");
+  //     snapshot.docChanges().forEach(function(change) {
              
-        var taskDataVal = change.doc.data();
+  //       var taskDataVal = change.doc.data();
 
-          if(text.value == change.doc.data().userName){
-            // alert(change.doc.data());
-            // alert("true");
+  //       alert(JSON.stringify(taskDataVal));
 
-            // window.location.href="/chatWindowAdminUser";
-             // $('#exampleModalCenterpin').modal('show');
-             document.getElementById("notmodalcalling").href = "/chatWindowAdminUser";
-             // document.getElementById("modalcalling").style.display = "none";
+    
+  //         if(text.value == change.doc.data().userName){
+  //           // alert(change.doc.data());
+  //           // alert("true");
+
+  //           // window.location.href="/chatWindowAdminUser";
+  //            // $('#exampleModalCenterpin').modal('show');
+  //            document.getElementById("notmodalcalling").href = "/chatWindowAdminUser";
+  //            // document.getElementById("modalcalling").style.display = "none";
 
 
-          }
-          // else{
-          //   // alert("false");
-          //    // $('#exampleModalCenterpin').modal('show');
-          //   // alert("You enter Wrong code !!");
-          //   document.getElementById("modalcalling").style.display = "block";
-          //   document.getElementById("notmodalcalling").style.display = "none";
+  //         }
+  //         // else{
+  //         //   // alert("false");
+  //         //    // $('#exampleModalCenterpin').modal('show');
+  //         //   // alert("You enter Wrong code !!");
+  //         //   document.getElementById("modalcalling").style.display = "block";
+  //         //   document.getElementById("notmodalcalling").style.display = "none";
 
-          // }
+  //         // }
 
-      });
+  //     });
 
-     });
+  //    });
 
    function getGroupDetail() {
      
