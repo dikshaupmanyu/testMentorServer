@@ -251,6 +251,14 @@ ul.search-list-loader {
 margin: 0px 0px 10px;
 }
 
+.dropdown-menu.show{
+  display: block;
+    position: absolute;
+    transform: translate3d(-120px, 25px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform; 
+}
 
 @keyframes loadingD {
   0 {
@@ -2792,43 +2800,42 @@ function likeFunction1(e) {
 
 </script>
 
-<!-- <script>
-  $(".scroller-dash-left").scroll(function() {
+ <script>
+// $(document).ready(function(){
+//     $( window ).scroll(function() {
+//        $(".dropdown-menu.show").style.display = "none"
+//     });
+// });
 
-if ($(this).scrollTop())
- {
-  
-     $('.dropdown-menu.show').style.visibility ="hidden";
-    
- }
-// else
-//  {
-//   $('.dropdown-menu.show').show();
-//  }
+$(document).ready(function(){
+    $( ".scroller-dash-left" ).scroll(function() {
+       $(".dropdown-menu").removeClass("show");
+    });
 });
 
+ </script>
 
-</script> -->
 
-<!-- <script>
+
+// <!-- <script>
  
-  $(".btn.dropdown-toggle").scrollTop(function(){
-    document.getElementsByClassName("dropdown-menu.show").css.visi= "none"
-  })
-</script> -->
+//   $(".btn.dropdown-toggle").scrollTop(function(){
+//     document.getElementsByClassName("dropdown-menu.show").css.visi= "none"
+//   })
+// </script> -->
 
-<!-- <script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</> -->
+// <script>
+// function openCity(evt, cityName) {
+//   var i, tabcontent, tablinks;
+//   tabcontent = document.getElementsByClassName("tabcontent");
+//   for (i = 0; i < tabcontent.length; i++) {
+//     tabcontent[i].style.display = "none";
+//   }
+//   tablinks = document.getElementsByClassName("tablinks");
+//   for (i = 0; i <script tablinks.length; i++) {
+//     tablinks[i].className = tablinks[i].className.replace(" active", "");
+//   }
+//   document.getElementById(cityName).style.display = "block";
+//   evt.currentTarget.className += " active";
+// }
+// </script>
