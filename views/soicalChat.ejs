@@ -736,6 +736,102 @@
   line-height: 1.9;
 }
 
+/*  */
+
+/* .card-mid-hearder{
+  margin:4px;
+  border-bottom: .5px solid rgb(226, 226, 226);
+} */
+
+.social-post{
+  font-size: 12px;
+  color:#777;
+  position: relative;
+  top:-21px;
+  right:20px;
+  text-align-last: end;
+  margin-right: 10px;
+  /* left:1015px; */
+}
+
+#chevron-down{
+  position: relative;
+  left:97%;
+  bottom:45px;
+  cursor: pointer;
+}
+
+
+#chevron-up{
+  position: relative;
+  left:95.4%;
+  bottom:45px;
+  cursor: pointer;
+  visibility: hidden;
+  /* display: none; */
+}
+
+.rooms{
+ display: flex;
+ justify-content:flex-start;
+ flex-direction:row-reverse;
+ align-items: center;
+ position: relative;
+ bottom: 30px;
+ right:20px;
+ cursor: pointer;
+ font-size:bold;
+}
+
+#roomslist{
+  /* position: fixed !important; */
+    left: auto !important;
+    top: 32px !important;
+    transform: none !important;
+    right: 26px;
+    height: 26%;
+    color:#fff;
+    /* overflow: auto; */
+}
+#roomslist ul li{
+  font-family: SF UI Display Light;
+  transition: all .2s ease-in-out;
+  font-size: 15px;
+  padding:6px 4px;
+  cursor: pointer;
+}
+
+.heading{
+  position: relative;
+  bottom:20px;
+  left:10px;
+}
+/* .marquee{
+  position: absolute;
+  left: 0;
+  top:60px;
+  margin:10px 0;
+ 
+} */
+
+#collapseExample{
+  position: relative;
+  bottom:40px;
+  border-bottom: .5px solid rgb(211, 208, 208);
+   ;
+}
+
+.card-low-hearder{
+  position: relative;
+  bottom:40.5px;
+  border-top: .5px solid rgb(211, 208, 208);
+}
+
+.heading{
+  position: relative;
+  left:72%;
+  font-size: 14px;
+}
 /* 
   .modal-content{
     top:40px;
@@ -773,7 +869,6 @@
   .attachment{
     color:black
   } */
-
   
 
       </style>
@@ -811,9 +906,67 @@
 
 
           <div class="dashboard_wrapper mentordashboard1_wrapper card" style="background: #ffff;">
-                <div class="card-header text-center" style="border: none!important;">
-                    <span><b id="room-button-3">Soical Chat Room</b></span>
+                <div class="card-header text-center" style="border-bottom:1px solid">
+                    <span><b id="room-button-3">Soical Chat Room</b> </span>
+                  </div>
+                  <span>
+                    <a class="rooms" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                  </svg>  Rooms  </a> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownUser" id="roomslist">
+                    <ul>
+                      <li>Social Chat Room</li>
+                      <li>Strategy Chat Room</li>
+                      <li>basilnsage Room</li>
+                    </ul>
+                  </div> 
+                </span>
+
+                <div class="card-mid-head">
+                  <div class="heading">
+                    <b>Most Social Media Mentions Right Now.</b>
+                  </div>
+                  <div class="panel-heading">
+                    <a  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+                      <svg onclick="DownChevron()" id="chevron-down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    </a>
+                    <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <svg onclick="UpChevron()" id="chevron-up"   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                      </svg>
+                    </a>
+                  </div>
+                  <div id="collapseExample">
+                    <marquee class="marquee" id="Marquee">This is basic example of marquee</marquee>
+                  </div>
+                  <div class="card-low-hearder">
+                    <span><b  style="position:relative; left:10px; font-size:14px">Live Stocks Chat</b> </span>
+                    <p class="social-post">Aggregated Social Posts</p>
+                  </div>
                 </div>
+                
+                <!-- <div class="card-mid-hearder" > -->
+                  <!-- <b style="position:relative; left:10px; bottom:20px;">Most Social Media Mentions Right Now.
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <svg onclick="DownChevron()" id="chevron-down" style="position:relative; left:850px; bottom:10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                        <svg onclick="UpChevron()" id="chevron-up" style="position:relative; left:830px; bottom:10px; visibility:hidden"   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                        </svg>
+                    </a>
+                      
+                  </b>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <marquee class="marquee" id="Marquee">This is basic example of marquee</marquee>
+                  </div> -->
+                <!-- </div> -->
+                <!-- <div class="card-low-hearder" style="padding-top:10px;   border-top: 1px solid rgb(201, 200, 200)">
+                  <span><b  style="position:relative; left:10px; margin:5px;">Live Stocks Chat</b> </span>
+                   <p class="social-post">Aggregated Social Posts</p>
+                </div> -->
 
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div id="chatbox-history">
@@ -1024,6 +1177,26 @@ $(document).keypress(function (e) {
   }
  });
 </script>
+
+<script>
+  function DownChevron() {
+
+      document.getElementById("chevron-down").style.visibility = "hidden";
+      document.getElementById("chevron-up").style.visibility = "visible";
+
+  }
+
+  function UpChevron(){
+    // document.getElementById("Marquee").style.visibility = "visible";
+    document.getElementById("chevron-up").style.visibility = "hidden";
+    document.getElementById("chevron-down").style.visibility = "visible";
+  }
+
+
+
+
+  </script>
+
 
 </body>
 </html>
