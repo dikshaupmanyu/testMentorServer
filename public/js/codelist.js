@@ -24,11 +24,25 @@ var config = {
 firebase.initializeApp(config);
 
 
+
+
 var db = firebase.firestore();
 
 
-function getGroupDetail() {
 
+
+// var userId     = document.getElementById('userIdvalue');
+// alert(userId.value);
+
+         window.addEventListener("load", function() {
+                let text = document.getElementById("nickdatavalue");
+                alert(text.value);
+
+      });
+
+
+function getGroupDetail() {
+     
        var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
@@ -72,6 +86,29 @@ function getGroupDetailroomOne() {
 
 function CodeSubmit(){
   event.preventDefault();
+
+ 
+  const docRefUserList = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
+   docRefUserList.onSnapshot(function(snapshot) {
+       
+        alert(snapshot.docChanges().length);
+        let text = document.getElementById("nickdatavalue");
+      snapshot.docChanges().forEach(function(change) {
+             
+        var taskDataVal = change.doc.data();
+          if(text.value == change.doc.data().userName){
+            console.log("true");
+            // window.location.href="/chatWindowAdminUser";
+          }else{
+            console.log("false");
+            // alert("You enter Wrong code !!");
+          }
+
+      });
+
+     });
+
+    // alert(text);
     var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
