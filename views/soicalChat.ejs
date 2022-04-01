@@ -808,9 +808,9 @@
   right:90px;
   font-size: 14px;
 }
-.marquee{
+/*.marquee{
   position: absolute;
-}
+}*/
 
 /* #collapseExample{
   position: relative;
@@ -942,10 +942,15 @@
                 </div>
 
                 <div id="collapseExample">
-                  <div class="colla" style="display:grid; justify-content:center">
-                    <a style="cursor:pointer;"> Refresh it <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABmUlEQVRIie3Wz05TQRTH8Q9rt7RqKE1qxPAibkyMQlADJsSlbgzhFXwKY/yzIUgDKBsTX0XZQRqlUdZUoS5m6i2lem+nF1b8krOZOTPfe+bOOXO41AVpYgTfOuZxG7O4Gsdb2MUn7GCvrI+r4x066OZYB68wPS50AYd9m65hETdwJdrNOLbe93GHuJsKvY7juNGWEHmeGtiMa07wNAU8gRdYTli7EsG/cT8FPo5Whch/oHLR8J0If5Pn+CBaWaoLF+7If6Ku4CBamUfTu2wr/3JoyvKxWSJ4UZYZZ/TQ2WJQ1pHPxP2+Dk5M4vsQcFtWFlPUf4KDtpHn8HEM8CS+Ddmzjeqg826cnBkD2K97Q8BDf+F2nHxUEpiCl3Y1zyFBhdK0Kkv4WonwQoXprRD1dongQqrip5xqc16aE560EzxPWP9EeFJHaa3+6lkEd4V62yiwpiHkfldoIq6lgAntS+/YO0J7s4RbTrc+j/Eev2Rv8EIqtKcaXirW7B3htQIZMco/qAmV6I4Q5VQcb+ELPuMD9kfY81Lnrz8ZRo+Yt/Ln7AAAAABJRU5ErkJggg=="/>
-                    </a>
-                    <marquee class="marquee" id="Marquee">This is basic example of marquee  </marquee>
+                  <div class="colla">
+                   <!--  <a style="cursor:pointer;"> Refresh it <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABmUlEQVRIie3Wz05TQRTH8Q9rt7RqKE1qxPAibkyMQlADJsSlbgzhFXwKY/yzIUgDKBsTX0XZQRqlUdZUoS5m6i2lem+nF1b8krOZOTPfe+bOOXO41AVpYgTfOuZxG7O4Gsdb2MUn7GCvrI+r4x066OZYB68wPS50AYd9m65hETdwJdrNOLbe93GHuJsKvY7juNGWEHmeGtiMa07wNAU8gRdYTli7EsG/cT8FPo5Whch/oHLR8J0If5Pn+CBaWaoLF+7If6Ku4CBamUfTu2wr/3JoyvKxWSJ4UZYZZ/TQ2WJQ1pHPxP2+Dk5M4vsQcFtWFlPUf4KDtpHn8HEM8CS+Ddmzjeqg826cnBkD2K97Q8BDf+F2nHxUEpiCl3Y1zyFBhdK0Kkv4WonwQoXprRD1dongQqrip5xqc16aE560EzxPWP9EeFJHaa3+6lkEd4V62yiwpiHkfldoIq6lgAntS+/YO0J7s4RbTrc+j/Eev2Rv8EIqtKcaXirW7B3htQIZMco/qAmV6I4Q5VQcb+ELPuMD9kfY81Lnrz8ZRo+Yt/Ln7AAAAABJRU5ErkJggg=="/>
+                    </a> -->
+                     <marquee class="marquee">
+                      <div class="row" id="Marquee">
+                      </div>
+                     
+                    </marquee>
+                  
                   </div>  
                 </div>
                 <div class="card-low-hearder">
@@ -1175,6 +1180,73 @@
 <script src="js/vanillaEmojipicker.js"></script>
 <script>
 
+ window.addEventListener("load", function() {
+
+ 
+   var LoggedInUsername = "<%= userName %>";
+   var LoggedInEmail = "<%= email %>";
+   var LoggedInId = "<%= userid %>";
+   var tokens = "<%= tokens %>";
+   // alert(LoggedInId);
+
+$(document).ready(function(){  
+
+  function getNumberWithOrdinal(n) {
+  var s = ["th", "st", "nd", "rd"],
+      v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+   var notificationVals = "" ;
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://apistest.tradetipsapp.com/api/socialChatStockDetails/getAllSocialChatStockDetailsList',
+        headers: {
+          Authorization: 'Bearer '+ tokens,
+           },
+         data: {userName : LoggedInUsername},
+      success: function(data) {
+
+       var datak = JSON.stringify(data);
+       var dataResult = JSON.parse(datak);
+
+       // alert(dataResult);
+
+        if(dataResult.length > 0){
+          var n =0;
+           for(i = 0; i < dataResult.length; i ++){
+            n++;
+        notificationVals += '<div class="col"><h6>'+dataResult[i].stockSymbol+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>'+ getNumberWithOrdinal(n) +'</span></h6></div>'; 
+  
+       }    
+          // window.location.reload();
+
+          $("#Marquee").append(notificationVals);
+         }
+         else{
+            // alert("li is creating")
+          // const notificationVal = document.createElement('li');
+          //   console.log(notificationVal);
+          // notificationVal.innerHTML = "<img src='/images/noreply-1.png' style='margin:0 auto; display:flex; margin-bottom:20px;  width:25.5%'><h3 class='text-center'><b>No New Notification</b></h3><br><p class='text-center'>Check this section for all updates and general announcements.</p>";
+         
+          // $("#notifyList").append(notificationVal);
+         
+          // $('#notifylist').show();    
+        }
+
+         
+
+    
+     
+     }
+
+   });
+
+  });
+
+});
+
 $(document).keypress(function (e) {
   
   if (e.which == 13) {
@@ -1187,6 +1259,7 @@ $(document).keypress(function (e) {
 
 <script>
   function DownChevron() {
+
 
       document.getElementById("chevron-down").style.visibility = "hidden";
       document.getElementById("chevron-up").style.visibility = "visible";
