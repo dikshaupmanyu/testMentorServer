@@ -291,7 +291,7 @@ return docRefreply
   .then((ref) => {
     console.log(ref.id);
 
-    $("div#exampleModalCenter"+id).css("display", "none");
+    // $("div#exampleModalCenter"+id).css("display", "none");
 
     taskreplys.id = ref.id;
     // fullName.value = '';
@@ -328,7 +328,7 @@ return docRefreply
   .add(taskreplys)
   .then((ref) => {
     console.log(ref.id);
-         $("div#exampleModalCenter"+id).css("display", "none");
+        //  $("div#exampleModalCenter"+id).css("display", "none");
 
     taskreplys.id = ref.id;
     // fullName.value = '';
@@ -365,7 +365,7 @@ return docRefreply
   .then((ref) => {
     console.log(ref.id);
 
-    $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
+    // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
 
     taskreplys.id = ref.id;
     // fullName.value = '';
@@ -942,132 +942,6 @@ function fetchUserList() {
 
 fetchUserList();
 
-
-
-
-
-// var reviewForm = document.getElementById('reviewForm');
-// // var fullName   = document.getElementById('user_nickname');
-// // var message    = document.getElementById('message');
-// // var userId     = document.getElementById('user_id');
-// // var hiddenId   = document.getElementById('hiddenId');
-// // var date = document.getElementById('dateval');
-
-// // reviewForm.addEventListener('submit', (e) => {
-// //   e.preventDefault();
-
-// //   if (!fullName.value || !message.value || !date.value) return null
-
-// //   var id = hiddenId.value || Date.now()
-
-// //   db.collection('/openGroups/demoOpenGroup1/messages/').add({
-// //     userName: fullName.value,
-// //     userId : userId.value,
-// //     message: message.value,
-// //     createdDate : date.value
-// //   }).then(function(doc) {
-// //         // console.log(docRef);
-// //         // console.log("Document written with ID: ", docRef.id);
-
-// //   var li = document.createElement('li')
-// //   li.id = doc.id;
-// //   li.innerHTML = reviewTemplate('<li class="admin clearfix"><span class="chat-img right clearfix mx-2"><img src="https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=d9aced23-7b89-4abc-bd71-5523ab83a98a" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + createdDate + '</small><strong class="right primary-font" class="fullName"> ' + userName + '</strong></div><p class="message"> ' + message + '</p></div></li>')
-// //   reviews.appendChild(li);
-
-// //     });
-
-
-
-// //     fullName.value = '';
-// //     message.value  = '';
-// //     hiddenId.value = '';
-// //     date.value = '';
-
-// //   });
-
-// // // READ REVEIWS
-
-
-
-
-
-// // var reviews = document.getElementById('reviews');
-// // var reviewsRef = db.ref("/reviews");
-// // var reviewsRef = db.collection('openGroups').doc('demoOpenGroup1').collection('messages');
-// // var reviewsRef = db.collection("/openGroups/demoOpenGroup1/messages").get().then((querySnapshot) => {
-   
-// //     // querySnapshot.forEach((doc) => {
-// //         // alert(`${doc.id} => ${doc.data()}`);
-// //          // sub_array.push(doc.data());
-
-// //   // var li = document.createElement('li')
-// //   // li.id = doc.id;
-// //   // li.innerHTML = reviewTemplate(doc.data())
-// //   // reviews.appendChild(li);
-     
-       
-// //     // });
-
-// //   });
-
-
-// // var reviewsRef =
-
-//  // db.collection("/openGroups/demoOpenGroup1/messages").get().then((querySnapshot) => {
-
-//  //        var sub_array = [];
-   
-//  //    querySnapshot.forEach((doc) => {
-//  //        // alert(`${doc.id} => ${doc.data()}`);
-//  //         // sub_array.push(doc.data());
-//  //    // alert(doc.id);
-//  //  var li = document.createElement('li')
-//  //  li.id = doc.id;
-//  //  li.innerHTML = reviewTemplate(doc.data())
-//  //  reviews.appendChild(li);
-     
-       
-//  //    });
-
-//  //  });
-
-// // reviewsRef.on('child_added', (data) => {
-// //   alert("add value" + data.val());
-// //   var li = document.createElement('li')
-// //   li.id = data.key;
-// //   li.innerHTML = reviewTemplate(data.val())
-// //   reviews.appendChild(li);
-// // });
-
-
-// // reviewsRef.on('child_changed', (data) => {
-// //   alert("change" + data);
-// //   var reviewNode = document.getElementById(data.key);
-// //   reviewNode.innerHTML = reviewTemplate(data.val());
-// // });
-
-// // reviewsRef.on('child_removed', (data) => {
-// //   alert("remove" + data);
-// //   var reviewNode = document.getElementById(data.key);
-// //   reviewNode.parentNode.removeChild(reviewNode);
-// // });
-
-// // reviews.addEventListener('click', (e) => {
-// //   var reviewNode = e.target.parentNode
-
-// //   // UPDATE REVEIW
-// //   if (e.target.classList.contains('edit')) {
-// //     fullName.value = reviewNode.querySelector('.fullName').innerText;
-// //     message.value  = reviewNode.querySelector('.message').innerText;
-// //     hiddenId.value = reviewNode.id;
-// //   }
-
-// //   // DELETE REVEIW
-// //   if (e.target.classList.contains('delete')) {
-// //     var id = reviewNode.id;
-// //     db.ref('reviews/' + id).remove();
-// //   }
-// // });
 
 function reviewTemplateUserList({userName,userId}){
 // alert(userName);
@@ -2463,38 +2337,6 @@ function flagData(e){
                      
 }
 
-
-// function flagData(e){
-
-//     var messageId = e;
-// const docRef = db.collection("/basilPrivateGroup/Test/messages/");
-
-//       const arr2s = docRef.doc(messageId).update({
-//     messageFlag: false
-//     }).then(function(result) {
-//     // here you can use the result of promiseB
-//      alert(result);
-// });
-
-   
-
-
-// docRef.where("messageId", "==", e)
-// .get()
-// .then(function(querySnapshot) {
-//     querySnapshot.forEach(function(doc) {
-//         // doc.data() is never undefined for query doc snapshots
-//         console.log(doc.id, " => ", doc.data());
-
-
-//     });
-// })
-// .catch(function(error) {
-//     console.log("Error getting documents: ", error);
-// });
-
-                   
-// }
 
 function closepopup(id){
   // alert(id);
