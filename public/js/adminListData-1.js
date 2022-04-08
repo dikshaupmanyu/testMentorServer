@@ -58,6 +58,119 @@ function getGroupDetail() {
 
  getGroupDetail();
 
+ var loggedInName =  "<%= userName %>";
+ // alert(loggedInName);
+       
+       var loggedInVal = "<%= userid %>";
+       // alert(LoggedInId);
+var nummers = db.collection("/basilPrivateGroup/Test/groupMembersInfo/").where('userName', '==', loggedInName);
+nummers.get().then(function (querySnapshot) {
+if(querySnapshot){
+  console.log("okkk")
+querySnapshot.forEach(function (doc) {
+   console.log(doc.id, ' => ', doc.data());
+   document.getElementById("notmodalcalling").href = "/chatWindowAdminUser";
+});
+}
+
+if(querySnapshot.empty){
+console.log("not available");
+ document.getElementById("notmodalcalling").setAttribute("data-target", "#exampleModalCenterpin");
+      document.getElementById("notmodalcalling").setAttribute("data-toggle", "modal");
+}
+
+});
+
+function getGroupDetails() {
+
+       var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
+       monthlies.then((res) => {
+        // console.log(res.data().groupCode);
+        document.getElementById('room-button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+
+       });
+
+
+}
+
+ getGroupDetails();
+
+ function getGroupDetailroomOnes() {
+
+  var monthlies = db.collection("/openGroups").doc("demoOpenGroup1").get();
+  monthlies.then((res) => {
+   // console.log(res.data().groupCode);
+   document.getElementById('room-Button-1').innerText = "Enter " + res.data().groupTitle + " Room";
+  
+  });
+  
+  
+  }
+
+  getGroupDetailroomOnes();
+
+  function getSoicalChatroomOne() {
+
+    var monthlies = db.collection("/socialchat").doc("Test").get();
+    monthlies.then((res) => {
+     console.log(res.data().groupTitle);
+     document.getElementById('room-Button-3').innerText = "Enter " + res.data().groupTitle ;
+    
+    });
+    
+    
+    }
+    
+    getSoicalChatroomOne();
+
+        
+$("#formoid").submit(function(event){
+  // alert("hiii");
+  event.preventDefault();
+
+    var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
+       monthlies.then((res) => {
+        // console.log(res.data().groupCode);
+          var enterCode    = document.getElementById('pcode');
+          if(enterCode.value == res.data().groupCode){
+            var loggedInName =  "<%= userName %>";
+            // alert(userName);
+            
+            var loggedInVal = "<%= userid %>";
+            // alert(LoggedInId);
+
+   const docRef = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
+
+    let task = {
+    userName: loggedInName,
+    userId : loggedInVal,
+    id : loggedInVal + "_"+  Date.now(),
+    createdDate :  Date.now(),
+    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
+    messageSource : "Web"
+    // status: "incomplete"
+    };
+
+    return docRef
+      .add(task)
+      .then((ref) => {
+        // alert(ref.id);
+        task.id = ref.id;
+
+     window.location.href="/chatWindowAdminUser";
+
+       
+      });
+
+    }else{
+      console.log("false");
+      alert("You enter Wrong code !!");
+    }
+
+  });
+
+
+});
 const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 const tasksDOM = document.getElementById("tasks");
 var fullName   = document.getElementById('user_nickname');

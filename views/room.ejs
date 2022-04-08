@@ -228,6 +228,7 @@ var db = firebase.firestore();
   var nummers = db.collection("/basilPrivateGroup/Test/groupMembersInfo/").where('userName', '==', loggedInName);
 nummers.get().then(function (querySnapshot) {
    if(querySnapshot){
+     console.log("okkk")
      querySnapshot.forEach(function (doc) {
         console.log(doc.id, ' => ', doc.data());
         document.getElementById("notmodalcalling").href = "/chatWindowAdminUser";
@@ -303,6 +304,10 @@ function getGroupDetailroomOne() {
 
 
 }
+
+ getGroupDetailroomOne();
+
+
 
  getGroupDetailroomOne();
 

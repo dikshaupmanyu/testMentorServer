@@ -768,6 +768,31 @@
   cursor: pointer;
 }
 
+
+.reasonFlag{
+              font-size: 20px;
+              text-align: center;
+              box-sizing: border-box; 
+              /* padding:16px; */
+   }
+
+   .pin{
+     /* padding:4px; */
+     text-align: center;
+     margin:15px;
+     /* font-size: 12px; */
+   }
+
+   #Btn{
+     margin-bottom:15px; 
+     width:56%;
+     /* padding:4px; */
+   }
+   .close-pin{
+     position:absolute;
+     top:2px;
+     left:95%;
+   }
 /* 
   .modal-content{
     top:40px;
@@ -854,14 +879,52 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownUser" id="roomslist">
                       <ul>
-                        <li><a href="soicalChat">Social Chat Room</a></li>
-                        <li><a href="chatWindow">Strategy Chat Room</a></li>
-                        <li><a href="chatWindowAdminUser">basilnsage Room</a></li>
+                        <li><a href="/chatWindow">
+           
+                          <span id="room-Button-1">Enter Strategy Room</span>
+                          </a>
+                        </li>
+                        <li><a  id="notmodalcalling">
+           
+                          <span id="room-button-2">Enter @basilnsage Room</span>
+                          </a>
+                          <div class="modal fade" id="exampleModalCenterpin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div>
+                                  <h5 class="header-flag" id="exampleModalLongTitle">Enter Room Code</h5>
+                                  <button type="button" class="close-pin" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+            
+                                 <div class="pincode">
+                                    <div class="reasonFlag">
+                                      <form id="formoid" enctype="multipart/form-data" onsubmit="return false">
+                                      <input type="password" id="pcode" class="pin" placeholder="Enter Code Here"/>
+                                      <br>
+                                     <button type="submit" class="Btn_P btn btn-primary" id="Btn_Pop">Submit</button>
+                                     </form>
+                                    </div>
+                                </div>
+                              
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li><a href="/soicalChat">
+           
+                          <span id="room-Button-3">Enter Soical Chat Room</span>
+                          </a>
+                        </li>
                       </ul>
+
                     </div>  
 
                   </span>
                 </div>
+                
+
 
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div id="chatbox-history">
