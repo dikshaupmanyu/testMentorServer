@@ -58,35 +58,13 @@ function getGroupDetail() {
 
  getGroupDetail();
 
- var loggedInName =  "<%= userName %>";
- // alert(loggedInName);
-       
-       var loggedInVal = "<%= userid %>";
-       // alert(LoggedInId);
-var nummers = db.collection("/basilPrivateGroup/Test/groupMembersInfo/").where('userName', '==', loggedInName);
-nummers.get().then(function (querySnapshot) {
-if(querySnapshot){
-  console.log("okkk")
-querySnapshot.forEach(function (doc) {
-   console.log(doc.id, ' => ', doc.data());
-   document.getElementById("notmodalcalling").href = "/chatWindowAdminUser";
-});
-}
-
-if(querySnapshot.empty){
-console.log("not available");
- document.getElementById("notmodalcalling").setAttribute("data-target", "#exampleModalCenterpin");
-      document.getElementById("notmodalcalling").setAttribute("data-toggle", "modal");
-}
-
-});
 
 function getGroupDetails() {
 
        var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
-        document.getElementById('room-button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+        document.getElementById('room-Button-2').innerText = "Enter " + res.data().groupTitle + " Room";
 
        });
 

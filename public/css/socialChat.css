@@ -766,6 +766,32 @@ border-top: .5px solid rgb(211, 208, 208);
 }
 
 
+
+.reasonFlag{
+   font-size: 20px;
+   text-align: center;
+   box-sizing: border-box; 
+   /* padding:16px; */
+}
+
+.pin{
+/* padding:4px; */
+text-align: center;
+margin:15px;
+/* font-size: 12px; */
+}
+
+#Btn_Pop{
+margin-bottom:15px; 
+width:48%;
+/* padding:4px; */
+}
+.close-pin{
+position:absolute;
+top:2px;
+left:95%;
+}
+
 /* 
 .modal-content{
 top:40px;

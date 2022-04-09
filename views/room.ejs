@@ -293,6 +293,20 @@ nummers.get().then(function (querySnapshot) {
 
  getGroupDetail();
 
+   function getGroupDetails() {
+     
+       var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
+       monthlies.then((res) => {
+        // console.log(res.data().groupCode);
+        document.getElementById('room-Button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+
+       });
+
+
+}
+
+ getGroupDetails();
+
 function getGroupDetailroomOne() {
 
        var monthlies = db.collection("/openGroups").doc("demoOpenGroup1").get();
@@ -335,6 +349,7 @@ $("#formoid").submit(function(event){
         // console.log(res.data().groupCode);
           var enterCode    = document.getElementById('pcode');
           if(enterCode.value == res.data().groupCode){
+            var loggedInName =  "<%= userName %>";
             var loggedInName =  "<%= userName %>";
             // alert(userName);
             
@@ -414,5 +429,9 @@ $("#formoid").submit(function(event){
               // ...
             });
     });
+
+
+    // /////////////////////////////////////
+
  </script>
 
