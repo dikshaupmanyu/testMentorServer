@@ -893,7 +893,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -969,7 +969,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                         &times
                         </button>
                       </div>
@@ -1039,7 +1039,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                         &times
                         </button>
                       </div>
@@ -1112,7 +1112,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                         &times
                         </button>
                       </div>
@@ -1184,7 +1184,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                         &times
                         </button>
                       </div>
@@ -1269,7 +1269,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                           &times
                         </button>
                       </div>
@@ -1358,7 +1358,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                           &times
                         </button>
                       </div>
@@ -1445,7 +1445,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                           &times
                         </button>
                       </div>
@@ -1533,7 +1533,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                           &times
                         </button>
                       </div>
@@ -1623,7 +1623,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
                         &times
                       </button>
                       </div>

@@ -666,9 +666,9 @@ left:750px;
 .modal-title{
 line-height: 2.5;
 }
-.close{
+/* .close{
 line-height: 1.9;
-}
+} */
 
 
 .room{
@@ -722,7 +722,7 @@ margin-bottom:15px;
 width:48%;
 /* padding:4px; */
 }
-.close-pin{
+.close{
 position:absolute;
 top:2px;
 left:95%;
