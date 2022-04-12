@@ -61,7 +61,7 @@ border-right: none !important;
 {
    display: inline-block;
    max-width: 80%;
-   background-color: #0f2668eb;
+   /* background-color: #0f2668eb; */
    border-radius: 12.5px;
    padding: 11px;
    padding-right: 20px;
@@ -172,7 +172,7 @@ margin-top: 22px;
 margin-bottom: 25px;
 }
 .header.clearfix small.text-muted {
-bottom: -40px;
+/* bottom: -40px; */
 position: absolute;
 left: 3px;
 color: #777 !important;
@@ -187,7 +187,7 @@ left: auto;
 position: absolute;
 top: -23px;
 left: 3px;
-color: #666 !important;
+/* color: #666 !important; */
 font-weight: 100;
 font-size: 14px;
 min-width: 110px;
@@ -199,7 +199,7 @@ left: auto;
 .chat-care .chat-img .img-circle {
 border-radius: 50%;
 position: absolute;
-bottom: 9px;
+/* bottom: 9px; */
 left: .5rem;
 background: #eee;
 object-fit: cover;
@@ -818,14 +818,51 @@ height:300px;
 top:215px;
 left:650px;
 } */
-/* #exampleModalLongTitle{
-display: flex;
-justify-content: center;
+
+
+/*  ////////////////////////  SOCIAL CHAT  ///////////////////// */
+.chat li li {
+   width: -webkit-fill-available;
+   /* height:150px; */
+   background-color: lightgray;
+   border-radius:7px;
+   padding:3px;
+   /* padding-bottom:6px; */
 }
-.modal-title{
-display: flex;
-justify-content: center;
+
+.chat-care .chat-img .img-circle{
+  top:10px
 }
-.attachment{
-color:black
-} */
+
+.header.clearfix strong.primary-font{
+   top:-15px;
+   font-size: 17px;
+   color:black;
+}
+
+.message{
+   position:relative;
+   top:35px;
+   right:60px;
+}
+
+.likeComment{
+   /* display:flex;
+   justify-content: flex-end; */
+   position: relative;
+   top:30px;
+   left:992px;
+   cursor: pointer;
+}
+
+.likeButton{
+   position:relative;
+   right:27px;
+   display:none;
+}
+
+.Comment{
+   position:relative;
+   top:55px;
+   right:80px
+}

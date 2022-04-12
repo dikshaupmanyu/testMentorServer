@@ -857,7 +857,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
             <li class="admin clearfix">
            
               <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 45px;height: 45px;"/>
               </span>
               <div class="chat-body clearfix">
             <div class="Overlay">
@@ -881,7 +881,9 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                       style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg><span>
 
                   </p>
-                  
+                  <div class="likeComment">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABjklEQVRIie2TPyiEcRjHP8/rdSibhUKGOyWjV7cpm+WyXJhkul4lg8lGNjPlvYyUYjAYrLJQRylRHGVA6bBxg/M+hrvXn6u79473Nt/l1+/X83w/3349D9RY8psma+VqTNBYV0t4fGtE3svVmtWa9ztXo4quKZg3T9d7wGq5euMX5uteMFfo9eupGFBk/gKA6EUgAMtJxz/NhXmFewBxOfwzwHLScWADMAUWjbfcskAYeG1+uD39E8By0sOeucJCyo7MumYoSn76jvbmB3N+AL8pWvbMj+3IHIDiRguzPWA5aS3Rd4shiaNEeNcsJC1VCIBnDmBAtGxxXu24mgQ6q96DlB0Z8qspBO6Aoi9yVWPf74bITrUBilXVolWivuRlFEDhriYAw5VpAENZCxzQlzxvUyEOvNeRSwYOQOttIARsH0723AQK6N08CwkkAARd8t4DAzQ9N4wBrcBJyu7eDxyAulP5k6Xvzz/2oNTc+236F4RMfbZx44dn2QYhAzxW5s0dYkwczHRkKwrzL08fV6+BbLrzBEwAAAAASUVORK5CYII=">
+                  </div>
               </div>
              
           </li>
@@ -937,7 +939,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
             <li class="admin clearfix">
               <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 45px;height: 45px;"/>
               </span>
               <div class="chat-body clearfix">
               <div class="Overlay">
@@ -1007,7 +1009,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
             <li class="admin clearfix">
               <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 45px;height: 45px;"/>
               </span>
               <div class="chat-body clearfix">
 
@@ -1076,7 +1078,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
             <li class="admin clearfix">
               <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 45px;height: 45px;"/>
               </span>
               <div class="chat-body clearfix">
 
@@ -1148,7 +1150,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
             <li class="admin clearfix">
               <span class="chat-img right clearfix mx-2">
-                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+                  <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 45px;height: 45px;"/>
               </span>
               <div class="chat-body clearfix">
 
@@ -1229,10 +1231,10 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
         <li class="agent clearfix">
           <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 40px;height: 40px;"/>
           </span>
           
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;" >
+          <div class="chat-body clearfix agent" style="float:none;" >
           
           <div class="overlay">
               <div class="overlay-1">
@@ -1255,8 +1257,18 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
               </span>
                
               </p>
+             
+              <div>
+                <div class="Comment">
+                  <a> <img src="https://img.icons8.com/ios/24/3498DB/topic.png"/> Comments</a>
+                </div>
 
-              
+                <div class="likeComment">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABjklEQVRIie2TPyiEcRjHP8/rdSibhUKGOyWjV7cpm+WyXJhkul4lg8lGNjPlvYyUYjAYrLJQRylRHGVA6bBxg/M+hrvXn6u79473Nt/l1+/X83w/3349D9RY8psma+VqTNBYV0t4fGtE3svVmtWa9ztXo4quKZg3T9d7wGq5euMX5uteMFfo9eupGFBk/gKA6EUgAMtJxz/NhXmFewBxOfwzwHLScWADMAUWjbfcskAYeG1+uD39E8By0sOeucJCyo7MumYoSn76jvbmB3N+AL8pWvbMj+3IHIDiRguzPWA5aS3Rd4shiaNEeNcsJC1VCIBnDmBAtGxxXu24mgQ6q96DlB0Z8qspBO6Aoi9yVWPf74bITrUBilXVolWivuRlFEDhriYAw5VpAENZCxzQlzxvUyEOvNeRSwYOQOttIARsH0723AQK6N08CwkkAARd8t4DAzQ9N4wBrcBJyu7eDxyAulP5k6Xvzz/2oNTc+236F4RMfbZx44dn2QYhAzxW5s0dYkwczHRkKwrzL08fV6+BbLrzBEwAAAAASUVORK5CYII=">
+                  <img class="likeButton" src="https://img.icons8.com/material-sharp/24/3498DB/thumb-up.png"/>
+                <div>
+              </div>
+             
           </div>
           
           
@@ -1325,9 +1337,9 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
         <li class="agent clearfix">
           <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 40px;height: 40px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chat-body clearfix agent" style="float:none;">
         <div class="overlay">
             <div class="overlay-1">
               <div class="content-2"  id='popup${taskId}'>
@@ -1414,9 +1426,9 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
         <li class="agent clearfix">
           <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 40px;height: 40px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chat-body clearfix agent" style="float:none;">
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
@@ -1501,9 +1513,9 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
         <li class="agent clearfix">
           <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 40px;height: 40px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chat-body clearfix agent" style="float:none;background:#77839647;">
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
@@ -1589,9 +1601,9 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
 
         <li class="agent clearfix">
           <span class="chat-img left clearfix mx-2">
-              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
+              <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 40px;height: 40px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chat-body clearfix agent" style="float:none;">
 
             <div class="overlay">
                 <div class="overlay-1">
@@ -2184,3 +2196,5 @@ $(document).keypress(function (e) {
   //  alert('Click button was trigger');
   }
  });
+
+
