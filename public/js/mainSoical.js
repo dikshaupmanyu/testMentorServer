@@ -1235,16 +1235,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
           </span>
           
           <div class="chat-body clearfix agent" style="float:none;" >
-          
-          <div class="overlay">
-              <div class="overlay-1">
-              <div class="content"  id='popup${taskId}'>
-              <a role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> <div class="Pop" onClick='replypopup(this.id)' id='${taskId}'>Reply</div></a>  
-              <a onClick='copyClipboard(this.id)' id='${taskId}'><div class="pop" style="cursor:pointer;">Copy</div></a>
-              <a data-toggle="modal" data-target="#exampleModalCenterFlag${taskId}"><div class="pop2">Flag</div></a>
-              </div>
-              </div>
-          </div>
+      
          
               <div class="header clearfix">
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"><div id="finalValn${taskId}"><a onClick='replypopup(this.id)' id='${taskId}' role="button" data-toggle="modal" data-target="#exampleModalCenter${taskId}"> Replies : <span id="sizedatan${taskId}"></span></a> </div></span>${stripped1} </small>
@@ -1253,7 +1244,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
               <p class='message' style="color: #000 !important" >
 
               <span id="textMessage${taskId}">
-                        ${commentBody} <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/>
+                        ${commentBody} 
               </span>
                
               </p>
@@ -1264,7 +1255,7 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                 </div>
 
                 <div class="likeComment">
-                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABjklEQVRIie2TPyiEcRjHP8/rdSibhUKGOyWjV7cpm+WyXJhkul4lg8lGNjPlvYyUYjAYrLJQRylRHGVA6bBxg/M+hrvXn6u79473Nt/l1+/X83w/3349D9RY8psma+VqTNBYV0t4fGtE3svVmtWa9ztXo4quKZg3T9d7wGq5euMX5uteMFfo9eupGFBk/gKA6EUgAMtJxz/NhXmFewBxOfwzwHLScWADMAUWjbfcskAYeG1+uD39E8By0sOeucJCyo7MumYoSn76jvbmB3N+AL8pWvbMj+3IHIDiRguzPWA5aS3Rd4shiaNEeNcsJC1VCIBnDmBAtGxxXu24mgQ6q96DlB0Z8qspBO6Aoi9yVWPf74bITrUBilXVolWivuRlFEDhriYAw5VpAENZCxzQlzxvUyEOvNeRSwYOQOttIARsH0723AQK6N08CwkkAARd8t4DAzQ9N4wBrcBJyu7eDxyAulP5k6Xvzz/2oNTc+236F4RMfbZx44dn2QYhAzxW5s0dYkwczHRkKwrzL08fV6+BbLrzBEwAAAAASUVORK5CYII=">
+                  <img class="likeButoon1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABjklEQVRIie2TPyiEcRjHP8/rdSibhUKGOyWjV7cpm+WyXJhkul4lg8lGNjPlvYyUYjAYrLJQRylRHGVA6bBxg/M+hrvXn6u79473Nt/l1+/X83w/3349D9RY8psma+VqTNBYV0t4fGtE3svVmtWa9ztXo4quKZg3T9d7wGq5euMX5uteMFfo9eupGFBk/gKA6EUgAMtJxz/NhXmFewBxOfwzwHLScWADMAUWjbfcskAYeG1+uD39E8By0sOeucJCyo7MumYoSn76jvbmB3N+AL8pWvbMj+3IHIDiRguzPWA5aS3Rd4shiaNEeNcsJC1VCIBnDmBAtGxxXu24mgQ6q96DlB0Z8qspBO6Aoi9yVWPf74bITrUBilXVolWivuRlFEDhriYAw5VpAENZCxzQlzxvUyEOvNeRSwYOQOttIARsH0723AQK6N08CwkkAARd8t4DAzQ9N4wBrcBJyu7eDxyAulP5k6Xvzz/2oNTc+236F4RMfbZx44dn2QYhAzxW5s0dYkwczHRkKwrzL08fV6+BbLrzBEwAAAAASUVORK5CYII=">
                   <img class="likeButton" src="https://img.icons8.com/material-sharp/24/3498DB/thumb-up.png"/>
                 <div>
               </div>
@@ -1308,25 +1299,6 @@ function reviewTemplate({profileImageUrl,authorName,userId, commentBody,createdO
                       </div>
                     </div>
                   </form>
-                  </div>
-                </div>
-                <div class="modal fade" id="exampleModalCenterFlag${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div>
-                        <h5 class="header-flag" id="exampleModalLongTitle">Reason For Flag</h5>
-                      </div>
-
-                       <div class="Flag">
-                          <div class="reasonFlag">
-                          <a><div class="flag" onClick='flagData(this.id ,"Offensive")' id='${taskId}' value="Offensive">Offensive</div></a>
-                          <a><div class="flag" onClick='flagData(this.id ,"Irrevalent")' id='${taskId}' value="Irrevalent">Irrelaavent</div></a>
-                          <a><div class="flag" onClick='flagData(this.id ,"Other")' id='${taskId}' value="Other">Other</div></a>
-                          <a><div class="flag1" type="button" data-dismiss="modal">Cancel</div></a>
-                          </div>
-                      </div>
-                    
-                    </div>
                   </div>
                 </div>
      

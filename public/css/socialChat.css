@@ -22,7 +22,7 @@ border-right: none !important;
 
 .chat li
 {
-   margin-bottom: 40px;
+   margin-bottom: 20px;
    padding-bottom: 5px;
 
    /* border-bottom: 1px dotted #B3A9A9; */
@@ -175,6 +175,7 @@ margin-bottom: 25px;
 /* bottom: -40px; */
 position: absolute;
 left: 3px;
+top:10px;
 color: #777 !important;
 min-width: 150px;
 }
@@ -821,17 +822,20 @@ left:650px;
 
 
 /*  ////////////////////////  SOCIAL CHAT  ///////////////////// */
-.chat li li {
-   width: -webkit-fill-available;
+/*  ////////////////////////  SOCIAL CHAT  ///////////////////// */
+.chat-care  .agent{
+   width:98%;
    /* height:150px; */
-   background-color: lightgray;
+   margin-left: 12px;
+   background-color: rgb(237, 237, 237);
    border-radius:7px;
    padding:3px;
    /* padding-bottom:6px; */
 }
 
 .chat-care .chat-img .img-circle{
-  top:10px
+  top:15px;
+  left:1.2rem;
 }
 
 .header.clearfix strong.primary-font{
@@ -842,27 +846,168 @@ left:650px;
 
 .message{
    position:relative;
-   top:35px;
-   right:60px;
+   top:20px;
+   /* right:60px; */
 }
 
-.likeComment{
-   /* display:flex;
-   justify-content: flex-end; */
-   position: relative;
-   top:30px;
-   left:992px;
+.LikesComments{
+   display:flex;
+   flex-direction: row;
+   /* justify-content: space-between; */
+   position:relative;
+   top:25px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+}
+
+ .likeComment{
+   display:flex;
+   position: absolute;
+   left:940px;
    cursor: pointer;
+   color:#0f2668eb;
 }
 
 .likeButton{
+   
    position:relative;
-   right:27px;
+   right:1px;
+   bottom:24px;
    display:none;
+   color:#0f2668eb;
+
+}
+ .likeComment i{
+   
+   position:relative;
+   top:2px;
+   right:4px;
+
 }
 
 .Comment{
    position:relative;
-   top:55px;
-   right:80px
+   right:0px;
+   color:#0f2668eb;
+   cursor:pointer;
 }
+
+
+.ExternalLink{
+   position:relative;
+   left:940px;
+   bottom:15px
+}
+
+
+
+
+
+
+@media (min-width: 1200px) and (max-width: 1320px) {
+   .likeComment{
+      left:900px;
+   }
+   .ExternalLink{
+     left:900px;
+   }
+ }
+@media (min-width: 1025px) and (max-width: 1200px) {
+   .likeComment{
+      left:720px;
+   }
+   .ExternalLink{
+     left:720px;
+   }
+ }
+
+
+@media (min-width: 820px) and (max-width: 1024px) {
+   .likeComment{
+      left:600px;
+   }
+   .ExternalLink{
+      left:600px;
+    }
+ }
+
+@media (min-width: 700px) and (max-width: 820px) {
+   .likeComment{
+      left:470px;
+   }
+   .ExternalLink{
+      left:470px;
+    }
+ }
+@media (min-width: 570px) and (max-width: 700px) {
+   .likeComment{
+      left:350px;
+   }
+   .ExternalLink{
+      left:350px;
+    }
+   .col h6{
+      font-size: 14px;
+      max-width: 80%;
+   }
+   #chevron-up{
+      left:90%;
+   }
+ }
+
+@media (min-width: 480px) and (max-width: 570px) {
+   .likeComment{
+      left:260px;
+   }
+   .ExternalLink{
+      left:260px;
+    }
+   .col h6{
+      font-size: 12px;
+   }
+ }
+@media (min-width: 420px) and (max-width: 480px) {
+   .likeComment{
+      left:200px;
+   }
+   .ExternalLink{
+      left:200px;
+    }
+   .col h6{
+      font-size: 12px;
+   }
+ }
+@media (min-width: 320px) and (max-width: 425px) {
+   .likeComment{
+      left:150px;
+   }
+   .ExternalLink{
+      left:150px;
+    }
+   .col h6{
+      font-size: 10px;
+   }
+   .Comment{
+      right:15px;
+   }
+   .heading{
+      right: 60px;;
+   }
+   .room{
+      right:8px;
+      font-size: 14px;
+   }
+   #room-button-3{
+      font-size:16px;
+   }
+   #chevron-down{
+      left:92%;
+   }
+   #chevron-up{
+      left:86.4%;
+   }
+   .chat-care .chat-body{
+      max-width: 60%;
+      font-size: 12px;
+   }
+ }
