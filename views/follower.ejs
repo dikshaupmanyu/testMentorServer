@@ -983,7 +983,10 @@ function addFollow(id) {
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
-           alert("Not updated !!");
+          //  alert("Not updated !!");
+
+           $(".successmsg").html('<span>Not updated !!</span>');
+  setTimeout(function(){$(".successmsg").empty()}, 5000);   
         }
 
     });

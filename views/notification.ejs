@@ -145,13 +145,18 @@ function deletenotification(e) {
            },
         data: formdata,
       success: function(data) {
-        alert("Notification Deleted Successfully!!!");
+        // alert("Notification Deleted Successfully!!!");
+        $(".successmsg").html('<span>Notification Deleted Successfully!!!</span>');
+          setTimeout(function(){$(".successmsg").empty()}, 5000);   
         window.location.reload();
         }
       });
 
 } else {
-   alert("Notification not deleted !!!");
+  //  alert("Notification not deleted !!!");
+   $(".successmsg").html('<span>Notification not deleted !!!</span>');
+          setTimeout(function(){$(".successmsg").empty()}, 5000);   
+
    window.location.reload();
 }
 }
@@ -169,7 +174,9 @@ function deleteAllnotification() {
            },
       success: function(data) {
 
-      alert("All Notification deleted Successfully !!!");
+      // alert("All Notification deleted Successfully !!!");
+      $(".successmsg").html('<span>All Notification Deleted Successfully!!!</span>');
+          setTimeout(function(){$(".successmsg").empty()}, 5000);   
       window.location.reload();
      
      }
@@ -177,7 +184,9 @@ function deleteAllnotification() {
    });
 
 } else {
-   alert("Notification not deleted !!!");
+  //  alert("Notification not deleted !!!");
+   $(".successmsg").html('<span>Notification not deleted !!!</span>');
+          setTimeout(function(){$(".successmsg").empty()}, 5000);   
    window.location.reload();
 }
 }

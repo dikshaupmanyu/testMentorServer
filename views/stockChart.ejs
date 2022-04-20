@@ -291,7 +291,9 @@ const a = null
 
               $("#PredictionGraphList").css("display", "none");
 
-               alert("No Record Found");
+              //  alert("No Record Found");
+               $(".successmsg").html('<span>No Record Found.</span>');
+    setTimeout(function(){$(".successmsg").empty()}, 5000);
               
 
 

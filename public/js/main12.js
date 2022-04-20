@@ -571,6 +571,8 @@ function createTask(task) {
 
    messaging.onMessage((payload) => {
   alert('Message received. ', payload);
+  // $(".successmsg").html('<span>Message received.</span>',payload);
+  // setTimeout(function(){$(".successmsg").empty()}, 5000);
   // ...
 });
 
@@ -2231,7 +2233,9 @@ function copyClipboard(e){
     elem.select();
     document.execCommand("copy");
     document.body.removeChild(elem);
-    alert("Message has been copied to clipboard..");                             
+    $(".successmsg").html('<span>Message has been copied to clipboard..</span>');
+      setTimeout(function(){$(".successmsg").empty()}, 5000);
+    // alert("Message has been copied to clipboard..");                             
 
 }
 
