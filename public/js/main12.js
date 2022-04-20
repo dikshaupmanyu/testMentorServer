@@ -1039,7 +1039,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                
                
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
@@ -1114,7 +1114,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1184,7 +1184,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1257,7 +1257,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1329,7 +1329,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1414,7 +1414,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1503,7 +1503,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1590,7 +1590,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1678,7 +1678,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
@@ -1768,7 +1768,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                          </ul>
                       </div>
                       <div class="modal-footer">
-                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'/>
+                      <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">

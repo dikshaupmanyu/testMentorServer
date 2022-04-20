@@ -411,7 +411,7 @@ background-color:rgb(255,255,255);
         position: absolute;
         font-size: 12px;
         width:140px;
-        height: 110px;
+        height: auto;
         text-align: center;
         display: none;
         background-color:#0f2668eb;
@@ -428,7 +428,7 @@ background-color:rgb(255,255,255);
         position: absolute;
         font-size: 12px;
         width:140px;
-        height: 70px;
+        height: auto;
         text-align: center;
         display: none;
         background:#0f2668eb;
@@ -491,7 +491,7 @@ visibility:visible;
         position: absolute;
         font-size: 12px;
         width:140px;
-        height: 110px;
+        height: auto;
         text-align: center;
         display: none;
         background-color:#0f2668eb;
@@ -508,7 +508,7 @@ visibility:visible;
         position: absolute;
         font-size: 12px;
         width:140px;
-        height: 70px;
+        height: auto;
         text-align: center;
         display: none;
         background:#0f2668eb;
@@ -524,7 +524,7 @@ visibility:visible;
         position: absolute;
         font-size: 12px;
         width:120px;
-        height: 37px;
+        height: auto;
         text-align: center;
         display: none;
         background:#0f2668eb;
@@ -639,6 +639,8 @@ text-align:center;
   border-color: #007bff;
   color:white
 }
+
+
 
 .btn-primary-1:hover{
   background-color: #2e93ff;
