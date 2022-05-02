@@ -70,20 +70,27 @@ $(document).ready(function(){
       
        // var len = dataResult.length;
        if(dataResult.length > 0){
-          //  alert("button is visible Successfully")
-           document.getElementById('login-button').style.display = "block";
+                //  alert("button is visible Successfully")
+            document.getElementById('login-button').style.display = "block";
 
-           for(i = 0; i < dataResult.length; i ++){
-        // alert(dataResult[i].notificationId);
+              for(i = 0; i < dataResult.length; i ++){
+              // alert(dataResult[i].notificationId);
+              // alert(dataResult[i].read)
+              if(dataResult[i].read == true){
+                
+                notificationVals += '<li style="color:white;"><div class="tips_bx avoid_bg"><div class="mentor_feed"><a href="/mentorDetails?id='+ dataResult[i].tipId +'"><div class="tips_bx_author author_bx"><div class="author_bx_txt"><h2>'+dataResult[i].notificationText+'</h2></div></a>&nbsp;&nbsp;<a onclick="deletenotification(this.id)" id="' + dataResult[i].notificationId + '" style="cursor:pointer;"><i class="fa fa-trash"></i></a></div></div></li>'; 
+              }else{
 
-        notificationVals += '<li style="color:white;"><div class="tips_bx avoid_bg"><div class="mentor_feed"><a href="/mentorDetails?id='+ dataResult[i].tipId +'"><div class="tips_bx_author author_bx"><div class="author_bx_txt"><h2>'+dataResult[i].notificationText+'</h2></div></a>&nbsp;&nbsp;<a onclick="deletenotification(this.id)" id="' + dataResult[i].notificationId + '" style="cursor:pointer;"><i class="fa fa-trash"></i></a></div></div></li>'; 
+                notificationVals += '<li style="color:white;"><div class="tips_bx avoid_bg"  style="background-color:#0060ff33"><div class="mentor_feed"><a href="/mentorDetails?id='+ dataResult[i].tipId +'"><div class="tips_bx_author author_bx"><div class="author_bx_txt"><h2>'+dataResult[i].notificationText+'</h2></div></a>&nbsp;&nbsp;<a onclick="deletenotification(this.id)" id="' + dataResult[i].notificationId + '" style="cursor:pointer;"><i class="fa fa-trash"></i></a></div></div></li>'; 
+              }
 
-         readnotification(dataResult[i].notificationId);  
-  
-       }    
-          // window.location.reload();
 
-          $("#notifyList").append(notificationVals);
+              readnotification(dataResult[i].notificationId);  
+        
+            }    
+                // window.location.reload();
+
+              $("#notifyList").append(notificationVals);
          }
          else{
             // alert("li is creating")
@@ -111,10 +118,11 @@ $(document).ready(function(){
 
   function readnotification(e) {
   // alert(e);
-
+  var notificationVals = "" ;
    var tokens = "<%= tokens %>";
  
   var formdata = {notificationId : e};
+  // alert(formdata)
    $.ajax({
         type: 'POST',
         url: 'https://apistest.tradetipsapp.com/api/notificationActivity/createNotificationAsReadByNotificationId',
@@ -122,9 +130,13 @@ $(document).ready(function(){
           Authorization: 'Bearer '+ tokens,
            },
         data: formdata,
+        // data: {userName : LoggedInUsername},
       success: function(data) {
-     
-        }
+
+       
+       
+}    
+
       });
 
 }

@@ -421,7 +421,7 @@ margin: 0px 0px 10px;
                 <div class="scroller-dash-right scrollbar-css">
                 <div class="search-list-input">
                   <div class="input-group input_group">
-                    <input type="text" class="form-control"  onkeyup="manage(this)" id="search-stock" autocomplete="off" placeholder="Enter Symbol or Company Name" style=" box-sizing: border-box; width: 350px;">
+                    <input type="text" class="form-control" id="search-stock" autocomplete="off" placeholder="Enter Symbol or Company Name" style=" box-sizing: border-box; width: 350px;">
                     <label class="multi-items" id="multi-items" style="inset: 8px;"></label>
                     <input type="hidden" class="magicsearch-hidden" />
                     <div class="input-group-append" id="input-group-append">
@@ -526,17 +526,29 @@ margin: 0px 0px 10px;
 "https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js">
    </script>
 <script>
-	function manage(txt) {
-        var bt = document.getElementById('stockadd');
-        if (txt.value != '') {
-            bt.disabled = false;
-        }
-        if (txt.value == '') {
-          bt.disabled = true;
-        }
-      }
+	// function manage(txt) {
+  //       var bt = document.getElementById('stockadd');
+  //       if (txt.value != '') {
+  //           bt.disabled = false;
+  //       }
+  //       if (txt.value == '') {
+  //         bt.disabled = true;
+  //       }
+  //     }
+
+  document.getElementById("search-stock").addEventListener("keyup", function() {
+    var nameInput = document.getElementById('search-stock').value;
+    if (nameInput != "") {
+        document.getElementById('stockadd').removeAttribute("disabled");
+    } else {
+        document.getElementById('stockadd').setAttribute("disabled", null);
+    }
+});
+
 
 </script>
+
+
 
 <script type="text/javascript">
   // var sData = localStorage.getItem('allTokenData');
@@ -583,6 +595,7 @@ margin: 0px 0px 10px;
              for(var i= dataResults.length - 1; i >= 0 ; i--){
 
                 users.push(dataResults[i].stockSymbol);
+
                          
             }
         
@@ -591,16 +604,18 @@ margin: 0px 0px 10px;
       $(function() {
          $("#search-stock").keyup(function(e){
           //console.log(e);
+
           clearTimeout(timers);
            // $('.load-wrapp').css('display','block');
-            $('#symbol-box').css('display','none');
+            // $('#symbol-box').css('display','block');
            timers = setTimeout(() => {
-             // console.log($(this).val());
+            //  console.log($(this).val());
              if($(this).val() != ""){
               // $('.load-wrapp').css('display','block');
               // document.body.style.cursor = 'pointer';
               $("#search-stock").attr("placeholder", "Enter Symbol or Company Name");
 
+              
              }
                   $.ajax({
                    type: "POST",
@@ -617,6 +632,7 @@ margin: 0px 0px 10px;
                       //console.log(dataResult);    
 
                       $("#symbol-box").empty();
+
                        $input=$("#search-stock");
                             var search=document.getElementById('search-stock');
                            
@@ -629,7 +645,7 @@ margin: 0px 0px 10px;
                                var id = dataResult[i]['id'];
                                var symbol = dataResult[i]['stockSymbol'];
                                var name = dataResult[i]['stockName'];
-                                // alert(name);
+                                // alert(symbol);
                                   // console.log(dataResult[i]);
                                   // console.log(id);
                                 clearTimeout(timers);  
@@ -639,15 +655,16 @@ margin: 0px 0px 10px;
                                 // console.log(id);
                                 // console.log("input#checkbtn_"+id);
 
+                        
                                  if(ss ==true){
                                 
                                     // $("input#checkbtn_"+id).prependTo("#symbol-box");
 
 
 
-                                    $("<li style='list-style: none;' value='"+symbol+"'><span class='ck_box_custom'><input id='checkbtn_"+id+"' type='checkbox' class='checkbtn' name='symbols[]' data-id='"+name+"'  value='"+symbol+"'><label for='checkbtn_"+id+"'>&nbsp;"+symbol+"</label></span></li>").prependTo("#symbol-box");
-
-                                     // dataid.push($("input#checkbtn_"+id).prop("checked", true));
+                                   ("<li style='list-style: none;' value='"+symbol+"'><span class='ck_box_custom'><input id='checkbtn_"+id+"' type='checkbox' class='checkbtn' name='symbols[]' data-id='"+name+"'  value='"+symbol+"'><label for='checkbtn_"+id+"'>&nbsp;"+symbol+"</label></span></li>").prependTo("#symbol-box");
+                                    // dataid.push($("input#checkbtn_"+id).prop("checked", true));
+                                    // $("#symbol-box").append("<li style='list-style: none;' value='"+symbol+"'><span class='ck_box_custom'><input id='checkbtn_"+id+"' type='checkbox' class='checkbtn' name='symbols[]' data-id='"+name+"'  value='"+symbol+"'><label for='checkbtn_"+id+"'>&nbsp;"+symbol+"</label></span></li>");
 
                                       $("input#checkbtn_"+id).prop("checked", true);
 
@@ -657,11 +674,14 @@ margin: 0px 0px 10px;
 
                                        // setTimeout(dataid,3600);     
                                    
-                                 } else {
+                                 } 
+                                 
+                                 if(ss == false){
 
                                    $("#symbol-box").append("<li style='list-style: none;' value='"+symbol+"'><span class='ck_box_custom'><input id='checkbtn_"+id+"' type='checkbox' class='checkbtn' name='symbols[]' data-id='"+name+"'  value='"+symbol+"'><label for='checkbtn_"+id+"'>&nbsp;"+symbol+"</label></span></li>");
-
-                                 }  
+                                  //  ("<li style='list-style: none;' value='"+symbol+"'><span class='ck_box_custom'><input id='checkbtn_"+id+"' type='checkbox' class='checkbtn' name='symbols[]' data-id='"+name+"'  value='"+symbol+"'><label for='checkbtn_"+id+"'>&nbsp;"+symbol+"</label></span></li>");
+                                   
+                                }  
 
 
 
@@ -684,7 +704,7 @@ margin: 0px 0px 10px;
                                     //clicked.attr('data-id');
                                     companies.push(compid);
                                
-                                 $('.multi-items').append('<div class="multi-item" id="MY_'+compid+'" data-symbol="'+myname+'" title="'+clicked.val()+'" ><span style="color:#fff;">'+clicked.val()+'</span><span class="multi-item-close" id="'+compid+'"  onclick="remove_element(this.id,this.title)" style="top: 13px;color:#fff;cursor:pointer;padding-left:2px;"><b>x</b></span></div>');
+                                 $('.multi-items').append('<div class="multi-item" id="MY_'+compid+'" data-symbol="'+myname+'" title="'+clicked.val()+'" ><span style="color:#fff;">'+clicked.val()+'</span><span class="multi-item-close" id="'+compid+'"  onclick="remove_element(this.id,this.title)" style="top: 13px;color:#fff;cursor:pointer;padding-left:2px;"><b>x</b></span></div>').prependTo("#symbol-box");
                                    if(!adjustinput(compid,'plus')){
                                       remove_element(myids[1],clicked.val());
                                    }
@@ -701,7 +721,8 @@ margin: 0px 0px 10px;
                                     remove_element(myids[1],clicked.val());
                                 }
                                  $(".magicsearch-hidden").val(companies);
-                                 $("#search-stock").val('');
+                                $("#search-stock").val('')
+                                
                                });  
                            }
 
@@ -719,9 +740,9 @@ margin: 0px 0px 10px;
                                        
                   }
                   });
-                  document.getElementById('stockadd').onclick = function() {
-                    this.disabled = true;
-                  }
+                  // document.getElementById('stockadd').onclick = function() {
+                  //   this.disabled = true;
+                  // }
              }  , 1000 );
         });
       });
@@ -862,7 +883,7 @@ $(".scroller-dash-left").scroll(function() {
             myoffset= mylimit+1;
             mylimit=xt*50;
               if(checkdval==1 || checkdval==2)
-               loadAi(myoffset,mylimit);
+              //  loadAi(myoffset,mylimit);
                if(checkdval==1 || checkdval==3)  
                loaddemodata(myoffset,mylimit);
             
