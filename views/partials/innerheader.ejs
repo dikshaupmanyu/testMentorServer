@@ -173,7 +173,11 @@ window.addEventListener("load", function() {
            },
         // data: formdata,
       success: function(data) {
-           document.getElementById("badgecount").textContent = data.unReadCount;
+        if(data.unReadCount > 0){
+          document.getElementById("badgecount").textContent = data.unReadCount;
+        }else{
+          document.getElementById("badgecount").style.display="none";
+        }
 
         // alert(data);
 
@@ -191,9 +195,9 @@ window.addEventListener("load", function() {
         // }
 
      }
-     ,error: function(error){
-       document.getElementById("badgecount").textContent = "0";
-     }
+    //  ,error: function(error){
+    //    document.getElementById("badgecount").textContent = "";
+    //  }
 
    });
 
