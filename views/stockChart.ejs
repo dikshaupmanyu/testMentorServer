@@ -269,6 +269,8 @@ const a = null
     return result;
  }
 
+   // alert(symbol);
+  
   $.ajax({
         type: 'POST',
         url: 'https://apistest.tradetipsapp.com/api/sectorNewsSentiment/getSentimentandSMAByStockSymbolResultSet?stockSymbol='+symbol,
@@ -276,11 +278,23 @@ const a = null
           Authorization: 'Bearer '+ tokens,
            },
         // data: formdata,
+      error: function (jqXHR, exception) {
+          // alert(JSON.stringify(jqXHR));
+          // Your error handling logic here..
+             $("#PredictionGraphHeadData").css("display", "none");
+
+              $("#PredictionGraphList").css("display", "none");
+
+              //  alert("No Record Found");
+               $(".successmsg").html('<span>No Record Found.</span>');
+    setTimeout(function(){$(".successmsg").empty()}, 5000);
+              
+      },
       success: function(data) {
-     
+                 // alert(data);
+
             const dataResult = data;
 
-            // alert(dataResult);
 
             if(dataResult == ""){
 
