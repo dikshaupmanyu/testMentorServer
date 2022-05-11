@@ -31,6 +31,8 @@ credits{
 }
 .input-color input {
     padding-left: 20px;
+    background: linear-gradient(to top, rgb(51 139 247 / 22%), rgb(255 29 108 / 22%));
+    color:#fff
 }
 .input-color .color-box {
     width: 10px;
@@ -40,6 +42,9 @@ credits{
     position: absolute;
     left: 5px;
     top: 5px;
+}
+.color_buy{
+  font-size: 20px;
 }
 </style>
 <div class="app_main">
@@ -95,7 +100,7 @@ credits{
             <li>
                 <div class="input-color">
                     <input type="text" value="vxxaffected" />
-                    <div class="color-box" style="background-color: navy;"></div>
+                    <div class="color-box" style="background-color: rgb(4, 4, 153);"></div>
                     <!-- Replace "navy" to change the color -->
                 </div>
             </li>
@@ -179,11 +184,11 @@ const a = null
            
 
             if(dataResult.status == false){
-               alert(dataResult.message);
-
-               window.location.replace('/dashboard');
-
+              //  alert(dataResult.message);
+              $(".successmsg").html(dataResult.message);
+              setTimeout(function(){ $(window.location.replace('/dashboard'))}, 1000,  );
             }else{
+
 
                document.getElementById("CompanySymbol").textContent = dataResult.object[0].stockName;
 
@@ -196,6 +201,9 @@ const a = null
                           Object.keys(d).map((keyName, key) => {
                             // console.log(d[keyName].quote);
                              $("#currentprice").text("$"+d[keyName].quote.latestPrice);
+                            //  alert(d[keyName].quote.latestPrice)
+                            // let currentprice = latestPrice
+                            // alert(currentprice)
                             $("#skComnyNames").text(d[keyName].quote.companyName);
                              $("#highval").text("$"+d[keyName].quote.high);
                               $("#lowval").text("$"+d[keyName].quote.low);
@@ -204,7 +212,7 @@ const a = null
                                 if(valuees > 0){
                                    // $("#changepoint").text(valuees);
 
-                                  $("#changepoint").html('<span class="color_buy">' +valuees + '</span>');
+                                  $("#changepoint").html('<span class="color_buy" style="font-size:20px">' +valuees + '</span>');
                                    $("#changepoint").css("color" , "#09b598");
 
                                 }else{
@@ -217,18 +225,64 @@ const a = null
                       });
 
                    }); 
+                  
 
+                   cp();
+                        async function cp(){
+
+                             var mydata = new Headers();
+                              mydata.append("Authorization", `Bearer ${tokens}`);    
+
+                              var formData = new FormData();
+                              formData.append("stockSymbol", symbol);
+
+                              var requestOp = {
+                                method: 'POST',
+                                headers: mydata,
+                                body: formData,
+                                redirect: 'follow'
+                              };
+
+                              const current_price = await fetch(`https://apistest.tradetipsapp.com/api/sectorNewsSentiment/getSentimentandSMAByStockSymbolResultSet`, requestOp);
+
+                              const array = await current_price.json();
+
+                               const currentprice = await fetch(`https://cloud.iexapis.com/stable/stock/market/batch?types=quote&token=pk_dd324da3fb5f4428a47b05ab12f23ce2&symbols=${array[0].stock_name}`);
+                                const d = await currentprice.json()
+
+                              var currentPrice = d[array[0].stock_name].quote.latestPrice
+                            
+                              var CPP = {
+
+                                x:0,
+                                y:currentPrice,
+                                label:"current price",
+                                options: {
+      title: {
+        display: true,
+        text: 'Population growth (millions): Europe & Africa'
+      },
+      legend: { display: false }
+    }
+                              
+                              }
+                              
+                            // console.log(CPP)
                   var data = [];
+                  data.splice(0,0,CPP)
                   var data1 = [];
+                  data1.splice(0,0,CPP)
                   var data2 = [];
+                  data2.splice(0,0,CPP)
                   var data3 = [];
+                  // var data4 = [];
                   var totalreslt = dataResult.object.length;
                   // alert(totalreslt);
 
                   // console.log(dataResult.object[41].stockName);
 
                   var finalshowingAffected = (dataResult.object[totalreslt-1].vxxaffected).slice(7);
-                  // console.log(finalshowingAffected);
+                  // console.log(finalshowingAffected.length);
                   var temp = new Array();
                   temp = finalshowingAffected.split(",");
                   // alert(temp);
@@ -249,7 +303,6 @@ const a = null
                   // console.log(finalshowingAffected);
                   var temp3 = new Array();
                   temp3 = finalshowingNormalizedPrice.split(",");
-                  // alert(temp3);
 
                       temp1.forEach((num1, i) => {
                         // console.log(i);
@@ -262,7 +315,9 @@ const a = null
                         var datasss = str.replace(/\'/g, '"');
                         // alert(datasss);
                         var fparse = JSON.parse(datasss);
-                        // alert(fparse);
+                        
+
+                        console.log(fparse)
                         const num3 = temp2[i];
 
 
@@ -280,43 +335,50 @@ const a = null
                         
                         var datasss4 = str4.replace(/\'/g, '"');
                         // alert(datasss);
+                        
                         var fparse4 = JSON.parse(datasss4);
-                        // alert(fparse);
+
 
                         var fparse5 = "";
 
+                      //  console.log(currentPrice)
                        
-                        data.push({
-                            x:i,
-                            y: fparse,
-                            label : "vxxaffected<br>" + num1,
 
-                          });
+                         
+                      data.push({
+                          x:i+1,
+                          y: fparse,
+                          label : "vxxaffected<br>" + num1,
+                          
+                        });
+                       
 
-                         data1.push({
-                            x:i,
-                            y: fparse3,
-                            label : "newsaffected<br>" + num1,
+                       data1.push({
+                          x:i+1,
+                          y: fparse3,
+                          label : "newsaffected<br>" + num1,
 
-                          });
+                        });
 
-                         data2.push({
-                            x:i,
-                            y: fparse4,
-                            label : "normalizedPrice<br>" + num1,
+                       data2.push({
+                          x:i+1,
+                          y: fparse4,
+                          label : "normalizedPrice<br>" + num1,
 
-                          });
+                        });
 
-                          data3.push({
-                            x:i,
-                            y: fparse5,
-                            label : num1,
+                        data3.push({
+                          x:i+1,
+                          y: fparse5,
+                          label : num1,
 
-                          });
+                        });
+                   
 
-                      });
-
-                      // console.log(data);
+                  });
+                  console.log(data);
+                  console.log(data1);
+                  console.log(data2);
                       // console.log(data1);
 
 
@@ -373,7 +435,7 @@ const a = null
                           crosshair: {
                             enabled: true,
                             snapToDataPoint: true,
-                            includeZero: false
+                            includeZero: true
                           },
                            gridThickness: 0,
                            stripLines: [
@@ -385,17 +447,19 @@ const a = null
                               }
                             ]
                         }, 
+
                         data: [{
                          
                           type: "line",
                           markerType : "none",
-                          color : "navy blue",
-                          dataPoints: data
+                          color : " rgb(4, 4, 153)",
+                          dataPoints: data,
+                        
                         },{
                          
                           type: "line",
                           markerType : "none",
-                          color : "orange",
+                          color : "#FF850A",
                           dataPoints: data1
                         },{
                          
@@ -410,12 +474,14 @@ const a = null
                           markerType : "none",
                           color: "green",
                           dataPoints: data3
-                        }],
+                        },
+                      ],
                       });
 
                       chart.render();
-      
-           }     
+                    }   
+           }    
+          
                         loaddata();
                         async function loaddata(){
 
@@ -475,7 +541,7 @@ const a = null
 
 
                 
-                 
+            
 
              }
 
