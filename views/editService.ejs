@@ -569,20 +569,20 @@ function ImgDelete(){
                const dataResult = data;
                   let newtip = [];
 
-                  // alert(dataResult.frequency);
+                  // alert(JSON.stringify(dataResult.thumbnailImageUrl));
 
                   document.getElementById("title").value = dataResult.title;
                   document.getElementById("description1").value = dataResult.descriptionOne;
                   document.getElementById("description2").value = dataResult.descriptionTwo;
                   document.getElementById("frequency").value = dataResult.frequency;
                   document.getElementById("price").value = dataResult.price;
-                  document.getElementById("thumbnailImage").value = "https://apistest.tradetipsapp.com"+dataResult.thumbnailImageURL;
+                  document.getElementById("thumbnailImage").value = dataResult.thumbnailImageUrl;
                   // document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.imageDetails;
                   if(dataResult.imageDetails){
                       document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.imageDetails;
                   }else{
 
-                      document.getElementById("file-image").src = "https://apistest.tradetipsapp.com"+dataResult.thumbnailImageURL;
+                      document.getElementById("file-image").src = dataResult.thumbnailImageUrl;
                   
                    }
 
