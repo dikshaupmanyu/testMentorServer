@@ -378,7 +378,7 @@ const a = null
 
 
                      var chart = new CanvasJS.Chart("chartContainer", {
-                        width:600,
+                        // width:600,
                         height:300,
                         zoomEnabled: true,
                         animationEnabled: true,
@@ -473,6 +473,11 @@ const a = null
                       });
 
                       chart.render();
+                      setAxisXMinimum();
+
+function setAxisXMinimum(){
+	chart.axisX[0].set("minimum", chart.options.data[0].dataPoints[0].x);
+}
                     }   
            }    
           
