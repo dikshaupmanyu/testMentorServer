@@ -995,7 +995,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
   from: 'vermayash1120@gmail.com',
-  to: 'diksha.novasoftcorps@gmail.com',
+  to: 'seanlives@gmail.com',
   subject: 'New service Created',
   text: 'The new service is Created on mentor dashboard. Please check it..'
 };
@@ -1027,7 +1027,7 @@ var transporter = nodemailers.createTransport({
 
 var mailOptions = {
   from: 'vermayash1120@gmail.com',
-  to: 'diksha.novasoftcorps@gmail.com',
+  to: 'seanlives@gmail.com',
   subject: 'Service Updated',
   text: 'There have some changes done in previously creating service. Please check it..'
 };
