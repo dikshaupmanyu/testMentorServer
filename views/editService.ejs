@@ -503,6 +503,12 @@ $("#file-upload").change(function() {
       body: formdata,
       redirect: 'follow'
     };
+
+    var requestOptionsdata = {
+      method: 'POST',
+      redirect: 'follow'
+    };
+
     fetch("https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlan/modifyServiceSubscriptionPlanByMentor", requestOptions)
       .then(response => response.json())
       .then(result => {
@@ -512,6 +518,8 @@ $("#file-upload").change(function() {
                  // alert(datak);
                 var dataResultp = JSON.parse(datak);
                 // alert(dataResultp.title);
+                fetch('/sendUpdatedEmail',requestOptionsdata).then(resp => console.log(resp.json()));
+
                 $(".successmsg").html('<span>Your Image uploaded successfully</span>');
            setTimeout(function(){$(".successmsg").empty()}, 3000);
                 //window.location.reload();
@@ -648,6 +656,11 @@ $("#formoid").submit(function(event){
       redirect: 'follow'
     };
 
+      var requestOptionsdata = {
+      method: 'POST',
+      redirect: 'follow'
+    };
+
     fetch("https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlan/modifyServiceSubscriptionPlanByMentor", requestOptions)
       .then(response => response.json())
       .then(result => {
@@ -658,6 +671,8 @@ $("#formoid").submit(function(event){
                 var dataResultp = JSON.parse(datak); 
                 // alert(dataResultp.title);
                 // alert("Your "+dataResultp.title+" was submitted successfully");
+                fetch('/sendUpdatedEmail',requestOptionsdata).then(resp => console.log(resp.json()));
+
                 $(".successmsg").html('<span>"Your '+dataResultp.title+' submitted successfully."</span>');
                // setTimeout(function(){$(".successmsg").empty()}, 2000);
                setTimeout(function(){
