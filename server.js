@@ -988,14 +988,14 @@ app.get('/totalreplycount', (req, res) => {
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'diksha.novasoftcorps@gmail.com',
-    pass: 'smile111'
+    user: 'vermayash1120@gmail.com',
+    pass: 'Ab123456@'
   }
 });
 
 var mailOptions = {
-  from: 'diksha.novasoftcorps@gmail.com',
-  to: 'yash.novasoftcorps@gmail.com',
+  from: 'vermayash1120@gmail.com',
+  to: 'diksha.novasoftcorps@gmail.com',
   subject: 'New service Created',
   text: 'The new service is Created on mentor dashboard. Please check it..'
 };
@@ -1020,14 +1020,14 @@ transporter.sendMail(mailOptions, function(error, info){
 var transporter = nodemailers.createTransport({
   service: 'gmail',
   auth: {
-    user: 'diksha.novasoftcorps@gmail.com',
-    pass: 'smile111'
+    user: 'vermayash1120@gmail.com',
+    pass: 'Ab123456@'
   }
 });
 
 var mailOptions = {
-  from: 'diksha.novasoftcorps@gmail.com',
-  to: 'yash.novasoftcorps@gmail.com',
+  from: 'vermayash1120@gmail.com',
+  to: 'diksha.novasoftcorps@gmail.com',
   subject: 'Service Updated',
   text: 'There have some changes done in previously creating service. Please check it..'
 };
