@@ -1026,7 +1026,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer; line-height: 1.9;">
+                        <button type="button" class="close" aria-label="Close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer; line-height: 2.5;">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -1086,11 +1086,12 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                        
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                    <p class='message'><img src="${message}" class="img-responsive" style="width:200px;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    <p class='message'><img  data-toggle="modal" data-target=".bd-example-modal-sm" src="${message}" onclick="myImgs(this.id)"  id="${taskId}" class="img-responsive"   style="width:400px;"/> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     width="24" height="24"
                     viewBox="0 0 172 172"
                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
                     </p>
+                    
               </div>
           </li>
          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -1102,8 +1103,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
                         
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer; line-height: 1.9;">
-                        &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer; line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
+
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1132,6 +1134,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
+
+
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                  <img src="" id="preview${taskId}" class="modal-preview" alt="previewImage">
+                  </div>
+                </div>
+              </div>
+
+
+                
+                    
           `
 
         }else if(messageType == "video"){
@@ -1157,7 +1173,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                      
                       <strong class="right primary-font" class='fullName'>${userName}</strong>
                   </div>
-                 <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 <p class='message'><video controls style="width:400%;"><source src="${message}" type="video/mp4"></video> <svg class="Chevron" onclick="TogglePopup(this.id)" id="${taskId}"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  width="24" height="24"
                  viewBox="0 0 172 172"
                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M124.36689,70.61689l-35.83333,35.83333c-0.67183,0.67205 -1.58315,1.04963 -2.53342,1.04963c-0.95026,0 -1.86159,-0.37757 -2.53342,-1.04963l-35.83333,-35.83333c-1.35798,-1.40602 -1.33856,-3.64097 0.04365,-5.02318c1.38221,-1.38221 3.61716,-1.40163 5.02318,-0.04365l33.29977,33.29977l33.29977,-33.29985c1.40602,-1.35798 3.64097,-1.33856 5.02318,0.04365c1.38221,1.38221 1.40163,3.61716 0.04365,5.02318z"></path></g></g></svg>
@@ -1172,8 +1188,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer; line-height: 1.9;">
-                        &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer; line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1245,8 +1261,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer'line-height: 1.9;">
-                        &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer'line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1317,8 +1333,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
-                        &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1402,8 +1418,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
-                          &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1475,7 +1491,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
            
              <p class='message' style="color: #000 !important">
-             <video controls style="width:200px;">
+             <video controls style="width:400px;">
               <source src="${message}"type="video/mp4">
              </video>
              <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png"/> 
@@ -1491,8 +1507,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
-                          &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1563,7 +1579,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important">
-             <img src="${message}"   style="width:200px;"/> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
+             <img  data-toggle="modal" data-target=".bd-example-modal-sm" src="${message}" onclick="myImgs(this.id)"  id="${taskId}" class="img-responsive"    style="width:400px;"/> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
             
              
               </p>
@@ -1578,8 +1594,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
-                          &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1627,6 +1643,15 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     </div>
                   </div>
                 </div>
+
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                  <img src="" id="preview${taskId}" class="modal-preview" alt="previewImage">
+                  </div>
+                </div>
+              </div>
       `
      }else if(messageType == "document"){
 
@@ -1666,8 +1691,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
-                          &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                         </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -1756,8 +1781,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle${taskId}">Reply</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 1.9;">
-                        &times
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick='closepopup(this.id)' id='${taskId}' style="cursor:pointer;line-height: 2.5;">
+                        <span aria-hidden="true">&times</span>
                       </button>
                       </div>
                       <div class="msg-body"  style="padding:5px; padding-left:8px">
@@ -2160,6 +2185,19 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
 };
 
 
+
+function myImgs(){
+  // alert(id)
+  var src = $('.img-responsive').attr('src');
+  // var src="https://firebasestorage.googleapis.com/v0/b/tradet…=media&token=dcb34ae5-da23-4613-ab90-22bec7bc2241"
+  
+  alert(src)
+  // $('.modal'+id).modal('show');
+  $(".modal-preview").attr('src', src)
+};
+
+
+
 function togglePopup(e) {
   $("#popup"+e).toggle()
 }
@@ -2338,6 +2376,3 @@ $(document).keypress(function (e) {
   }
  });
 
-
-
- 
