@@ -1031,7 +1031,7 @@ var transporter = nodemailers.createTransport({
 
 var mailOptions = {
   from: 'vermayash1120@gmail.com',
-  to: 'diksha.novasoftcorps@gmail.com',
+  to: 'seanlives@gmail.com',
   subject: 'Service Updated',
   text: 'There have been some changes done to a '+req.query.serviceName+ '.' + '\r\n\n' + 'Please check it.'
 };
