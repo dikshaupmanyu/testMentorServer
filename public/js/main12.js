@@ -1579,7 +1579,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
               </div>
               <p class='message' style="color: #000 !important">
-             <img  data-toggle="modal" data-target="#ModalCenter${taskId}" src="${message}" onclick="myImgs(this.id)"  id="${taskId}" class="img-responsive"    style="width:400px;"/> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
+             <img  data-toggle="modal" data-target="#ModalCenter${taskId}" src="${message}" onclick="myImgs(this.id)"  id="message_img${taskId}" class="img-responsive"    style="width:400px;"/> <img class="chevron" onclick="togglePopup(this.id)" id="${taskId}" src=" https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
             
              
               </p>
@@ -2187,13 +2187,16 @@ function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDa
 
 
 function myImgs(e){
-  alert(e)
+  // alert(e)
+  var img = document.getElementById(e);
+// alert(img.getAttribute("src")); // "images/foo.png"
+// alert(img.src);     
   // alert($('.message_img').attr(e));
-  var image_source = $('.img-responsive').attr('src')
+  // var image_source = $('.img-responsive').attr('src')
   // var image_source = 'https://firebasestorage.googleapis.com/v0/b/tradet…=media&token=0be03151-a5aa-4ba2-8617-37a7354023e9'
 
-  alert(image_source)
-  $(".modal-preview").attr('src',image_source)
+  // alert(image_source)
+   $(".modal-preview").attr('src',img.src)
 };
 
 
