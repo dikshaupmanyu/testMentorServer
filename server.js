@@ -987,7 +987,7 @@ app.get('/totalreplycount', (req, res) => {
 
    var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
+var transporter = nodemailers.createTransport({
   service: 'gmail',
   auth: {
     user: 'vermayash1120@gmail.com',
@@ -999,7 +999,7 @@ var mailOptions = {
   from: 'vermayash1120@gmail.com',
   to: 'seanlives@gmail.com',
   subject: 'New Service Created',
-  text: 'The new '+req.query.serviceName+' is created on mentor dashboard. Please check it.'
+  text: 'There is a new '+req.query.serviceName+' created on the mentor dashboard. ' + '\r\n\n' + ' Please check it.'
 };
 
 transporter.sendMail(mailOptions, function(error, info){
@@ -1031,9 +1031,9 @@ var transporter = nodemailers.createTransport({
 
 var mailOptions = {
   from: 'vermayash1120@gmail.com',
-  to: 'seanlives@gmail.com',
+  to: 'diksha.novasoftcorps@gmail.com',
   subject: 'Service Updated',
-  text: 'There have some changes done in previously creating '+req.query.serviceName+'. Please check it.'
+  text: 'There have been some changes done to a '+req.query.serviceName+ '.' + '\r\n\n' + 'Please check it.'
 };
 
 transporter.sendMail(mailOptions, function(error, info){
