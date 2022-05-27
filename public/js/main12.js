@@ -1137,7 +1137,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
 
 
-                <div class="modal fade bd-example-modal-lg"  id="ModalCenter${taskId}"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg"  id="ModalCenter${taskId}"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style:'top:80px'>
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                     <img src="" id="preview${taskId}" class="modal-preview" alt="previewImage">
@@ -1641,7 +1641,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </div>
                 </div>
 
-                <div class="modal fade bd-example-modal-lg"  id="ModalCenter${taskId}"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg"  id="ModalCenter${taskId}"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="top:80px">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                     <img src="" id="preview${taskId}" class="modal-preview" alt="previewImage">
