@@ -83,6 +83,7 @@
            <label>Newsletter Schedule</label>
             <select name="frequency" id="frequency" class="form-control" required="required">
               <option>Select Schedule</option>
+              <option value="0">One Time</option>
               <option value="1">Daily</option>
               <option value="7">Weekly</option>
               <option value="15">Bi-weekly</option>
@@ -374,59 +375,42 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
 */
 
 $('#carousel-thumbs .carousel-item img').on('click', function(e) {
-  //alert(e.target.src);
-  // readURLs(file);
-  
-  // var src = $(e.target).attr('data-remote');
-  // alert(src);
-  // if (src) $(this).ekkoLightbox();
-  // readURL(this);
 
   $('#file-image').attr('src', e.target.src);
   // console.log(e.target.src);
   document.getElementById('file-image').style.display= "block";
-// var imgUrl = e.target.src;
 
+  var imgUrl = e.target.src; 
+  // alert(imgUrl);
+  $("#thumbnailImage").val(imgUrl);
 
-// let base64image = getBase64Image(imgUrl).then(function(base64image) {
-//   alert(base64image);
-//   $('#file-image').attr('src', "data:image/png;base64,"+base64image);
-//   document.getElementById('file-image').style.display= "block";
-// }, function(reason) {
-//   // alert(reason); // Error!
-// });
+  function getBase64Image(imgUrl) {
+    return new Promise(
+      function(resolve, reject) {
 
-var imgUrl = e.target.src; 
-// alert(imgUrl);
-$("#thumbnailImage").val(imgUrl);
+        var img = new Image();
+        img.src = imgUrl;
+        img.setAttribute('crossOrigin', 'anonymous');
 
-function getBase64Image(imgUrl) {
-  return new Promise(
-    function(resolve, reject) {
+        img.onload = function() {
+          var canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          var dataURL = canvas.toDataURL("image/png");
+          resolve(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+        }
+        img.onerror = function() {
+          reject("The image could not be loaded.");
+        }
 
-      var img = new Image();
-      img.src = imgUrl;
-      img.setAttribute('crossOrigin', 'anonymous');
+      });
 
-      img.onload = function() {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var dataURL = canvas.toDataURL("image/png");
-        resolve(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
-      }
-      img.onerror = function() {
-        reject("The image could not be loaded.");
-      }
+  }
 
-    });
-
-}
-
-let base64image = getBase64Image(imgUrl).then(function(base64image) {
-  //alert(base64image);
+   let base64image = getBase64Image(imgUrl).then(function(base64image) {
+    //alert(base64image);
 
     var file = "data:image/png;base64,"+base64image;
     //alert(file);
