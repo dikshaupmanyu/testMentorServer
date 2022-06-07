@@ -1019,7 +1019,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1095,7 +1095,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
           </li>
          <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1178,7 +1178,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1251,7 +1251,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
               </div>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1323,7 +1323,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                    ${fName}</a></p>
           </li>
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1408,7 +1408,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           
       </li>
               <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1497,7 +1497,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1584,7 +1584,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
       <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1681,7 +1681,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   
@@ -1771,7 +1771,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
           </div>
       </li>
      <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                  <div class="modal-dialog modal-lg" role="document" style="top:100px;">
+                  <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
                   

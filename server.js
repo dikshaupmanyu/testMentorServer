@@ -78,11 +78,13 @@ app.get('/neww', function(req, res) {
 		var fuid = req.session.uid; 
 		var femail = req.session.email; 
 
-		res.render('dashboard.ejs', {tokens : fdata , userName : fusername , userid : fuid , email :femail});
+		setTimeout(()=>{res.render('dashboard.ejs', {tokens : fdata , userName : fusername , userid : fuid , email :femail});},1000)
+		// res.render('dashboard.ejs', {tokens : fdata , userName : fusername , userid : fuid , email :femail});
 
 
 	   } else {
-	     res.render('index.ejs' , {path:fpaths});
+		setTimeout(function(){res.render('index.ejs' , {path:fpaths});},2000);
+	    //  res.render('index.ejs' , {path:fpaths});
 	   }
   });
 ///////////////////////////////////////////////////////////////////////////////////////
