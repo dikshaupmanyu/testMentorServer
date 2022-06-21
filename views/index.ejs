@@ -109,7 +109,8 @@
                 url: 'https://apistest.tradetipsapp.com/api/auth/appSignIn',
                 headers: {
                   Authorization: 'Bearer '+ localStorage.getItem("token"),
-                  Authorization: 'Bearer '+ sessionStorage.getItem("token")
+                  // Authorization: 'Bearer '+ sessionStorage.getItem("token")
+                  
                 },
                 data: {
                   type:2,
@@ -118,20 +119,32 @@
                 },
                 dataType:'json',
                 cache:false,
-               
                 success: function(data){
+                  // console.log(headers),
                 //  alert(JSON.stringify(data));
-                  // alert(userName);
+                  // alert(sessionStorage.getItem("token"));
                   var datak = JSON.stringify(data); 
                   var dataResult = JSON.parse(datak);
                   // alert(dataResult)
+                  // console.log(dataResult)
                   var mentor = dataResult.isMentor        
                   // alert(mentor); 
                   // alert(dataResult.accessToken)
                   if(dataResult.accessToken){   
-                    // alert('hi')               
+                    // alert(dataResult.accessToken)               
                     if(userName != "admin"){
-                      // alert('ff')
+                    if(userName == dataResult.email){
+                      var emails = dataResult.email
+                      alert(emails);
+                      
+                      var uName = dataResult.userName
+                       emails = uName
+                     alert('email'+ ' : ' + emails)
+   
+
+
+
+                        
                       $(".successmsg").show();
                       // $('#success').html('Login Sucessfully !');
                       $(".successmsg").html('<span>Login Sucessfully !</span>');
@@ -144,6 +157,14 @@
                             const tds5 = dataResult.email;
                             const tds6 = dataResult.createdOn;
 
+                            var Sessionda =  
+                            sessionStorage.setItem('uname','emails');
+                      // alert(Sessionda)
+                      alert(Sessionda)
+                      console.log(Sessionda)
+                      console.log(sessionStorage.getItem('uname'))
+
+
                             localStorage.setItem('allTokenData', JSON.stringify({
                                 tokendata: tdss,
                                 streamtoken: tds1,
@@ -154,13 +175,16 @@
                                 creation_date:tds6,
                             }));
 
+                            // alert(localStorage.setItem(uname))
+
                        // window.location.href = "/home";  
                        // window.location.href = "/dashboard";  
                       }
+                      }
                     else{
-                       alert('Invalid Username or Password !!!');
-            //            $(".successmsg").html('<span>Invalid Username or Password !!!</span>');
-            // setTimeout(function(){$(".successmsg").empty()}, 3000);
+                      //  alert('Invalid Username or Password !!!');
+                       $(".successmsg").html('<span>Invalid Username or Password !!!</span>');
+            setTimeout(function(){$(".successmsg").empty()}, 3000);
                        //window.location.href = "/"; 
                       }                                       
                     }
@@ -174,8 +198,10 @@
                   
                 }
 
-               
+                
               });
+
+
             }
             else{
               // alert('Please fill all the field !');
