@@ -109,7 +109,7 @@
                 url: 'https://apistest.tradetipsapp.com/api/auth/appSignIn',
                 headers: {
                   Authorization: 'Bearer '+ localStorage.getItem("token"),
-                  // Authorization: 'Bearer '+ sessionStorage.getItem("token")
+                  Authorization: 'Bearer '+ sessionStorage.getItem("token")
                   
                 },
                 data: {
@@ -133,18 +133,7 @@
                   if(dataResult.accessToken){   
                     // alert(dataResult.accessToken)               
                     if(userName != "admin"){
-                    if(userName == dataResult.email){
-                      var emails = dataResult.email
-                      alert(emails);
-                      
-                      var uName = dataResult.userName
-                       emails = uName
-                     alert('email'+ ' : ' + emails)
-   
 
-
-
-                        
                       $(".successmsg").show();
                       // $('#success').html('Login Sucessfully !');
                       $(".successmsg").html('<span>Login Sucessfully !</span>');
@@ -156,14 +145,6 @@
                             const tds4 = dataResult.accessTokenStreamIOWithID;
                             const tds5 = dataResult.email;
                             const tds6 = dataResult.createdOn;
-
-                            var Sessionda =  
-                            sessionStorage.setItem('uname','emails');
-                      // alert(Sessionda)
-                      alert(Sessionda)
-                      console.log(Sessionda)
-                      console.log(sessionStorage.getItem('uname'))
-
 
                             localStorage.setItem('allTokenData', JSON.stringify({
                                 tokendata: tdss,
@@ -179,7 +160,7 @@
 
                        // window.location.href = "/home";  
                        // window.location.href = "/dashboard";  
-                      }
+                      
                       }
                     else{
                       //  alert('Invalid Username or Password !!!');

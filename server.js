@@ -412,6 +412,28 @@ app.get('/settings', function(req, res) {
 
     /////////////////////////////////////////////////////////////////////
 
+
+   ////////////////////////////////////////////////////////////////////////
+
+    app.get('/NewsFeed', function(req, res) {
+
+     if(req.session.loggedIn) 
+	   { 
+		var fdata = req.session.tokens;
+		var fusername = req.session.username;
+		var fuid = req.session.uid; 
+		var femail = req.session.email; 
+
+		res.render('newsFeedServices.ejs', {tokens : fdata , userName : fusername , userid : fuid , email :femail});
+
+	   } else {
+	     res.redirect('/')
+	   }
+
+  });
+
+    /////////////////////////////////////////////////////////////////////
+
   app.get('/TradeAlerts', function(req, res) {
 
   	 if(req.session.loggedIn) 

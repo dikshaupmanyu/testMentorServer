@@ -141,6 +141,11 @@ module.exports = function(app) {
 
   app.get('/Newsletter', function(req, res) {
 
+    res.render('newsFeedServices.ejs');
+  });
+
+  app.get('/NewsFeed', function(req, res) {
+
     res.render('newsletterServices.ejs');
   });
 
