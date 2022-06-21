@@ -94,6 +94,8 @@ app.get('/dashboard',(req,res)=>
 
 if(req.session.loggedIn) 
 {
+
+
 var fdata = req.session.tokens;
 var fusername = req.session.username;
 var fuid = req.session.uid; 
@@ -1205,7 +1207,7 @@ request.post('https://apistest.tradetipsapp.com/api/auth/appSignIn',
     function (error, response, body) {
         // console.log(response);
     	var dataResult = JSON.parse(body);
-    	console.log(dataResult);
+    	// console.log(dataResult);
     	if(dataResult.accessToken){                  
         if(req.body.userName != "admin" && dataResult.isMentor == "true"){
           // $("#success").show();
@@ -1216,12 +1218,13 @@ request.post('https://apistest.tradetipsapp.com/api/auth/appSignIn',
 
 	    const uid = dataResult.id;
 	    const email = dataResult.email;
+	     const uname = dataResult.userName;
 	    const createdOn = dataResult.createdOn;
     	// console.log(tokens);  
     	const paths = req.body.url;
     	// console.log(paths);
 
-    	res.locals.uname = req.body.userName;
+    	res.locals.uname = uname;
     	res.locals.fcm = fcmtoken;
     	res.locals.tokens = tokens;
     	res.locals.uid = uid;
@@ -1264,7 +1267,7 @@ req.session.email = res.locals.email
 req.session.createdOn = res.locals.createdOn
 req.session.paths = res.locals.paths
 
-console.log(req.session)
+// console.log(req.session)
 var data = req.session;
 
 if(req.session.paths != "undefined"){
