@@ -275,7 +275,7 @@ ul.search-list li a:hover{
 <script type="text/javascript">
   var sData = localStorage.getItem('allTokenData');
   var storageData= JSON.parse(sData);
- 
+//  console.log(storageData);
   var tokens = storageData.tokendata;
   //alert(tokens);
  var myarrdata = new Array();
@@ -308,8 +308,11 @@ ul.search-list li a:hover{
              // alert(data);
             var datak = JSON.stringify(data);
             var dataResult = JSON.parse(datak);
+            // return false;
             var len = dataResult.length;
-         
+            
+            // console.log(dataResult);
+            // alert(dataResult)
          
      
              // $("#suggesstion-box").show();
@@ -495,6 +498,7 @@ function delete_stck(ID)
     });     
          
       var userName = storageData.uname;
+alert(userName)
        var formdata = {  offset: 0, limit: 1000000};
         
         var xt = 1;
