@@ -78,7 +78,7 @@
 
               <a href="/chatWindow">
            
-              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-1">Enter Strategy Room</button>
+              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-1"></button>
               </a>
 
              <!--  <a data-toggle="modal" data-target="#exampleModalCenterpin" id="modalcalling">
@@ -88,12 +88,12 @@
  -->
                <a id="notmodalcalling">
            
-              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-2">Enter Futures Chat Room</button>
+              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-2"> </button>
               </a>
 
               <a href="/soicalChat">
            
-              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-3">Enter Soical Chat Room</button>
+              <button type="button" class="btn cmn_btn btn_small btn_primary" id="room-button-3"></button>
               </a>
 
               <div class="modal fade" id="exampleModalCenterpin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -284,7 +284,7 @@ nummers.get().then(function (querySnapshot) {
        var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
-        document.getElementById('room-button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+        document.getElementById('room-button-2').innerText =  res.data().groupTitle + " Room";
 
        });
 
@@ -312,7 +312,7 @@ function getGroupDetailroomOne() {
        var monthlies = db.collection("/openGroups").doc("demoOpenGroup1").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
-        document.getElementById('room-button-1').innerText = "Enter " + res.data().groupTitle + " Room";
+        document.getElementById('room-button-1').innerText = res.data().groupTitle + " Room";
 
        });
 
@@ -330,7 +330,7 @@ function getGroupDetailroomOne() {
        var monthlies = db.collection("/socialchat").doc("Test").get();
        monthlies.then((res) => {
         console.log(res.data().groupTitle);
-        document.getElementById('room-button-3').innerText = "Enter " + res.data().groupTitle ;
+        document.getElementById('room-button-3').innerText = res.data().groupTitle ;
 
        });
 

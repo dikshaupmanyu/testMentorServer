@@ -209,7 +209,12 @@ right: .5rem;
 .card-header{
 padding: 0.20rem 1.25rem;
 position:relative;
-left:150px;
+/* left:150px; */
+}
+
+.dropdown-item:hover
+{
+color:#fff;
 }
 
 
@@ -707,13 +712,22 @@ text-align:center;
   padding-left: 8px;
 }
 
-
 .room{
-position: relative;
-left:20%;
-color:white;
-}
+  display: flex;
+  justify-content:flex-start;
+  flex-direction:row-reverse;
+  align-items: center;
+  position: relative;
+  bottom: 30px;
+  right:20px;
+  /* cursor: pointer; */
+  font-size:bold;
+  }
 
+  .room .rooms{
+    position:relative;
+    right:150%;
+  }
 
 #roomslist{
 /* position: fixed !important; */

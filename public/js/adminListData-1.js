@@ -49,7 +49,7 @@ function getGroupDetail() {
        var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
-        document.getElementById('room-button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+        document.getElementById('room-button-2').innerText =  res.data().groupTitle + " Room";
 
        });
 
@@ -64,7 +64,7 @@ function getGroupDetails() {
        var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
-        document.getElementById('room-Button-2').innerText = "Enter " + res.data().groupTitle + " Room";
+        document.getElementById('room-Button-2').innerText =  res.data().groupTitle + " Room";
 
        });
 
@@ -78,7 +78,7 @@ function getGroupDetails() {
   var monthlies = db.collection("/openGroups").doc("demoOpenGroup1").get();
   monthlies.then((res) => {
    // console.log(res.data().groupCode);
-   document.getElementById('room-Button-1').innerText = "Enter " + res.data().groupTitle + " Room";
+   document.getElementById('room-Button-1').innerText = res.data().groupTitle + " Room";
   
   });
   
@@ -92,7 +92,7 @@ function getGroupDetails() {
     var monthlies = db.collection("/socialchat").doc("Test").get();
     monthlies.then((res) => {
      console.log(res.data().groupTitle);
-     document.getElementById('room-Button-3').innerText = "Enter " + res.data().groupTitle ;
+     document.getElementById('room-Button-3').innerText = res.data().groupTitle ;
     
     });
     
