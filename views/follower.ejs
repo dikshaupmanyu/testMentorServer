@@ -39,22 +39,50 @@
             <!-- <div class="mentor_feed" id="Services">
               </div> -->
 
+            
+          
+
             <div class="tab-pane fade" id="mtb_service" role="tabpanel" aria-labelledby="mt_service">
-              <!--  <div class="mentor_service_area" id="createdServices">
-               <h4>Created Services</h4>  
+
+
+              <!-- <div class="tab-pane fade" id="mtb_service" role="tabpanel" aria-labelledby="mt_service"> -->
+                <div class="switch-field">
+                  <input class="switch-field-radio"  type="radio" value="1" id="allservice" data-toggle="tab" href="#all_service" role="tab" aria-controls="all_service" aria-selected="false"  checked/>
+                  <label for="allservice">All Services</label>
+                  <input class="switch-field-radio" type="radio" value="2" id="myservice" data-toggle="tab" href="#my_service" role="tab" aria-controls="my_service" aria-selected="false"/>
+                  <label for="myservice">My Services</label>
+                </div>
+                <!--  <div class="mentor_service_area" id="createdServices">
+                 <h4>Created Services</h4>  
+                </div> -->
+                <!-- ////////////////////////////////////////////// -->
                 <br>
-              </div> -->
-              <div class="mentor_service_area" id="purchaseServices">
-               <h4>Purchase Services</h4>  
                 <br>
+                <div class="tab-content">
+
+
+  
+                  <div class="tab-pane fade " id="my_service" role="tabpanel" aria-labelledby="myservice">
+                      <div class="mentor_service_area" id="purchaseServices">
+                      <h4>Purchase Services</h4>  
+                        <br>
+                      </div>
+                      <div class="mentor_service_area" id="newsletterServices">
+                      <h4>TradeTips Recommended Services</h4>  
+                        <p>Learn how to invest, trade and use TradeTips</p>      
+                        <br>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade show active" id="all_service" role="tabpanel" aria-labelledby="allservice">
+                      <div class="mentor_service_area" id="allService">
+                      <h4>all Services</h4>  
+                        <br>
+                      </div>
+
+                  </div>
+                </div>
+               
               </div>
-              <div class="mentor_service_area" id="newsletterServices">
-               <h4>TradeTips Recommended Services</h4>  
-                <p>Learn how to invest, trade and use TradeTips</p>      
-                <br>
-              </div>
-             
-            </div>
              <div class="tab-pane fade" id="mtb_comments" role="tabpanel" aria-labelledby="mt_comments">
               
              
@@ -278,6 +306,156 @@
              }
              });
 
+            //  ////////////////////////////////////////////////////////////////////
+        $.ajax({
+              type: 'POST',
+              url: 'https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlanWeb/getAllServiceSubscriptionPlan	',
+              headers: {
+                Authorization: 'Bearer '+ tokens,
+                 },
+              data: {
+                  userId: LoggedInId,
+                },
+               success: function(data) {
+                 var datak = JSON.stringify(data);
+                 var fdataResult = JSON.parse(datak); 
+                 // alert(fdataResult.suggestedServiceSubscriptionPlans);
+                 var dataResult = fdataResult.suggestedServiceSubscriptionPlans;
+                 // console.log(dataResult);
+                  // var len = dataResult.length;
+                  // alert(len);
+               if(dataResult.length == 0){
+                  
+                    document.getElementById('allService').innerHTML="<br><p>You currently have no Services created.</p>";
+                    $("#allService").css("text-align", "center");
+                    $("#allService").css("color", "white");
+
+                 } else {
+
+
+                let newtip = [];
+                  for(var i=0; i< dataResult.length; i++) if(dataResult[i].isActive != false ){  
+
+
+                  // if(dataResult[i].isActive == true){
+
+                   //  alert(dataResult[i].title);
+
+                    function checkimage(){   
+                     var data ;
+                      if(!dataResult[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResult[i].imageDetails +'"';}
+
+                      return data;
+                    }
+
+                     function checkprice(){   
+                     var price ;
+                      if(dataResult[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResult[i].price;}
+
+                      return price;
+                    }
+
+
+                    newtip += '<div class="mentor_srvc"><h2>'+dataResult[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimage() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResult[i].title+'<span>'+ checkprice() +'</span></h3><p>'+dataResult[i].descriptionOne+'</p><a href="'+dataResult[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                  // }
+                    
+
+                  }
+                   $("#allService").append(newtip);
+
+                }  
+
+                 // var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;   
+                 // var lenCreatedService = dataResultcreatedService.length;   
+                 // if(dataResultcreatedService.length == 0){
+
+                 //   // document.getElementById('createdServices').innerHTML="<br><p>You currently have no Services created.</p>";
+                 //   //  $("#createdServices").css("text-align", "center");
+                 //   //  $("#createdServices").css("color", "white");
+
+                 // }else{
+
+
+                 //  let newtipcreatedService = [];
+                 //  for(var i=0; i< dataResultcreatedService.length; i++) {  
+
+                 //     function checkimageCreated(){   
+                 //     var data ;
+                 //      if(!dataResultcreatedService[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResultcreatedService[i].imageDetails +'"';}
+
+                 //      return data;
+                 //    }
+
+                 //     function checkpriceCreated(){   
+                 //     var price ;
+                 //      if(dataResultcreatedService[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResultcreatedService[i].price;}
+
+                 //      return price;
+                 //    }
+
+
+
+                 //  // if(dataResult[i].isActive == true){
+
+                 //   //  alert(dataResult[i].title);
+                 //    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>'+checkpriceCreated() +'</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                 //  // }
+                    
+
+                 //  }
+                 //   $("#createdServices").append(newtipcreatedService);
+
+
+
+                 // }   
+
+                  var dataResultpurchaseService = fdataResult.serviceSubscriptions;   
+                 var lenpurchaseService = dataResultpurchaseService.length;   
+                 if(dataResultpurchaseService.length == 0){
+
+                   // document.getElementById('purchaseServices').innerHTML="<br><p>You currently have no Services created.</p>";
+                   //  $("#purchaseServices").css("text-align", "center");
+                   //  $("#purchaseServices").css("color", "white");
+
+                 }else{
+
+
+                  let newtippurchaseService = [];
+                  for(var i=0; i< dataResultpurchaseService.length; i++) {  
+
+                      function checkimagePurchase(){   
+                     var data ;
+                      if(!dataResultpurchaseService[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResultpurchaseService[i].imageDetails +'"';}
+
+                      return data;
+                    }
+
+                     function checkpricePurchase(){   
+                     var price ;
+                      if(dataResultpurchaseService[i].serviceSubscriptionPlan.price == "0") {price = 'Free'; }else{price =  '$'+dataResultpurchaseService[i].serviceSubscriptionPlan.price;}
+
+                      return price;
+                    }
+
+
+
+
+                  // if(dataResult[i].isActive == true){
+                   newtippurchaseService += '<div class="mentor_srvc"><h2>'+dataResultpurchaseService[i].serviceSubscriptionPlan.title+'</h2><div class="mentor_srvc_bx">'+ checkimagePurchase() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultpurchaseService[i].serviceSubscriptionPlan.title+'<span>'+ checkpricePurchase() +'</span></h3><p>'+dataResultpurchaseService[i].serviceSubscriptionPlan.descriptionOne+'</p><a href="'+dataResultpurchaseService[i].serviceSubscriptionPlan.descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'                 
+                  // }
+                    
+
+                  }
+                   $("#allService").append(newtippurchaseService);
+
+
+
+                 }          
+                 
+             }
+             });
+
+             //////////////////////////////////////////////////////
         $.ajax({
               type: 'POST',
               url: 'https://apistest.tradetipsapp.com/api/followUserList/getAllFollowUserListByUserName',
