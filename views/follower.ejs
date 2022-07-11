@@ -1,14 +1,24 @@
 
-<style>
-  .switch-field .switch-field-radio .active {
-    background-color: var(--primary-color);
-    box-shadow: none;
-    color: #fff;
-}
-</style>
 
 <%- include partials/innerheader %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet" />
+<style>
+  .current {
+  color:#fff;
+  margin:10px
+}
 
+#pagin li {
+  display: inline-block;
+  margin:5px;
+  background-color:grey;
+  padding:0 13px;
+  border:1px solid black;
+}
+</style>
   <div class="app_main">
     <%- include partials/innersidebar %>
       <div class="app_content">
@@ -65,25 +75,23 @@
                             <a class="nav-item nav-link" data-toggle="tab" href="#tabs-banner2" role="tab">My Service</a>
                           </div>
                         </nav>
-<!--                        
-                        <a href="#1"  data-toggle="tab" class="switch-field-radio"><label id="label1">All Service
-                        </label></a>
-                        
-                       
-                        <a href="#2" data-toggle="tab" class="switch-field-radio "><label >My Service</label></a> -->
-                      <!-- </div> -->
+
                       <br/>
                       <br/>
                       <div class="tab-content ">
-                        <div class="tab-pane active" id="tabs-banner1">
-                          <div class="tab-pane" id="2a">
-                            <div class="mentor_service_area" id="allService">
-                              <!-- <h4>all Services</h4> -->
-                              <br />
-                            </div>
-                          </div>
-                        </div>
+                        
 
+                          <div class="tab-pane active" id="tabs-banner1">
+                            <div class="tab-pane" id="2a">
+                              <div class="mentor_service_area" id="allService">
+                              </div>
+                            </div>
+                            <ul id="pagin">
+           
+                            </ul>
+                          </div>
+                       
+                        
                         <div class="tab-pane" id="tabs-banner2">
                           <div class="tab-pane " id="1a">
                             <div class="mentor_service_area" id="purchaseServices">
@@ -242,6 +250,7 @@
                 // }
               }
             $("#newsletterServices").append(newtip);
+            // alert(newtip.length)
           }
 
           // var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;
@@ -360,11 +369,12 @@
           console.log(data)
           var dataks = JSON.stringify(data);
           var fdataResults = JSON.parse(dataks);
+
           // alert(fdataResults);
           var dataResults = fdataResults;
           // console.log(dataResults);
           var len = dataResults.length;
-          // alert(len);
+          alert('count'+len);
           if (dataResults.length == 0) {
 
             document.getElementById("allService").innerHTML =
@@ -373,6 +383,7 @@
             $("#allService").css("color", "white");
           } else {
             // alert('ok')
+      
             let newtip = [];
             for (var i = 0; i < dataResults.length; i++)
               if (dataResults[i].isActive != false) {
@@ -422,45 +433,37 @@
                 // }
               }
             $("#allService").append(newtip);
+
+                      //Pagination
+	pageSize = 10;
+
+var pageCount =   $(".mentor_srvc").length / pageSize;
+alert(pageCount)
+  
+   for(var i = 0 ; i<pageCount;i++){
+      
+     $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+   }
+      $("#pagin li").first().find("a").addClass("current")
+  showPage = function(page) {
+    $(".mentor_srvc").hide();
+    $(".mentor_srvc").each(function(n) {
+        if (n >= pageSize * (page - 1) && n < pageSize * page)
+            $(this).show();
+    });        
+}
+  
+showPage(1);
+
+$("#pagin li a").click(function() {
+    $("#pagin li a").removeClass("current");
+    $(this).addClass("current");
+    showPage(parseInt($(this).text())) 
+});
           }
 
-          // var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;
-          // var lenCreatedService = dataResultcreatedService.length;
-          // if(dataResultcreatedService.length == 0){
 
-          //   // document.getElementById('createdServices').innerHTML="<br><p>You currently have no Services created.</p>";
-          //   //  $("#createdServices").css("text-align", "center");
-          //   //  $("#createdServices").css("color", "white");
-
-          // }else{
-
-          //  let newtipcreatedService = [];
-          //  for(var i=0; i< dataResultcreatedService.length; i++) {
-
-          //     function checkimageCreated(){
-          //     var data ;
-          //      if(!dataResultcreatedService[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResultcreatedService[i].imageDetails +'"';}
-
-          //      return data;
-          //    }
-
-          //     function checkpriceCreated(){
-          //     var price ;
-          //      if(dataResultcreatedService[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResultcreatedService[i].price;}
-
-          //      return price;
-          //    }
-
-          //  // if(dataResult[i].isActive == true){
-
-          //   //  alert(dataResult[i].title);
-          //    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>'+checkpriceCreated() +'</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'
-          //  // }
-
-          //  }
-          //   $("#createdServices").append(newtipcreatedService);
-
-          // }
+        
 
           var dataResultpurchaseService = fdataResults;
           var lenpurchaseService = dataResultpurchaseService.length;
@@ -521,6 +524,8 @@
             }
             $("#allService").append(newtippurchaseServices);
           }
+
+      
         },
       });
 
@@ -1663,25 +1668,8 @@
 </script>
 
 <script>
-  //  $('.active1.active').on('click', function(){
+ //Pagination
 
-  // }) 
-  document.getElementById('label1').style.dackground = 'blue'
-
-
-
-  // console.log(actives)
-  // if(actives){
-  // }
-
-  // var switchs= $('.active1.active')
-  // console.log(switchs)
-  // if(switchs){
-  //   document.getElementById('label1').style.dackground = 'blue'
-  // }else{
-  //   document.getElementById('label2').style.dackground = 'blue'
-
-  // }
 </script>
 
 
