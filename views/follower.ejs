@@ -1,4 +1,14 @@
+
+<style>
+  .switch-field .switch-field-radio .active {
+    background-color: var(--primary-color);
+    box-shadow: none;
+    color: #fff;
+}
+</style>
+
 <%- include partials/innerheader %>
+
   <div class="app_main">
     <%- include partials/innersidebar %>
       <div class="app_content">
@@ -41,29 +51,41 @@
                   <!-- <div class="mentor_feed" id="Services">
               </div> -->
 
+
+              <!-- /////////////////// -->
                   <div class="tab-pane fade" id="mtb_service" role="tabpanel" aria-labelledby="mt_service">
                     <div class="container">
-                      <div class="switch-field">
-                        <!-- <input class="switch-field-radio"  type="radio" value="1" id="allservice" data-toggle="tab" href="#all_service" role="tab" aria-controls="all_service" aria-selected="false"  checked/> -->
-                        <label class="switch-field-radio">
-                          <a href="#1" data-toggle="tab">All Service</a></label>
-                        <!-- <input class="switch-field-radio" type="radio" value="2" id="myservice" data-toggle="tab" href="#my_service" role="tab" aria-controls="my_service" aria-selected="false"/> -->
-                        <label class="switch-field-radio "><a href="#2" data-toggle="tab">My Service</a></label>
-                      </div>
+                      <!-- <div class="switch-field"> -->
+                        <br>
+                        
+
+                        <nav>
+                          <div class="nav nav-tabs nav-fill" role="tablist">
+                            <a class="nav-item nav-link active" data-toggle="tab" href="#tabs-banner1" role="tab">All Service</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#tabs-banner2" role="tab">My Service</a>
+                          </div>
+                        </nav>
+<!--                        
+                        <a href="#1"  data-toggle="tab" class="switch-field-radio"><label id="label1">All Service
+                        </label></a>
+                        
+                       
+                        <a href="#2" data-toggle="tab" class="switch-field-radio "><label >My Service</label></a> -->
+                      <!-- </div> -->
                       <br/>
                       <br/>
                       <div class="tab-content ">
-                        <div class="tab-pane active" id="1">
+                        <div class="tab-pane active" id="tabs-banner1">
                           <div class="tab-pane" id="2a">
                             <div class="mentor_service_area" id="allService">
-                              <h4>all Services</h4>
+                              <!-- <h4>all Services</h4> -->
                               <br />
                             </div>
                           </div>
                         </div>
 
-                        <div class="tab-pane" id="2">
-                          <div class="tab-pane active" id="1a">
+                        <div class="tab-pane" id="tabs-banner2">
+                          <div class="tab-pane " id="1a">
                             <div class="mentor_service_area" id="purchaseServices">
                               <h4>Purchase Services</h4>
                               <br />
@@ -79,6 +101,7 @@
                     </div>
                   </div>
 
+                  <!-- /////////////////////// -->
                   <div class="tab-pane fade" id="mtb_comments" role="tabpanel" aria-labelledby="mt_comments"></div>
                   <div class="tab-pane fade" id="mt_follower_tab" role="tabpanel" aria-labelledby="mt_follower">
                     <!--  <h5>People following you</h5> -->
@@ -1637,7 +1660,31 @@
           });
         }
       }
-    </script>
+</script>
+
+<script>
+  //  $('.active1.active').on('click', function(){
+
+  // }) 
+  document.getElementById('label1').style.dackground = 'blue'
+
+
+
+  // console.log(actives)
+  // if(actives){
+  // }
+
+  // var switchs= $('.active1.active')
+  // console.log(switchs)
+  // if(switchs){
+  //   document.getElementById('label1').style.dackground = 'blue'
+  // }else{
+  //   document.getElementById('label2').style.dackground = 'blue'
+
+  // }
+</script>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
