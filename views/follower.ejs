@@ -1,12 +1,16 @@
 
-
+<!-- 
+<link type="text/css" rel="stylesheet" href="path_to/simplePagination.css"/>
+<script type="text/javascript" src="path_to/jquery.js"></script>
+<script type="text/javascript" src="path_to/jquery.simplePagination.js"></script> -->
 <%- include partials/innerheader %>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet" />
 <style>
-  .current {
+  /* .current {
   color:#fff;
   margin:10px
 }
@@ -18,6 +22,75 @@
   padding:0 13px;
   border:1px solid black;
 }
+
+
+.simple-pagination ul {
+	margin: 0 0 20px;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.simple-pagination li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.simple-pagination li a,
+.simple-pagination li span {
+	color: #666;
+	padding: 5px 10px;
+	text-decoration: none;
+	border: 1px solid #EEE;
+	background-color: #FFF;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination .current {
+	color: #FFF;
+	background-color: #FF7182;
+	border-color: #FF7182;
+}
+
+.simple-pagination .prev.current,
+.simple-pagination .next.current {
+	background: #e04e60;
+} */
+
+
+/* Pagination. */
+/* .pagination {
+	background: #333;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+#numbers {
+	padding: 0;
+	margin: 0 2rem;
+	list-style-type: none;
+	display: flex;
+}
+
+#numbers li a {
+	color: #fff;
+	padding: .5rem 1rem;
+	text-decoration: none;
+	opacity: .7;
+}
+
+#numbers li a:hover {
+	opacity: 1;
+}
+
+#numbers li a.active {
+	opacity: 1;
+	background: #fff;
+	color: #333;
+} */
 </style>
   <div class="app_main">
     <%- include partials/innersidebar %>
@@ -86,9 +159,9 @@
                               <div class="mentor_service_area" id="allService">
                               </div>
                             </div>
-                            <ul id="pagin">
-           
-                            </ul>
+                            <!-- <div class="pagination">
+                              <ol id="numbers"></ol>
+                            </div> -->
                           </div>
                        
                         
@@ -152,6 +225,7 @@
   <%- include partials/innerfooter %>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
+    <!-- <script type="text/javascript" src=" http://flaviusmatis.github.io/simplePagination.js/"></script> -->
     <script type="text/javascript">
       var LoggedInId = "<%= userid %>";
       // console.log(LoggedInId);
@@ -374,7 +448,7 @@
           var dataResults = fdataResults;
           // console.log(dataResults);
           var len = dataResults.length;
-          alert('count'+len);
+          // alert('count'+len);
           if (dataResults.length == 0) {
 
             document.getElementById("allService").innerHTML =
@@ -435,31 +509,97 @@
             $("#allService").append(newtip);
 
                       //Pagination
-	pageSize = 10;
+// 	pageSize = 10;
 
-var pageCount =   $(".mentor_srvc").length / pageSize;
-alert(pageCount)
+// var pageCount =   $(".mentor_srvc").length / pageSize;
+// // alert(pageCount)
   
-   for(var i = 0 ; i<pageCount;i++){
+//    for(var i = 0 ; i<pageCount;i++){
       
-     $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
-   }
-      $("#pagin li").first().find("a").addClass("current")
-  showPage = function(page) {
-    $(".mentor_srvc").hide();
-    $(".mentor_srvc").each(function(n) {
-        if (n >= pageSize * (page - 1) && n < pageSize * page)
-            $(this).show();
-    });        
-}
+//      $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+//    }
+//       $("#pagin li").first().find("a").addClass("current")
+//   showPage = function(page) {
+//     $(".mentor_srvc").hide();
+//     $(".mentor_srvc").each(function(n) {
+//         if (n >= pageSize * (page - 1) && n < pageSize * page)
+//             $(this).show();
+//     });        
+// }
   
-showPage(1);
+// showPage(1);
 
-$("#pagin li a").click(function() {
-    $("#pagin li a").removeClass("current");
-    $(this).addClass("current");
-    showPage(parseInt($(this).text())) 
-});
+// $("#pagin li a").click(function() {
+//     $("#pagin li a").removeClass("current");
+//     $(this).addClass("current");
+//     showPage(parseInt($(this).text())) 
+// });
+
+
+// var items = $(".mentor_srvc");
+//     var numItems = items.length;
+//     var perPage = 5;
+
+//     items.slice(perPage).hide();
+
+//     $('#pagination-container').pagination({
+//         items: numItems,
+//         itemsOnPage: perPage,
+//         prevText: "&laquo;",
+//         nextText: "&raquo;",
+//         onPageClick: function (pageNumber) {
+//             var showFrom = perPage * (pageNumber - 1);
+//             var showTo = showFrom + perPage;
+//             items.hide().slice(showFrom, showTo).show();
+//         }
+//     });
+
+// $(function() {
+// 	const rowsPerPage = 13;
+// 	const rows = $('.mentor_srvc');
+// 	const rowsCount = rows.length;
+// 	const pageCount = Math.ceil(rowsCount / rowsPerPage); // avoid decimals
+// 	const numbers = $('#numbers');
+	
+// 	// Generate the pagination.
+// 	for (var i = 0; i < pageCount; i++) {
+// 		numbers.append('<li><a href="#">' + (i+1) + '</a></li>');
+// 	}
+		
+// 	// Mark the first page link as active.
+// 	$('#numbers li:first-child a').addClass('active');
+
+// 	// Display the first set of rows.
+// 	displayRows(1);
+	
+// 	// On pagination click.
+// 	$('#numbers li a').click(function(e) {
+// 		var $this = $(this);
+		
+// 		e.preventDefault();
+		
+// 		// Remove the active class from the links.
+// 		$('#numbers li a').removeClass('active');
+		
+// 		// Add the active class to the current link.
+// 		$this.addClass('active');
+		
+// 		// Show the rows corresponding to the clicked page ID.
+// 		displayRows($this.text());
+// 	});
+	
+// 	// Function that displays rows for a specific page.
+// 	function displayRows(index) {
+// 		var start = (index - 1) * rowsPerPage;
+// 		var end = start + rowsPerPage;
+		
+// 		// Hide all rows.
+// 		rows.hide();
+		
+// 		// Show the proper rows for this page.
+// 		rows.slice(start, end).show();
+// 	}
+// });
           }
 
 
