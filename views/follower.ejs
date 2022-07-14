@@ -1,14 +1,97 @@
 
-<style>
-  .switch-field .switch-field-radio .active {
-    background-color: var(--primary-color);
-    box-shadow: none;
-    color: #fff;
-}
-</style>
-
+<!-- 
+<link type="text/css" rel="stylesheet" href="path_to/simplePagination.css"/>
+<script type="text/javascript" src="path_to/jquery.js"></script>
+<script type="text/javascript" src="path_to/jquery.simplePagination.js"></script> -->
 <%- include partials/innerheader %>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet" />
+<style>
+  /* .current {
+  color:#fff;
+  margin:10px
+}
+
+#pagin li {
+  display: inline-block;
+  margin:5px;
+  background-color:grey;
+  padding:0 13px;
+  border:1px solid black;
+}
+
+
+.simple-pagination ul {
+	margin: 0 0 20px;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.simple-pagination li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.simple-pagination li a,
+.simple-pagination li span {
+	color: #666;
+	padding: 5px 10px;
+	text-decoration: none;
+	border: 1px solid #EEE;
+	background-color: #FFF;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination .current {
+	color: #FFF;
+	background-color: #FF7182;
+	border-color: #FF7182;
+}
+
+.simple-pagination .prev.current,
+.simple-pagination .next.current {
+	background: #e04e60;
+} */
+
+
+/* Pagination. */
+/* .pagination {
+	background: #333;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+#numbers {
+	padding: 0;
+	margin: 0 2rem;
+	list-style-type: none;
+	display: flex;
+}
+
+#numbers li a {
+	color: #fff;
+	padding: .5rem 1rem;
+	text-decoration: none;
+	opacity: .7;
+}
+
+#numbers li a:hover {
+	opacity: 1;
+}
+
+#numbers li a.active {
+	opacity: 1;
+	background: #fff;
+	color: #333;
+} */
+</style>
   <div class="app_main">
     <%- include partials/innersidebar %>
       <div class="app_content">
@@ -65,25 +148,23 @@
                             <a class="nav-item nav-link" data-toggle="tab" href="#tabs-banner2" role="tab">My Service</a>
                           </div>
                         </nav>
-<!--                        
-                        <a href="#1"  data-toggle="tab" class="switch-field-radio"><label id="label1">All Service
-                        </label></a>
-                        
-                       
-                        <a href="#2" data-toggle="tab" class="switch-field-radio "><label >My Service</label></a> -->
-                      <!-- </div> -->
+
                       <br/>
                       <br/>
                       <div class="tab-content ">
-                        <div class="tab-pane active" id="tabs-banner1">
-                          <div class="tab-pane" id="2a">
-                            <div class="mentor_service_area" id="allService">
-                              <!-- <h4>all Services</h4> -->
-                              <br />
-                            </div>
-                          </div>
-                        </div>
+                        
 
+                          <div class="tab-pane active" id="tabs-banner1">
+                            <div class="tab-pane" id="2a">
+                              <div class="mentor_service_area" id="allService">
+                              </div>
+                            </div>
+                            <!-- <div class="pagination">
+                              <ol id="numbers"></ol>
+                            </div> -->
+                          </div>
+                       
+                        
                         <div class="tab-pane" id="tabs-banner2">
                           <div class="tab-pane " id="1a">
                             <div class="mentor_service_area" id="purchaseServices">
@@ -144,6 +225,7 @@
   <%- include partials/innerfooter %>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
+    <!-- <script type="text/javascript" src=" http://flaviusmatis.github.io/simplePagination.js/"></script> -->
     <script type="text/javascript">
       var LoggedInId = "<%= userid %>";
       // console.log(LoggedInId);
@@ -242,6 +324,7 @@
                 // }
               }
             $("#newsletterServices").append(newtip);
+            // alert(newtip.length)
           }
 
           // var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;
@@ -360,11 +443,12 @@
           console.log(data)
           var dataks = JSON.stringify(data);
           var fdataResults = JSON.parse(dataks);
+
           // alert(fdataResults);
           var dataResults = fdataResults;
           // console.log(dataResults);
           var len = dataResults.length;
-          // alert(len);
+          // alert('count'+len);
           if (dataResults.length == 0) {
 
             document.getElementById("allService").innerHTML =
@@ -373,6 +457,7 @@
             $("#allService").css("color", "white");
           } else {
             // alert('ok')
+      
             let newtip = [];
             for (var i = 0; i < dataResults.length; i++)
               if (dataResults[i].isActive != false) {
@@ -422,45 +507,103 @@
                 // }
               }
             $("#allService").append(newtip);
+
+                      //Pagination
+// 	pageSize = 10;
+
+// var pageCount =   $(".mentor_srvc").length / pageSize;
+// // alert(pageCount)
+  
+//    for(var i = 0 ; i<pageCount;i++){
+      
+//      $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+//    }
+//       $("#pagin li").first().find("a").addClass("current")
+//   showPage = function(page) {
+//     $(".mentor_srvc").hide();
+//     $(".mentor_srvc").each(function(n) {
+//         if (n >= pageSize * (page - 1) && n < pageSize * page)
+//             $(this).show();
+//     });        
+// }
+  
+// showPage(1);
+
+// $("#pagin li a").click(function() {
+//     $("#pagin li a").removeClass("current");
+//     $(this).addClass("current");
+//     showPage(parseInt($(this).text())) 
+// });
+
+
+// var items = $(".mentor_srvc");
+//     var numItems = items.length;
+//     var perPage = 5;
+
+//     items.slice(perPage).hide();
+
+//     $('#pagination-container').pagination({
+//         items: numItems,
+//         itemsOnPage: perPage,
+//         prevText: "&laquo;",
+//         nextText: "&raquo;",
+//         onPageClick: function (pageNumber) {
+//             var showFrom = perPage * (pageNumber - 1);
+//             var showTo = showFrom + perPage;
+//             items.hide().slice(showFrom, showTo).show();
+//         }
+//     });
+
+// $(function() {
+// 	const rowsPerPage = 13;
+// 	const rows = $('.mentor_srvc');
+// 	const rowsCount = rows.length;
+// 	const pageCount = Math.ceil(rowsCount / rowsPerPage); // avoid decimals
+// 	const numbers = $('#numbers');
+	
+// 	// Generate the pagination.
+// 	for (var i = 0; i < pageCount; i++) {
+// 		numbers.append('<li><a href="#">' + (i+1) + '</a></li>');
+// 	}
+		
+// 	// Mark the first page link as active.
+// 	$('#numbers li:first-child a').addClass('active');
+
+// 	// Display the first set of rows.
+// 	displayRows(1);
+	
+// 	// On pagination click.
+// 	$('#numbers li a').click(function(e) {
+// 		var $this = $(this);
+		
+// 		e.preventDefault();
+		
+// 		// Remove the active class from the links.
+// 		$('#numbers li a').removeClass('active');
+		
+// 		// Add the active class to the current link.
+// 		$this.addClass('active');
+		
+// 		// Show the rows corresponding to the clicked page ID.
+// 		displayRows($this.text());
+// 	});
+	
+// 	// Function that displays rows for a specific page.
+// 	function displayRows(index) {
+// 		var start = (index - 1) * rowsPerPage;
+// 		var end = start + rowsPerPage;
+		
+// 		// Hide all rows.
+// 		rows.hide();
+		
+// 		// Show the proper rows for this page.
+// 		rows.slice(start, end).show();
+// 	}
+// });
           }
 
-          // var dataResultcreatedService = fdataResult.serviceSubscriptionPlans;
-          // var lenCreatedService = dataResultcreatedService.length;
-          // if(dataResultcreatedService.length == 0){
 
-          //   // document.getElementById('createdServices').innerHTML="<br><p>You currently have no Services created.</p>";
-          //   //  $("#createdServices").css("text-align", "center");
-          //   //  $("#createdServices").css("color", "white");
-
-          // }else{
-
-          //  let newtipcreatedService = [];
-          //  for(var i=0; i< dataResultcreatedService.length; i++) {
-
-          //     function checkimageCreated(){
-          //     var data ;
-          //      if(!dataResultcreatedService[i].imageDetails) {data = ''; }else{data = '<img src="https://apistest.tradetipsapp.com'+ dataResultcreatedService[i].imageDetails +'"';}
-
-          //      return data;
-          //    }
-
-          //     function checkpriceCreated(){
-          //     var price ;
-          //      if(dataResultcreatedService[i].price == "0") {price = 'Free'; }else{price =  '$'+dataResultcreatedService[i].price;}
-
-          //      return price;
-          //    }
-
-          //  // if(dataResult[i].isActive == true){
-
-          //   //  alert(dataResult[i].title);
-          //    newtipcreatedService += '<div class="mentor_srvc"><h2>'+dataResultcreatedService[i].serviceTypeMaster.title+'</h2><div class="mentor_srvc_bx">'+ checkimageCreated() +'</div><div class="mentor_srvc_bx_txt"><h3>'+dataResultcreatedService[i].title+'<span>'+checkpriceCreated() +'</span></h3><p>'+dataResultcreatedService[i].descriptionOne+'</p><a href="'+dataResultcreatedService[i].descriptionTwo+'" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>'
-          //  // }
-
-          //  }
-          //   $("#createdServices").append(newtipcreatedService);
-
-          // }
+        
 
           var dataResultpurchaseService = fdataResults;
           var lenpurchaseService = dataResultpurchaseService.length;
@@ -521,6 +664,8 @@
             }
             $("#allService").append(newtippurchaseServices);
           }
+
+      
         },
       });
 
@@ -1663,25 +1808,8 @@
 </script>
 
 <script>
-  //  $('.active1.active').on('click', function(){
+ //Pagination
 
-  // }) 
-  document.getElementById('label1').style.dackground = 'blue'
-
-
-
-  // console.log(actives)
-  // if(actives){
-  // }
-
-  // var switchs= $('.active1.active')
-  // console.log(switchs)
-  // if(switchs){
-  //   document.getElementById('label1').style.dackground = 'blue'
-  // }else{
-  //   document.getElementById('label2').style.dackground = 'blue'
-
-  // }
 </script>
 
 
