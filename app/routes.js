@@ -120,6 +120,12 @@ module.exports = function(app) {
 
     res.render('mentorDetails.ejs' , {tipsIds : mentorids});
   });
+   app.get('/serviceDetails', function(req, res) {
+
+    var mentorids = req.query.id;
+
+    res.render('seviceDetail.ejs' , {tipsIds : mentorids});
+  });
 
    app.get('/macdDetails', function(req, res) {
 

@@ -1,16 +1,15 @@
-
 <!-- 
 <link type="text/css" rel="stylesheet" href="path_to/simplePagination.css"/>
 <script type="text/javascript" src="path_to/jquery.js"></script>
 <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script> -->
 <%- include partials/innerheader %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet" />
-<style>
-  /* .current {
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet" />
+  <style>
+    /* .current {
   color:#fff;
   margin:10px
 }
@@ -58,8 +57,8 @@
 } */
 
 
-/* Pagination. */
-/* .pagination {
+    /* Pagination. */
+    /* .pagination {
 	background: #333;
 	padding: 1rem;
 	margin-bottom: 1rem;
@@ -91,7 +90,7 @@
 	background: #fff;
 	color: #333;
 } */
-</style>
+  </style>
   <div class="app_main">
     <%- include partials/innersidebar %>
       <div class="app_content">
@@ -135,36 +134,37 @@
               </div> -->
 
 
-              <!-- /////////////////// -->
+                  <!-- /////////////////// -->
                   <div class="tab-pane fade" id="mtb_service" role="tabpanel" aria-labelledby="mt_service">
                     <div class="container">
                       <!-- <div class="switch-field"> -->
-                        <br>
-                        
+                      <br>
 
-                        <nav>
-                          <div class="nav nav-tabs nav-fill" role="tablist">
-                            <a class="nav-item nav-link active" data-toggle="tab" href="#tabs-banner1" role="tab">All Service</a>
-                            <a class="nav-item nav-link" data-toggle="tab" href="#tabs-banner2" role="tab">My Service</a>
-                          </div>
-                        </nav>
 
-                      <br/>
-                      <br/>
+                      <nav>
+                        <div class="nav nav-tabs nav-fill" role="tablist">
+                          <a class="nav-item nav-link active" data-toggle="tab" href="#tabs-banner1" role="tab">All
+                            Service</a>
+                          <a class="nav-item nav-link" data-toggle="tab" href="#tabs-banner2" role="tab">My Service</a>
+                        </div>
+                      </nav>
+
+                      <br />
+                      <br />
                       <div class="tab-content ">
-                        
 
-                          <div class="tab-pane active" id="tabs-banner1">
-                            <div class="tab-pane" id="2a">
-                              <div class="mentor_service_area" id="allService">
-                              </div>
+
+                        <div class="tab-pane active" id="tabs-banner1">
+                          <div class="tab-pane" id="2a">
+                            <div class="mentor_service_area" id="allService">
                             </div>
-                            <!-- <div class="pagination">
+                          </div>
+                          <!-- <div class="pagination">
                               <ol id="numbers"></ol>
                             </div> -->
-                          </div>
-                       
-                        
+                        </div>
+
+
                         <div class="tab-pane" id="tabs-banner2">
                           <div class="tab-pane " id="1a">
                             <div class="mentor_service_area" id="purchaseServices">
@@ -318,9 +318,9 @@
                   checkprice() +
                   "</span></h3><p>" +
                   dataResult[i].descriptionOne +
-                  '</p><a href="' +
-                  dataResult[i].descriptionTwo +
-                  '" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>';
+                  '</p><a href="serviceDetails?id=' +
+                  dataResult[i].id +
+                  '" target="_blank"><button class="btn cmn_btn btn_primary" style="cursor:pointer; float:none;">View Detail</button></a></div></div><br>';
                 // }
               }
             $("#newsletterServices").append(newtip);
@@ -416,10 +416,10 @@
                 "</span></h3><p>" +
                 dataResultpurchaseService[i].serviceSubscriptionPlan
                   .descriptionOne +
-                '</p><a href="' +
+                '</p><a href="serviceDetails?id= '  +
                 dataResultpurchaseService[i].serviceSubscriptionPlan
-                  .descriptionTwo +
-                '" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>';
+                  .id +
+                '" target="_blank"><button class="btn cmn_btn btn_primary" style="cursor:pointer; float:none;">View Detail</button></a></div></div><br>';
               // }
             }
             $("#purchaseServices").append(newtippurchaseService);
@@ -429,7 +429,7 @@
 
       //  ////////////////////////////////////////////////////////////////////
       $.ajax({
-    
+
         type: "POST",
         url:
           "https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlanWeb/getAllServiceSubscriptionPlan	",
@@ -457,7 +457,7 @@
             $("#allService").css("color", "white");
           } else {
             // alert('ok')
-      
+
             let newtip = [];
             for (var i = 0; i < dataResults.length; i++)
               if (dataResults[i].isActive != false) {
@@ -501,109 +501,109 @@
                   checkprice() +
                   "</span></h3><p>" +
                   dataResults[i].descriptionOne +
-                  '</p><a href="' +
-                  dataResults[i].descriptionTwo +
-                  '" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>';
+                  '</p><button class="btn cmn_btn btn_primary"><a href="serviceDetails?id=' +
+                  dataResults[i].id +
+                  '" target="_blank">View Detail</a></button></div></div><br>';
                 // }
               }
             $("#allService").append(newtip);
 
-                      //Pagination
-// 	pageSize = 10;
+            //Pagination
+            // 	pageSize = 10;
 
-// var pageCount =   $(".mentor_srvc").length / pageSize;
-// // alert(pageCount)
-  
-//    for(var i = 0 ; i<pageCount;i++){
-      
-//      $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
-//    }
-//       $("#pagin li").first().find("a").addClass("current")
-//   showPage = function(page) {
-//     $(".mentor_srvc").hide();
-//     $(".mentor_srvc").each(function(n) {
-//         if (n >= pageSize * (page - 1) && n < pageSize * page)
-//             $(this).show();
-//     });        
-// }
-  
-// showPage(1);
+            // var pageCount =   $(".mentor_srvc").length / pageSize;
+            // // alert(pageCount)
 
-// $("#pagin li a").click(function() {
-//     $("#pagin li a").removeClass("current");
-//     $(this).addClass("current");
-//     showPage(parseInt($(this).text())) 
-// });
+            //    for(var i = 0 ; i<pageCount;i++){
+
+            //      $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+            //    }
+            //       $("#pagin li").first().find("a").addClass("current")
+            //   showPage = function(page) {
+            //     $(".mentor_srvc").hide();
+            //     $(".mentor_srvc").each(function(n) {
+            //         if (n >= pageSize * (page - 1) && n < pageSize * page)
+            //             $(this).show();
+            //     });        
+            // }
+
+            // showPage(1);
+
+            // $("#pagin li a").click(function() {
+            //     $("#pagin li a").removeClass("current");
+            //     $(this).addClass("current");
+            //     showPage(parseInt($(this).text())) 
+            // });
 
 
-// var items = $(".mentor_srvc");
-//     var numItems = items.length;
-//     var perPage = 5;
+            // var items = $(".mentor_srvc");
+            //     var numItems = items.length;
+            //     var perPage = 5;
 
-//     items.slice(perPage).hide();
+            //     items.slice(perPage).hide();
 
-//     $('#pagination-container').pagination({
-//         items: numItems,
-//         itemsOnPage: perPage,
-//         prevText: "&laquo;",
-//         nextText: "&raquo;",
-//         onPageClick: function (pageNumber) {
-//             var showFrom = perPage * (pageNumber - 1);
-//             var showTo = showFrom + perPage;
-//             items.hide().slice(showFrom, showTo).show();
-//         }
-//     });
+            //     $('#pagination-container').pagination({
+            //         items: numItems,
+            //         itemsOnPage: perPage,
+            //         prevText: "&laquo;",
+            //         nextText: "&raquo;",
+            //         onPageClick: function (pageNumber) {
+            //             var showFrom = perPage * (pageNumber - 1);
+            //             var showTo = showFrom + perPage;
+            //             items.hide().slice(showFrom, showTo).show();
+            //         }
+            //     });
 
-// $(function() {
-// 	const rowsPerPage = 13;
-// 	const rows = $('.mentor_srvc');
-// 	const rowsCount = rows.length;
-// 	const pageCount = Math.ceil(rowsCount / rowsPerPage); // avoid decimals
-// 	const numbers = $('#numbers');
-	
-// 	// Generate the pagination.
-// 	for (var i = 0; i < pageCount; i++) {
-// 		numbers.append('<li><a href="#">' + (i+1) + '</a></li>');
-// 	}
-		
-// 	// Mark the first page link as active.
-// 	$('#numbers li:first-child a').addClass('active');
+            // $(function() {
+            // 	const rowsPerPage = 13;
+            // 	const rows = $('.mentor_srvc');
+            // 	const rowsCount = rows.length;
+            // 	const pageCount = Math.ceil(rowsCount / rowsPerPage); // avoid decimals
+            // 	const numbers = $('#numbers');
 
-// 	// Display the first set of rows.
-// 	displayRows(1);
-	
-// 	// On pagination click.
-// 	$('#numbers li a').click(function(e) {
-// 		var $this = $(this);
-		
-// 		e.preventDefault();
-		
-// 		// Remove the active class from the links.
-// 		$('#numbers li a').removeClass('active');
-		
-// 		// Add the active class to the current link.
-// 		$this.addClass('active');
-		
-// 		// Show the rows corresponding to the clicked page ID.
-// 		displayRows($this.text());
-// 	});
-	
-// 	// Function that displays rows for a specific page.
-// 	function displayRows(index) {
-// 		var start = (index - 1) * rowsPerPage;
-// 		var end = start + rowsPerPage;
-		
-// 		// Hide all rows.
-// 		rows.hide();
-		
-// 		// Show the proper rows for this page.
-// 		rows.slice(start, end).show();
-// 	}
-// });
+            // 	// Generate the pagination.
+            // 	for (var i = 0; i < pageCount; i++) {
+            // 		numbers.append('<li><a href="#">' + (i+1) + '</a></li>');
+            // 	}
+
+            // 	// Mark the first page link as active.
+            // 	$('#numbers li:first-child a').addClass('active');
+
+            // 	// Display the first set of rows.
+            // 	displayRows(1);
+
+            // 	// On pagination click.
+            // 	$('#numbers li a').click(function(e) {
+            // 		var $this = $(this);
+
+            // 		e.preventDefault();
+
+            // 		// Remove the active class from the links.
+            // 		$('#numbers li a').removeClass('active');
+
+            // 		// Add the active class to the current link.
+            // 		$this.addClass('active');
+
+            // 		// Show the rows corresponding to the clicked page ID.
+            // 		displayRows($this.text());
+            // 	});
+
+            // 	// Function that displays rows for a specific page.
+            // 	function displayRows(index) {
+            // 		var start = (index - 1) * rowsPerPage;
+            // 		var end = start + rowsPerPage;
+
+            // 		// Hide all rows.
+            // 		rows.hide();
+
+            // 		// Show the proper rows for this page.
+            // 		rows.slice(start, end).show();
+            // 	}
+            // });
           }
 
 
-        
+
 
           var dataResultpurchaseService = fdataResults;
           var lenpurchaseService = dataResultpurchaseService.length;
@@ -665,7 +665,7 @@
             $("#allService").append(newtippurchaseServices);
           }
 
-      
+
         },
       });
 
@@ -1805,12 +1805,12 @@
           });
         }
       }
-</script>
+    </script>
 
-<script>
+    <script>
  //Pagination
 
-</script>
+    </script>
 
 
 
