@@ -87,12 +87,12 @@
             </li>
             <li onclick="pinFunction('<%=tipsIds%>')" style="color: #000;">
               <a href="#">
-                <img alt="images" id="imgstatus"><p id="StatusPin" style="display:none;"></p>  Save
+                <img alt="images" id="imgstatus" style="width:23px"><p id="StatusPin" style="display:none;"></p>  Save
               </a>
             </li>
             <li onclick="likeFunction('<%=tipsIds%>')" style="color: #000;">
               <a href="#">
-                <img alt="images" id="likeimgstatus"><p id="StatusLike" style="display:none;"></p><span id="likecount"></span><p id="textvalLike" style="display:none;"></p>
+                <img alt="images" id="likeimgstatus" style="width:25px"><p id="StatusLike" style="display:none;"></p><span id="likecount"></span><p id="textvalLike" style="display:none;"></p>
               </a>
             </li>
             <!-- <li>
@@ -287,9 +287,10 @@ function handleError(image) {
 
   var tipIds = "<%=tipsIds%>";
 
-  // alert(tipIds);
+  // console.log(tipIds);
 
   var formdata = {tipId: tipIds};
+  console.log(formdata)
   $.ajax({
         type: 'POST',
         url: 'https://apistest.tradetipsapp.com/api/tip/getAllTipFeatureDetailsByTipId',
@@ -299,9 +300,9 @@ function handleError(image) {
         data: formdata,
       success: function(data) {
      
-          // console.log(data);    
-
-            const dataResult = data;
+        
+        const dataResult = data;
+        console.log(dataResult);    
 
                 // alert(dataResult.userPinStatus);
 

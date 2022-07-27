@@ -8,89 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet" />
-  <style>
-    /* .current {
-  color:#fff;
-  margin:10px
-}
 
-#pagin li {
-  display: inline-block;
-  margin:5px;
-  background-color:grey;
-  padding:0 13px;
-  border:1px solid black;
-}
-
-
-.simple-pagination ul {
-	margin: 0 0 20px;
-	padding: 0;
-	list-style: none;
-	text-align: center;
-}
-
-.simple-pagination li {
-	display: inline-block;
-	margin-right: 5px;
-}
-
-.simple-pagination li a,
-.simple-pagination li span {
-	color: #666;
-	padding: 5px 10px;
-	text-decoration: none;
-	border: 1px solid #EEE;
-	background-color: #FFF;
-	box-shadow: 0px 0px 10px 0px #EEE;
-}
-
-.simple-pagination .current {
-	color: #FFF;
-	background-color: #FF7182;
-	border-color: #FF7182;
-}
-
-.simple-pagination .prev.current,
-.simple-pagination .next.current {
-	background: #e04e60;
-} */
-
-
-    /* Pagination. */
-    /* .pagination {
-	background: #333;
-	padding: 1rem;
-	margin-bottom: 1rem;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-}
-
-#numbers {
-	padding: 0;
-	margin: 0 2rem;
-	list-style-type: none;
-	display: flex;
-}
-
-#numbers li a {
-	color: #fff;
-	padding: .5rem 1rem;
-	text-decoration: none;
-	opacity: .7;
-}
-
-#numbers li a:hover {
-	opacity: 1;
-}
-
-#numbers li a.active {
-	opacity: 1;
-	background: #fff;
-	color: #333;
-} */
-  </style>
   <div class="app_main">
     <%- include partials/innersidebar %>
       <div class="app_content">
@@ -110,7 +28,7 @@
               </div>
               <div class="mentor_tab_area my_tab_content">
                 <nav>
-                  <div class="nav nav-tabs nav-fill" role="tablist">
+                  <div class="nav nav-tabs nav-fill" role="tablist" style="margin-bottom: 15px;">
                     <a class="nav-item nav-link active" id="mt_feed" data-toggle="tab" href="#mtb_feed" role="tab"
                       aria-controls="mtb_feed" aria-selected="true">All</a>
                     <a class="nav-item nav-link" id="mt_save" data-toggle="tab" href="#mtb_save" role="tab"
@@ -138,7 +56,7 @@
                   <div class="tab-pane fade" id="mtb_service" role="tabpanel" aria-labelledby="mt_service">
                     <div class="container">
                       <!-- <div class="switch-field"> -->
-                      <br>
+                      <!-- <br> -->
 
 
                       <nav>
@@ -320,7 +238,7 @@
                   dataResult[i].descriptionOne +
                   '</p><a href="serviceDetails?id=' +
                   dataResult[i].id +
-                  '" target="_blank"><button class="btn cmn_btn btn_primary" style="cursor:pointer; float:none;">View Detail</button></a></div></div><br>';
+                  '" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>';
                 // }
               }
             $("#newsletterServices").append(newtip);
@@ -419,7 +337,7 @@
                 '</p><a href="serviceDetails?id= '  +
                 dataResultpurchaseService[i].serviceSubscriptionPlan
                   .id +
-                '" target="_blank"><button class="btn cmn_btn btn_primary" style="cursor:pointer; float:none;">View Detail</button></a></div></div><br>';
+                '" target="_blank"><button class="btn cmn_btn btn_primary">View Detail</button></a></div></div><br>';
               // }
             }
             $("#purchaseServices").append(newtippurchaseService);
@@ -866,7 +784,7 @@
                 data[i].tipResponse.commentCount +
                 ' Comments</a></li><li><img id="imgLikestatus' +
                 data[i].tipResponse.tip.id +
-                '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' +
+                '" alt="images" style="cursor:pointer;width:25px"><a onclick="likeFunction(this.id)" id="' +
                 data[i].tipResponse.tip.id +
                 '" style="cursor:pointer;"><span id="textvalLike' +
                 data[i].tipResponse.tip.id +
@@ -929,7 +847,7 @@
                 data[i].tipResponse.commentCount +
                 ' Comments</a></li><li><img id="imgLikestatus' +
                 data[i].tipResponse.tip.id +
-                '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' +
+                '" alt="images" style="cursor:pointer;width:25px"><a onclick="likeFunction(this.id)" id="' +
                 data[i].tipResponse.tip.id +
                 '" style="cursor:pointer;"><span id="textvalLike' +
                 data[i].tipResponse.tip.id +
@@ -1199,7 +1117,7 @@
                 data[i].tipResponse.commentCount +
                 ' Comments</a></li><li><img id="imgLikestatusn' +
                 data[i].tipResponse.tip.id +
-                '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' +
+                '" alt="images" style="cursor:pointer;width:25px"><a onclick="likeFunction(this.id)" id="' +
                 data[i].tipResponse.tip.id +
                 '" style="cursor:pointer;"><span id="textvalLike' +
                 data[i].tipResponse.tip.id +
@@ -1222,7 +1140,7 @@
                 data[i].tipResponse.commentCount +
                 ' Comments</a></li><li><img id="imgLikestatusn' +
                 data[i].tipResponse.tip.id +
-                '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' +
+                '" alt="images" style="cursor:pointer;width:25px"><a onclick="likeFunction(this.id)" id="' +
                 data[i].tipResponse.tip.id +
                 '" style="cursor:pointer;"><span id="textvalLike' +
                 data[i].tipResponse.tip.id +
@@ -1439,7 +1357,7 @@
                   data[i].tipResponse.commentCount +
                   ' Comments</a></li><li><img id="imgLikestatus1' +
                   data[i].tipResponse.tip.id +
-                  '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' +
+                  '" alt="images" style="cursor:pointer;width:25px"><a onclick="likeFunction(this.id)" id="' +
                   data[i].tipResponse.tip.id +
                   '" style="cursor:pointer;"><span id="textvalLike' +
                   data[i].tipResponse.tip.id +
@@ -1502,7 +1420,7 @@
                   data[i].tipResponse.commentCount +
                   ' Comments</a></li><li><img id="imgLikestatus1' +
                   data[i].tipResponse.tip.id +
-                  '" alt="images" style="cursor:pointer;"><a onclick="likeFunction(this.id)" id="' +
+                  '" alt="images" style="cursor:pointer;width:25px"><a onclick="likeFunction(this.id)" id="' +
                   data[i].tipResponse.tip.id +
                   '" style="cursor:pointer;"><span id="textvalLike' +
                   data[i].tipResponse.tip.id +
