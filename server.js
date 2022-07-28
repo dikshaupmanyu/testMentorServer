@@ -408,6 +408,44 @@ app.get('/settings', function(req, res) {
 	     res.redirect('/')
 	 }
   });
+   ////////////////////////////////////////////////////////////////////////
+   app.get('/success', function(req, res) {
+
+   	 if(req.session.loggedIn)  { 
+			var mentorids = req.query.id;
+			var fdata = req.session.tokens;
+			var fusername = req.session.username;
+			var fuid = req.session.uid; 
+			var femail = req.session.email; 
+			console.log('MENTOR ID'+mentorids)
+
+    res.render('success.ejs' , {tipsIds : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
+
+     } else {
+	     res.redirect('/')
+	 }
+  });
+   ////////////////////////////////////////////////////////////////////////
+   app.get('/failure', function(req, res) {
+
+   	 if(req.session.loggedIn)  { 
+			var mentorids = req.query.id;
+			var fdata = req.session.tokens;
+			var fusername = req.session.username;
+			var fuid = req.session.uid; 
+			var femail = req.session.email; 
+			console.log('MENTOR ID'+mentorids)
+
+    res.render('failure.ejs' , {tipsIds : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
+
+     } else {
+	     res.redirect('/')
+	 }
+  });
+
+
+
+
 
    ////////////////////////////////////////////////////////////////////////
 
@@ -1332,6 +1370,6 @@ return res.redirect('/');
 // var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-// httpServer.listen(port);
+// httpServer.listen(port)
 httpsServer.listen(port);
 console.log('The magic happens on port ' + port);
