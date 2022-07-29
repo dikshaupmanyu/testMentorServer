@@ -440,6 +440,7 @@ $('#carousel-thumbs .carousel-item img').on('click', function(e) {
 
 
 </script>
+<script src="/js/amagiloader.js"></script>
   <script type="text/javascript">
 
   // $(function(){
@@ -589,12 +590,13 @@ $("#formoid").submit(function(event){
       body: formdata,
       redirect: 'follow'
     };
-
+    AmagiLoader.show();
     fetch("https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlan/addServiceSubscriptionPlanByMentor", requestOptions)
       .then(response => response.json())
       .then(result => {
                 // alert("calling val" +result);
                 // alert(JSON.stringify(result));
+                AmagiLoader.hide();
                 var datak = JSON.stringify(result);
                 // alert(datak);
                 var dataResultp = JSON.parse(datak); 
