@@ -389,6 +389,7 @@ $('#carousel-thumbs .carousel-item img').on('click', function(e) {
 
    $('#file-image').attr('src', e.target.src);
   document.getElementById('file-image').style.display= "block";
+      document.getElementById('file-upload-btn').style.display= "none";
 // var imgUrl = e.target.src;
 
 
@@ -444,6 +445,7 @@ function getBase64Image(imgUrl) {
       // alert(e.target.result);
       $('#file-image').attr('src', imgUrl);
       document.getElementById('file-image').style.display= "block";
+      document.getElementById('file-upload-btn').style.display= "none";
     }
     
     reader.readAsDataURL(file); // convert to base64 string

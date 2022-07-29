@@ -390,7 +390,8 @@
     $('#file-image').attr('src', e.target.src);
     // console.log(e.target.src);
     document.getElementById('file-image').style.display= "block";
-  
+   
+    document.getElementById('file-upload-btn').style.display= "none";
     var imgUrl = e.target.src; 
     // alert(imgUrl);
     $("#thumbnailImage").val(imgUrl);
@@ -476,6 +477,7 @@
         // alert(e.target.result);
         $('#file-image').attr('src', e.target.result);
         document.getElementById('file-image').style.display= "block";
+      document.getElementById('file-upload-btn').style.display= "none";
       }
       
       reader.readAsDataURL(input.files[0]); // convert to base64 string

@@ -377,6 +377,7 @@ $('#carousel-thumbs .carousel-item img').on('click', function(e) {
   // alert(e.target.src);
   $('#file-image').attr('src', e.target.src);
   document.getElementById('file-image').style.display= "block";
+      document.getElementById('file-upload-btn').style.display= "none";
   // var src = $(e.target).attr('data-remote');
   // // alert(src);
   // if (src) $(this).ekkoLightbox();
@@ -446,6 +447,7 @@ let base64image = getBase64Image(imgUrl).then(function(base64image) {
     reader.onload = function(e) {
       $('#file-image').attr('src', e.target.result);
       document.getElementById('file-image').style.display= "block";
+      document.getElementById('file-upload-btn').style.display= "none";
     }
     
     reader.readAsDataURL(input.files[0]); // convert to base64 string
