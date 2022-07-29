@@ -78,6 +78,44 @@ left:30%; */
                 <div class="edit_profile_form">
                   <div class="input-group">
                     <!-- <label>Card Number</label> -->
+
+                      <input
+                  type="text"
+                  name="userName"
+                  value="<%= userName %>"
+                  style="display: none"
+                />
+                <input
+                  type="text"
+                  name="userId"
+                  value="<%= userid %>"
+                  style="display: none"
+                />
+                <input
+                  type="text"
+                  name="emailData"
+                  value="<%= email %>"
+                  style="display: none"
+                />
+                <input
+                  type="text"
+                  name="tokendata"
+                  value="<%= tokens %>"
+                  style="display: none"
+                />
+                <input
+                  type="text"
+                  name="amount"
+                  id="prices"
+                  style="display: none"
+                />
+                <input
+                  type="text"
+                  name="serviceIds"
+                  value="<%= tipsIds %>"
+                  style="display: none"
+                />
+
                     <input type="text" class="form-control" name="cardName" id="cardName" placeholder=" Full Name"
                       required="required" />
                     <!-- <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>   -->
@@ -254,6 +292,55 @@ left:30%; */
       );
   }
 </script>
+ <script type="text/javascript">
+      function handleFormSubmit(form) {
+      checkPurchase(form);
+    }
+
+    function checkPurchase(form){
+      // alert("hii");
+      var tokendata = "<%= tokens %>";
+      var loginIds = "<%= userid %>";
+      var subsids = "<%= tipsIds %>";
+
+      $.ajax({
+                         type: 'POST',
+                         url: 'https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlanWeb/getAllTypeServicesForUser',
+                         data: {
+                           userId: loginIds       
+                         },
+                        success: function(data){
+                           var dataks = JSON.stringify(data); 
+                           var dataResultps = JSON.parse(dataks);
+                            // alert(dataResultps.serviceSubscriptions);
+                            // alert(dataResultps.serviceSubscriptions.length);
+                            if(dataResultps.serviceSubscriptions.length == 0){
+                               // alert("Purchase Allow !!");
+                               form.submit();
+                            }else{
+                                for( var i=0;i<dataResultps.serviceSubscriptions.length; i++){
+                                   if(dataResultps.serviceSubscriptions[i].serviceSubscriptionPlanId == subsids && dataResultps.serviceSubscriptions[i].stripeSubscriptionStatus == "active"){
+                                    // alert("You Already Purchased this Service !!");
+                                    $(".successmsg3").html(
+                                      "You Already Purchased this Service !!"
+                                      );
+                                      setTimeout(function () {
+                                        $(".successmsg3").empty();
+                                      }, 3000);
+                                   } else {
+                                    form.submit();
+                                    // alert("Purchase  Allow !!");
+                                   }
+                                }
+                              
+                            }
+
+                         }
+
+                       });
+      }
+    </script>
+
 
 <script type="text/javascript">
   window.history.forward();
@@ -261,70 +348,7 @@ left:30%; */
     window.history.forward();
   }
 
-  //     function test()
-  //        {
-  //            var selectedValue = document.getElementById("userFull").value;
-  //            // alert(selectedValue);
-  //            document.getElementById("amountSubscription").value = selectedValue;
-
-  //            var e = document.getElementById("userFull");
-  //            var ns = e.options[e.selectedIndex].id;
-
-  //            // alert(textns);
-
-  //            document.getElementById("planId").value = ns;
-
-  //            var dataans = e.options[e.selectedIndex].text;
-
-  //            document.getElementById("planName").value = dataans;
-
-  //            // alert(ns);
-  //        }
-  //        test();
-
-  //  var sData = localStorage.getItem('allTokenData');
-  //   var storageData= JSON.parse(sData);
-
-  //   var tokens = storageData.tokendata;
-  //   //alert(tokens);
-
-  //  var userName = storageData.uname;
-  // // alert(userName);
-  //   document.getElementById("names").value = userName;
-
-  //   var emails = storageData.email;
-  //  //alert(emails);
-  //  document.getElementById("emails").value = emails;
-
-  //  document.getElementById("tokensdata").value = tokens;
-
-  //  var requestOptions = {
-  //    method: 'POST',
-  //    headers: {
-  //          Authorization: 'Bearer '+ tokens,
-  //        },
-  //    redirect: 'follow'
-  //  };
-
-  //  fetch("https://apistest.tradetipsapp.com/api/subscriptionPlan/getAllNewSubscriptionPlan", requestOptions)
-  //  .then(resp => resp.json())
-  //    .then(function(data) {
-  //      // console.log(data);
-  //      for( var i = 0; i< data.length; i++){
-  //          var userid = data[i]['id'];
-  //          var subscriptionType = data[i]['subscriptionType'];
-  //          var subscriptionPrice = data[i]['subscriptionPrice'];
-  //          $("#userFull").append("<option value='"+subscriptionPrice+"' id='"+userid+"'>"+subscriptionType+"</option>");
-  //          $("#newplanprice").append("<th scope='col'>$<span style='font-size: 30px;'>"+subscriptionPrice+"</span></th>");
-  //          $("#newplantype").append("<td>"+subscriptionType+"</td>");
-  //                // $("#newplan").append("<thead><tr><td scope='col'>$<span style='font-size: 30px;''>"+subscriptionPrice+"</span></td></tr></thead><tbody><tr><td scope='row'>"+subscriptionType+"</td></tr></tbody>");
-  //           // var e = document.getElementById("userFull");
-  //           // var ids=e.selectElement.options[e.selectedIndex].id;
-  //           // alert(ids);
-  //          // var text=e.options[e.selectedIndex].text;//get the selected option text
-  //          }
-  //  });
-
+ 
   var count = 0;
 
   function validate(coupon) {
@@ -337,7 +361,7 @@ left:30%; */
 
     $.ajax({
       type: "POST",
-      url: "https://apis.tradetipsapp.com/api/stripePayment/validateCoupon",
+      url: "https://apistest.tradetipsapp.com/api/stripePayment/validateCoupon",
       data: formdata,
       success: function (data, textStatus, jqXHR) {
         // alert(data.percent_off);
@@ -345,11 +369,11 @@ left:30%; */
 
         // console.log(data.percent_off);
         var finalpvals = data.percent_off;
-        //  alert(finalpvals);
+        alert(finalpvals);
         var pricess = $("#prices").val();
         //  var pricess = ActualP.val();
 
-        //  alert(pricess);
+        alert(pricess);
         var fdiscount = (pricess * finalpvals) / 100;
         //  alert(fdiscount);
 
@@ -406,4 +430,30 @@ left:30%; */
     //   }, 3000);
     // }
   }
+</script>
+
+<script type="text/javascript">
+  var subsids = "<%= tipsIds %>";
+
+  var formdata = { serviceSubscriptionPlanId: subsids };
+  $.ajax({
+    type: "POST",
+    url: "https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlanWeb/getServiceSubscriptionPlanById",
+    data: formdata,
+    success: function (data) {
+      var datak = JSON.stringify(data);
+      // alert(datak);
+      var dataResultp = JSON.parse(datak);
+      // alert(dataResultp.title);
+      
+     
+      document.getElementById("priceServices").innerHTML = parseFloat(
+        dataResultp.price
+      ).toFixed(2);
+
+      document.getElementById("prices").value = dataResultp.price * 100;
+
+   
+    },
+  });
 </script>

@@ -520,7 +520,7 @@ $("#formoid").submit(function(event){
         var datak = JSON.stringify(result);
         // alert(datak);
         var dataResultp = JSON.parse(datak); 
-        // alert(dataResultp.title);
+        alert(dataResultp.serviceTypeMaster.title);
         //alert("Your "+dataResultp.title+" was submitted successfully");
         fetch('/sendEmail?serviceName='+dataResultp.serviceTypeMaster.description,{
           method: 'POST',

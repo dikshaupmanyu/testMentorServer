@@ -426,9 +426,9 @@ app.get('/settings', function(req, res) {
 	 }
   });
    ////////////////////////////////////////////////////////////////////////
-   app.get('/failure', function(req, res) {
+    app.get('/failure', function(req, res) {
 
-   	 if(req.session.loggedIn)  { 
+    	if(req.session.loggedIn)  { 
 			var mentorids = req.query.id;
 			var fdata = req.session.tokens;
 			var fusername = req.session.username;
@@ -436,15 +436,13 @@ app.get('/settings', function(req, res) {
 			var femail = req.session.email; 
 			console.log('MENTOR ID'+mentorids)
 
-    res.render('failure.ejs' , {tipsIds : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
+    res.render('failure.ejs' , {serviceIdDetail : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
 
      } else {
 	     res.redirect('/')
 	 }
-  });
-
-
-
+		     
+	 });
 
 
    ////////////////////////////////////////////////////////////////////////
@@ -1366,10 +1364,91 @@ req.session.destroy((err)=>{})
 return res.redirect('/');
 
 });
-/////////////////////////////////////////
-// var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
 
-// httpServer.listen(port)
-httpsServer.listen(port);
+app.post('/payment', async function(req, res){
+ 
+    // Moreover you can take more details from user
+    // like Address, Name, etc from form
+
+     console.log(req.body);
+
+      var couponId = req.body.text1;
+
+     let months = req.body.monthYear;
+          months = months.split("/")[0];
+       // console.log(months);
+      let dates = req.body.monthYear;
+          dates = dates.split("/")[1];
+      console.log(dates);
+      // sk_test_4eC39HqLyjWDarjtT1zdp7dc
+        const stripe = require('stripe')('pk_live_7b9zLcAaGBVeu14tr9Jueznl00HCPZZOU1');
+
+        try {
+
+        const paymentMethod = await stripe.paymentMethods.create({
+        type: 'card',
+        card: {
+          number: req.body.cardNumber,
+          exp_month: months,
+          exp_year: dates,
+          cvc: req.body.cvv,
+        },
+        billing_details: {
+          email: req.body.emailData,
+          name: req.body.cardName
+        }
+      });
+
+         // console.log("hiiiii data " + JSON.stringify(paymentMethod));
+
+        var options = { method: 'POST',
+            url: 'https://apis.tradetipsapp.com/api/stripePayment/createServiceSubscriptionPayment',
+            headers: 
+             { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
+               'cache-control': 'no-cache'},
+               // authorization: 'Bearer '+req.body.tokendata },     
+               formData: { userName: req.body.userName,
+               paymentId: paymentMethod.id,
+               serviceSubscriptionPlanId: req.body.serviceIds,
+     		  couponId : req.body.text1 } };
+
+          request(options, function (error, response, body) {
+
+             // console.log("body data  " + JSON.stringify(response)); 
+             // console.log("error data " + error);
+          	if(response){
+
+          		
+
+          		res.render("success.ejs" , {userName : req.body.userName, userEmail : req.body.emailData , service : req.body.serviceIds , mentorName : req.body.mentorName});
+          	}
+             // if (error) throw new Error(error);
+
+            // {
+            //   res.render('incomplete.ejs');
+            // }
+            // throw new Error(error);
+
+            // console.log(response);
+            // console.log(error);
+            // console.log(body);
+            // res.render('complete.ejs');
+          });
+
+
+      } catch(error) {
+
+      	console.log(error.raw.message);
+
+      	res.render("failure.ejs" , {data : error.raw.message , service : req.body.serviceIds});
+     };
+
+});
+
+/////////////////////////////////////////
+var httpServer = http.createServer(app);
+// var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(port)
+// httpsServer.listen(port);
 console.log('The magic happens on port ' + port);
