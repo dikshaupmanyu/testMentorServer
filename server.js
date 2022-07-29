@@ -1067,7 +1067,7 @@ app.get('/totalreplycount', (req, res) => {
 
    var nodemailer = require('nodemailer');
 
-var transporter = nodemailers.createTransport({
+var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'vermayash1120@gmail.com',

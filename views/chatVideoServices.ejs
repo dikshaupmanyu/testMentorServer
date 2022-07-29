@@ -63,7 +63,7 @@
             </div> -->
            <select name="price" id="price" class="form-control" required="required">
               <option>Select Price</option>
-               <option value="Free">Free</option>
+               <option value="0">Free</option>
                <option value="9.99">9.99</option>
                <option value="19.99">19.99</option>
                <option value="24.99">24.99</option>
@@ -423,7 +423,7 @@ let base64image = getBase64Image(imgUrl).then(function(base64image) {
 });
 </script>     
 
-
+<script src="/js/amagiloader.js"></script>
   <script type="text/javascript">
 
   // $(function(){
@@ -520,28 +520,28 @@ $("#formoid").submit(function(event){
       redirect: 'follow'
     };
 
-
+    AmagiLoader.show();
     fetch("https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlan/addServiceSubscriptionPlanByMentor", requestOptions)
       .then(response => response.json())
       .then(result => {
-                // alert("calling val" +result);
-                // alert(JSON.stringify(result));
-                var datak = JSON.stringify(result);
+        // alert("calling val" +result);
+        // alert(JSON.stringify(result));
+        var datak = JSON.stringify(result);
                 // alert(datak);
                 var dataResultp = JSON.parse(datak); 
                 // alert(dataResultp.title);
-                 fetch('/sendEmail?serviceName='+dataResultp.serviceTypeMaster.description,{
+                 fetch('/sendEmail?serviceName='+dataResultp.descriptionOne,{
                   method: 'POST',
                   redirect: 'follow'
                 }).then(resp => console.log(resp.json()));
-
+                
+                AmagiLoader.hide();
                 $(".successmsg").html('<span>"Your chat '+dataResultp.title+' submitted successfully."</span>');
-               setTimeout(function(){$(".successmsg").empty()}, 2000);
+               setTimeout(function(){$(".successmsg").empty()}, 3000);
                setTimeout(function(){
-               // window.location.reload(1);
                window.location.href = "/services"; 
-               }, 2000);
-               // window.location.reload();
+               }, 3000);
+             
 
        })
       .catch(error => console.log('error', error));

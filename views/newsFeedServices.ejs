@@ -71,7 +71,7 @@
               </div> -->
               <select name="price" id="price" class="form-control" required="required">
                 <option>Select Price</option>
-                 <option value="Free">Free</option>
+                 <option value="0">Free</option>
                  <option value="9.99">9.99</option>
                  <option value="19.99">19.99</option>
                  <option value="24.99">24.99</option>
@@ -440,6 +440,7 @@
   
   
   </script>
+  <script src="/js/amagiloader.js"></script>
     <script type="text/javascript">
   
     // $(function(){
@@ -590,7 +591,7 @@
         body: formdata,
         redirect: 'follow'
       };
-  
+      AmagiLoader.show();
       fetch("https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlan/addServiceSubscriptionPlanByMentor", requestOptions)
         .then(response => response.json())
         .then(result => {
@@ -599,11 +600,12 @@
                   var datak = JSON.stringify(result);
                   // alert(datak);
                   var dataResultp = JSON.parse(datak); 
-                  fetch('/sendEmail?serviceName='+dataResultp.serviceTypeMaster.description,{
+                  fetch('/sendEmail?serviceName='+dataResultp.descriptionOne,{
                     method: 'POST',
                     redirect: 'follow'
                   }).then(resp => console.log(resp.json()));
-                  alert(dataResultp.title);
+                AmagiLoader.hide();
+                  // alert(dataResultp.title);
                   //alert("Your newsletter "+dataResultp.title+" was submitted successfully");
                 $(".successmsg").html('<span>"Your NewsFeed '+dataResultp.title+' was submitted successfully"</span>');
                  setTimeout(function(){$(".successmsg").empty()}, 2000);

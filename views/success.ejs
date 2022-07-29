@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.magicsearch.css">
   </head>
   <body>
+    <%- include partials/innerheader %>
 <style type="text/css">
   .successmsg
 { color: #fff;
@@ -35,7 +36,7 @@
 width:100%
 }
 </style>
-</style>
+
 
     <!-- Body Flyers Start -->
     <div class="body_flyer body_flyer1">
@@ -45,10 +46,10 @@ width:100%
       <img src="images/body-flyer.png" alt="images">
     </div>
     <!-- Body Flyers End -->
-
-   
-
+    
+    
     <!-- Header Start -->
+    
     <div class="body_wrapper">
       <div class="app_header">
         <div class="app_header_logo">
@@ -73,7 +74,7 @@ width:100%
       </div>
 
   <div class="app_main">
-        
+    <%- include partials/innersidebar %>
            <div class="app_content">
             <div class="dsbrd_container">
               <div class="dashboard_wrapper row">
@@ -93,6 +94,7 @@ width:100%
             </div>
 
           </div>
+          <%- include partials/innerfooter %>
           <br>
           
                       
@@ -104,6 +106,7 @@ width:100%
     <div class="sidebar-overlay"></div>
     </div>
     <!-- Header End -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
