@@ -409,40 +409,40 @@ app.get('/settings', function(req, res) {
 	 }
   });
    ////////////////////////////////////////////////////////////////////////
-   app.get('/success', function(req, res) {
+  app.get('/success', function(req, res) {
 
-   	 if(req.session.loggedIn)  { 
-			var mentorids = req.query.id;
-			var fdata = req.session.tokens;
-			var fusername = req.session.username;
-			var fuid = req.session.uid; 
-			var femail = req.session.email; 
-			console.log('MENTOR ID'+mentorids)
+	if(req.session.loggedIn)  { 
+		var mentorids = req.query.id;
+		var fdata = req.session.tokens;
+		var fusername = req.session.username;
+		var fuid = req.session.uid; 
+		var femail = req.session.email; 
+		console.log('MENTOR ID'+mentorids)
 
-    res.render('success.ejs' , {tipsIds : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
+res.render('success.ejs' , {tipsIds : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
 
-     } else {
-	     res.redirect('/')
-	 }
-  });
-   ////////////////////////////////////////////////////////////////////////
-    app.get('/failure', function(req, res) {
+ } else {
+	 res.redirect('/')
+ }
+});
+////////////////////////////////////////////////////////////////////////
+app.get('/failure', function(req, res) {
 
-    	if(req.session.loggedIn)  { 
-			var mentorids = req.query.id;
-			var fdata = req.session.tokens;
-			var fusername = req.session.username;
-			var fuid = req.session.uid; 
-			var femail = req.session.email; 
-			console.log('MENTOR ID'+mentorids)
+	if(req.session.loggedIn)  { 
+		var mentorids = req.query.id;
+		var fdata = req.session.tokens;
+		var fusername = req.session.username;
+		var fuid = req.session.uid; 
+		var femail = req.session.email; 
+		console.log('MENTOR ID'+mentorids)
 
-    res.render('failure.ejs' , {serviceIdDetail : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
+res.render('failure.ejs' , {tipsIds : mentorids , tokens : fdata , userName : fusername , userid : fuid , email :femail});
 
-     } else {
-	     res.redirect('/')
-	 }
-		     
-	 });
+ } else {
+	 res.redirect('/')
+ }
+});
+
 
 
    ////////////////////////////////////////////////////////////////////////
@@ -1420,7 +1420,7 @@ app.post('/payment', async function(req, res){
 
           		
 
-          		res.render("success.ejs" , {userName : req.body.userName, userEmail : req.body.emailData , service : req.body.serviceIds , mentorName : req.body.mentorName});
+          		res.render("success.ejs" , {userName : req.body.userName, email : req.body.emailData ,userid : req.body.userId, tokens : req.body.tokendata, service : req.body.serviceIds , mentorName : req.body.mentorName});
           	}
              // if (error) throw new Error(error);
 
@@ -1440,15 +1440,15 @@ app.post('/payment', async function(req, res){
 
       	console.log(error.raw.message);
 
-      	res.render("failure.ejs" , {data : error.raw.message , service : req.body.serviceIds});
+      	res.render("failure.ejs" , {userName : req.body.userName, email : req.body.emailData ,userid : req.body.userId, tokens : req.body.tokendata, data : error.raw.message , service : req.body.serviceIds});
      };
 
 });
 
 /////////////////////////////////////////
-var httpServer = http.createServer(app);
-// var httpsServer = https.createServer(credentials, app);
+// var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(port)
-// httpsServer.listen(port);
+// httpServer.listen(port)
+httpsServer.listen(port);
 console.log('The magic happens on port ' + port);
