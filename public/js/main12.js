@@ -333,11 +333,11 @@ function myFunction(e) {
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
       alert("ue @");
-var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-  // filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+// var input, filter, table, tr, td, i, txtValue;
+   input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
+//   // filter = input.value.toUpperCase();
+  table = document.getElementById("myTable1");
+ // tr = table.getElementsByTagName("tr");
     var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
     $.ajax({
 
@@ -349,14 +349,21 @@ var input, filter, table, tr, td, i, txtValue;
     success: function(datas) {
      var dataks = JSON.stringify(datas);
      var dataResults = JSON.parse(dataks);
-   
+     var newuser = [];
 
 
 console.log(dataResults)
-     var listing_table = document.getElementById('myTable1');
+     // var listing_table = document.getElementById('myTable1');
+
+
+
    for (i = 0; i < dataResults.length; i++) {
-     listing_table.innerHTML += `<tr> <td>${dataResults[i].userName}</td></tr>`
+     // listing_table.innerHTML += `<tr> <td>${dataResults[i].userName}</td></tr>`
       console.log(dataResults[i].id);
+
+     newuser += ' <tr><td class="row" style="width:125px;">'+ dataResults[i].id +'</td></tr>';
+  $("#myTable1").append(newuser);
+
 
       
 
@@ -370,6 +377,7 @@ console.log(dataResults)
   //     }
   //   }       
   }
+
        
   }
 
@@ -1144,11 +1152,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
 
-                        <table id="myTable">
-                        <tr class="header">
-                          <th style="width:60%;">Name</th>
-                         
-                        </tr>
+                        <table id="myTable1">
+                        
                       </table>
 
 
@@ -1544,11 +1549,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
                         </button>
                         </span>
-                        <table id="myTable">
-                        <th style="width:60%;">Name</th>
-                        <tbody id="myTable1">
-                        </tbody>
-                      </table>
+                       
                       </div>
                     </div>
                   </form>
