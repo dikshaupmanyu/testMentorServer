@@ -133,6 +133,7 @@
 <script  src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase.js"></script>
+    <script src="/js/amagiLoader.js"></script>
 
 
 <!--       <script src="js/codelist.js"></script>
@@ -185,7 +186,7 @@
         } 
 
          window.addEventListener("load", function() {
-
+          AmagiLoader.show();
 
 
            // document.getElementById("modalcalling").style.display = "block";
@@ -285,7 +286,7 @@ nummers.get().then(function (querySnapshot) {
        monthlies.then((res) => {
         // console.log(res.data().groupCode);
         document.getElementById('room-button-2').innerText =  res.data().groupTitle + " Room";
-
+        AmagiLoader.hide();
        });
 
 
