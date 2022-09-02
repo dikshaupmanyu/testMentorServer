@@ -305,29 +305,19 @@ else{
 }
 
 
+function setInput() {
+  var setData = $('#setdata').text()
+   alert(setData)
+// $('tr #setData').each(function (index, element) {
+//   alert($(this).text())
+// });
+ document.querySelector('input[name="setInputinInput"]').value = setData;
+}
+
+
 // popup functions
 
 function myFunction(e) {
-
-  // var input, filter, table, tr, td, i, txtValue;
-  // input = document.getElementById("btn-input-replymsg");
-  // filter = input.value.toUpperCase();
-  // table = document.getElementById("myTable2");
-  // tr = table.getElementsByTagName("tr");
-
-  // // Loop through all table rows, and hide those who don't match the search query
-  // for (i = 0; i < tr.length; i++) {
-  //   td = tr[i].getElementsByTagName("td")[0];
-  //   if (td) {
-  //     txtValue = td.textContent || td.innerText;
-  //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-  //       tr[i].style.display = "";
-  //     } else {
-  //       tr[i].style.display = "none";
-  //     }
-  //   }
-  // }
-
 
    var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -351,20 +341,10 @@ function myFunction(e) {
      var dataResults = JSON.parse(dataks);
      var newuser = [];
 
-
-console.log(dataResults)
-     // var listing_table = document.getElementById('myTable1');
-
-
-
    for (i = 0; i < dataResults.length; i++) {
-     // listing_table.innerHTML += `<tr> <td>${dataResults[i].userName}</td></tr>`
       console.log(dataResults[i].id);
 
-     newuser += ' <tr><td>'+ dataResults[i].userName +'</td></tr>';
-     console.log(newuser)
-     
-     
+     newuser += ' <tr  onclick="setInput()"><td id="setdata">'+ dataResults[i].userName +'</td></tr>';
      
      //   td = dataResults[i].getElementsByTagName("td")[0];
      //   if (td) {
@@ -376,20 +356,14 @@ console.log(dataResults)
            //     }
            //   }       
           }
+          $("#hiddenTable").css("display", "block")
           $("#myTable1").append(newuser);
-
-       
-  }
-
-    // Declare variables
-
-
-});
+  
+        }
+      });
       
-    // }else{
-    //   alert("true");
-    // }
-}
+    }
+
 
 }
 
@@ -1147,7 +1121,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                
                
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" onkeyup="myFunction()" value="" placeholder="Type your message here..."  autocomplete="off" />
+                        <input id="btn-input-replymsg${taskId}"  name="setInputinInput" type="text" class="form-control input-lg" onkeyup="myFunction()" value="" placeholder="Type your message here..."  autocomplete="off" />
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
@@ -1162,11 +1136,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </button>
                         </span>
 
+                        
+                        </div>
+                        <div id="hiddenTable" style="overflow-y:scroll; height:30%; display:none">
                         <table id="myTable1">
                         
                       </table>
-
-                      </div>
+                        </div>
                     </div>
                   </form>
                   </div>
