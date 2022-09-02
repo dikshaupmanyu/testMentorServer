@@ -308,13 +308,34 @@ else{
 // popup functions
 
 function myFunction(e) {
+
+  // var input, filter, table, tr, td, i, txtValue;
+  // input = document.getElementById("btn-input-replymsg");
+  // filter = input.value.toUpperCase();
+  // table = document.getElementById("myTable2");
+  // tr = table.getElementsByTagName("tr");
+
+  // // Loop through all table rows, and hide those who don't match the search query
+  // for (i = 0; i < tr.length; i++) {
+  //   td = tr[i].getElementsByTagName("td")[0];
+  //   if (td) {
+  //     txtValue = td.textContent || td.innerText;
+  //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+  //       tr[i].style.display = "";
+  //     } else {
+  //       tr[i].style.display = "none";
+  //     }
+  //   }
+  // }
+
+
    var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
       alert("ue @");
 var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-  filter = input.value.toUpperCase();
+  // filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
     var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
@@ -330,8 +351,15 @@ var input, filter, table, tr, td, i, txtValue;
      var dataResults = JSON.parse(dataks);
    
 
+
+console.log(dataResults)
+     var listing_table = document.getElementById('myTable1');
    for (i = 0; i < dataResults.length; i++) {
+     listing_table.innerHTML += `<tr> <td>${dataResults[i].userName}</td></tr>`
       console.log(dataResults[i].id);
+
+      
+
   //   td = dataResults[i].getElementsByTagName("td")[0];
   //   if (td) {
   //     txtValue = td.textContent || td.innerText;
@@ -344,6 +372,9 @@ var input, filter, table, tr, td, i, txtValue;
   }
        
   }
+
+    // Declare variables
+
 
 });
       
@@ -1113,12 +1144,13 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
 
-                     <table id="myTable">
-  <tr class="header">
-    <th style="width:60%;">Name</th>
-    <th style="width:40%;">Country</th>
-  </tr>
-  </table>
+                        <table id="myTable">
+                        <tr class="header">
+                          <th style="width:60%;">Name</th>
+                         
+                        </tr>
+                      </table>
+
 
                  
                        
@@ -1506,11 +1538,17 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
 
+                        
                         <span class="input-group-btn">
-                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
-                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            </button>
+                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
                         </span>
+                        <table id="myTable">
+                        <th style="width:60%;">Name</th>
+                        <tbody id="myTable1">
+                        </tbody>
+                      </table>
                       </div>
                     </div>
                   </form>
@@ -2446,4 +2484,3 @@ $(document).keypress(function (e) {
   //  alert('Click button was trigger');
   }
  });
-
