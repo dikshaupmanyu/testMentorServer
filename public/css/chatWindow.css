@@ -906,3 +906,37 @@ color:black
   /* Add a grey background color to the table header and on hover */
   background-color: #f1f1f1;
 }
+
+
+/* drop down chat */
+
+#btn-input-replymsg {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable1 {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable1 th, #myTable1 td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable1 tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable1 tr.header, #myTable1 tr:hover {
+  background-color: #f1f1f1;
+}

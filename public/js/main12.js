@@ -361,22 +361,22 @@ console.log(dataResults)
      // listing_table.innerHTML += `<tr> <td>${dataResults[i].userName}</td></tr>`
       console.log(dataResults[i].id);
 
-     newuser += ' <tr><td class="row" style="width:125px;">'+ dataResults[i].id +'</td></tr>';
-  $("#myTable1").append(newuser);
-
-
-      
-
-  //   td = dataResults[i].getElementsByTagName("td")[0];
-  //   if (td) {
-  //     txtValue = td.textContent || td.innerText;
-  //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-  //       dataResults[i].style.display = "";
-  //     } else {
-  //       dataResults[i].style.display = "none";
-  //     }
-  //   }       
-  }
+     newuser += ' <tr><td>'+ dataResults[i].userName +'</td></tr>';
+     console.log(newuser)
+     
+     
+     
+     //   td = dataResults[i].getElementsByTagName("td")[0];
+     //   if (td) {
+       //     txtValue = td.textContent || td.innerText;
+       //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+         //       dataResults[i].style.display = "";
+         //     } else {
+           //       dataResults[i].style.display = "none";
+           //     }
+           //   }       
+          }
+          $("#myTable1").append(newuser);
 
        
   }
@@ -1152,18 +1152,20 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
 
+                        
+                        
+                        
+                        
+                        <span class="input-group-btn">
+                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
+                        <i class="fa fa-paper-plane" aria-hidden="true" ></i>
+                        </button>
+                        </span>
+
                         <table id="myTable1">
                         
                       </table>
 
-
-                 
-                       
-                        <span class="input-group-btn">
-                            <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
-                                <i class="fa fa-paper-plane" aria-hidden="true" ></i>
-                            </button>
-                        </span>
                       </div>
                     </div>
                   </form>
