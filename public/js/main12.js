@@ -316,16 +316,15 @@ function setInput() {
 
 // popup functions
 
-function myFunction() {
-  var x = document.getElementById("btn-input-replymsg");
-  // alert(x.value)
+function myFunction(e) {
+
   var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
       alert("ue @");
 // var input, filter, table, tr, td, i, txtValue;
    input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-//   // filter = input.value.toUpperCase();
+  //  alert(input)
   table = document.getElementById("myTable1");
  // tr = table.getElementsByTagName("tr");
     // var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
@@ -1124,9 +1123,10 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                
-               
+                        
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}"  name="setInputinInput" type="text" class="form-control input-lg" onkeyup="myFunction()" value="" placeholder="Type your message here..."  autocomplete="off" />
+                        <input id="btn-input-replymsg${taskId}"  onkeyup="myFunction()"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
+              
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
