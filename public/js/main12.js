@@ -308,18 +308,18 @@ else{
 function setInput() {
   var setData = $('#setdata').text()
    alert(setData)
-// $('tr #setData').each(function (index, element) {
-//   alert($(this).text())
-// });
  document.querySelector('input[name="setInputinInput"]').value = setData;
+ $("#hiddenTable").css("display", "none")
 }
+
 
 
 // popup functions
 
-function myFunction(e) {
-
-   var regex = new RegExp("^[a-zA-Z0-9]+$");
+function myFunction() {
+  var x = document.getElementById("btn-input-replymsg");
+  alert(x.value)
+  var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
       alert("ue @");
@@ -339,12 +339,15 @@ function myFunction(e) {
     success: function(datas) {
      var dataks = JSON.stringify(datas);
      var dataResults = JSON.parse(dataks);
+
+    //  var datasss = document.getElementById('btn-input-replymsg').value;
+    //  alert(datasss)
      var newuser = [];
 
    for (i = 0; i < dataResults.length; i++) {
       console.log(dataResults[i].id);
 
-     newuser += ' <tr  onclick="setInput()"><td id="setdata">'+ dataResults[i].userName +'</td></tr>';
+     newuser += ' <tr  onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
      
      //   td = dataResults[i].getElementsByTagName("td")[0];
      //   if (td) {
@@ -1205,7 +1208,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" onkeyup="myFunction()" value="" placeholder="Type your message here..." onkeyup="myFunction()"  autocomplete="off"/>
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..." onkeyup="myFunction()"  autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
