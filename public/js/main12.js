@@ -318,7 +318,7 @@ function setInput() {
 
 function myFunction() {
   var x = document.getElementById("btn-input-replymsg");
-  alert(x.value)
+  // alert(x.value)
   var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
@@ -328,16 +328,18 @@ function myFunction() {
 //   // filter = input.value.toUpperCase();
   table = document.getElementById("myTable1");
  // tr = table.getElementsByTagName("tr");
-    var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
+    // var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
+     var formData = {appUserName:"all"};
     $.ajax({
 
     type: 'POST',
-    url: "https://apistest.tradetipsapp.com/api/appUserWebModify/getAllAppUsers",
-    headers: {
-      Authorization: 'Bearer '+ tokens ,
-    },
-    success: function(datas) {
-     var dataks = JSON.stringify(datas);
+    url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+    // headers: {
+    //   Authorization: 'Bearer '+ tokens ,
+    // },
+     data : formData,
+    success: function(data) {
+     var dataks = JSON.stringify(data);
      var dataResults = JSON.parse(dataks);
 
     //  var datasss = document.getElementById('btn-input-replymsg').value;
