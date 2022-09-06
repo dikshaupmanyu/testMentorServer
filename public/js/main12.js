@@ -381,10 +381,10 @@ var input, filter, table, tr, td, i, txtValue;
       //return datalt;
 
     //  console.log = function(utilityteam) {
-    document.getElementById('finalresult').innerHTML = utilityteam;
+   // document.getElementById('finalresult').innerHTML = utilityteam;
 //};
  
-      console.log(utilityteam);
+      //console.log(utilityteam);
 
 
    }
