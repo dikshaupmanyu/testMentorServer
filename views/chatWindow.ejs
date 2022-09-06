@@ -54,11 +54,11 @@
               // console.log(userCredential);
               var user = userCredential.user;
               // var ids = userCredential.uid;
-              console.log(user.uid);
+              //console.log(user.uid);
               // ...
             })
             .catch((error) => {
-              console.log("error is" + error);
+             // console.log("error is" + error);
               var errorCode = error.code;
               var errorMessage = error.message;
               // ...
@@ -71,6 +71,7 @@
       <div class="app_main">
                   
        <%- include partials/innersidebar %>
+
 
 
        <div class="app_content">
@@ -164,6 +165,8 @@
                     <ul class="chat" id="tasks">
                     </ul>
                 </div>
+
+
                 <div class="card-footer" style="padding: 0px;">
                    <form onsubmit=" return handleCreate(event)">
                     
@@ -233,6 +236,7 @@
  -->
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
     
 
@@ -345,15 +349,15 @@ var loggedInName =  "<%= userName %>";
 var nummers = db.collection("/basilPrivateGroup/Test/groupMembersInfo/").where('userName', '==', loggedInName);
 nummers.get().then(function (querySnapshot) {
 if(querySnapshot){
-console.log("okkk")
+//console.log("okkk")
 querySnapshot.forEach(function (doc) {
-console.log(doc.id, ' => ', doc.data());
+//console.log(doc.id, ' => ', doc.data());
 document.getElementById("notmodalscalling").href = "/chatWindowAdminUser";
 });
 }
 
 if(querySnapshot.empty){
-console.log("not available");
+//console.log("not available");
 document.getElementById("notmodalscalling").setAttribute("data-target", "#exampleModalCenterpin");
 document.getElementById("notmodalscalling").setAttribute("data-toggle", "modal");
 }
@@ -493,11 +497,11 @@ firebase.auth().signInWithCustomToken(fcmToken)
    // console.log(userCredential);
    var user = userCredential.user;
    // var ids = userCredential.uid;
-   console.log(user.uid);
+ //  console.log(user.uid);
    // ...
  })
  .catch((error) => {
-   console.log("error is" + error);
+   //console.log("error is" + error);
    var errorCode = error.code;
    var errorMessage = error.message;
    // ...

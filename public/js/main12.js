@@ -89,7 +89,7 @@ getGroupDetailroomOne();
 
     var monthlies = db.collection("/socialchat").doc("Test").get();
     monthlies.then((res) => {
-     console.log(res.data().groupTitle);
+    // console.log(res.data().groupTitle);
      document.getElementById('room-Button-3').innerText =  res.data().groupTitle ;
     
     });
@@ -147,7 +147,7 @@ function handleCreate(event) {
     return docRef
       .add(task)
       .then((ref) => {
-        console.log(ref.id);
+      //  console.log(ref.id);
         task.id = ref.id;
         // fullName.value = '';
         message.value  = '';
@@ -309,7 +309,7 @@ function setInput() {
   var setData = $('#setdata').text()
    alert(setData)
  document.querySelector('input[name="setInputinInput"]').value = setData;
- $("#hiddenTable").css("display", "none")
+ $("#hiddenTable").css("display", "none");
 }
 
 
@@ -339,8 +339,6 @@ function setInput() {
 
 function myFunction(e) {
 
-  // var value = $(e).val()
-  // alert(value)
   var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
@@ -351,9 +349,14 @@ var input, filter, table, tr, td, i, txtValue;
    input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
   //  filter = input.value.toUpperCase();
   table = document.getElementById("myTable1");
+// var input, filter, table, tr, td, i, txtValue;
+//   input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
+  //  alert(input)
+  //table = document.getElementById("myTable1");
  // tr = table.getElementsByTagName("tr");
     // var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
-     var formData = {appUserName:"all"};
+     let newuser = [];
+    var formData = {appUserName:"all"};
     $.ajax({
 
     type: 'POST',
@@ -362,46 +365,108 @@ var input, filter, table, tr, td, i, txtValue;
     //   Authorization: 'Bearer '+ tokens ,
     // },
      data : formData,
-    success: function(data) {
-     var dataks = JSON.stringify(data);
+    success: function(datan) {
+     var dataks = JSON.stringify(datan);
      var dataResults = JSON.parse(dataks);
 
+     let datalt = [];
+     const utilityteam = document.getElementById("myTable1");
+      dataResults.forEach(function (doc) {
+        const elemreplystt = document.createElement("li");
+
+                elemreplystt.innerHTML = doc.userName;
+                utilityteam.appendChild(elemreplystt);
+                 $('p#finalresult').html(utilityteam); 
+      });
+      //return datalt;
+
+    //  console.log = function(utilityteam) {
+    document.getElementById('finalresult').innerHTML = utilityteam;
+//};
+ 
+      console.log(utilityteam);
+
+
+   }
+
+ });
+
+  }
+}
+
+      // for(var i=0; i< dataResults.length; i++) {
+
+      //  const elemreplystt = document.createElement("li");
+
+      //           elemreplystt.innerHTML = dataResults[i].userName;
+      //           utilityteam.appendChild(elemreplystt);
+      // }
+
+      // document.getElementById("finaldatalist").appendChild(utilityteam);
+
+
+      //var myDiVElem = document.getElementById("finaldatalist");
+     // myDiVElem.innerHTML = utilityteam; // this makes the change
+        
+
+        // document.getElementById("finaldatalist").innerHTML = utilityteam;
+
+
     //  var datasss = document.getElementById('btn-input-replymsg').value;
-    //  alert(datasss)
-     var newuser = [];
+    //  alert(datasss)   
+    // document.getElementById('myTable1').innerHTML = "";
 
-   for (i = 0; i < dataResults.length; i++) {
-      console.log(dataResults[i].id);
+    //       var newuser = document.createElement("table");
 
-        td = dataResults[i].getElementsByTagName("td")[0];
-        console.log(td)
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            dataResults[i].style.display = "";
-          } else {
-            dataResults[i].style.display = "none";
-          }
-        }       
 
-     newuser += ' <tr  onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
+     //    td = dataResults[i].getElementsByTagName("td")[0];
+     //    console.log(td)
+     //    if (td) {
+     //      txtValue = td.textContent || td.innerText;
+     //      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+     //        dataResults[i].style.display = "";
+     //      } else {
+     //        dataResults[i].style.display = "none";
+     //      }
+     //    }       
+
+     // newuser += ' <tr  onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
           
-          }
-          $("#hiddenTable").css("display", "block")
-          $("#myTable1").append(newuser);
+     //      }
+     //      $("#hiddenTable").css("display", "block")
+     //      $("#myTable1").append(newuser);
 
 
           // $("#myTable1 tr").filter(function() {
           //   $(this).toggle($(this).text().indexOf(value) > -1)
           // });
 
-        }
-      });
+    //     }
+    //   });
       
-    }
+    // }
+    // for(var i=0; i< dataResults.length; i++) {
+
+    // // console.log('<tr onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>');
+     
+
+    //     myTable1.innerHTML = myTable1.innerHTML + '<tr onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
+
+    //   }
+
+    //   myTable1.innerHTML = myTable1.innerHTML + '<br />'; 
+     
+    //   console.log(myTable1);
 
 
-}
+     //$("#hiddenTable").css("display", "block");
+
+    //   //document.getElementById("userlistdata").innerHTML = newuser;
+
+    //   //$("#myTable1").append(newuser);
+    
+     
+ 
 
 function popupCreate(event) {
    // alert("calling " + JSON.stringify(event));
@@ -760,7 +825,7 @@ function fetchTasks() {
 
                     if(task.flag){
                        const result = task.flag.some(obj => obj.messageFlagedUserId === loggedInVal);
-                        console.log("checking flag result  " + result);
+                        // console.log("checking flag result  " + result);
                         if(result == true){
                           const elem = document.createElement("li");
                           elem.id = change.doc.id;
@@ -1136,6 +1201,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
                   <form id="${taskId}">
+
+
                   
                     <div class="modal-content" id="modal-content-1">
                       <div class="modal-header">
@@ -1151,6 +1218,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                        <div class="modal-body"  style="height:250px;overflow-y:scroll;">
                          <ul class="chat" id="tasksreply${taskId}">
                          </ul>
+
                       </div>
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
@@ -1162,10 +1230,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
 
-                        
-                        
-                        
-                        
+                         <ul id="myTable1">
+                      
+                         </ul>
+                         <p id="finalresult"></p>
+                                               
                         <span class="input-group-btn">
                         <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
                         <i class="fa fa-paper-plane" aria-hidden="true" ></i>
@@ -1174,11 +1243,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
 
                         
                         </div>
-                        <div id="hiddenTable" style="overflow-y:scroll; height:30%; display:none">
-                        <table id="myTable1">
-                        
-                      </table>
-                        </div>
+                    
+                       
                     </div>
                   </form>
                   </div>
@@ -2410,9 +2476,9 @@ function flagData(e,f){
  // console.log(userNamess.value);
   var id=e;
      var loggedInValss = userIds.value;
-     console.log("id  " + loggedInValss);
+    // console.log("id  " + loggedInValss);
      var loggedInNamess = userNamess.value;
-     console.log("usernames   " + loggedInNamess);
+    // console.log("usernames   " + loggedInNamess);
 
 
  
@@ -2420,7 +2486,7 @@ function flagData(e,f){
 
     docRef.doc(id).get().then(function(doc) {
   
-       console.log(doc.id, " => ", doc.data());
+     //  console.log(doc.id, " => ", doc.data());
 
         var id = doc.id;
 
@@ -2428,24 +2494,24 @@ function flagData(e,f){
 
         const cityRef = docRef.doc(id);
 
-        console.log(doc.data().flag);
+        //console.log(doc.data().flag);
 
          var txt;
           if (confirm("This comment has been sent for review to the chat room moderator. Thank you.")) {
               if(doc.data().flag == undefined){
 
                   const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : f, messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-                  console.log("if value " + res);
+                 // console.log("if value " + res);
                   $("li#"+id).css("display","none");
 
                 }else{
 
                   const fruits = doc.data().flag;
                   fruits.push({messageFlag : true, messageFlagMsg : f, messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
-                    console.log("else value " + JSON.stringify(fruits));
+                   // console.log("else value " + JSON.stringify(fruits));
                   const res = cityRef.update({flag: fruits});
 
-                   console.log("else value update " + res);
+                  // console.log("else value update " + res);
                    $("li#"+id).css("display","none");
 
                 }
