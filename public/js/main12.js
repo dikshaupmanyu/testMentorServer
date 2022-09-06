@@ -338,10 +338,11 @@ function setInput() {
 // }
 
 function myFunction(e) {
-
-  var regex = new RegExp("^[a-zA-Z0-9]+$");
-    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (!regex.test(key)) {
+  let unicode= event.charCode;
+  // var regex = new RegExp("^[a-zA-Z0-9]+$");
+  //   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    // if (!regex.test(key)) {
+      if(unicode == 64){
       alert("ue @");
 
 
@@ -369,9 +370,10 @@ var input, filter, table, tr, td, i, txtValue;
      var dataks = JSON.stringify(datan);
      var dataResults = JSON.parse(dataks);
 
+     dataResults.forEach(function (doc) {
      let datalt = [];
      const utilityteam = document.getElementById("myTable1");
-      dataResults.forEach(function (doc) {
+        $("#hiddentab").css("display", "block")
         const elemreplystt = document.createElement("li");
 
                 elemreplystt.innerHTML = doc.userName;
@@ -1225,22 +1227,23 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}"  onkeyup="myFunction()"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
+                        <input id="btn-input-replymsg${taskId}"  onkeypress="myFunction(event)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
-
-                         <ul id="myTable1">
-                      
-                         </ul>
-                         <p id="finalresult"></p>
-                                               
+                        
                         <span class="input-group-btn">
                         <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
                         <i class="fa fa-paper-plane" aria-hidden="true" ></i>
                         </button>
                         </span>
-
+                        
+                        <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
+                        <ul id="myTable1">
+                     
+                        </ul>
+                        <p id="finalresult"></p>
+                        </div>
                         
                         </div>
                     
