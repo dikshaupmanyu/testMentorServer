@@ -909,7 +909,6 @@ color:black
 #myTable1 {
   border-bottom: 1px solid #ddd;
 }
-
- #myTable1:hover {
+#finalresult li:hover {
   background-color: #f1f1f1;
 }

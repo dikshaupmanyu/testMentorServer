@@ -306,6 +306,7 @@ else{
 
 
 function setInput() {
+
   var setData = $('#setdata').text()
    alert(setData)
  document.querySelector('input[name="setInputinInput"]').value = setData;
@@ -337,13 +338,13 @@ function setInput() {
 //   }
 // }
 
-function myFunction(e) {
+function myFunction(event) {
   let unicode= event.charCode;
   // var regex = new RegExp("^[a-zA-Z0-9]+$");
   //   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     // if (!regex.test(key)) {
       if(unicode == 64){
-      alert("ue @");
+      // alert("ue @");
 
 
 var input, filter, table, tr, td, i, txtValue;
@@ -375,6 +376,9 @@ var input, filter, table, tr, td, i, txtValue;
      const utilityteam = document.getElementById("myTable1");
        $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
+        
+        //   {setdata}  yeh id ka naam hai , isko li tag k andar dalna hai
+        
 
                 elemreplystt.innerHTML = doc.userName;
                 utilityteam.appendChild(elemreplystt);
@@ -1241,7 +1245,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                         
                         <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        <ul id="myTable1">
+                        <ul id="myTable1"  onclick="setInput()">
                      
                         </ul>
                         <p id="finalresult"></p>
