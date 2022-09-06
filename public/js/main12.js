@@ -373,7 +373,7 @@ var input, filter, table, tr, td, i, txtValue;
      dataResults.forEach(function (doc) {
      let datalt = [];
      const utilityteam = document.getElementById("myTable1");
-        $("#hiddentab").css("display", "block")
+       $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
 
                 elemreplystt.innerHTML = doc.userName;
@@ -393,6 +393,8 @@ var input, filter, table, tr, td, i, txtValue;
 
  });
 
+  }else{
+     $('div#hiddentab').css({"display": "none"});
   }
 }
 
