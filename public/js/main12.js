@@ -313,18 +313,43 @@ function setInput() {
 }
 
 
-
 // popup functions
+
+// function myFunction() {
+//   alert('hii')
+//   var input, filter, table, tr, td, i, txtValue;
+//    input = document.getElementById("btn-input-replymsg").value;
+//   alert(input)
+
+//   // filter = input.val();
+//   table = document.getElementById("myTable1");
+//   tr = table.getElementsByTagName("tr");
+//   for (i = 0; i < tr.length; i++) {
+//     td = tr[i].getElementsByTagName("td")[0];
+//     if (td) {
+//       txtValue = td.textContent || td.innerText;
+//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//         tr[i].style.display = "";
+//       } else {
+//         tr[i].style.display = "none";
+//       }
+//     }       
+//   }
+// }
 
 function myFunction(e) {
 
+  // var value = $(e).val()
+  // alert(value)
   var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
       alert("ue @");
-// var input, filter, table, tr, td, i, txtValue;
+
+
+var input, filter, table, tr, td, i, txtValue;
    input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-  //  alert(input)
+  //  filter = input.value.toUpperCase();
   table = document.getElementById("myTable1");
  // tr = table.getElementsByTagName("tr");
     // var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
@@ -348,21 +373,28 @@ function myFunction(e) {
    for (i = 0; i < dataResults.length; i++) {
       console.log(dataResults[i].id);
 
+        td = dataResults[i].getElementsByTagName("td")[0];
+        console.log(td)
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            dataResults[i].style.display = "";
+          } else {
+            dataResults[i].style.display = "none";
+          }
+        }       
+
      newuser += ' <tr  onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
-     
-     //   td = dataResults[i].getElementsByTagName("td")[0];
-     //   if (td) {
-       //     txtValue = td.textContent || td.innerText;
-       //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-         //       dataResults[i].style.display = "";
-         //     } else {
-           //       dataResults[i].style.display = "none";
-           //     }
-           //   }       
+          
           }
           $("#hiddenTable").css("display", "block")
           $("#myTable1").append(newuser);
-  
+
+
+          // $("#myTable1 tr").filter(function() {
+          //   $(this).toggle($(this).text().indexOf(value) > -1)
+          // });
+
         }
       });
       
@@ -1126,7 +1158,6 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
                         <input id="btn-input-replymsg${taskId}"  onkeyup="myFunction()"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
-              
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
