@@ -359,12 +359,32 @@ function getEventTarget(e) {
 // });
 
 function myFunction(event) {
-  //alert(event.target.value);
-  var addedtext = event.target.value;
+ // alert(event.target.value);
+ // var addedtext = event.target.value;
+    const utilityteam = document.getElementById("myTable1");
+     utilityteam.onclick = function(evt) {
+          var target = getEventTarget(evt);
+           var addedtext = event.target.value;
+           //alert(target.innerHTML);
+           var text = target.innerHTML;
+          console.log(text);
+
+         // document.getElementById('dikhh').value = target.innerHTML ;
+         
+           document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML ;
+           
+           $('div#hiddentab').css({"display": "none"});
+           
+          };
+      
   let unicode= event.charCode;
+   
+         
+
   // var regex = new RegExp("^[a-zA-Z0-9]+$");
   //   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     // if (!regex.test(key)) {
+
       if(unicode == 64){
       // alert("ue @");
     let newuser = [];
@@ -381,34 +401,12 @@ function myFunction(event) {
      var dataks = JSON.stringify(datan);
      var dataResults = JSON.parse(dataks);
 
-      // var countdataa = dataResults.filter(function(s) { return s.userName == "y"; });
-      // console.log(countdataa);
+    // var countdataa = dataResults.filter(function(s) { return s.userName.startsWith(text); });
+    // console.log(countdataa);
 
 
-     dataResults.forEach(function (doc) {
-     let datalt = [];
-     const utilityteam = document.getElementById("myTable1");
-     utilityteam.onclick = function(evt) {
-          var target = getEventTarget(evt);
-           var addedtext = event.target.value;
-           alert(target.innerHTML);
-           var text = target.innerHTML;
-                console.log(text);
-            //var v = $(this).text()[0]
-           // $('.myFilterItems li').hide().filter(function(){
-           //    return $(this).text().toUpperCase()[0] == text;
-           // }).show()
-
-               
-           document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML ;
-           
-           $('div#hiddentab').css({"display": "none"});
-           
-          };
-      
-
-
-
+     dataResults.forEach(function (doc) {       
+   
        $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
 
@@ -1294,7 +1292,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         <i class="fa fa-paper-plane" aria-hidden="true" ></i>
                         </button>
                         </span>
-                        
+
                         <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
                         <ul id="myTable1">
                      
