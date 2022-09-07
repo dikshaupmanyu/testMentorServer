@@ -306,14 +306,14 @@ else{
 
 
 
-function setInput(e) {
-  alert('hiiiiii')
-  console.log(e)
-  var setData = $('#setdata'+e).text()
- // alert(setData);
- document.querySelector('input[name="setInputinInput"]').value = setData;
- $("#hiddenTable").css({"display" : "none"});
-}
+// function setInput(e) {
+//   //alert('hiiiiii')
+//   //console.log(e)
+//   var setData = $('#setdata'+e).text()
+//  // alert(setData);
+//  document.querySelector('input[name="setInputinInput"]').value = setData;
+//  $("#hiddenTable").css({"display" : "none"});
+// }
 
 
 // popup functions
@@ -324,7 +324,7 @@ function setInput(e) {
 //    input = document.getElementById("btn-input-replymsg").value;
 //   alert(input)
 
-//   // filter = input.val();
+//   filter = input.val();
 //   table = document.getElementById("myTable1");
 //   tr = table.getElementsByTagName("tr");
 //   for (i = 0; i < tr.length; i++) {
@@ -340,7 +340,16 @@ function setInput(e) {
 //   }
 // }
 
+function getEventTarget(e) {
+    e = e || window.event;
+    return e.target || e.srcElement; 
+}
+
+
+
 function myFunction(event) {
+  //alert(event.target.value);
+  var addedtext = event.target.value;
   let unicode= event.charCode;
   // var regex = new RegExp("^[a-zA-Z0-9]+$");
   //   var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -351,15 +360,7 @@ function myFunction(event) {
 
 var input, filter, table, tr, td, i, txtValue;
    input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-  //  filter = input.value.toUpperCase();
-  // table = document.getElementById("myTable1");
-// var input, filter, table, tr, td, i, txtValue;
-//   input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-  //  alert(input)
-  //table = document.getElementById("myTable1");
- // tr = table.getElementsByTagName("tr");
-    // var tokens = "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6ImphaW4uYWthc2hAbm92YXNvZnRjb3Jwcy5jb20iLCJzdWIiOiI3ZmM5MjRiNy05YTE4LTRhNDctYjJkMS01NDI4ZDNiYzE2MWQiLCJpYXQiOjE2NjIwNjIwNjEsImV4cCI6MTY2MjY2Njg2MX0.-iNdu3LF8VJdcLiwBEtYsylrvgptxSxpxBgiO-gSVEDmfNYjaXXWVI0L7R3hs0Y3PIm9we8Y9hzAsqFTHegf9Q";
-     let newuser = [];
+    let newuser = [];
     var formData = {appUserName:"all"};
     $.ajax({
 
@@ -373,20 +374,40 @@ var input, filter, table, tr, td, i, txtValue;
      var dataks = JSON.stringify(datan);
      var dataResults = JSON.parse(dataks);
 
+
      dataResults.forEach(function (doc) {
      let datalt = [];
      const utilityteam = document.getElementById("myTable1");
+     utilityteam.onclick = function(evt) {
+          var target = getEventTarget(evt);
+           var addedtext = event.target.value;
+          // alert(addedtext);
+          // alert(target.innerHTML);
+          document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML ;
+          $('div#hiddentab').css({"display": "none"});
+
+      };
        $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
 
                 elemreplystt.id = "setdata"+doc.id;
-             elemreplystt.setAttribute("onclick",setInput(doc.id));
+               // elemreplystt.setAttribute("onclick","setInput("+doc.id+")");
                 
                 elemreplystt.innerHTML = doc.userName;
                 utilityteam.appendChild(elemreplystt);
                 $('p#finalresult').html(utilityteam); 
-                // $('ul#myTable1').html(utilityteam); 
               });
+
+
+
+
+
+
+     /////////////////////////////////////////////////////////////////////
+
+
+
+
               // document.getElementById("setdata").onclick(setInput())
       //return datalt;
 
@@ -1237,7 +1258,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}"  onkeypress="myFunction(event)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
+                        <input id="btn-input-replymsg${taskId}" onkeypress="myFunction(event)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
