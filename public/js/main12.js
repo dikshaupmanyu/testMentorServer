@@ -381,8 +381,8 @@ function myFunction(event) {
      var dataks = JSON.stringify(datan);
      var dataResults = JSON.parse(dataks);
 
-      var countdataa = dataResults.filter(function(s) { return s.userName == "y"; });
-      console.log(countdataa);
+      // var countdataa = dataResults.filter(function(s) { return s.userName == "y"; });
+      // console.log(countdataa);
 
 
      dataResults.forEach(function (doc) {
@@ -394,12 +394,18 @@ function myFunction(event) {
            alert(target.innerHTML);
            var text = target.innerHTML;
                 console.log(text);
+            //var v = $(this).text()[0]
+           // $('.myFilterItems li').hide().filter(function(){
+           //    return $(this).text().toUpperCase()[0] == text;
+           // }).show()
+
                
            document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML ;
            
            $('div#hiddentab').css({"display": "none"});
            
           };
+      
 
 
 
