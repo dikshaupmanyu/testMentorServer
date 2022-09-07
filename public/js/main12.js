@@ -307,7 +307,8 @@ else{
 
 
 function setInput(e) {
-  alert(e);
+  alert('hiiiiii')
+  console.log(e)
   var setData = $('#setdata'+e).text()
  // alert(setData);
  document.querySelector('input[name="setInputinInput"]').value = setData;
@@ -378,21 +379,20 @@ var input, filter, table, tr, td, i, txtValue;
        $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
 
-        
-        //   {setdata}  yeh id ka naam hai , isko li tag k andar dalna hai
-        
                 elemreplystt.id = "setdata"+doc.id;
-                elemreplystt.setAttribute("onclick","setInput("+doc.id+")");
+             elemreplystt.setAttribute("onclick",setInput(doc.id));
+                
                 elemreplystt.innerHTML = doc.userName;
                 utilityteam.appendChild(elemreplystt);
-                 $('p#finalresult').html(utilityteam); 
+                $('p#finalresult').html(utilityteam); 
                 // $('ul#myTable1').html(utilityteam); 
-      });
+              });
+              // document.getElementById("setdata").onclick(setInput())
       //return datalt;
 
     //  console.log = function(utilityteam) {
-   // document.getElementById('finalresult').innerHTML = utilityteam;
-//};
+  //  alert(document.getElementById('btn-input-replymsg').innerHTML)
+// };
  
       //console.log(utilityteam);
 
