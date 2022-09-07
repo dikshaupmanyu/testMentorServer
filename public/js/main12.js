@@ -345,7 +345,18 @@ function getEventTarget(e) {
     return e.target || e.srcElement; 
 }
 
+// $(document).ready(function(){
+//   $("#btn-input-replymsg1kiVb7vXZxerCIfVgaSC").on("keypress", function() {
+  // function myFun(){
 
+  //   alert('ok')
+  //   var value = $("#btn-input-replymsg1kiVb7vXZxerCIfVgaSC").val()
+  //   $("#myTable1").filter(function() {
+  //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  //   });
+  // }
+//   });
+// });
 
 function myFunction(event) {
   //alert(event.target.value);
@@ -360,6 +371,8 @@ function myFunction(event) {
 
 var input, filter, table, tr, td, i, txtValue;
    input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
+  //  filter = input.value.toUpperCase();
+   console.log(filter)
     let newuser = [];
     var formData = {appUserName:"all"};
     $.ajax({
@@ -381,12 +394,15 @@ var input, filter, table, tr, td, i, txtValue;
      utilityteam.onclick = function(evt) {
           var target = getEventTarget(evt);
            var addedtext = event.target.value;
-          // alert(addedtext);
-          // alert(target.innerHTML);
-          document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML ;
-          $('div#hiddentab').css({"display": "none"});
+           alert(target.innerHTML);
+           document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML.bold() ;
+           
+           $('div#hiddentab').css({"display": "none"});
+           
+          };
 
-      };
+
+
        $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
 
@@ -398,9 +414,24 @@ var input, filter, table, tr, td, i, txtValue;
                 $('p#finalresult').html(utilityteam); 
               });
 
-
-
-
+              console.log(addedtext);
+              // input = document.getElementById("myInput");
+              // var inputs = document.querySelector('#btn-input-replymsg');
+              var items = document.querySelector('#myTable1').getElementsByTagName('li');     
+              // inputs.addEventListener('keyup', function(ev) {
+                var text = addedtext
+                console.log(text)
+                var pat = new RegExp(text, 'i');
+                for (var i=0; i < items.length; i++) {
+                  var item = items[i];
+                  if (pat.test(item.innerText)) {
+                    item.classList.remove("hidden");
+                  }
+                  else {console.log(item);
+                    item.classList.add("hidden");
+                  }
+                }
+              // });
 
 
      /////////////////////////////////////////////////////////////////////
@@ -423,7 +454,7 @@ var input, filter, table, tr, td, i, txtValue;
  });
 
   }else{
-     $('div#hiddentab').css({"display": "none"});
+    //  $('div#hiddentab').css({"display": "none"});
   }
 }
 
@@ -1258,7 +1289,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" onkeypress="myFunction(event)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
+                        <input id="btn-input-replymsg${taskId}" onkeypress="myFunction(event)" name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
