@@ -367,12 +367,6 @@ function myFunction(event) {
     // if (!regex.test(key)) {
       if(unicode == 64){
       // alert("ue @");
-
-
-var input, filter, table, tr, td, i, txtValue;
-   input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
-  //  filter = input.value.toUpperCase();
-   console.log(filter)
     let newuser = [];
     var formData = {appUserName:"all"};
     $.ajax({
@@ -387,6 +381,9 @@ var input, filter, table, tr, td, i, txtValue;
      var dataks = JSON.stringify(datan);
      var dataResults = JSON.parse(dataks);
 
+      var countdataa = dataResults.filter(function(s) { return s.userName == "y"; });
+      console.log(countdataa);
+
 
      dataResults.forEach(function (doc) {
      let datalt = [];
@@ -395,7 +392,10 @@ var input, filter, table, tr, td, i, txtValue;
           var target = getEventTarget(evt);
            var addedtext = event.target.value;
            alert(target.innerHTML);
-           document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML.bold() ;
+           var text = target.innerHTML;
+                console.log(text);
+               
+           document.getElementById('btn-input-replymsg1kiVb7vXZxerCIfVgaSC').value = addedtext + target.innerHTML ;
            
            $('div#hiddentab').css({"display": "none"});
            
@@ -414,23 +414,12 @@ var input, filter, table, tr, td, i, txtValue;
                 $('p#finalresult').html(utilityteam); 
               });
 
-              console.log(addedtext);
+             // console.log(addedtext);
               // input = document.getElementById("myInput");
               // var inputs = document.querySelector('#btn-input-replymsg');
-              var items = document.querySelector('#myTable1').getElementsByTagName('li');     
+              //var items = document.querySelector('#myTable1').getElementsByTagName('li');     
               // inputs.addEventListener('keyup', function(ev) {
-                var text = addedtext
-                console.log(text)
-                var pat = new RegExp(text, 'i');
-                for (var i=0; i < items.length; i++) {
-                  var item = items[i];
-                  if (pat.test(item.innerText)) {
-                    item.classList.remove("hidden");
-                  }
-                  else {console.log(item);
-                    item.classList.add("hidden");
-                  }
-                }
+               
               // });
 
 
