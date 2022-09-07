@@ -305,12 +305,13 @@ else{
 }
 
 
-function setInput() {
 
-  var setData = $('#setdata').text()
-   alert(setData)
+function setInput(e) {
+  alert(e);
+  var setData = $('#setdata'+e).text()
+ // alert(setData);
  document.querySelector('input[name="setInputinInput"]').value = setData;
- $("#hiddenTable").css("display", "none");
+ $("#hiddenTable").css({"display" : "none"});
 }
 
 
@@ -350,7 +351,7 @@ function myFunction(event) {
 var input, filter, table, tr, td, i, txtValue;
    input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
   //  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable1");
+  // table = document.getElementById("myTable1");
 // var input, filter, table, tr, td, i, txtValue;
 //   input = document.getElementById("btn-input-replymsg1kiVb7vXZxerCIfVgaSC");
   //  alert(input)
@@ -376,13 +377,16 @@ var input, filter, table, tr, td, i, txtValue;
      const utilityteam = document.getElementById("myTable1");
        $('div#hiddentab').css({"display": "block"});
         const elemreplystt = document.createElement("li");
+
         
         //   {setdata}  yeh id ka naam hai , isko li tag k andar dalna hai
         
-
+                elemreplystt.id = "setdata"+doc.id;
+                elemreplystt.setAttribute("onclick","setInput("+doc.id+")");
                 elemreplystt.innerHTML = doc.userName;
                 utilityteam.appendChild(elemreplystt);
                  $('p#finalresult').html(utilityteam); 
+                // $('ul#myTable1').html(utilityteam); 
       });
       //return datalt;
 
@@ -922,7 +926,7 @@ function fetchTasks() {
           
            const tasksDOMReplys = document.getElementById("tasksreply"+docId);
                 var taskreply = changes.doc.data();
-                alert(JSON.stringify(taskreply));
+               // alert(JSON.stringify(taskreply));
                 // var specialChars = "@";
                 // var checkForSpecialChar = function(string){
                 //  for(i = 0; i < specialChars.length;i++){
@@ -1245,7 +1249,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                         </span>
                         
                         <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        <ul id="myTable1"  onclick="setInput()">
+                        <ul id="myTable1">
                      
                         </ul>
                         <p id="finalresult"></p>
@@ -1397,7 +1401,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" onkeyup="myFunction()" value="" placeholder="Type your message here..." onkeyup="myFunction()" autocomplete="off"/>
+                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..." onkeyup="myFunction()" autocomplete="off"/>
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
