@@ -904,6 +904,7 @@ color:black
   text-align: left;
   padding: 12px;
   cursor: pointer;
+ font-weight: bold;
 }
 
 #myTable1 {
