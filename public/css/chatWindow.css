@@ -621,6 +621,7 @@ color: white;
 
 .form-control{
 width:82%;
+color:#747474;
 }
 
 .msg-body h5{
@@ -887,6 +888,7 @@ color:black
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
+  color:#747474;
 }
 
 #finalresult {

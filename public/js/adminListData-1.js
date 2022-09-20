@@ -739,6 +739,66 @@ tasksDOM.append(elem);
 }
 
 
+// ///////////////////////////////
+//   Chat Filter usernamae
+
+function myFunction(event, ids) {
+  var uniqueChatIds = ids
+  var unicode = event.charCode;
+  if (unicode == 64) {
+    let newuser = [];
+    var formData = { appUserName: "all" };
+    $.ajax({
+      type: "POST",
+      url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+      data: formData,
+      success: function (datan) {
+        var dataks = JSON.stringify(datan);
+        var dataResults = JSON.parse(dataks);
+      },
+    });
+
+
+  } else {
+
+    if (unicode == 32) {
+      var edValue = document.getElementById(uniqueChatIds);
+      
+      var s = edValue.value;
+      var str = s;
+      str = str.substring(str.lastIndexOf(" ") + 1);
+      // console.log(str)
+      str1 = s.substring(0, s.length - str.length );
+      // console.log(str1)
+      let result = str.slice(1);
+      var formData = { appUserName: "all" };
+      $.ajax({
+        type: "POST",
+        url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+        data: formData,
+        success: function (datan) {
+          var dataks = JSON.stringify(datan);
+          var dataResults = JSON.parse(dataks);
+          var countdataa = dataResults.filter(function (s) {
+            return s.userName == result;
+          });
+
+          if (countdataa.length == 0) {
+            // alert("no user found")
+          } else {
+            alert("user found")
+            str = str.bold();
+            console.log(str)
+            document.getElementById(uniqueChatIds).value =  str1 + str;
+          }
+        },
+      });
+    }
+  }
+}
+
+// /////////////////////////////////////////
+
 // Firebase functions
 function fetchTasks() {
 
@@ -1065,7 +1125,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                    <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                    😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                    </label>
@@ -1133,7 +1193,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                        <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                         <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                         </label> 
@@ -1203,7 +1263,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="modal-footer">
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-               <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+               <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                </label>
@@ -1274,7 +1334,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="modal-footer">
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-               <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+               <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                </label>
@@ -1346,7 +1406,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="modal-footer">
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-               <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+               <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                </label>
@@ -1430,7 +1490,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                   <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                    <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                    😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                    </label>
@@ -1519,7 +1579,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                    <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                    😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                    </label>
@@ -1606,7 +1666,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                    <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                    😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                    </label>
@@ -1694,7 +1754,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                    <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                    😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                    </label>
@@ -1784,7 +1844,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
+                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
                    <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
                    😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
                    </label>

@@ -313,14 +313,6 @@ function getoutput(event, id) {
   }, 8000);
 }
 
-// function setInput(e) {
-//   //alert('hiiiiii')
-//   //console.log(e)
-//   var setData = $('#setdata'+e).text()
-//  // alert(setData);
-//  document.querySelector('input[name="setInputinInput"]').value = setData;
-//  $("#hiddenTable").css({"display" : "none"});
-// }
 
 // popup functions
 
@@ -365,9 +357,9 @@ function getEventTarget(e) {
 // });
 
 function myFunction(event, ids) {
-  // alert(ids)
   var uniqueChatIds = ids
-  const utilityteam = document.getElementById("myTable1");
+  // alert(uniqueChatIds)
+  // const utilityteam = document.getElementById("myTable1");
 
   // utilityteam.onclick = function(evt) {
   //   alert("hii")
@@ -390,8 +382,6 @@ function myFunction(event, ids) {
   // alert(JSON.stringify(event));
   var unicode = event.charCode;
   if (unicode == 64) {
-    console.log(unicode);
-
     let newuser = [];
     var formData = { appUserName: "all" };
     $.ajax({
@@ -414,10 +404,6 @@ function myFunction(event, ids) {
         //   utilityteam.appendChild(elemreplystt);
         //   $("p#finalresult").html(utilityteam);
         // });
-
-
-
-
       },
     });
 
@@ -426,21 +412,19 @@ function myFunction(event, ids) {
 
     if (unicode == 32) {
       var edValue = document.getElementById(uniqueChatIds);
+      
       var s = edValue.value;
-// alert(s)
+      // alert(s)
       // var lblValue = document.getElementById("lblValueunpyIIyNNVdex6Lr70sf");
       // lblValue.innerText = "The text box contains: " + s;
-      // alert(lblValue.innerText)
-
       var str = s;
-      var strB;
       str = str.substring(str.lastIndexOf(" ") + 1);
+      // str = str.substring + '<span class="red">' + str.substring(10) + '</span>';
       console.log(str)
+      str1 = s.substring(0, s.length - str.length );
+      console.log(str1)
       let result = str.slice(1);
 
-      // $("div#hiddentab").css({ display: "none" });
-
-      // document.getElementById("");
 
       var formData = { appUserName: "all" };
       $.ajax({
@@ -456,17 +440,20 @@ function myFunction(event, ids) {
           });
 
           if (countdataa.length == 0) {
-            // alert("not a user")
+            // alert("no user found")
           } else {
-           
-            // alert(s);
-            var txt =  document.getElementById(uniqueChatIds).value
-             txt = txt + str.bold();
-            console.log(txt);
-            // console.log(s+strB)
-            // var textC = s + strB ;
-
-            document.getElementById(uniqueChatIds).value = txt;
+            alert("user found")
+            str = str.bold();
+            console.log(str)
+            // var results =  "<span style='color:red'>"+str+"</span>" ;
+            // document.getElementById("colorId").style.fontWeight = "bold";
+            // document.getElementById("colorId").style.color = "#0f2668eb";
+            // console.log(results)
+            // console.log( document.getElementById("textcont").value = results);
+            // var html =  document.getElementById("textcont").innerHTML = results;
+            // alert(html)
+            // document.getElementById("textcont").style.display = "none";
+            document.getElementById(uniqueChatIds).value =  str1 + str;
           }
           // dataResults.forEach(function (doc) {
           //   $('div#hiddentab').css({"display": "block"});
@@ -1227,15 +1214,9 @@ function reviewTemplate(
   }
 
   var date1 = formatAMPM(date);
-  //console.log(date1);
-  //console.log(newdate2);
   const stripped1 = x.replace(newdate2[4], date1);
-  // console.log(stripped1);
-
   var fileName = message.substring(message.lastIndexOf("%") + 3);
-  // console.log(fileName)
   var fName = fileName.substring(0, fileName.indexOf("?"));
-  //  console.log(fName+"this is fNAME")
 
   if (loggedInName == userId) {
     if (messageType == "text") {
@@ -1300,8 +1281,7 @@ function reviewTemplate(
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
-                        
+                        <input id="btn-input-replymsg${taskId}" onKeypress="myFunction(event,this.id)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
                         <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
@@ -1312,11 +1292,14 @@ function reviewTemplate(
                         </button>
                         </span>
 
-                      
-                        
+                        <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
+                        <ul id="myTable1">
+                     
+                        </ul>
+                        <p id="finalresult"></p>
                         </div>
-                    
-                       
+
+                        </div>
                     </div>
                   </form>
                   </div>
@@ -1717,13 +1700,6 @@ function reviewTemplate(
                         </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
-
                       </div>
                     </div>
                   </form>
@@ -1813,13 +1789,6 @@ function reviewTemplate(
                             </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
-
                       </div>
                     </div>
                   </form>
@@ -1906,13 +1875,6 @@ function reviewTemplate(
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
-
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
 
                       </div>
                     </div>
