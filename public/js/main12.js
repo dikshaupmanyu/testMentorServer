@@ -339,228 +339,210 @@ function getoutput(event, id) {
 }
 
 
-// popup functions
+// /////////////////////////
 
-// function myFunction() {
-//   alert('hii')
-//   var input, filter, table, tr, td, i, txtValue;
-//    input = document.getElementById("btn-input-replymsg").value;
-//   alert(input)
-
-//   filter = input.val();
-//   table = document.getElementById("myTable1");
-//   tr = table.getElementsByTagName("tr");
-//   for (i = 0; i < tr.length; i++) {
-//     td = tr[i].getElementsByTagName("td")[0];
-//     if (td) {
-//       txtValue = td.textContent || td.innerText;
-//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//         tr[i].style.display = "";
-//       } else {
-//         tr[i].style.display = "none";
-//       }
-//     }
-//   }
-// }
-
-function getEventTarget(e) {
-  e = e || window.event;
-  return e.target || e.srcElement;
-}
-
-// $(document).ready(function(){
-//   $("#btn-input-replymsg1kiVb7vXZxerCIfVgaSC").on("keypress", function() {
-// function myFun(){
-
-//   alert('ok')
-//   var value = $("#btn-input-replymsg1kiVb7vXZxerCIfVgaSC").val()
-//   $("#myTable1").filter(function() {
-//     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//   });
-// }
-//   });
-// });
-
-function myFunction(event, ids) {
-  var uniqueChatIds = ids
-  // alert(uniqueChatIds)
-  // const utilityteam = document.getElementById("myTable1");
-
-  // utilityteam.onclick = function(evt) {
-  //   alert("hii")
-  //   var target = getEventTarget(evt);
-  //    var addedtext = event.target.value;
-  //    //alert(target.innerHTML);
-  //    var text = target.innerHTML;
-  //   //  var texts = text.style.set('font-weight', 'bold')
-
-  //   console.log(text.bold());
-
-  //  // document.getElementById('dikhh').value = target.innerHTML ;
-
-  //  document.getElementById(uniqueChatIds).value = addedtext + text ;
-
-  //    $('div#hiddentab').css({"display": "none"});
-
-  //   };
-
-  // alert(JSON.stringify(event));
-  var unicode = event.charCode;
-  if (unicode == 64) {
-    let newuser = [];
-    var formData = { appUserName: "all" };
+function myFunction() {
+var formData = { appUserName: "all" };
     $.ajax({
       type: "POST",
       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
       data: formData,
       success: function (datan) {
         var dataks = JSON.stringify(datan);
-        var dataResults = JSON.parse(dataks);
-
-        // var countdataa = dataResults.filter(function(s) { return s.userName.startsWith(text); });
-        // console.log(dataResults);
-
-        // dataResults.forEach(function (doc) {
-        //   // $("div#hiddentab").css({ display: "block" });
-
-        //   const elemreplystt = document.createElement("li");
-        //   elemreplystt.id = "setdata" + doc.id;
-        //   elemreplystt.innerHTML = doc.userName;
-        //   utilityteam.appendChild(elemreplystt);
-        //   $("p#finalresult").html(utilityteam);
-        // });
-      },
-    });
+        var users = JSON.parse(dataks);
 
 
-  } else {
-
-    if (unicode == 32) {
-      var edValue = document.getElementById(uniqueChatIds);
-      
-      var s = edValue.value;
-      // alert(s)
-      // var lblValue = document.getElementById("lblValueunpyIIyNNVdex6Lr70sf");
-      // lblValue.innerText = "The text box contains: " + s;
-      var str = s;
-      str = str.substring(str.lastIndexOf(" ") + 1);
-      // str = str.substring + '<span class="red">' + str.substring(10) + '</span>';
-      console.log(str)
-      str1 = s.substring(0, s.length - str.length );
-      console.log(str1)
-      let result = str.slice(1);
 
 
-      var formData = { appUserName: "all" };
-      $.ajax({
-        type: "POST",
-        url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-        data: formData,
-        success: function (datan) {
-          var dataks = JSON.stringify(datan);
-          var dataResults = JSON.parse(dataks);
-          //  console.log(dataResults);
-          var countdataa = dataResults.filter(function (s) {
-            return s.userName == result;
+ 
+     CKEDITOR.replace('editor1', {
+       plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
+       contentsCss: [
+         'http://cdn.ckeditor.com/4.19.1/full-all/contents.css',
+         'https://ckeditor.com/docs/ckeditor4/4.19.1/examples/assets/mentions/contents.css'
+       ],
+       height: 150,
+       width:500,
+       toolbar: [{
+           name: 'document',
+           items: ['Undo', 'Redo']
+         },
+         {
+           name: 'basicstyles',
+           items: ['Bold', 'Italic', 'Strike']
+         },
+         {
+           name: 'links',
+           items: ['EmojiPanel', 'Link', 'Unlink']
+         }
+       ],
+       mentions: [{
+           feed: dataFeed,
+           itemTemplate: '<li data-id="{id}">' +
+             '<img class="photo" src="" />' +
+             '<strong class="userName">{userName}</strong>' +
+             '<span class="fullname"></span>' +
+             '</li>',
+           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span>&nbsp;</span>',
+           minChars: 0
+         },
+         {
+          //  feed: tags,
+           marker: '#',
+           itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
+           minChars: 1
+         }
+       ],
+       removeButtons: 'PasteFromWord'
+     });
+
+     function dataFeed(opts, callback) {
+       var matchProperty = 'userName',
+         data = users.filter(function(item) {
+          // console.log(item) 
+          return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
+
           });
 
-          if (countdataa.length == 0) {
-            // alert("no user found")
-          } else {
-            alert("user found")
-            str = str.bold();
-            console.log(str)
-            // var results =  "<span style='color:red'>"+str+"</span>" ;
-            // document.getElementById("colorId").style.fontWeight = "bold";
-            // document.getElementById("colorId").style.color = "#0f2668eb";
-            // console.log(results)
-            // console.log( document.getElementById("textcont").value = results);
-            // var html =  document.getElementById("textcont").innerHTML = results;
-            // alert(html)
-            // document.getElementById("textcont").style.display = "none";
-            document.getElementById(uniqueChatIds).value =  str1 + str;
-          }
-          // dataResults.forEach(function (doc) {
-          //   $('div#hiddentab').css({"display": "block"});
+ 
+       data = data.sort(function(a, b) {
+         return a[matchProperty].localeCompare(b[matchProperty], undefined, {
+           sensitivity: 'accent'
+         });
+       });
+ 
+       callback(data);
+     }
 
-          //     const elemreplystt = document.createElement("li");
+    },
+    });
+  };
 
-          //             elemreplystt.id = "setdata"+doc.id;
-
-          //             elemreplystt.innerHTML = doc.userName;
-          //             utilityteam.appendChild(elemreplystt);
-          //             $('p#finalresult').html(utilityteam);
-
-          //  });
-        },
-      });
-    }
-  }
-}
-
-// for(var i=0; i< dataResults.length; i++) {
-
-//  const elemreplystt = document.createElement("li");
-
-//           elemreplystt.innerHTML = dataResults[i].userName;
-//           utilityteam.appendChild(elemreplystt);
+// function getEventTarget(e) {
+//   e = e || window.event;
+//   return e.target || e.srcElement;
 // }
 
-// document.getElementById("finaldatalist").appendChild(utilityteam);
 
-//var myDiVElem = document.getElementById("finaldatalist");
-// myDiVElem.innerHTML = utilityteam; // this makes the change
+// function myFunction(event, ids) {
+//   var uniqueChatIds = ids
+//   // alert(uniqueChatIds)
+//   // const utilityteam = document.getElementById("myTable1");
 
-// document.getElementById("finaldatalist").innerHTML = utilityteam;
+//   // utilityteam.onclick = function(evt) {
+//   //   alert("hii")
+//   //   var target = getEventTarget(evt);
+//   //    var addedtext = event.target.value;
+//   //    //alert(target.innerHTML);
+//   //    var text = target.innerHTML;
+//   //   //  var texts = text.style.set('font-weight', 'bold')
 
-//  var datasss = document.getElementById('btn-input-replymsg').value;
-//  alert(datasss)
-// document.getElementById('myTable1').innerHTML = "";
+//   //   console.log(text.bold());
 
-//       var newuser = document.createElement("table");
+//   //  // document.getElementById('dikhh').value = target.innerHTML ;
 
-//    td = dataResults[i].getElementsByTagName("td")[0];
-//    console.log(td)
-//    if (td) {
-//      txtValue = td.textContent || td.innerText;
-//      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//        dataResults[i].style.display = "";
-//      } else {
-//        dataResults[i].style.display = "none";
-//      }
-//    }
+//   //  document.getElementById(uniqueChatIds).value = addedtext + text ;
 
-// newuser += ' <tr  onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
+//   //    $('div#hiddentab').css({"display": "none"});
 
-//      }
-//      $("#hiddenTable").css("display", "block")
-//      $("#myTable1").append(newuser);
+//   //   };
 
-// $("#myTable1 tr").filter(function() {
-//   $(this).toggle($(this).text().indexOf(value) > -1)
-// });
+//   // alert(JSON.stringify(event));
+//   var unicode = event.charCode;
+//   if (unicode == 64) {
+//     let newuser = [];
+//     var formData = { appUserName: "all" };
+//     $.ajax({
+//       type: "POST",
+//       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+//       data: formData,
+//       success: function (datan) {
+//         var dataks = JSON.stringify(datan);
+//         var dataResults = JSON.parse(dataks);
 
+//         // var countdataa = dataResults.filter(function(s) { return s.userName.startsWith(text); });
+//         // console.log(dataResults);
+
+//         // dataResults.forEach(function (doc) {
+//         //   // $("div#hiddentab").css({ display: "block" });
+
+//         //   const elemreplystt = document.createElement("li");
+//         //   elemreplystt.id = "setdata" + doc.id;
+//         //   elemreplystt.innerHTML = doc.userName;
+//         //   utilityteam.appendChild(elemreplystt);
+//         //   $("p#finalresult").html(utilityteam);
+//         // });
+//       },
+//     });
+
+
+//   } else {
+
+//     if (unicode == 32) {
+//       var edValue = document.getElementById(uniqueChatIds);
+      
+//       var s = edValue.value;
+//       // alert(s)
+//       // var lblValue = document.getElementById("lblValueunpyIIyNNVdex6Lr70sf");
+//       // lblValue.innerText = "The text box contains: " + s;
+//       var str = s;
+//       str = str.substring(str.lastIndexOf(" ") + 1);
+//       // str = str.substring + '<span class="red">' + str.substring(10) + '</span>';
+//       console.log(str)
+//       str1 = s.substring(0, s.length - str.length );
+//       console.log(str1)
+//       let result = str.slice(1);
+
+
+//       var formData = { appUserName: "all" };
+//       $.ajax({
+//         type: "POST",
+//         url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+//         data: formData,
+//         success: function (datan) {
+//           var dataks = JSON.stringify(datan);
+//           var dataResults = JSON.parse(dataks);
+//           //  console.log(dataResults);
+//           var countdataa = dataResults.filter(function (s) {
+//             return s.userName == result;
+//           });
+
+//           if (countdataa.length == 0) {
+//             // alert("no user found")
+//           } else {
+//             alert("user found")
+//             str = str.bold();
+//             console.log(str)
+//             // var results =  "<span style='color:red'>"+str+"</span>" ;
+//             // document.getElementById("colorId").style.fontWeight = "bold";
+//             // document.getElementById("colorId").style.color = "#0f2668eb";
+//             // console.log(results)
+//             // console.log( document.getElementById("textcont").value = results);
+//             // var html =  document.getElementById("textcont").innerHTML = results;
+//             // alert(html)
+//             // document.getElementById("textcont").style.display = "none";
+//             document.getElementById(uniqueChatIds).value =  str1 + str;
+//           }
+//           // dataResults.forEach(function (doc) {
+//           //   $('div#hiddentab').css({"display": "block"});
+
+//           //     const elemreplystt = document.createElement("li");
+
+//           //             elemreplystt.id = "setdata"+doc.id;
+
+//           //             elemreplystt.innerHTML = doc.userName;
+//           //             utilityteam.appendChild(elemreplystt);
+//           //             $('p#finalresult').html(utilityteam);
+
+//           //  });
+//         },
+//       });
 //     }
-//   });
-
-// }
-// for(var i=0; i< dataResults.length; i++) {
-
-// // console.log('<tr onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>');
-
-//     myTable1.innerHTML = myTable1.innerHTML + '<tr onclick="setInput()"><td id="setdata"> @'+ dataResults[i].userName +'</td></tr>';
-
 //   }
+// }
 
-//   myTable1.innerHTML = myTable1.innerHTML + '<br />';
 
-//   console.log(myTable1);
-
-//$("#hiddenTable").css("display", "block");
-
-//   //document.getElementById("userlistdata").innerHTML = newuser;
-
-//   //$("#myTable1").append(newuser);
 
 function popupCreate(event) {
   // alert("calling " + JSON.stringify(event));
@@ -1306,8 +1288,9 @@ function reviewTemplate(
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" onKeypress="myFunction(event,this.id)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
+                      <input id="btn-input-replymsg${taskId}" onKeypress="myFunction(event,this.id)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
+                      <textarea cols="100" class="form-control" onKeypress="myFunction()" id="editor1" name="editor1" rows="2" style="width: 100%; height:30px" ></textarea>
+                      <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
                         

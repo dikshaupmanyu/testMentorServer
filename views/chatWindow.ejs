@@ -204,7 +204,8 @@
                         </span>
  
                        
-                        <textarea  id="btn-input" style="font-weight:bold;"  name="Short_text_editor" type="text" class="form-control input-lg" placeholder="Type your message here..."   autocomplete="off"></textarea>
+                        <!-- <textarea  id="btn-input" style="font-weight:bold;"  name="Short_text_editor" type="text" class="form-control input-lg" placeholder="Type your message here..."   autocomplete="off"></textarea> -->
+  <textarea cols="100" class="form-control" id="editor1" name="editor1" rows="2" style="width: 100%; height:30px" ></textarea>
                        
                         <!-- <div class="SelectedUser box" id="divID" >
                           <select id="btn-input" onchange="updateTxtContent();"  class="form-control col-lg-9" multiple="multiple" style="width: 60rem;"></select>
@@ -274,135 +275,89 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> -->
-
-<script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.9/adapters/jquery.js"></script>
-
   <script src='js/inputEmoji.js'></script>
+  <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
 
-  <script type="text/javascript">
+   <script>
 
-function updateTxtContent(){
-    var e = document.getElementById("btn-input");
-    var f = e.options[e.selectedIndex].value;    
-    alert(f);
-}
+var formData = { appUserName: "all" };
+    $.ajax({
+      type: "POST",
+      url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+      data: formData,
+      success: function (datan) {
+        var dataks = JSON.stringify(datan);
+        var users = JSON.parse(dataks);
 
-      // CKEDITOR.replace( 'Long_text_editor' );
-      // CKEDITOR.replace( 'Short_text_editor' );
-      $('textarea[name="Short_text_editor"]').ckeditor({
-           // Define the toolbar groups as it is a more accessible solution.
-           toolbarGroups: [{
-               "name": "basicstyles",
-               "groups": ["basicstyles"]
-             },
-             {
-               "name": "links",
-               "groups": ["links"]
-             },
-             {
-               "name": "paragraph",
-               "groups": ["list", "blocks"]
-             },
-             {
-               "name": "document",
-               "groups": ["mode"]
-             },
-             {
-               "name": "insert",
-               "groups": ["insert"]
-             },
-             {
-               "name": "styles",
-               "groups": ["styles"]
-             },
-             {
-               "name": "about",
-               "groups": ["about"]
-             }
-           ],
-           // Remove the redundant buttons from toolbar groups defined above.
-           removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+
+
+
+ 
+     CKEDITOR.replace('editor1', {
+       plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
+       contentsCss: [
+         'http://cdn.ckeditor.com/4.19.1/full-all/contents.css',
+         'https://ckeditor.com/docs/ckeditor4/4.19.1/examples/assets/mentions/contents.css'
+       ],
+       height: 150,
+       width:500,
+       toolbar: [{
+           name: 'document',
+           items: ['Undo', 'Redo']
+         },
+         {
+           name: 'basicstyles',
+           items: ['Bold', 'Italic', 'Strike']
+         },
+         {
+           name: 'links',
+           items: ['EmojiPanel', 'Link', 'Unlink']
+         }
+       ],
+       mentions: [{
+           feed: dataFeed,
+           itemTemplate: '<li data-id="{id}">' +
+             '<img class="photo" src="" />' +
+             '<strong class="userName">{userName}</strong>' +
+             '<span class="fullname"></span>' +
+             '</li>',
+           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span>&nbsp;</span>',
+           minChars: 0
+         },
+         {
+          //  feed: tags,
+           marker: '#',
+           itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
+           minChars: 1
+         }
+       ],
+       removeButtons: 'PasteFromWord'
+     });
+
+     function dataFeed(opts, callback) {
+       var matchProperty = 'userName',
+         data = users.filter(function(item) {
+          // console.log(item) 
+          return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
+
+          });
+
+ 
+       data = data.sort(function(a, b) {
+         return a[matchProperty].localeCompare(b[matchProperty], undefined, {
+           sensitivity: 'accent'
          });
+       });
+ 
+       callback(data);
+     }
 
-      $('textarea[name="Short_text_editor"]').ckeditor();
-      $('textarea[name="Long_text_editor"]').ckeditor();
-    // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-    // function myFunction(event) {
-    //   alert(event)
-      // console.log('showList')
-      // document.getElementById('users-list').style.display="none";
-      // var inputValue = document.getElementById('filter_users').value;
-  
-      // var unicode = event.charCode;
-      // if (unicode == 64) {
-  
-        var formData = { appUserName: "all" };
-        $.ajax({
-  
-          type: 'POST',
-          url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-          data: formData,
-          success: function (datan) {
-            var dataks = JSON.stringify(datan);
-            var users = JSON.parse(dataks);
-  
-            ul = document.getElementById("btn-input");
-  
-            // document.getElementById("filter_users").addEventListener("keypress", keypressF);
-            // function keypressF(p){
-            // let unicode = p.charCode;
-            // alert('hii')
-            // if(unicode == 64) {
-            // console.log(unicode)
-            // document.getElementById("myTables").style.display = "block";
-            let render_lists = function (lists) {
-  
-              let li = "";
-              for (index in lists) {
-                // li.id = "setdata"+lists.id;
-                li += '<option>' + lists[index].userName + "</option>";
-              }
-              ul.innerHTML = li;
-            }
-  
-            render_lists(users);
+    },
+    });
+   </script>
 
 
-  
-            ///////////// // lets filters it
-  
-            // input = document.getElementById('btn-input');
-  
-            // function filterUsers(event) {
-            //   keyword = input.value.toLowerCase();
-            //   filtered_users = users.filter(function (user) {
-            //     user = user.userName.toLowerCase();
-            //     return user.indexOf(keyword) > -1;
-            //   });
-            //   // console.log(filtered_users)
-  
-            //   render_lists(filtered_users);
-  
-            // }
-            // input.addEventListener('keyup', filterUsers)
-            /////////////////////////
-            // }
-  
-          }
-        });
-        
-  
-      // }
-  
-  
-    // }
-      // }
-    // }
-  </script>
 <br>
 <script>
       var preloader = document.getElementById("fountainG");
