@@ -104,7 +104,7 @@ const docRef = db.collection("/openGroups/demoOpenGroup1/messages/");
 const tasksDOM = document.getElementById("tasks");
 
 var fullName = document.getElementById("user_nickname");
-var message = document.getElementById("btn-input");
+var message = document.getElementById("editor1");
 var userId = document.getElementById("user_id");
 // alert(userId.value);
 
@@ -132,12 +132,18 @@ function handleCreate(event) {
     // alert('hii')
     // var addedtext = evt.target.innerHTML;
     // console.log(addedtext.bold())
+
+    var editorText = CKEDITOR.instances.editor1.getData();
+      //  var editID =  $('#editor1').html(editorText);
+      //  console.log(editID)
     
-    var text111 = $("#btn-input :selected").text();
-    var text12 = $("#btn-input").text();
-    var selectedValue =  $("input.select2-search__field").css("color","red");
-    alert(selectedValue);
-    console.log(selectedValue)
+
+    
+    // var text111 = $("#btn-input :selected").text();
+    var text12 = document.getElementById("editor1").value;
+    // var selectedValue =  $("input.select2-search__field").css("color","red");
+    // alert(text12);
+    // console.log(selectedValue)
     // alert(text111)
     // alert(text12)
     // var Sdata = document.getElementById('spanId').innerHTML = addedtext.bold();
@@ -149,7 +155,7 @@ function handleCreate(event) {
     let task = {
       userName: loggedInName,
       userId: loggedInVal,
-      message: message.value,
+      message: editorText,
       messageId: loggedInVal + "_" + Date.now(),
       messageType: "text",
       createdDate: Date.now(),
@@ -164,7 +170,9 @@ function handleCreate(event) {
       //  console.log(ref.id);
       task.id = ref.id;
       // fullName.value = '';
-      message.value = "";
+      // message.value = "";
+    CKEDITOR.instances.editor1.setData('');
+
       // date.value = '';
       // return createTask(task);
     });
