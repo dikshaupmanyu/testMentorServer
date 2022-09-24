@@ -573,7 +573,7 @@ setTimeout(function(){$(".successmsg").empty()}, 5000);
 return firebase
   .app()
   .storage()
-  .ref('message_images')
+  .ref('message_storage_test_env/')
   .child(file.name)
   .put(file)
   // .then(snapshot => {
@@ -592,7 +592,7 @@ fetch(remoteimageurl).then(res => {
 return res.blob();
 }).then(blob => {
   //uploading blob to firebase storage
-firebase.storage().ref('message_images/').child(filename).put(blob).then(function(snapshot) {
+firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
   return snapshot.ref.getDownloadURL()
 }).then(url => {
  console.log("Firebase storage image uploaded : ", url);

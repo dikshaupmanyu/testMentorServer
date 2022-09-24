@@ -126,7 +126,24 @@ function handleCreate(event) {
   var loggedInVal = document.getElementById("user_id").value;
   var loggedInName = document.getElementById("user_nickname").value;
   // var today = Date.now();
-  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
+  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";        
+  // const utilityteam = document.getElementById("");
+  // utilityteam.onclick = function (evt) {
+    // alert('hii')
+    // var addedtext = evt.target.innerHTML;
+    // console.log(addedtext.bold())
+    
+    var text111 = $("#btn-input :selected").text();
+    var text12 = $("#btn-input").text();
+    var selectedValue =  $("input.select2-search__field").css("color","red");
+    alert(selectedValue);
+    console.log(selectedValue)
+    // alert(text111)
+    // alert(text12)
+    // var Sdata = document.getElementById('spanId').innerHTML = addedtext.bold();
+    
+    // document.getElementById('buttonID').innerHTML = addedtext;
+  // };
 
   if (message.value != "") {
     let task = {

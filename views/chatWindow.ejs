@@ -11,6 +11,9 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css" integrity="sha512-0Nyh7Nf4sn+T48aTb6VFkhJe0FzzcOlqqZMahy/rhZ8Ii5Q9ZXG/1CbunUuEbfgxqsQfWXjnErKZosDSHVKQhQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
@@ -199,8 +202,14 @@
                                 <i class="fa fa-paperclip attachment btn btn-primary" aria-hidden="true" style="height: 38px; display:table-cell"></i>
                           
                         </span>
-                        <input  id="btn-input" type="text" class="form-control input-lg" placeholder="Type your message here..."   autocomplete="off"/>
-                        <span id="spanId" style="display: block;"></span>
+ 
+                       
+                        <textarea  id="btn-input" style="font-weight:bold;"  name="Short_text_editor" type="text" class="form-control input-lg" placeholder="Type your message here..."   autocomplete="off"></textarea>
+                       
+                        <!-- <div class="SelectedUser box" id="divID" >
+                          <select id="btn-input" onchange="updateTxtContent();"  class="form-control col-lg-9" multiple="multiple" style="width: 60rem;"></select>
+                        </div> -->
+                       <span id="spanId" style="display: block;"></span>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit" id="Btn_1">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -265,18 +274,65 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    
+<!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> -->
+
+<script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.9/adapters/jquery.js"></script>
 
   <script src='js/inputEmoji.js'></script>
 
-
   <script type="text/javascript">
 
+function updateTxtContent(){
+    var e = document.getElementById("btn-input");
+    var f = e.options[e.selectedIndex].value;    
+    alert(f);
+}
 
+      // CKEDITOR.replace( 'Long_text_editor' );
+      // CKEDITOR.replace( 'Short_text_editor' );
+      $('textarea[name="Short_text_editor"]').ckeditor({
+           // Define the toolbar groups as it is a more accessible solution.
+           toolbarGroups: [{
+               "name": "basicstyles",
+               "groups": ["basicstyles"]
+             },
+             {
+               "name": "links",
+               "groups": ["links"]
+             },
+             {
+               "name": "paragraph",
+               "groups": ["list", "blocks"]
+             },
+             {
+               "name": "document",
+               "groups": ["mode"]
+             },
+             {
+               "name": "insert",
+               "groups": ["insert"]
+             },
+             {
+               "name": "styles",
+               "groups": ["styles"]
+             },
+             {
+               "name": "about",
+               "groups": ["about"]
+             }
+           ],
+           // Remove the redundant buttons from toolbar groups defined above.
+           removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+         });
 
+      $('textarea[name="Short_text_editor"]').ckeditor();
+      $('textarea[name="Long_text_editor"]').ckeditor();
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
-    // function showList(event) {
+    // function myFunction(event) {
+    //   alert(event)
       // console.log('showList')
       // document.getElementById('users-list').style.display="none";
       // var inputValue = document.getElementById('filter_users').value;
@@ -289,15 +345,12 @@
   
           type: 'POST',
           url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-          // headers: {
-          //   Authorization: 'Bearer '+ tokens ,
-          // },
           data: formData,
           success: function (datan) {
             var dataks = JSON.stringify(datan);
             var users = JSON.parse(dataks);
   
-            ul = document.getElementById("myTables");
+            ul = document.getElementById("btn-input");
   
             // document.getElementById("filter_users").addEventListener("keypress", keypressF);
             // function keypressF(p){
@@ -305,47 +358,37 @@
             // alert('hii')
             // if(unicode == 64) {
             // console.log(unicode)
-            document.getElementById("myTables").style.display = "block";
+            // document.getElementById("myTables").style.display = "block";
             let render_lists = function (lists) {
   
               let li = "";
               for (index in lists) {
                 // li.id = "setdata"+lists.id;
-                li += '<li>' + lists[index].userName + "</li>";
+                li += '<option>' + lists[index].userName + "</option>";
               }
               ul.innerHTML = li;
             }
   
             render_lists(users);
-  
-            const utilityteam = document.getElementById("myTables");
-            utilityteam.onclick = function (evt) {
-            
-              var addedtext = evt.target.innerHTML;
-              console.log(addedtext.bold())
-  
-              // var text = target.innerHTML;
-              // console.log(text)
-              var Sdata = document.getElementById('spanId').innerHTML = addedtext.bold();
-              document.getElementById('btn-input').innerHTML = Sdata;
-            };
+
+
   
             ///////////// // lets filters it
   
-            input = document.getElementById('btn-input');
+            // input = document.getElementById('btn-input');
   
-            function filterUsers(event) {
-              keyword = input.value.toLowerCase();
-              filtered_users = users.filter(function (user) {
-                user = user.userName.toLowerCase();
-                return user.indexOf(keyword) > -1;
-              });
-              // console.log(filtered_users)
+            // function filterUsers(event) {
+            //   keyword = input.value.toLowerCase();
+            //   filtered_users = users.filter(function (user) {
+            //     user = user.userName.toLowerCase();
+            //     return user.indexOf(keyword) > -1;
+            //   });
+            //   // console.log(filtered_users)
   
-              render_lists(filtered_users);
+            //   render_lists(filtered_users);
   
-            }
-            input.addEventListener('keyup', filterUsers)
+            // }
+            // input.addEventListener('keyup', filterUsers)
             /////////////////////////
             // }
   
