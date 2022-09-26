@@ -768,14 +768,14 @@ $(document).ready(function() {
              '<strong class="userName">{userName}</strong>' +
              '<span class="fullname"></span>' +
              '</li>',
-           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span>&nbsp;</span>',
+           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span></span>',
            minChars: 0
          },
          {
           //  feed: tags,
            marker: '#',
            itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
-           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
+           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
            minChars: 1
          }
        ],
@@ -1385,11 +1385,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" onkeypress="myFunction(event,this.id)" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
-                         
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                         
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1466,10 +1463,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text"  onkeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                         
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1539,10 +1534,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text"  onkeypress="myFunction(event,this.id)" class="form-control input-lg" value=""  placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
 
                         <span class="input-group-btn">f
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1612,10 +1605,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text"  onkeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."   autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
 
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1692,12 +1683,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" onkeypress="myFunction(event,this.id)" placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
 
-                        
                         <span class="input-group-btn">
                         <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1782,10 +1769,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" onkeypress="myFunction(event,this.id)"  placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
        
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1869,10 +1854,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" onkeypress="myFunction(event,this.id)" placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                      
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
@@ -1966,11 +1949,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" onkeypress="myFunction(event,this.id)" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
-                   
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -2057,10 +2037,8 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${taskId}" type="text" class="form-control input-lg" value="" onkeypress="myFunction(event,this.id)" placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                    
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}">
