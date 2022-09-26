@@ -341,83 +341,7 @@ function getoutput(event, id) {
 
 // /////////////////////////
 
-function myFunction() {
-var formData = { appUserName: "all" };
-    $.ajax({
-      type: "POST",
-      url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-      data: formData,
-      success: function (datan) {
-        var dataks = JSON.stringify(datan);
-        var users = JSON.parse(dataks);
 
-
-
-
- 
-     CKEDITOR.replace('editor1', {
-       plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-       contentsCss: [
-         'http://cdn.ckeditor.com/4.19.1/full-all/contents.css',
-         'https://ckeditor.com/docs/ckeditor4/4.19.1/examples/assets/mentions/contents.css'
-       ],
-       height: 150,
-       width:500,
-       toolbar: [{
-           name: 'document',
-           items: ['Undo', 'Redo']
-         },
-         {
-           name: 'basicstyles',
-           items: ['Bold', 'Italic', 'Strike']
-         },
-         {
-           name: 'links',
-           items: ['EmojiPanel', 'Link', 'Unlink']
-         }
-       ],
-       mentions: [{
-           feed: dataFeed,
-           itemTemplate: '<li data-id="{id}">' +
-             '<img class="photo" src="" />' +
-             '<strong class="userName">{userName}</strong>' +
-             '<span class="fullname"></span>' +
-             '</li>',
-           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span>&nbsp;</span>',
-           minChars: 0
-         },
-         {
-          //  feed: tags,
-           marker: '#',
-           itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
-           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
-           minChars: 1
-         }
-       ],
-       removeButtons: 'PasteFromWord'
-     });
-
-     function dataFeed(opts, callback) {
-       var matchProperty = 'userName',
-         data = users.filter(function(item) {
-          // console.log(item) 
-          return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
-
-          });
-
- 
-       data = data.sort(function(a, b) {
-         return a[matchProperty].localeCompare(b[matchProperty], undefined, {
-           sensitivity: 'accent'
-         });
-       });
- 
-       callback(data);
-     }
-
-    },
-    });
-  };
 
 // function getEventTarget(e) {
 //   e = e || window.event;
@@ -545,6 +469,7 @@ var formData = { appUserName: "all" };
 
 
 function popupCreate(event) {
+
   // alert("calling " + JSON.stringify(event));
 
   $("ul#tasksreply" + event).show();
@@ -800,6 +725,100 @@ function replypopup(id) {
   // closepopup(id);
   // alert("reply value");
   fetchTasksReply(id);
+
+$(document).ready(function() {
+ $(".ckeditor").each(function(_, ckeditor) {
+
+  var formData = { appUserName: "all" };
+    $.ajax({
+      type: "POST",
+      url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+      data: formData,
+      success: function (datan) {
+        var dataks = JSON.stringify(datan);
+        var users = JSON.parse(dataks);
+
+    CKEDITOR.replace(ckeditor , {
+       plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
+       
+       toolbar: [{
+           name: 'document',
+           items: ['Undo', 'Redo']
+         },
+         {
+           name: 'basicstyles',
+           items: ['Bold', 'Italic', 'Strike']
+         },
+         {
+           name: 'links',
+           items: ['EmojiPanel', 'Link', 'Unlink']
+         }
+       ],
+       mentions: [{
+           feed: dataFeed,
+           itemTemplate: '<li data-id="{id}">' +
+             '<img class="photo" src="" />' +
+             '<strong class="userName">{userName}</strong>' +
+             '<span class="fullname"></span>' +
+             '</li>',
+           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span>&nbsp;</span>',
+           minChars: 0
+         },
+         {
+          //  feed: tags,
+           marker: '#',
+           itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
+           minChars: 1
+         }
+       ],
+       removeButtons: 'PasteFromWord'
+     });
+
+     function dataFeed(opts, callback) {
+       var matchProperty = 'userName',
+         data = users.filter(function(item) {
+          // console.log(item) 
+          return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
+
+          });
+
+ 
+       data = data.sort(function(a, b) {
+         return a[matchProperty].localeCompare(b[matchProperty], undefined, {
+           sensitivity: 'accent'
+         });
+       });
+ 
+       callback(data);
+     }
+   }
+
+ });
+
+// var formData = { appUserName: "all" };
+//     $.ajax({
+//       type: "POST",
+//       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+//       data: formData,
+//       success: function (datan) {
+//         var dataks = JSON.stringify(datan);
+//         var users = JSON.parse(dataks);
+
+
+
+
+ 
+  
+
+  //  },
+ //   });
+  });
+
+ 
+});
+
+
 }
 
 // dom functions
@@ -1260,6 +1279,8 @@ function reviewTemplate(
               </div>
              
           </li>
+                  <script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
+
           <div class="modal fade" id="exampleModalCenter${taskId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${taskId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                   <div class="modal-dialog modal-lg" role="document" style="top:60px;">
                   
@@ -1288,8 +1309,7 @@ function reviewTemplate(
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                      <input id="btn-input-replymsg${taskId}" onKeypress="myFunction(event,this.id)"  name="setInputinInput" type="text" class="form-control input-lg"  value="" placeholder="Type your message here..."   autocomplete="off" />
-                      <textarea cols="100" class="form-control" onKeypress="myFunction()" id="editor1" name="editor1" rows="2" style="width: 100%; height:30px" ></textarea>
+                       <textarea  id="btn-input-replymsg${taskId}" class="ckeditor" name="chapterContent[]"></textarea>
                       <label for="emoji-buttons${taskId}" style="cursor:pointer">
                         😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
                         </label>
@@ -1300,13 +1320,7 @@ function reviewTemplate(
                         </button>
                         </span>
 
-                        <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        <ul id="myTable1">
-                     
-                        </ul>
-                        <p id="finalresult"></p>
-                        </div>
-
+                       
                         </div>
                     </div>
                   </form>
@@ -1378,13 +1392,7 @@ function reviewTemplate(
                             </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
                      
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
-
                       </div>
                     </div>
                   </form>
@@ -1464,12 +1472,6 @@ function reviewTemplate(
                             </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
                         
                       </div>
                     </div>
@@ -1543,12 +1545,6 @@ function reviewTemplate(
                             </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
 
                       </div>
                     </div>
@@ -1622,12 +1618,7 @@ function reviewTemplate(
                             </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
+                
 
                       </div>
                     </div>
@@ -1980,12 +1971,7 @@ function reviewTemplate(
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                             </button>
                         </span>
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
+                    
 
                       </div>
                     </div>
@@ -2077,12 +2063,6 @@ function reviewTemplate(
                             </button>
                         </span>
 
-                        // <div id="hiddentab" style="width:100% ; overfolw:scroll; display:none">
-                        // <ul id="myTable1">
-                     
-                        // </ul>
-                        // <p id="finalresult"></p>
-                        // </div>
                         
                       </div>
                     </div>
@@ -2629,6 +2609,8 @@ function closepopup(id) {
 
   // });
 }
+
+
 
 $(document).keypress(function (e) {
   if (e.which == 13) {

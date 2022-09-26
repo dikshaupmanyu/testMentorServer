@@ -206,6 +206,8 @@
                        
                         <!-- <textarea  id="btn-input" style="font-weight:bold;"  name="Short_text_editor" type="text" class="form-control input-lg" placeholder="Type your message here..."   autocomplete="off"></textarea> -->
   <textarea cols="100" class="form-control" id="editor1" name="editor1" rows="2" style="width: 100%; height:30px" ></textarea>
+
+
                        
                         <!-- <div class="SelectedUser box" id="divID" >
                           <select id="btn-input" onchange="updateTxtContent();"  class="form-control col-lg-9" multiple="multiple" style="width: 60rem;"></select>
@@ -275,6 +277,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <script src='js/inputEmoji.js'></script>
+  <script src="https://cdn.tiny.cloud/1/it3ify0z40t5vo6kcajgeiy9u1wusf5nsuhp3h6j4a585vko/tinymce/5/tinymce.min.js"
+referrerpolicy="origin"></script>
   <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
 
    <script>
@@ -333,6 +337,8 @@ var formData = { appUserName: "all" };
        ],
        removeButtons: 'PasteFromWord'
      });
+
+     
 
      function dataFeed(opts, callback) {
        var matchProperty = 'userName',
