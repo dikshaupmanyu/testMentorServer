@@ -475,7 +475,7 @@ function popupCreate(event) {
   $("ul#tasksreply" + event).show();
 
   var docId = document.getElementById("btn-input-replyId" + event).value;
-  // alert(docId);
+  //alert(docId);
   // var ids = docId.value;
   // docRef.doc(ids).get().then(function(doc) {
 
@@ -483,8 +483,12 @@ function popupCreate(event) {
 
   //      });
   var fullName = document.getElementById("user_nickname");
-  // alert(fullName.value);
-  var message = document.getElementById("btn-input-replymsg" + event);
+ 
+
+  var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();  
+ //alert(datap);
+   
+  //var message = document.getElementById("btn-input-replymsg" + event);
   // alert(message.value);
   var userId = document.getElementById("user_id");
   // alert(userId.value);
@@ -501,13 +505,13 @@ function popupCreate(event) {
   );
   // alert(docReply);
 
-  if (message.value != "") {
+  if (message != "") {
     // alert("message")
 
     let taskR = {
       userName: loggedInName,
       userId: loggedInVal,
-      message: message.value,
+      message: message,
       messageId: loggedInVal + "_" + Date.now(),
       messageType: "text",
       createdDate: Date.now(),
@@ -527,7 +531,9 @@ function popupCreate(event) {
 
       taskR.id = ref.id;
       // fullName.value = '';
-      message.value = "";
+     // message.value = "";
+         CKEDITOR.instances["btn-input-replymsg" + event].setData('');
+
       // alert("")
       // date.value = '';
 
@@ -740,7 +746,8 @@ $(document).ready(function() {
 
     CKEDITOR.replace(ckeditor , {
        plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-       
+        height: "100px",
+       width:"80%",
        toolbar: [{
            name: 'document',
            items: ['Undo', 'Redo']
@@ -1309,10 +1316,8 @@ function reviewTemplate(
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                       <textarea  id="btn-input-replymsg${taskId}" class="ckeditor" name="chapterContent[]"></textarea>
-                      <label for="emoji-buttons${taskId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${taskId}" dataid="${taskId}" onclick="emojifunction(this.value)" value="${taskId}" style="width:1px;  display:none;"></input>
-                        </label>
+                       <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+                     
                         
                         <span class="input-group-btn">
                         <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
