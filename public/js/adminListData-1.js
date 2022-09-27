@@ -153,7 +153,7 @@ const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 const tasksDOM = document.getElementById("tasks");
 var fullName   = document.getElementById('user_nickname');
 // alert(fullName.value);
-var message    = document.getElementById('btn-input');
+var message    = document.getElementById('editor1');
 var userId     = document.getElementById('user_id');
 // alert(userId.value);
 
@@ -189,13 +189,14 @@ function handleCreate(event) {
   // alert(loggedInName);
 // var today = Date.now();
  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
-     
+ var editorText = CKEDITOR.instances.editor1.getData();
+
  if(message.value != ""){
 
   let task = {
   userName: loggedInName,
   userId : loggedInVal,
-  message: message.value,
+  message: editorText,
   messageId : loggedInVal + "_"+  Date.now(),
   messageType : "text",
   createdDate :  Date.now(),
@@ -210,7 +211,9 @@ return docRef
   .then((ref) => {
     task.id = ref.id;
     // fullName.value = '';
-    message.value  = '';
+    // message.value  = '';
+    CKEDITOR.instances.editor1.setData('');
+
     // date.value = '';
     // return createTask(task);
   });
@@ -377,7 +380,9 @@ var docId     = document.getElementById('btn-input-replyId'+event).value;
 //      });
 var fullName   = document.getElementById('user_nickname');
 // alert(fullName.value);
-var message    = document.getElementById('btn-input-replymsg'+event);
+// var message    = document.getElementById('btn-input-replymsg'+event);
+var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();  
+
 // alert(message.value);
 var userId     = document.getElementById('user_id');
 // alert(userId.value);
@@ -394,12 +399,12 @@ var uniqueDocId = docId;
 const docReply = db.collection("/basilPrivateGroup/Test/messages/"+uniqueDocId+"/replies/"); 
 // alert(docReply);
 
-if(message.value != ""){
+if(message != ""){
 
  let taskR = {
  userName: loggedInName,
  userId : loggedInVal,
- message: message.value,
+ message: message,
  messageId : loggedInVal + "_"+  Date.now(),
  messageType : "text",
  createdDate :  Date.now(),
@@ -418,7 +423,10 @@ if(message.value != ""){
 
      taskR.id = ref.id;
      // fullName.value = '';
-     message.value  = '';
+    //  message.value  = '';
+    CKEDITOR.instances["btn-input-replymsg" + event].setData('');
+
+    return fetchTasksReply(taskR.id);
      // console.log(message.value)
      // date.value = '';
      // return createTask(task);
@@ -636,6 +644,100 @@ function replypopup(id) {
   // alert(id);
  fetchTasksReply(id);
 
+
+ $(document).ready(function() {
+  $(".ckeditor").each(function(_, ckeditor) {
+ 
+   var formData = { appUserName: "all" };
+     $.ajax({
+       type: "POST",
+       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+       data: formData,
+       success: function (datan) {
+         var dataks = JSON.stringify(datan);
+         var users = JSON.parse(dataks);
+ 
+     CKEDITOR.replace(ckeditor , {
+        plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
+        height: "50px",
+        width:"86%",
+        toolbarLocation: 'bottom',
+        toolbar: [{
+            name: 'document',
+            items: ['Undo', 'Redo']
+          },
+          {
+            name: 'basicstyles',
+            items: ['Bold', 'Italic', 'Strike']
+          },
+          {
+            name: 'links',
+            items: ['EmojiPanel', 'Link', 'Unlink']
+          }
+        ],
+        mentions: [{
+            feed: dataFeed,
+            itemTemplate: '<li data-id="{id}">' +
+              '<img class="photo" src="" />' +
+              '<strong class="userName">{userName}</strong>' +
+              '<span class="fullname"></span>' +
+              '</li>',
+            outputTemplate: '<a href="#">@{userName}</a><span>&nbsp;</span>',
+            minChars: 0
+          },
+          {
+           //  feed: tags,
+            marker: '#',
+            itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+            outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
+            minChars: 1
+          }
+        ],
+        removeButtons: 'PasteFromWord'
+      });
+ 
+      function dataFeed(opts, callback) {
+        var matchProperty = 'userName',
+          data = users.filter(function(item) {
+           // console.log(item) 
+           return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
+ 
+           });
+ 
+  
+        data = data.sort(function(a, b) {
+          return a[matchProperty].localeCompare(b[matchProperty], undefined, {
+            sensitivity: 'accent'
+          });
+        });
+  
+        callback(data);
+      }
+    }
+ 
+  });
+ 
+ // var formData = { appUserName: "all" };
+ //     $.ajax({
+ //       type: "POST",
+ //       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+ //       data: formData,
+ //       success: function (datan) {
+ //         var dataks = JSON.stringify(datan);
+ //         var users = JSON.parse(dataks);
+ 
+ 
+ 
+ 
+  
+   
+ 
+   //  },
+  //   });
+   });
+ 
+  
+ });
 
 }
 
@@ -1103,6 +1205,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          </div>
         
      </li>
+     <script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
+
      <div class="modal fade" id="exampleModalCenter${uniqueId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle${uniqueId}" aria-hidden="true" data-backdrop="static" data-keyboard="false">
              <div class="modal-dialog modal-lg" role="document" style="top:25px;">
              
@@ -1125,10 +1229,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                   </label>
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
 
                    <span class="input-group-btn">
                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1193,12 +1295,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                         <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                        <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                        <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                        😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                        </label> 
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
                          
-                        
                         <span class="input-group-btn">
                             <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1263,10 +1361,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="modal-footer">
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-               <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-               <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-               😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-               </label>
+               <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
                
                <span class="input-group-btn">
                    <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1334,10 +1429,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="modal-footer">
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-               <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-               <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-               😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-               </label>
+               <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
 
                <span class="input-group-btn">
                    <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1406,10 +1498,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              <div class="modal-footer">
              <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-               <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-               <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-               😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-               </label>
+               <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
 
                <span class="input-group-btn">
                    <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1490,10 +1579,7 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" type="text" onKeypress="myFunction(event,this.id)" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                   </label>
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
 
                    <span class="input-group-btn">
                        <button class=" Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
@@ -1579,11 +1665,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                   </label>
-  
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                    <span class="input-group-btn">
                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1666,11 +1749,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                   </label>
-                
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                    <span class="input-group-btn">
                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1754,11 +1834,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                   </label>
-              
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                    <span class="input-group-btn">
                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -1844,11 +1921,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                  <div class="modal-footer">
                  <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${uniqueId}' name='inputfile' onChange='getoutput(event,this.id)' style="display:inherit"/>
                    <input id="btn-input-replyId${uniqueId}" type="hidden" class="form-control input-lg" value="${uniqueId}" placeholder="Type your message here..." />
-                   <input id="btn-input-replymsg${uniqueId}" onKeypress="myFunction(event,this.id)" type="text" class="form-control input-lg" value="" placeholder="Type your message here..."  autocomplete="off"/>
-                   <label for="emoji-buttons${uniqueId}" style="cursor:pointer">
-                   😊<input type="button" id="emoji-buttons${uniqueId}" dataid="${uniqueId}" onclick="emojifunction(this.value)" value="${uniqueId}" style="width:1px;  display:none;"></input>
-                   </label>
-              
+                   <textarea id="btn-input-replymsg${uniqueId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+
                    <span class="input-group-btn">
                        <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${uniqueId}">
                            <i class="fa fa-paper-plane" aria-hidden="true"></i>

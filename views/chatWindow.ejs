@@ -205,7 +205,7 @@
  
                        
                         <!-- <textarea  id="btn-input" style="font-weight:bold;"  name="Short_text_editor" type="text" class="form-control input-lg" placeholder="Type your message here..."   autocomplete="off"></textarea> -->
-  <textarea cols="100" class="form-control" id="editor1" name="editor1" rows="2" style="width: 100%; height:30px" ></textarea>
+  <textarea cols="50" class="form-control" id="editor1" name="editor1" rows="2" style="width: 100%; height:30px" ></textarea>
 
 
                        
@@ -277,8 +277,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <script src='js/inputEmoji.js'></script>
-  <script src="https://cdn.tiny.cloud/1/it3ify0z40t5vo6kcajgeiy9u1wusf5nsuhp3h6j4a585vko/tinymce/5/tinymce.min.js"
-referrerpolicy="origin"></script>
   <script src="https://cdn.ckeditor.com/4.19.1/standard-all/ckeditor.js"></script>
 
    <script>
@@ -298,12 +296,9 @@ var formData = { appUserName: "all" };
  
      CKEDITOR.replace('editor1', {
        plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-       contentsCss: [
-         'http://cdn.ckeditor.com/4.19.1/full-all/contents.css',
-         'https://ckeditor.com/docs/ckeditor4/4.19.1/examples/assets/mentions/contents.css'
-       ],
-       height: "100px",
+       height: "50px",
        width:"92%",
+       toolbarLocation: 'bottom',
        toolbar: [{
            name: 'document',
            items: ['Undo', 'Redo']
@@ -324,14 +319,14 @@ var formData = { appUserName: "all" };
              '<strong class="userName">{userName}</strong>' +
              '<span class="fullname"></span>' +
              '</li>',
-           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span>&nbsp;</span>',
+           outputTemplate: '<a href="#">@{userName}</a><span>&nbsp;</span>',
            minChars: 0
          },
          {
           //  feed: tags,
-           marker: '#',
+          //  marker: '#',
            itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
-           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
+          //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
            minChars: 1
          }
        ],

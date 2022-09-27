@@ -771,3 +771,19 @@ cursor: pointer;
     left:-50px;
   }
 }
+
+body.cke_editable.cke_editable_themed.cke_contents_ltr{
+  line-height: 0.2;
+  font-size: 18px;
+  margin:0;
+}
+
+span#cke_1_bottom{
+  height: 20px;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+
+.spantags{
+  background-color: #007bff;
+}

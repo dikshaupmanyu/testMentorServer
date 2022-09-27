@@ -746,8 +746,9 @@ $(document).ready(function() {
 
     CKEDITOR.replace(ckeditor , {
        plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-        height: "100px",
-       width:"80%",
+        height: "50px",
+       width:"86%",
+       toolbarLocation: 'bottom',
        toolbar: [{
            name: 'document',
            items: ['Undo', 'Redo']
@@ -768,14 +769,14 @@ $(document).ready(function() {
              '<strong class="userName">{userName}</strong>' +
              '<span class="fullname"></span>' +
              '</li>',
-           outputTemplate: '<a href="mailto:{userName}@example.com">@{userName}</a><span></span>',
+           outputTemplate: '<a href="#">@{userName}</a><span>&nbsp;</span>',
            minChars: 0
          },
          {
           //  feed: tags,
            marker: '#',
            itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
-           outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
+          //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
            minChars: 1
          }
        ],
@@ -1316,7 +1317,7 @@ function reviewTemplate(
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                       <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+                       <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" cols="50" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
                      
                         
                         <span class="input-group-btn">
@@ -1385,7 +1386,7 @@ function reviewTemplate(
                       <div class="modal-footer">
                       <input type="file" class="fa fa-paperclip attachment btn btn-primary_1" id='${taskId}' name='inputfile' onChange='getoutput(event,this.id)'style="display:inherit"/>
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
-                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
+                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" class="ckeditor form-control" name="chapterContent[]" style="width:86%;"></textarea>
 
                         
                         <span class="input-group-btn">
