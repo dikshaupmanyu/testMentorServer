@@ -114,7 +114,7 @@ var date = document.getElementById("dateval");
 // utility functions
 function cleanData(snapshots) {
   let data = [];
-  snapshots.forEach(function (doc) {
+  snapshots.forEach(function(doc) {
     data.push({ id: doc.id, ...doc.data() });
   });
   return data;
@@ -126,29 +126,27 @@ function handleCreate(event) {
   var loggedInVal = document.getElementById("user_id").value;
   var loggedInName = document.getElementById("user_nickname").value;
   // var today = Date.now();
-  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";        
+  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
   // const utilityteam = document.getElementById("");
   // utilityteam.onclick = function (evt) {
-    // alert('hii')
-    // var addedtext = evt.target.innerHTML;
-    // console.log(addedtext.bold())
+  // alert('hii')
+  // var addedtext = evt.target.innerHTML;
+  // console.log(addedtext.bold())
 
-    var editorText = CKEDITOR.instances.editor1.getData();
-      //  var editID =  $('#editor1').html(editorText);
-      //  console.log(editID)
-    
+  var editorText = CKEDITOR.instances.editor1.getData();
+  //  var editID =  $('#editor1').html(editorText);
+  //  console.log(editID)
 
-    
-    // var text111 = $("#btn-input :selected").text();
-    var text12 = document.getElementById("editor1").value;
-    // var selectedValue =  $("input.select2-search__field").css("color","red");
-    // alert(text12);
-    // console.log(selectedValue)
-    // alert(text111)
-    // alert(text12)
-    // var Sdata = document.getElementById('spanId').innerHTML = addedtext.bold();
-    
-    // document.getElementById('buttonID').innerHTML = addedtext;
+  // var text111 = $("#btn-input :selected").text();
+  var text12 = document.getElementById("editor1").value;
+  // var selectedValue =  $("input.select2-search__field").css("color","red");
+  // alert(text12);
+  // console.log(selectedValue)
+  // alert(text111)
+  // alert(text12)
+  // var Sdata = document.getElementById('spanId').innerHTML = addedtext.bold();
+
+  // document.getElementById('buttonID').innerHTML = addedtext;
   // };
 
   if (message.value != "") {
@@ -171,7 +169,7 @@ function handleCreate(event) {
       task.id = ref.id;
       // fullName.value = '';
       // message.value = "";
-    CKEDITOR.instances.editor1.setData('');
+      CKEDITOR.instances.editor1.setData("");
 
       // date.value = '';
       // return createTask(task);
@@ -221,7 +219,7 @@ function getoutput(event, id) {
       .ref("message_storage_test_env/")
       .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
       .put(file)
-      .then(function (snapshot) {
+      .then(function(snapshot) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
@@ -264,7 +262,7 @@ function getoutput(event, id) {
       .ref("message_storage_test_env/")
       .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
       .put(file)
-      .then(function (snapshot) {
+      .then(function(snapshot) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
@@ -300,7 +298,7 @@ function getoutput(event, id) {
       .ref("message_storage_test_env/")
       .child(file.name + "_" + Date.now())
       .put(file)
-      .then(function (snapshot) {
+      .then(function(snapshot) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
@@ -333,21 +331,17 @@ function getoutput(event, id) {
       });
   }
   $(".successmsg").html("<span>Uploading File....</span>");
-  setTimeout(function () {
+  setTimeout(function() {
     $(".successmsg").empty();
   }, 8000);
 }
 
-
 // /////////////////////////
-
-
 
 // function getEventTarget(e) {
 //   e = e || window.event;
 //   return e.target || e.srcElement;
 // }
-
 
 // function myFunction(event, ids) {
 //   var uniqueChatIds = ids
@@ -400,12 +394,11 @@ function getoutput(event, id) {
 //       },
 //     });
 
-
 //   } else {
 
 //     if (unicode == 32) {
 //       var edValue = document.getElementById(uniqueChatIds);
-      
+
 //       var s = edValue.value;
 //       // alert(s)
 //       // var lblValue = document.getElementById("lblValueunpyIIyNNVdex6Lr70sf");
@@ -417,7 +410,6 @@ function getoutput(event, id) {
 //       str1 = s.substring(0, s.length - str.length );
 //       console.log(str1)
 //       let result = str.slice(1);
-
 
 //       var formData = { appUserName: "all" };
 //       $.ajax({
@@ -466,10 +458,7 @@ function getoutput(event, id) {
 //   }
 // }
 
-
-
 function popupCreate(event) {
-
   // alert("calling " + JSON.stringify(event));
 
   $("ul#tasksreply" + event).show();
@@ -483,11 +472,10 @@ function popupCreate(event) {
 
   //      });
   var fullName = document.getElementById("user_nickname");
- 
 
-  var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();  
- //alert(datap);
-   
+  var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
+  //alert(datap);
+
   //var message = document.getElementById("btn-input-replymsg" + event);
   // alert(message.value);
   var userId = document.getElementById("user_id");
@@ -531,8 +519,8 @@ function popupCreate(event) {
 
       taskR.id = ref.id;
       // fullName.value = '';
-     // message.value = "";
-         CKEDITOR.instances["btn-input-replymsg" + event].setData('');
+      // message.value = "";
+      CKEDITOR.instances["btn-input-replymsg" + event].setData("");
 
       // alert("")
       // date.value = '';
@@ -549,13 +537,13 @@ function popupCreate(event) {
   //  event.preventDefault();
 }
 
-$("i.fa.fa-paperclip.attachment.btn.btn-primary").click(function () {
+$("i.fa.fa-paperclip.attachment.btn.btn-primary").click(function() {
   // alert("calll");
   $("#imageUploaddata").trigger("click");
   // alert("data");
 });
 
-$("#imageUploaddata").on("change", function (e) {
+$("#imageUploaddata").on("change", function(e) {
   var val = $(this).val();
   // alert(val);
   // $(this).siblings('span').text(val);
@@ -585,7 +573,7 @@ $("#imageUploaddata").on("change", function (e) {
       .ref("message_storage_test_env/")
       .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
       .put(file)
-      .then(function (snapshot) {
+      .then(function(snapshot) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
@@ -625,7 +613,7 @@ $("#imageUploaddata").on("change", function (e) {
       .ref("message_storage_test_env/")
       .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
       .put(file)
-      .then(function (snapshot) {
+      .then(function(snapshot) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
@@ -659,7 +647,7 @@ $("#imageUploaddata").on("change", function (e) {
       .ref("message_storage_test_env/")
       .child(file.name + "_" + Date.now())
       .put(file)
-      .then(function (snapshot) {
+      .then(function(snapshot) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
@@ -690,7 +678,7 @@ $("#imageUploaddata").on("change", function (e) {
   }
 
   $(".successmsg").html('<span style="left:-999em">Uploading File....</span>');
-  setTimeout(function () {
+  setTimeout(function() {
     $(".successmsg").empty();
   }, 5000);
   // }else if(file.type == "audio/mpeg" || "audio/mp3" || "audio/wav" || "audio/wma" || "audio/aac" || "audio/m4a" || "audio/flac"){
@@ -732,101 +720,98 @@ function replypopup(id) {
   // alert("reply value");
   fetchTasksReply(id);
 
-$(document).ready(function() {
- $(".ckeditor").each(function(_, ckeditor) {
+  $(document).ready(function() {
+    $(".ckeditor").each(function(_, ckeditor) {
+      var formData = { appUserName: "all" };
+      $.ajax({
+        type: "POST",
+        url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+        data: formData,
+        success: function(datan) {
+          var dataks = JSON.stringify(datan);
+          var users = JSON.parse(dataks);
 
-  var formData = { appUserName: "all" };
-    $.ajax({
-      type: "POST",
-      url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-      data: formData,
-      success: function (datan) {
-        var dataks = JSON.stringify(datan);
-        var users = JSON.parse(dataks);
-
-    CKEDITOR.replace(ckeditor , {
-       plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-        height: "50px",
-       width:"86%",
-       toolbarLocation: 'bottom',
-       toolbar: [{
-           name: 'document',
-           items: ['Undo', 'Redo']
-         },
-         {
-           name: 'basicstyles',
-           items: ['Bold', 'Italic', 'Strike']
-         },
-         {
-           name: 'links',
-           items: ['EmojiPanel', 'Link', 'Unlink']
-         }
-       ],
-       mentions: [{
-           feed: dataFeed,
-           itemTemplate: '<li data-id="{id}">' +
-             '<img class="photo" src="" />' +
-             '<strong class="userName">{userName}</strong>' +
-             '<span class="fullname"></span>' +
-             '</li>',
-           outputTemplate: '<a href="#">@{userName}</a><span>&nbsp;</span>',
-           minChars: 0
-         },
-         {
-          //  feed: tags,
-           marker: '#',
-           itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
-          //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
-           minChars: 1
-         }
-       ],
-       removeButtons: 'PasteFromWord'
-     });
-
-     function dataFeed(opts, callback) {
-       var matchProperty = 'userName',
-         data = users.filter(function(item) {
-          // console.log(item) 
-          return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
-
+          CKEDITOR.replace(ckeditor, {
+            plugins:
+              "mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword",
+            height: "40px",
+            width: "86%",
+            toolbarLocation: "bottom",
+            toolbar: [
+              {
+                name: "document",
+                items: ["Undo", "Redo"],
+              },
+              {
+                name: "basicstyles",
+                items: ["Bold", "Italic", "Strike"],
+              },
+              {
+                name: "links",
+                items: ["EmojiPanel", "Link", "Unlink"],
+              },
+            ],
+            mentions: [
+              {
+                feed: dataFeed,
+                itemTemplate:
+                  '<li data-id="{id}">' +
+                  '<img class="photo" src="" />' +
+                  '<strong class="userName">{userName}</strong>' +
+                  '<span class="fullname"></span>' +
+                  "</li>",
+                outputTemplate:
+                  '<a href="#"><b>@{userName}<b></a><span></span>',
+                minChars: 0,
+              },
+              {
+                //  feed: tags,
+                //  marker: '#',
+                itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+                //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
+                minChars: 1,
+              },
+            ],
+            removeButtons: "PasteFromWord",
           });
 
- 
-       data = data.sort(function(a, b) {
-         return a[matchProperty].localeCompare(b[matchProperty], undefined, {
-           sensitivity: 'accent'
-         });
-       });
- 
-       callback(data);
-     }
-   }
+          function dataFeed(opts, callback) {
+            var matchProperty = "userName",
+              data = users.filter(function(item) {
+                // console.log(item)
+                return (
+                  item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                );
+              });
 
- });
+            data = data.sort(function(a, b) {
+              return a[matchProperty].localeCompare(
+                b[matchProperty],
+                undefined,
+                {
+                  sensitivity: "accent",
+                }
+              );
+            });
 
-// var formData = { appUserName: "all" };
-//     $.ajax({
-//       type: "POST",
-//       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-//       data: formData,
-//       success: function (datan) {
-//         var dataks = JSON.stringify(datan);
-//         var users = JSON.parse(dataks);
+            callback(data);
+          }
+        },
+      });
 
+      // var formData = { appUserName: "all" };
+      //     $.ajax({
+      //       type: "POST",
+      //       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+      //       data: formData,
+      //       success: function (datan) {
+      //         var dataks = JSON.stringify(datan);
+      //         var users = JSON.parse(dataks);
 
-
-
- 
-  
-
-  //  },
- //   });
+      //  },
+      //   });
+    });
   });
-
- 
-});
-
-
 }
 
 // dom functions
@@ -868,17 +853,17 @@ function fetchTasks() {
   docRef
     .orderBy("createdDate", "desc")
     .limit(100)
-    .onSnapshot(function (snapshot) {
+    .onSnapshot(function(snapshot) {
       snapshot
         .docChanges()
         .reverse()
-        .forEach(function (change) {
+        .forEach(function(change) {
           const docRefreply = db.collection(
             "/openGroups/demoOpenGroup1/messages/" + change.doc.id + "/replies/"
           );
           docRefreply
             .orderBy("createdDate", "asc")
-            .onSnapshot(function (snapshots) {
+            .onSnapshot(function(snapshots) {
               $("#sizedata" + change.doc.id).html(snapshots.size);
               $("#sizedatan" + change.doc.id).html(snapshots.size);
 
@@ -992,7 +977,7 @@ function fetchTasksReply(id) {
     "/openGroups/demoOpenGroup1/messages/" + docId + "/replies/"
   );
 
-  docRefreply.orderBy("createdDate", "asc").onSnapshot(function (snapshots) {
+  docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
     // alert(snapshots.size);
     const tasksDOMReply = document.getElementById("tasksreply" + docId);
 
@@ -1016,7 +1001,7 @@ function fetchTasksReply(id) {
         $("li#testingIds").remove();
       }
 
-      snapshots.docChanges().forEach(function (changes) {
+      snapshots.docChanges().forEach(function(changes) {
         // alert(snapshots.size);
 
         const tasksDOMReplys = document.getElementById("tasksreply" + docId);
@@ -1633,7 +1618,7 @@ function reviewTemplate(
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
           
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;" >
+          <div class="chat-body1 clearfix chat-black agent" style="float:none;background:#77839647;color:#000;" >
           
           <div class="overlay">
               <div class="overlay-1">
@@ -1812,7 +1797,7 @@ function reviewTemplate(
           <span class="chat-img left clearfix mx-2">
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class=" chat-body clearfix  agent" style="float:none;background:#77839647;color:#000;">
             <div class="overlay">
                 <div class="overlay-1">
                   <div class="content-2"  id='popup${taskId}'>
@@ -2322,7 +2307,7 @@ function reviewTemplateReply(
           <span class="chat-img left clearfix mx-2">
               <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
           </span>
-          <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+          <div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
               <div class="header clearfix">              
                   <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
                   <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
@@ -2439,25 +2424,25 @@ function TogglePopup(e) {
 }
 
 // to close popup outside
-$(document).mouseup(function (e) {
+$(document).mouseup(function(e) {
   if ($(e.target).closest(".content").length === 0) {
     $(".content").hide();
   }
 });
 
-$(document).mouseup(function (e) {
+$(document).mouseup(function(e) {
   if ($(e.target).closest(".content-2").length === 0) {
     $(".content-2").hide();
   }
 });
 
-$(document).mouseup(function (e) {
+$(document).mouseup(function(e) {
   if ($(e.target).closest(".Content").length === 0) {
     $(".Content").hide();
   }
 });
 
-$(document).mouseup(function (e) {
+$(document).mouseup(function(e) {
   if ($(e.target).closest(".Content-2").length === 0) {
     $(".Content-2").hide();
   }
@@ -2494,7 +2479,7 @@ function copyClipboard(e) {
   document.execCommand("copy");
   document.body.removeChild(elem);
   $(".successmsg").html("<span>Message has been copied to clipboard..</span>");
-  setTimeout(function () {
+  setTimeout(function() {
     $(".successmsg").empty();
   }, 5000);
   // alert("Message has been copied to clipboard..");
@@ -2516,7 +2501,7 @@ function flagData(e, f) {
   docRef
     .doc(id)
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       //  console.log(doc.id, " => ", doc.data());
 
       var id = doc.id;
@@ -2594,9 +2579,7 @@ function closepopup(id) {
   // });
 }
 
-
-
-$(document).keypress(function (e) {
+$(document).keypress(function(e) {
   if (e.which == 13) {
     e.preventDefault();
     $(".Btn").click();

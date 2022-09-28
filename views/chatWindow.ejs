@@ -296,7 +296,7 @@ var formData = { appUserName: "all" };
  
      CKEDITOR.replace('editor1', {
        plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-       height: "50px",
+       height: "40px",
        width:"92%",
        toolbarLocation: 'bottom',
        toolbar: [{
@@ -319,13 +319,13 @@ var formData = { appUserName: "all" };
              '<strong class="userName">{userName}</strong>' +
              '<span class="fullname"></span>' +
              '</li>',
-           outputTemplate: '<a href="#">@{userName}</a><span>&nbsp;</span>',
+           outputTemplate: '<a href="#"><b>@{userName}<b></a><span></span>',
            minChars: 0
          },
          {
           //  feed: tags,
           //  marker: '#',
-           itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+           itemTemplate: '<li data-id="{id}"><strong >{name}</strong></li>',
           //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span>&nbsp;</span>',
            minChars: 1
          }
