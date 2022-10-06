@@ -459,6 +459,8 @@ function getoutput(event, id) {
 // }
 
 function popupCreate(event) {
+        var fcmToken = "<%= fcmToken %>";
+      // alert(fcmToken);
   // alert("calling " + JSON.stringify(event));
 
   $("ul#tasksreply" + event).show();
@@ -474,24 +476,21 @@ function popupCreate(event) {
   var fullName = document.getElementById("user_nickname");
 
   var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
+  console.log(message)
   //alert(datap);
 
   //var message = document.getElementById("btn-input-replymsg" + event);
   // alert(message.value);
   var userId = document.getElementById("user_id");
-  // alert(userId.value);
-
   var loggedInVal = userId.value;
-  // alert(loggedInVal);
   var loggedInName = fullName.value;
-  // alert(loggedInName);
   var uniqueDocId = docId;
-  // alert(uniqueDocId);
 
   const docReply = db.collection(
     "/openGroups/demoOpenGroup1/messages/" + uniqueDocId + "/replies/"
   );
   // alert(docReply);
+
 
   if (message != "") {
     // alert("message")
@@ -511,6 +510,27 @@ function popupCreate(event) {
     };
 
     return docReply.add(taskR).then((ref) => {
+
+      
+      $.ajax({
+        type: "POST",
+        url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
+        headers: {
+          Authorization: 'Bearer '+ "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NDg1OTg1NCwiZXhwIjoxNjY1NDY0NjU0fQ.CKaFf0y-YMfyMFqdSzBcBCUZ9OPRiaNTiwH0bby3bDwctX_I1eY0LQgMfaqCmyVUbHKcKIRx728qn2V2DaUzWA" ,
+          // Authorization: 'Bearer '+ fcmToken  ,
+        },
+        data: {
+          chatRoomName : "demoGroupRoom",
+          userNames : "aditi"
+        },
+        success: function (data) {
+          var dataks = JSON.stringify(data);
+          var dataResults = JSON.parse(dataks);
+          alert(dataResults);
+          console.log(dataResults);
+  
+        },
+      });
       // alert(ref);
       // alert(ref.id);
       // console.log("div#exampleModalCenter"+uniqueDocId);
@@ -526,15 +546,12 @@ function popupCreate(event) {
       // date.value = '';
 
       return fetchTasksReply(taskR.id);
+
+      
     });
   }
-  //  if(message.value == "") {
-  //     // alert("empty")
-  //   $(".successmsg").html('<span>Message not empty.</span>');
-  //   setTimeout(function(){$(".successmsg").empty()}, 5000);
-  //  }
 
-  //  event.preventDefault();
+
 }
 
 $("i.fa.fa-paperclip.attachment.btn.btn-primary").click(function() {
@@ -775,10 +792,11 @@ function replypopup(id) {
             removeButtons: "PasteFromWord",
           });
 
+
+
           function dataFeed(opts, callback) {
             var matchProperty = "userName",
               data = users.filter(function(item) {
-                // console.log(item)
                 return (
                   item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
                 );
@@ -798,18 +816,6 @@ function replypopup(id) {
           }
         },
       });
-
-      // var formData = { appUserName: "all" };
-      //     $.ajax({
-      //       type: "POST",
-      //       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-      //       data: formData,
-      //       success: function (datan) {
-      //         var dataks = JSON.stringify(datan);
-      //         var users = JSON.parse(dataks);
-
-      //  },
-      //   });
     });
   });
 }
@@ -982,6 +988,7 @@ function fetchTasksReply(id) {
     const tasksDOMReply = document.getElementById("tasksreply" + docId);
 
     if (snapshots.size == 0) {
+      // alert('okok')
       if ($("li#testingIds").size() > 0) {
         $("li#testingIds").remove();
       }
@@ -995,7 +1002,10 @@ function fetchTasksReply(id) {
       // alert(elemreplys);
       tasksDOMReply.append(elemreplys);
       $("ul#tasksreply" + id).show();
+
     } else {
+
+
       // $('li#testingIds').empty();
       if ($("li#testingIds").size() > 0) {
         $("li#testingIds").remove();
@@ -1027,6 +1037,7 @@ function fetchTasksReply(id) {
         var taskId = changes.doc.id;
 
         if (changes.type === "added") {
+          // alert('yes')
           var userIdcs = document.getElementById("user_id");
           // console.log("userIdcs"+userIdcs.value);
           var userNamescs = document.getElementById("user_nickname");
