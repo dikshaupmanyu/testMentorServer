@@ -107,8 +107,9 @@ var fullName = document.getElementById("user_nickname");
 var message = document.getElementById("editor1");
 var userId = document.getElementById("user_id");
 // alert(userId.value);
-
 var hiddenId = document.getElementById("hiddenId");
+var tokenlogin = document.getElementById('tokenval');
+//alert(tokenlogin);
 
 var date = document.getElementById("dateval");
 // utility functions
@@ -516,12 +517,12 @@ function popupCreate(event) {
         type: "POST",
         url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
         headers: {
-          Authorization: 'Bearer '+ "eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NDg1OTg1NCwiZXhwIjoxNjY1NDY0NjU0fQ.CKaFf0y-YMfyMFqdSzBcBCUZ9OPRiaNTiwH0bby3bDwctX_I1eY0LQgMfaqCmyVUbHKcKIRx728qn2V2DaUzWA" ,
+          Authorization: 'Bearer '+ tokenlogin,
           // Authorization: 'Bearer '+ fcmToken  ,
         },
         data: {
           chatRoomName : "demoGroupRoom",
-          userNames : "aditi"
+          userNames : loggedInName
         },
         success: function (data) {
           var dataks = JSON.stringify(data);
@@ -784,7 +785,7 @@ function replypopup(id) {
               {
                 //  feed: tags,
                 //  marker: '#',
-                itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+                itemTemplate: '<li data-id="{id}"><strong id="{id}">{name}</strong></li>',
                 //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
                 minChars: 1,
               },

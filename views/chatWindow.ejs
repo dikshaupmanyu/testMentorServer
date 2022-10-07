@@ -54,12 +54,17 @@
             var LoggedInId = "<%= userid %>";
             // alert(LoggedInId);
             var replyIdss = "<%= uniquereply %>";
+
+            var logintoken = "<%= tokens %>";
+            //alert(logintoken);
             
             
             $('#msgreplyId').val(replyIdss);
             $("#user_nickname").val(userName);
             $('#user_id').val(LoggedInId);
             $("#user_fcm_token").val(fcmToken);
+             $("#tokenval").val(logintoken);
+
             // var today = new Date();
             // // alert(today);
             // var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + 
@@ -195,6 +200,7 @@
                         <input type="hidden" id="user_id">
                         <input type="hidden" id="user_nickname">
                         <input type="hidden" id="user_fcm_token">
+                        <input type="hidden" id="tokenval">
                        <!--  <input type="hidden" id="dateval"> -->
                         <span class="input-group-btn">
                              <input type="file" id="imageUploaddata" style="display: none;">
@@ -596,7 +602,3 @@ firebase.auth().signInWithCustomToken(fcmToken)
 
 </body>
 </html>
-
-<!-- <div><a href="replyMsg?messageId=${taskId}" target="_blank" style="color: black;">  ${countReply} Reply </a> </div> 
-              <a onClick='copyClipboard(this.id)' id='${taskId}'><div style="cursor:pointer;">Copy</div></a>
-              <a onClick='flagData(this.id)' id='${taskId}'><div style="cursor:pointer;">Flag</div></a> -->
