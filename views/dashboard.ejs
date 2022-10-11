@@ -877,7 +877,6 @@ var formdata = {  offset: 0, limit: 1000000};
   var myoffset=0;
   var  mylimit=50;
    
-    // loadAi(myoffset,mylimit);
     loaddata();
     loaddemodata(myoffset,mylimit);
 
@@ -931,11 +930,11 @@ $(".scroller-dash-left").scroll(function() {
       success: function(data) {
         var datak = JSON.stringify(data);
        var dataResult = JSON.parse(datak);
-       // console.log(dataResult);
+       console.log(dataResult);
        var text = "" ;
        var textboth = "" ;
        var len = dataResult.length;
-       // console.log(len);
+      // alert(len);
        var stockVal = [];
        var tipId = [];
        var tipPrice = [];
@@ -962,10 +961,6 @@ $(".scroller-dash-left").scroll(function() {
              // if(dataResult[i].commentCount == "0"){
              //    document.getElementById("comntDataa").innerHTML = "New text!";
              //  }
-
-            
-
-
               // console.log(dataResult[i].tip.stockName);  
 
              var date = new Date(dataResult[i].tip.modifiedOn);
