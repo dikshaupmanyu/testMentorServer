@@ -106,10 +106,11 @@ const tasksDOM = document.getElementById("tasks");
 var fullName = document.getElementById("user_nickname");
 var message = document.getElementById("editor1");
 var userId = document.getElementById("user_id");
+// var loginToken = document.getElementById("user_id");
 // alert(userId.value);
 var hiddenId = document.getElementById("hiddenId");
 var tokenlogin = document.getElementById('tokenval');
-//alert(tokenlogin);
+alert(tokenlogin)
 
 var date = document.getElementById("dateval");
 // utility functions
@@ -136,8 +137,10 @@ function handleCreate(event) {
 
   var editorText = CKEDITOR.instances.editor1.getData();
   //  var editID =  $('#editor1').html(editorText);
-  //  console.log(editID)
+  //  console.log(editorText)
 
+  var PNames = document.getElementById("pTag").innerHTML
+  // alert(PNames)
   // var text111 = $("#btn-input :selected").text();
   var text12 = document.getElementById("editor1").value;
   // var selectedValue =  $("input.select2-search__field").css("color","red");
@@ -166,6 +169,26 @@ function handleCreate(event) {
     };
 
     return docRef.add(task).then((ref) => {
+
+      $.ajax({
+        type: "POST",
+        url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
+        headers: {
+          // Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
+          Authorization: 'Bearer '+ tokenlogin  ,
+        },
+        data: {
+          chatRoomName : "demoGroupRoom",
+          userNames : PNames
+        },
+        success: function (data) {
+          var dataks = JSON.stringify(data);
+          var dataResults = JSON.parse(dataks);
+          // alert(dataResults[0].message);
+          console.log(dataResults);
+  
+        },
+      });
       //  console.log(ref.id);
       task.id = ref.id;
       // fullName.value = '';
@@ -459,6 +482,19 @@ function getoutput(event, id) {
 //   }
 // }
 
+function FunctionClick(e){
+
+  // alert(e);
+
+//  var dataID =  document.getElementById("IDData").value
+var dataIDs = document.getElementsByTagName("li")
+
+ var mm1 = document.getElementsByClassName("cke_autocomplete_selected")[0].innerText
+ console.log(mm1)
+
+ document.getElementById("pTag").innerHTML = mm1
+}
+
 function popupCreate(event) {
         var fcmToken = "<%= fcmToken %>";
       // alert(fcmToken);
@@ -477,7 +513,12 @@ function popupCreate(event) {
   var fullName = document.getElementById("user_nickname");
 
   var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
-  console.log(message)
+  // console.log(message)
+
+  var PName = document.getElementById("pTag").innerHTML
+  // alert(PName)
+  // var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
+
   //alert(datap);
 
   //var message = document.getElementById("btn-input-replymsg" + event);
@@ -490,8 +531,6 @@ function popupCreate(event) {
   const docReply = db.collection(
     "/openGroups/demoOpenGroup1/messages/" + uniqueDocId + "/replies/"
   );
-  // alert(docReply);
-
 
   if (message != "") {
     // alert("message")
@@ -512,26 +551,29 @@ function popupCreate(event) {
 
     return docReply.add(taskR).then((ref) => {
 
+      // alert("hii")
       
       $.ajax({
         type: "POST",
         url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
         headers: {
-          Authorization: 'Bearer '+ tokenlogin,
+          Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
           // Authorization: 'Bearer '+ fcmToken  ,
         },
         data: {
           chatRoomName : "demoGroupRoom",
-          userNames : loggedInName
+          userNames : PName
         },
         success: function (data) {
           var dataks = JSON.stringify(data);
           var dataResults = JSON.parse(dataks);
-          alert(dataResults);
+          // alert(dataResults);
           console.log(dataResults);
   
         },
       });
+
+
       // alert(ref);
       // alert(ref.id);
       // console.log("div#exampleModalCenter"+uniqueDocId);
@@ -773,19 +815,19 @@ function replypopup(id) {
               {
                 feed: dataFeed,
                 itemTemplate:
-                  '<li data-id="{id}">' +
+                  '<li data-id="{id}" id="IDData" onclick="FunctionClick(this.id)">' +
                   '<img class="photo" src="" />' +
-                  '<strong class="userName">{userName}</strong>' +
+                  '<strong  class="userName">{userName}</strong>' +
                   '<span class="fullname"></span>' +
                   "</li>",
                 outputTemplate:
-                  '<a href="#"><b>@{userName}<b></a><span></span>',
+                  '<a href="#"><b id="dataID">@{userName}<b></a><span></span>',
                 minChars: 0,
               },
               {
                 //  feed: tags,
                 //  marker: '#',
-                itemTemplate: '<li data-id="{id}"><strong id="{id}">{name}</strong></li>',
+                // itemTemplate: '<li data-id="{id}"><strong id="{id}">{name}</strong></li>',
                 //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
                 minChars: 1,
               },
@@ -793,7 +835,7 @@ function replypopup(id) {
             removeButtons: "PasteFromWord",
           });
 
-
+       
 
           function dataFeed(opts, callback) {
             var matchProperty = "userName",
@@ -974,6 +1016,8 @@ function fetchTasks() {
 
   // });
 }
+
+
 
 fetchTasks();
 
@@ -1314,8 +1358,8 @@ function reviewTemplate(
                
                         
                         <input id="btn-input-replyId${taskId}" type="hidden" class="form-control input-lg" value="${taskId}" placeholder="Type your message here..." />
+                       
                        <textarea id="btn-input-replymsg${taskId}" onkeypress="myFunction(event,this.id)" cols="50" class="ckeditor form-control" name="chapterContent[]" style="width:100%;"></textarea>
-                     
                         
                         <span class="input-group-btn">
                         <button class="Btn btn btn-primary" type="button" onClick='popupCreate(this.id)' id="${taskId}" >
