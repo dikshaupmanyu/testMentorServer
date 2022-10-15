@@ -110,7 +110,7 @@ var userId = document.getElementById("user_id");
 // alert(userId.value);
 var hiddenId = document.getElementById("hiddenId");
 var tokenlogin = document.getElementById('tokenval');
-alert(tokenlogin)
+console.log(tokenlogin)
 
 var date = document.getElementById("dateval");
 // utility functions
@@ -127,6 +127,8 @@ function handleCreate(event) {
   event.preventDefault();
   var loggedInVal = document.getElementById("user_id").value;
   var loggedInName = document.getElementById("user_nickname").value;
+  var logintoken = document.getElementById("tokenval").value;
+  // alert(logintoken)
   // var today = Date.now();
   //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
   // const utilityteam = document.getElementById("");
@@ -169,24 +171,28 @@ function handleCreate(event) {
     };
 
     return docRef.add(task).then((ref) => {
-
+      // alert(logintoken)
       $.ajax({
         type: "POST",
         url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
         headers: {
           // Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
-          Authorization: 'Bearer '+ tokenlogin  ,
+          Authorization: 'Bearer '+ logintoken  ,
         },
         data: {
           chatRoomName : "demoGroupRoom",
           userNames : PNames
         },
         success: function (data) {
+          // console.log(data[0].message)
           var dataks = JSON.stringify(data);
           var dataResults = JSON.parse(dataks);
           // alert(dataResults[0].message);
-          console.log(dataResults);
-  
+          // console.log(dataResults[0].message);
+          $(".successmsg").html(dataResults[0].message);
+          setTimeout(function() {
+            $(".successmsg").empty();
+          }, 3000);
         },
       });
       //  console.log(ref.id);
@@ -499,6 +505,7 @@ function popupCreate(event) {
         var fcmToken = "<%= fcmToken %>";
       // alert(fcmToken);
   // alert("calling " + JSON.stringify(event));
+  var logintoken = document.getElementById("tokenval").value;
 
   $("ul#tasksreply" + event).show();
 
@@ -557,8 +564,8 @@ function popupCreate(event) {
         type: "POST",
         url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
         headers: {
-          Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
-          // Authorization: 'Bearer '+ fcmToken  ,
+          // Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
+          Authorization: 'Bearer '+ logintoken  ,
         },
         data: {
           chatRoomName : "demoGroupRoom",
@@ -569,6 +576,10 @@ function popupCreate(event) {
           var dataResults = JSON.parse(dataks);
           // alert(dataResults);
           console.log(dataResults);
+          $(".successmsg").html(dataResults[0].message);
+          setTimeout(function() {
+            $(".successmsg").empty();
+          }, 3000);
   
         },
       });
