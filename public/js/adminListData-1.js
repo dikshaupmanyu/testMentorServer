@@ -10,14 +10,18 @@ var config = {
   appId: "1:592114858590:web:2e2f77237953b570fb52cf",
   measurementId: "G-B3RPK4JXG3",
   private_key_id: "9efaa0e3e7bf1fac231c69b552514e210442b223",
-  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDoxICupYmqJ8yY\nmWkKk8lWp3dKzdAfOkAuyb8yrD9WWYOSUsAMIBY+irMBy74uFeJry8hfHicsBWSW\nuzL04S2S6dlJfeuBFI7GmgNIUG3GDfBROKeUS/XUzY2qg0+dNvgYgFbzoBNc0sMH\nxf4Ezarp/3CDqroWQRD0hvn2zUjNOnWqMP4NcZZfhyNJJcrFyvEWcMs8gWR0r+fQ\nijbGVgqf1n9T+HpGBXkXi9X3tZHe3HW4P6n0gjLU1eU8kOr6V6LDDAngp6ESsuQJ\nAyN81Sz9Axi4hygyWl7Oq7zpitVQxjHwzdMuWMGb/GbnHsleJRYHErk85qaHAvp1\nuS416baJAgMBAAECggEACe+VZJ8ZVMOVJrBpvPNZBVNpsq49Y4/bfIPNHw8eNwPk\nK2NP4lSeTnYiNQHq8NGrVBmjSHgjiOwEArEj+DMCfIJx7YKsAlsLyyt412XjgbBH\noVfvQ1PIvxg1I2GujNHzXixgSc779Jrki1jmwnK7CHkIZv5rKhcF78IxOllB8cyn\nsDdEOkYPAvYeVpIG1j3JQD4Yeo5xyT/MEhzZKqvNeg+uKkDS9R3P5jz94gRTbAtv\n3sKuS6Hrx2tn+BmqhpG1YFlKGMeTpAN42Jf96HJZQQvzho1AmTJh1Ep3fCgMOYhW\n0IJa1JnfVlHlZrL2NmLJ7ac+7yCIBPCXGtkihaHmzwKBgQD4g3si7vB2PBFTXxX5\nTJ0LubY/zyMp0sja/Rp2JYVVHh2WNHa6/TKyxksCG2OlMHbHV99QTrBuIyVYPWbN\njGPeQQAwd+y31RhHyePG99gwxvY8rRSzrEoPev6/6LHM5MdPqNzyujY0w0kUp5UR\nUyANKnCVeOll4IEmApBNfT3UhwKBgQDvx5buPbqdGA4mPKmEq/TLUy4OXVCnd1e3\nOe95qQIcbChCCAkSVeJ3nSvE5d0eBGJNlhaWeTA3DP/963o4frkRmaQJK9BsXdnb\nVj5iG3QRRKCYpamH1kY1AHc/G7P7a4hBPJ+4yblpGBiC7EayG9uBhgDA2sdLOPWW\nF1pZ20TwbwKBgAjz66a5hu4rgdBIF6mQigPXH+qykqi6EERbY+2nsmL7n8M+hpx7\n7KymGiOsSu2zjkPmNYRWIWMGXx0LsT1sdliWbORSHbQNuD811b/gQ+iV8l8DOUCz\nz0M5gh31yxn/j/KducAA110VP/e/hc5G+VugEMhBv97MtLpi00IHZgfXAoGBAIBq\nmWfQwY/+4R0TYgp++aSnUMQ6r8ZwwRaNPbcfj9TfDBSJLyqVuqsrDtTt8qVv3aIF\n3uUJ1Iu3N6arJZL6M228pkCPKZnQDaxNnS133IqfAY+fMZNha8pZDIRM9vCRH7Eo\nobYau2UQlZgQqLAdAUt2FBM1WITt5YFT0nzLVTmbAoGBAO/p5zqkeQ3Yjt7qIs8g\nbQTByK/9TsDRdiK9RfsEKuq70BHLuyYoW6jt9yR4AlbQHEFjGek9mWw4k45aZB5P\n2vjISHPiQoAAGVE9eowmvcckYn+IFFkNIs9s3UBX1d2RBzOgy3XMYE897DWGmKc+\n7F3mTXJtUyyjUqERXKBTYxN0\n-----END PRIVATE KEY-----\n",
-  client_email: "firebase-adminsdk-olv1b@tradetips-9baa3.iam.gserviceaccount.com",
+  private_key:
+    "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDoxICupYmqJ8yY\nmWkKk8lWp3dKzdAfOkAuyb8yrD9WWYOSUsAMIBY+irMBy74uFeJry8hfHicsBWSW\nuzL04S2S6dlJfeuBFI7GmgNIUG3GDfBROKeUS/XUzY2qg0+dNvgYgFbzoBNc0sMH\nxf4Ezarp/3CDqroWQRD0hvn2zUjNOnWqMP4NcZZfhyNJJcrFyvEWcMs8gWR0r+fQ\nijbGVgqf1n9T+HpGBXkXi9X3tZHe3HW4P6n0gjLU1eU8kOr6V6LDDAngp6ESsuQJ\nAyN81Sz9Axi4hygyWl7Oq7zpitVQxjHwzdMuWMGb/GbnHsleJRYHErk85qaHAvp1\nuS416baJAgMBAAECggEACe+VZJ8ZVMOVJrBpvPNZBVNpsq49Y4/bfIPNHw8eNwPk\nK2NP4lSeTnYiNQHq8NGrVBmjSHgjiOwEArEj+DMCfIJx7YKsAlsLyyt412XjgbBH\noVfvQ1PIvxg1I2GujNHzXixgSc779Jrki1jmwnK7CHkIZv5rKhcF78IxOllB8cyn\nsDdEOkYPAvYeVpIG1j3JQD4Yeo5xyT/MEhzZKqvNeg+uKkDS9R3P5jz94gRTbAtv\n3sKuS6Hrx2tn+BmqhpG1YFlKGMeTpAN42Jf96HJZQQvzho1AmTJh1Ep3fCgMOYhW\n0IJa1JnfVlHlZrL2NmLJ7ac+7yCIBPCXGtkihaHmzwKBgQD4g3si7vB2PBFTXxX5\nTJ0LubY/zyMp0sja/Rp2JYVVHh2WNHa6/TKyxksCG2OlMHbHV99QTrBuIyVYPWbN\njGPeQQAwd+y31RhHyePG99gwxvY8rRSzrEoPev6/6LHM5MdPqNzyujY0w0kUp5UR\nUyANKnCVeOll4IEmApBNfT3UhwKBgQDvx5buPbqdGA4mPKmEq/TLUy4OXVCnd1e3\nOe95qQIcbChCCAkSVeJ3nSvE5d0eBGJNlhaWeTA3DP/963o4frkRmaQJK9BsXdnb\nVj5iG3QRRKCYpamH1kY1AHc/G7P7a4hBPJ+4yblpGBiC7EayG9uBhgDA2sdLOPWW\nF1pZ20TwbwKBgAjz66a5hu4rgdBIF6mQigPXH+qykqi6EERbY+2nsmL7n8M+hpx7\n7KymGiOsSu2zjkPmNYRWIWMGXx0LsT1sdliWbORSHbQNuD811b/gQ+iV8l8DOUCz\nz0M5gh31yxn/j/KducAA110VP/e/hc5G+VugEMhBv97MtLpi00IHZgfXAoGBAIBq\nmWfQwY/+4R0TYgp++aSnUMQ6r8ZwwRaNPbcfj9TfDBSJLyqVuqsrDtTt8qVv3aIF\n3uUJ1Iu3N6arJZL6M228pkCPKZnQDaxNnS133IqfAY+fMZNha8pZDIRM9vCRH7Eo\nobYau2UQlZgQqLAdAUt2FBM1WITt5YFT0nzLVTmbAoGBAO/p5zqkeQ3Yjt7qIs8g\nbQTByK/9TsDRdiK9RfsEKuq70BHLuyYoW6jt9yR4AlbQHEFjGek9mWw4k45aZB5P\n2vjISHPiQoAAGVE9eowmvcckYn+IFFkNIs9s3UBX1d2RBzOgy3XMYE897DWGmKc+\n7F3mTXJtUyyjUqERXKBTYxN0\n-----END PRIVATE KEY-----\n",
+  client_email:
+    "firebase-adminsdk-olv1b@tradetips-9baa3.iam.gserviceaccount.com",
   client_id: "112955508654296836542",
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zgd2j%40chatdemo-96e4f.iam.gserviceaccount.com",
-  vapidKey: 'BN2e4vqb2-OY-QX6Z0531oQ1pSiiEUNQU2SEcSaEiMvJFcy8unSAW6gPrFJQeHz0VQyPu2JLqVuaFDnfeDmpy3o'
+  client_x509_cert_url:
+    "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zgd2j%40chatdemo-96e4f.iam.gserviceaccount.com",
+  vapidKey:
+    "BN2e4vqb2-OY-QX6Z0531oQ1pSiiEUNQU2SEcSaEiMvJFcy8unSAW6gPrFJQeHz0VQyPu2JLqVuaFDnfeDmpy3o",
   // apiKey: "AIzaSyA89MvmT1QzbvnCGfZ8B7yaJRuE3DwaOPE",
   // authDomain: "chatdemo-96e4f.firebaseapp.com",
   // databaseURL: "https://chatdemo-96e4f.firebaseio.com",
@@ -35,818 +39,926 @@ var config = {
   // token_uri: "https://oauth2.googleapis.com/token",
   // auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   // client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zgd2j%40chatdemo-96e4f.iam.gserviceaccount.com"
-
 };
 
 firebase.initializeApp(config);
 
-
 var db = firebase.firestore();
 
-
 function getGroupDetail() {
-
-       var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
-       monthlies.then((res) => {
-        // console.log(res.data().groupCode);
-        document.getElementById('room-button-2').innerText =  res.data().groupTitle + " Room";
-
-       });
-
-
+  var monthlies = db
+    .collection("/basilPrivateGroup")
+    .doc("Test")
+    .get();
+  monthlies.then((res) => {
+    // console.log(res.data().groupCode);
+    document.getElementById("room-button-2").innerText =
+      res.data().groupTitle + " Room";
+  });
 }
 
- getGroupDetail();
-
+getGroupDetail();
 
 function getGroupDetails() {
-
-       var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
-       monthlies.then((res) => {
-        // console.log(res.data().groupCode);
-        document.getElementById('room-Button-2').innerText =  res.data().groupTitle + " Room";
-
-       });
-
-
+  var monthlies = db
+    .collection("/basilPrivateGroup")
+    .doc("Test")
+    .get();
+  monthlies.then((res) => {
+    // console.log(res.data().groupCode);
+    document.getElementById("room-Button-2").innerText =
+      res.data().groupTitle + " Room";
+  });
 }
 
- getGroupDetails();
+getGroupDetails();
 
- function getGroupDetailroomOnes() {
-
-  var monthlies = db.collection("/openGroups").doc("demoOpenGroup1").get();
+function getGroupDetailroomOnes() {
+  var monthlies = db
+    .collection("/openGroups")
+    .doc("demoOpenGroup1")
+    .get();
   monthlies.then((res) => {
-   // console.log(res.data().groupCode);
-   document.getElementById('room-Button-1').innerText = res.data().groupTitle + " Room";
-  
+    // console.log(res.data().groupCode);
+    document.getElementById("room-Button-1").innerText =
+      res.data().groupTitle + " Room";
   });
-  
-  
-  }
+}
 
-  getGroupDetailroomOnes();
+getGroupDetailroomOnes();
 
-  function getSoicalChatroomOne() {
+function getSoicalChatroomOne() {
+  var monthlies = db
+    .collection("/socialchat")
+    .doc("Test")
+    .get();
+  monthlies.then((res) => {
+    console.log(res.data().groupTitle);
+    document.getElementById("room-Button-3").innerText = res.data().groupTitle;
+  });
+}
 
-    var monthlies = db.collection("/socialchat").doc("Test").get();
-    monthlies.then((res) => {
-     console.log(res.data().groupTitle);
-     document.getElementById('room-Button-3').innerText = res.data().groupTitle ;
-    
-    });
-    
-    
-    }
-    
-    getSoicalChatroomOne();
+getSoicalChatroomOne();
 
-        
-$("#formoid").submit(function(event){
+$("#formoid").submit(function(event) {
   // alert("hiii");
   event.preventDefault();
 
-    var monthlies = db.collection("/basilPrivateGroup").doc("Test").get();
-       monthlies.then((res) => {
-        // console.log(res.data().groupCode);
-          var enterCode    = document.getElementById('pcode');
-          if(enterCode.value == res.data().groupCode){
-            var loggedInName =  "<%= userName %>";
-            // alert(userName);
-            
-            var loggedInVal = "<%= userid %>";
-            // alert(LoggedInId);
+  var monthlies = db
+    .collection("/basilPrivateGroup")
+    .doc("Test")
+    .get();
+  monthlies.then((res) => {
+    // console.log(res.data().groupCode);
+    var enterCode = document.getElementById("pcode");
+    if (enterCode.value == res.data().groupCode) {
+      var loggedInName = "<%= userName %>";
+      // alert(userName);
 
-   const docRef = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
+      var loggedInVal = "<%= userid %>";
+      // alert(LoggedInId);
 
-    let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    id : loggedInVal + "_"+  Date.now(),
-    createdDate :  Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    messageSource : "Web"
-    // status: "incomplete"
-    };
+      const docRef = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
 
-    return docRef
-      .add(task)
-      .then((ref) => {
+      let task = {
+        userName: loggedInName,
+        userId: loggedInVal,
+        id: loggedInVal + "_" + Date.now(),
+        createdDate: Date.now(),
+        profileImageUrl:
+          "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+          loggedInVal,
+        messageSource: "Web",
+        // status: "incomplete"
+      };
+
+      return docRef.add(task).then((ref) => {
         // alert(ref.id);
         task.id = ref.id;
 
-     window.location.href="/chatWindowAdminUser";
-
-       
+        window.location.href = "/chatWindowAdminUser";
       });
-
-    }else{
+    } else {
       console.log("false");
       alert("You enter Wrong code !!");
     }
-
   });
-
-
 });
 const docRef = db.collection("/basilPrivateGroup/Test/messages/");
 const tasksDOM = document.getElementById("tasks");
-var fullName   = document.getElementById('user_nickname');
+var fullName = document.getElementById("user_nickname");
 // alert(fullName.value);
-var message    = document.getElementById('editor1');
-var userId     = document.getElementById('user_id');
+var message = document.getElementById("editor1");
+var userId = document.getElementById("user_id");
 // alert(userId.value);
 
-var hiddenId   = document.getElementById('hiddenId');
+var hiddenId = document.getElementById("hiddenId");
 
-const docRefUserList = db.collection("/basilPrivateGroup/Test/groupMembersInfo/");
+const docRefUserList = db.collection(
+  "/basilPrivateGroup/Test/groupMembersInfo/"
+);
 const tasksDOMUserlist = document.getElementById("tasksuserlist");
 const tasksDOMTotalUserlist = document.getElementById("tasksuserlisttotal");
 
-
-
-
-var date = document.getElementById('dateval');
+var date = document.getElementById("dateval");
 // utility functions
 function cleanData(snapshots) {
-let data = [];
-snapshots.forEach(function (doc) {
-  data.push({ id: doc.id, ...doc.data() });
-});
-return data;
+  let data = [];
+  snapshots.forEach(function(doc) {
+    data.push({ id: doc.id, ...doc.data() });
+  });
+  return data;
 }
 
 // form functions
 function handleCreate(event) {
+  event.preventDefault();
 
- event.preventDefault();
- // alert(JSON.stringify(event));
-  //alert(user_id.value);
- // alert(user_nickname.value);
- var loggedInVal = user_id.value;
- // alert(loggedInVal);
- var loggedInName = user_nickname.value;
-  // alert(loggedInName);
-// var today = Date.now();
- //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
- var editorText = CKEDITOR.instances.editor1.getData();
+  var loggedInVal = user_id.value;
+  // alert(loggedInVal);
+  var loggedInName = user_nickname.value;
+  var logintoken = document.getElementById("tokenval").value;
+  // alert(logintoken);
+  // var today = Date.now();
+  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
+  var editorText = CKEDITOR.instances.editor1.getData();
+  var PNames = document.getElementById("pTag").innerHTML;
+  // alert(PNames)
+  if (message.value != "") {
+    let task = {
+      userName: loggedInName,
+      userId: loggedInVal,
+      message: editorText,
+      messageId: loggedInVal + "_" + Date.now(),
+      messageType: "text",
+      createdDate: Date.now(),
+      profileImageUrl:
+        "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+        loggedInVal,
+      messageSource: "Web",
+      // status: "incomplete"
+    };
 
- if(message.value != ""){
+    // alert(JSON.stringify(task));
+    return docRef.add(task).then((ref) => {
+      $.ajax({
+        type: "POST",
+        url:
+          "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
+        headers: {
+          // Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
+          Authorization: "Bearer " + logintoken,
+        },
+        data: {
+          chatRoomName: "futuresChatRoom",
+          userNames: PNames,
+        },
+        success: function(data) {
+          var dataks = JSON.stringify(data);
+          var dataResults = JSON.parse(dataks);
+          console.log(dataResults);
+          // $(".successmsg").html(dataResults[0].message);
+          // setTimeout(function() {
+          //   $(".successmsg").empty();
+          // }, 3000);
+        },
+      });
 
-  let task = {
-  userName: loggedInName,
-  userId : loggedInVal,
-  message: editorText,
-  messageId : loggedInVal + "_"+  Date.now(),
-  messageType : "text",
-  createdDate :  Date.now(),
-  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-  messageSource : "Web"
-  // status: "incomplete"
+      task.id = ref.id;
+      // fullName.value = '';
+      // message.value  = '';
+      CKEDITOR.instances.editor1.setData("");
+
+      // date.value = '';
+      // return createTask(task);
+    });
+  }
+  //  else{
+  //  // alert("Message not empty");
+  //   $(".successmsg").html('<span>Message not empty.</span>');
+  //   setTimeout(function(){$(".successmsg").empty()}, 5000);
+  //  }
+}
+
+function getoutput(event, id) {
+  if (
+    !event ||
+    !event.target ||
+    !event.target.files ||
+    event.target.files.length === 0
+  ) {
+    return;
+  }
+
+  const name = event.target.files[0].name;
+  const lastDot = name.lastIndexOf(".");
+  const fileName = name.substring(0, lastDot);
+  const ext = name.substring(lastDot + 1);
+  const type = event.target.files[0].type;
+  var loggedInVal = user_id.value;
+  var loggedInName = user_nickname.value;
+
+  const file = event.target.files[0];
+
+  const docRefreply = db.collection(
+    "/basilPrivateGroup/Test/messages/" + id + "/replies/"
+  );
+
+  // if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
+
+  if (
+    type == "video/mp4" ||
+    type == "video/webm" ||
+    type == "video/mov" ||
+    type == "video/wmv" ||
+    type == "video/mkv"
+  ) {
+    firebase
+      .storage()
+      .ref("message_storage_test_env/")
+      .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
+      .put(file)
+      .then(function(snapshot) {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((url) => {
+        console.log("Firebase storage image uploaded : ", url);
+
+        let taskreplys = {
+          userName: loggedInName,
+          userId: loggedInVal,
+          message: url,
+          messageId: loggedInVal + "_" + Date.now(),
+          messageType: "video",
+          createdDate: Date.now(),
+          profileImageUrl:
+            "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+            loggedInVal,
+          // status: "incomplete"
+          messageSource: "Web",
+        };
+        return docRefreply.add(taskreplys).then((ref) => {
+          console.log(ref.id);
+
+          // $("div#exampleModalCenter"+id).css("display", "none");
+
+          taskreplys.id = ref.id;
+          // fullName.value = '';
+          message.value = "";
+          // date.value = '';
+          // return createTask(task);
+        });
+      });
+  } else if (
+    type == "image/jpeg" ||
+    type == "image/png" ||
+    type == "image/gif" ||
+    type == "image/jpg" ||
+    type == "image/webp"
+  ) {
+    firebase
+      .storage()
+      .ref("message_storage_test_env/")
+      .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
+      .put(file)
+      .then(function(snapshot) {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((url) => {
+        console.log("Firebase storage image uploaded : ", url);
+
+        let taskreplys = {
+          userName: loggedInName,
+          userId: loggedInVal,
+          message: url,
+          messageId: loggedInVal + "_" + Date.now(),
+          messageType: "photo",
+          createdDate: Date.now(),
+          profileImageUrl:
+            "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+            loggedInVal,
+          // status: "incomplete"
+          messageSource: "Web",
+        };
+        return docRefreply.add(taskreplys).then((ref) => {
+          console.log(ref.id);
+          //  $("div#exampleModalCenter"+id).css("display", "none");
+
+          taskreplys.id = ref.id;
+          // fullName.value = '';
+          message.value = "";
+          // date.value = '';
+          // return createTask(task);
+        });
+      });
+  } else {
+    firebase
+      .storage()
+      .ref("message_storage_test_env/")
+      .child(file.name + "_" + Date.now())
+      .put(file)
+      .then(function(snapshot) {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((url) => {
+        console.log("Firebase storage image uploaded : ", url);
+
+        let taskreplys = {
+          userName: loggedInName,
+          userId: loggedInVal,
+          message: url,
+          messageId: loggedInVal + "_" + Date.now(),
+          messageType: "audio",
+          createdDate: Date.now(),
+          profileImageUrl:
+            "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+            loggedInVal,
+          // status: "incomplete"
+          messageSource: "Web",
+        };
+        return docRefreply.add(taskreplys).then((ref) => {
+          console.log(ref.id);
+
+          // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
+
+          taskreplys.id = ref.id;
+          // fullName.value = '';
+          message.value = "";
+          // date.value = '';
+          // return createTask(task);
+        });
+      });
+  }
+  $(".successmsg").html("<span>Uploading File....</span>");
+  setTimeout(function() {
+    $(".successmsg").empty();
+  }, 8000);
 };
 
-// alert(JSON.stringify(task));
-return docRef
-  .add(task)
-  .then((ref) => {
-    task.id = ref.id;
-    // fullName.value = '';
-    // message.value  = '';
-    CKEDITOR.instances.editor1.setData('');
 
-    // date.value = '';
-    // return createTask(task);
-  });
+function FunctionClick(e){
 
- }
-//  else{
-//  // alert("Message not empty");
-//   $(".successmsg").html('<span>Message not empty.</span>');
-//   setTimeout(function(){$(".successmsg").empty()}, 5000);
-//  }    
+  // alert(e);
 
+//  var dataID =  document.getElementById("IDData").value
+var dataIDs = document.getElementsByTagName("li")
+
+ var mm1 = document.getElementsByClassName("cke_autocomplete_selected")[0].innerText
+ console.log(mm1)
+
+ document.getElementById("pTag").innerHTML = mm1
 }
-
-function getoutput(event,id) {
-
-if (!event || !event.target || !event.target.files || event.target.files.length === 0) {
-  return;
-}
-
-const name = event.target.files[0].name;
-const lastDot = name.lastIndexOf('.');
-const fileName = name.substring(0, lastDot);
-const ext = name.substring(lastDot + 1);
-const type = event.target.files[0].type;
-var loggedInVal = user_id.value;
- var loggedInName = user_nickname.value;
-
-const file = event.target.files[0];
-
-
-const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+id+"/replies/");
-
-// if(file.type == "video/mp4" || "video/mov" || "video/wmv" || "video/avi" || "video/avchd" || "video/webm" || "video/mkv"){
- 
- if(type == "video/mp4" || type == "video/webm" || type == "video/mov" || type == "video/wmv"|| type == "video/mkv"){
-
-  firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-     
-     
-let taskreplys = {
-  userName: loggedInName,
-  userId : loggedInVal,
-  message: url,
-  messageId : loggedInVal + "_"+ Date.now(),
-  messageType : "video",
-  createdDate : Date.now(),
-  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-  // status: "incomplete"
-  messageSource : "Web"
-};
-return docRefreply
-  .add(taskreplys)
-  .then((ref) => {
-    console.log(ref.id);
-
-    // $("div#exampleModalCenter"+id).css("display", "none");
-
-    taskreplys.id = ref.id;
-    // fullName.value = '';
-    message.value  = '';
-    // date.value = '';
-    // return createTask(task);
-  });
-
-
-  });
-
- }
-else if (type == "image/jpeg"|| type == "image/png" || type == "image/gif" || type == "image/jpg" || type == "image/webp") {
-
-
-  firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-     
- 
-let taskreplys  = {
-  userName: loggedInName,
-  userId : loggedInVal,
-  message: url,
-  messageId : loggedInVal + "_"+ Date.now(),
-  messageType : "photo",
-  createdDate : Date.now(),
-  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-  // status: "incomplete"
-  messageSource : "Web"
-};
-return docRefreply
-  .add(taskreplys)
-  .then((ref) => {
-    console.log(ref.id);
-        //  $("div#exampleModalCenter"+id).css("display", "none");
-
-    taskreplys.id = ref.id;
-    // fullName.value = '';
-    message.value  = '';
-    // date.value = '';
-    // return createTask(task);
-  });
-
-
-  });
-}
-else{
-
-
-firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
-  return snapshot.ref.getDownloadURL()
-}).then(url => {
- console.log("Firebase storage image uploaded : ", url);
-   
-   
-let taskreplys  = {
-  userName: loggedInName,
-  userId : loggedInVal,
-  message: url,
-  messageId : loggedInVal + "_"+ Date.now(),
-  messageType : "audio",
-  createdDate : Date.now(),
-  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-  // status: "incomplete"
-  messageSource : "Web"
-};
-return docRefreply
-  .add(taskreplys)
-  .then((ref) => {
-    console.log(ref.id);
-
-    // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
-
-    taskreplys.id = ref.id;
-    // fullName.value = '';
-    message.value  = '';
-    // date.value = '';
-    // return createTask(task);
-  });
-
-
-});
-
-
-}
-$(".successmsg").html('<span>Uploading File....</span>');
-setTimeout(function(){$(".successmsg").empty()}, 8000);
-}
-
 
 // popup functions
 function popupCreate(event) {
-// alert("calling " + JSON.stringify(event));
-   $('ul#tasksreply'+event).show();
+  $("ul#tasksreply" + event).show();
+  var logintoken = document.getElementById("tokenval").value;
+  var docId = document.getElementById("btn-input-replyId" + event).value;
+  var fullName = document.getElementById("user_nickname");
+  var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
+  var PName = document.getElementById("pTag").innerHTML
+  var userId = document.getElementById("user_id");
+  var loggedInVal = userId.value;
+  var loggedInName = fullName.value;
+  var uniqueDocId = docId;
 
-var docId     = document.getElementById('btn-input-replyId'+event).value;
-// alert(docId);
-// var ids = docId.value;
-// docRef.doc(ids).get().then(function(doc) {
+  // const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/");
+  const docReply = db.collection(
+    "/basilPrivateGroup/Test/messages/" + uniqueDocId + "/replies/"
+  );
+  // alert(docReply);
 
-//     console.log(doc.id, " => ", doc.data());
+  if (message != "") {
+    let taskR = {
+      userName: loggedInName,
+      userId: loggedInVal,
+      message: message,
+      messageId: loggedInVal + "_" + Date.now(),
+      messageType: "text",
+      createdDate: Date.now(),
+      profileImageUrl:
+        "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+        loggedInVal,
+      messageSource: "Web",
+      // status: "incomplete"
+    };
 
-//      });
-var fullName   = document.getElementById('user_nickname');
-// alert(fullName.value);
-// var message    = document.getElementById('btn-input-replymsg'+event);
-var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();  
+    return docReply.add(taskR).then((ref) => {
 
-// alert(message.value);
-var userId     = document.getElementById('user_id');
-// alert(userId.value);
+      $.ajax({
+        type: "POST",
+        url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
+        headers: {
+          // Authorization: 'Bearer '+ 'eyJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6Inlhc2gwMUBtYWlsaW5hdG9yLmNvbSIsInN1YiI6IjA5OTYwMDZkLTViNzEtNDVjZi1hNTJmLTI2ZjM0MTc3YjhmYSIsImlhdCI6MTY2NTgxNjEzMiwiZXhwIjoxNjY2NDIwOTMyfQ.nw-G-gdwisObYW60Fi5vLKpT-dfXwN7lDbHzEFCUmbMgOJZ8gybPvgHFo5zTQLrOZ7H5UCqpNlGCAfIPM6z-Ag',
+          Authorization: 'Bearer '+ logintoken  ,
+        },
+        data: {
+          chatRoomName : "futuresChatRoom",
+          userNames : PName
+        },
+        success: function (data) {
+          var dataks = JSON.stringify(data);
+          var dataResults = JSON.parse(dataks);
+          // alert(dataResults);
+          console.log(dataResults);
+          // $(".successmsg").html(dataResults[0].message);
+          // setTimeout(function() {
+          //   $(".successmsg").empty();
+          // }, 3000);
+  
+        },
+      });
 
- 
-var loggedInVal = userId.value;
-// alert(loggedInVal);
-var loggedInName = fullName.value;
-// alert(loggedInName);
-var uniqueDocId = docId;
-// alert(uniqueDocId);
+      taskR.id = ref.id;
+      // fullName.value = '';
+      //  message.value  = '';
+      CKEDITOR.instances["btn-input-replymsg" + event].setData("");
 
-// const docReply = db.collection("/openGroups/demoOpenGroup1/messages/"+uniqueDocId+"/replies/"); 
-const docReply = db.collection("/basilPrivateGroup/Test/messages/"+uniqueDocId+"/replies/"); 
-// alert(docReply);
+      return fetchTasksReply(taskR.id);
+      // console.log(message.value)
+      // date.value = '';
+      // return createTask(task);
+    });
+  }
+  // else {
+  //  $(".successmsg").html('<span>Message not empty.</span>');
+  //  setTimeout(function(){$(".successmsg").empty()}, 5000);
+  // }
 
-if(message != ""){
-
- let taskR = {
- userName: loggedInName,
- userId : loggedInVal,
- message: message,
- messageId : loggedInVal + "_"+  Date.now(),
- messageType : "text",
- createdDate :  Date.now(),
- profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
- messageSource : "Web"
- // status: "incomplete"
- };
-
- return docReply
-   .add(taskR)
-   .then((ref) => {
-     // console.log(ref);
-  // console.log("div#exampleModalCenter"+uniqueDocId);
-
-  // $("div#exampleModalCenter"+uniqueDocId).css("display", "none");
-
-     taskR.id = ref.id;
-     // fullName.value = '';
-    //  message.value  = '';
-    CKEDITOR.instances["btn-input-replymsg" + event].setData('');
-
-    return fetchTasksReply(taskR.id);
-     // console.log(message.value)
-     // date.value = '';
-     // return createTask(task);
-   });
-
-
-} 
-// else {
-//  $(".successmsg").html('<span>Message not empty.</span>');
-//  setTimeout(function(){$(".successmsg").empty()}, 5000);
-// }    
-
-
-
-// event.preventDefault();
-
+  // event.preventDefault();
 }
 // function handleStatusUpdate(task) {
 //   //
 // }
 
-$('i.fa.fa-paperclip.attachment.btn.btn-primary').click(function () {
-// alert("calll");
-$("#imageUploaddata").trigger('click');
-// alert("data");
+$("i.fa.fa-paperclip.attachment.btn.btn-primary").click(function() {
+  // alert("calll");
+  $("#imageUploaddata").trigger("click");
+  // alert("data");
 });
 
-$("#imageUploaddata").on('change', function(e) {
- // alert("hii");
-var val = $(this).val();
-// alert(val);
-// $(this).siblings('span').text(val);
-// $('#btn-input').text(val);
+$("#imageUploaddata").on("change", function(e) {
+  // alert("hii");
+  var val = $(this).val();
+  // alert(val);
+  // $(this).siblings('span').text(val);
+  // $('#btn-input').text(val);
 
-$(this).siblings('input#btn-input').text(val);
+  $(this)
+    .siblings("input#btn-input")
+    .text(val);
 
-const file = e.target.files[0];
-console.log(file);
-console.log(file.type);
+  const file = e.target.files[0];
+  console.log(file);
+  console.log(file.type);
 
-var loggedInVal = user_id.value;
- var loggedInName = user_nickname.value;
-// alert(loggedInName);
-// var today = Date.now();
-// var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
+  var loggedInVal = user_id.value;
+  var loggedInName = user_nickname.value;
+  // alert(loggedInName);
+  // var today = Date.now();
+  // var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
 
-if(file.type == "video/mp4"  || file.type == "video/webm" || file.type == "video/mov" || file.type == "video/wmv"|| file.type == "video/mkv"){
+  if (
+    file.type == "video/mp4" ||
+    file.type == "video/webm" ||
+    file.type == "video/mov" ||
+    file.type == "video/wmv" ||
+    file.type == "video/mkv"
+  ) {
+    firebase
+      .storage()
+      .ref("message_videos/")
+      .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
+      .put(file)
+      .then(function(snapshot) {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((url) => {
+        console.log("Firebase storage image uploaded : ", url);
 
-  firebase.storage().ref('message_videos/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-     
-     
-let task = {
-  userName: loggedInName,
-  userId : loggedInVal,
-  message: url,
-  messageId : loggedInVal + "_"+ Date.now(),
-  messageType : "video",
-  createdDate : Date.now(),
-  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-  // status: "incomplete"
-  messageSource : "Web"
-};
-return docRef
-  .add(task)
-  .then((ref) => {
-    console.log(ref.id);
-    task.id = ref.id;
-    // fullName.value = '';
-    message.value  = '';
-    // date.value = '';
-    // return createTask(task);
-  });
+        let task = {
+          userName: loggedInName,
+          userId: loggedInVal,
+          message: url,
+          messageId: loggedInVal + "_" + Date.now(),
+          messageType: "video",
+          createdDate: Date.now(),
+          profileImageUrl:
+            "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+            loggedInVal,
+          // status: "incomplete"
+          messageSource: "Web",
+        };
+        return docRef.add(task).then((ref) => {
+          console.log(ref.id);
+          task.id = ref.id;
+          // fullName.value = '';
+          message.value = "";
+          // date.value = '';
+          // return createTask(task);
+        });
+      });
+  } else if (
+    file.type == "image/jpeg" ||
+    file.type == "image/png" ||
+    file.type == "image/gif" ||
+    file.type == "image/jpg" ||
+    file.type == "image/webp"
+  ) {
+    firebase
+      .storage()
+      .ref("message_storage_test_env/")
+      .child("photo_message_" + loggedInVal + "_" + "_" + Date.now())
+      .put(file)
+      .then(function(snapshot) {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((url) => {
+        console.log("Firebase storage image uploaded : ", url);
 
+        let task = {
+          userName: loggedInName,
+          userId: loggedInVal,
+          message: url,
+          messageId: loggedInVal + "_" + Date.now(),
+          messageType: "photo",
+          createdDate: Date.now(),
+          profileImageUrl:
+            "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+            loggedInVal,
+          // status: "incomplete"
+          messageSource: "Web",
+        };
+        return docRef.add(task).then((ref) => {
+          console.log(ref.id);
+          task.id = ref.id;
+          // fullName.value = '';
+          message.value = "";
+          // date.value = '';
+          // return createTask(task);
+        });
+      });
+  } else {
+    firebase
+      .storage()
+      .ref("message_storage_test_env/")
+      .child(file.name + "_" + Date.now())
+      .put(file)
+      .then(function(snapshot) {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((url) => {
+        console.log("Firebase storage image uploaded : ", url);
 
-  });
+        let task = {
+          userName: loggedInName,
+          userId: loggedInVal,
+          message: url,
+          messageId: loggedInVal + "_" + Date.now(),
+          messageType: "audio",
+          createdDate: Date.now(),
+          profileImageUrl:
+            "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId=" +
+            loggedInVal,
+          // status: "incomplete"
+          messageSource: "Web",
+        };
+        return docRef.add(task).then((ref) => {
+          console.log(ref.id);
+          task.id = ref.id;
+          // fullName.value = '';
+          message.value = "";
+          // date.value = '';
+          // return createTask(task);
+        });
+      });
+  }
 
-}else if(file.type == "image/jpeg"|| file.type == "image/png" || file.type == "image/gif" || file.type == "image/jpg" || file.type == "image/webp"){
+  $(".successmsg").html('<span style="left:-999em">Uploading File....</span>');
+  setTimeout(function() {
+    $(".successmsg").empty();
+  }, 5000);
 
-  firebase.storage().ref('message_storage_test_env/').child("photo_message_"+loggedInVal+"_"+"_"+Date.now()).put(file).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-     
-     
-let task = {
-  userName: loggedInName,
-  userId : loggedInVal,
-  message: url,
-  messageId : loggedInVal + "_"+ Date.now(),
-  messageType : "photo",
-  createdDate : Date.now(),
-  profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-  // status: "incomplete"
-  messageSource : "Web"
-};
-return docRef
-  .add(task)
-  .then((ref) => {
-    console.log(ref.id);
-    task.id = ref.id;
-    // fullName.value = '';
-    message.value  = '';
-    // date.value = '';
-    // return createTask(task);
-  });
+  return (
+    firebase
+      .app()
+      .storage()
+      .ref("message_storage_test_env/")
+      .child(file.name)
+      .put(file)
+      // .then(snapshot => {
+      //   // snapshot represents the uploaded file
+      //   console.log(snapshot);
+      // })
+      .getDownloadURL()
+      .then((imgUrl) => {
+        console.log(imgUrl);
+      })
+  );
 
+  var remoteimageurl = e.target.files[0];
+  var filename = file.name;
 
-  });
-
-} else {
-
-
-  firebase.storage().ref('message_storage_test_env/').child(file.name+"_"+Date.now()).put(file).then(function(snapshot) {
-    return snapshot.ref.getDownloadURL()
- }).then(url => {
-   console.log("Firebase storage image uploaded : ", url);
-     
-     
-  let task = {
-    userName: loggedInName,
-    userId : loggedInVal,
-    message: url,
-    messageId : loggedInVal + "_"+ Date.now(),
-    messageType : "audio",
-    createdDate : Date.now(),
-    profileImageUrl : "https://apistest.tradetipsapp.com/api/appUser/getImageByAppUserId?appUserId="+loggedInVal,
-    // status: "incomplete"
-    messageSource : "Web"
-  };
-  return docRef
-    .add(task)
-    .then((ref) => {
-      console.log(ref.id);
-      task.id = ref.id;
-      // fullName.value = '';
-      message.value  = '';
-      // date.value = '';
-      // return createTask(task);
+  fetch(remoteimageurl)
+    .then((res) => {
+      return res.blob();
+    })
+    .then((blob) => {
+      //uploading blob to firebase storage
+      firebase
+        .storage()
+        .ref("message_storage_test_env/")
+        .child(filename)
+        .put(blob)
+        .then(function(snapshot) {
+          return snapshot.ref.getDownloadURL();
+        })
+        .then((url) => {
+          console.log("Firebase storage image uploaded : ", url);
+        });
+    })
+    .catch((error) => {
+      console.error(error);
     });
-
-
-  });
-
-}
-
-$(".successmsg").html('<span style="left:-999em">Uploading File....</span>');
-setTimeout(function(){$(".successmsg").empty()}, 5000);
-
-return firebase
-  .app()
-  .storage()
-  .ref('message_storage_test_env/')
-  .child(file.name)
-  .put(file)
-  // .then(snapshot => {
-  //   // snapshot represents the uploaded file
-  //   console.log(snapshot);
-  // })
-  .getDownloadURL()
-  .then(imgUrl => {
-    console.log(imgUrl);
-  });
-
-var remoteimageurl = e.target.files[0]
-var filename = file.name
-
-fetch(remoteimageurl).then(res => {
-return res.blob();
-}).then(blob => {
-  //uploading blob to firebase storage
-firebase.storage().ref('message_storage_test_env/').child(filename).put(blob).then(function(snapshot) {
-  return snapshot.ref.getDownloadURL()
-}).then(url => {
- console.log("Firebase storage image uploaded : ", url);
-})
-}).catch(error => {
-console.error(error);
-});
-
-
 });
 
 function handleDelete(id) {
   var txt;
-  if(confirm("Are you sure you want to delete this chat ?")){
+  if (confirm("Are you sure you want to delete this chat ?")) {
     return docRef
-    .doc(id)
-    .delete()
-    .then(() => document.getElementById(id).remove());
+      .doc(id)
+      .delete()
+      .then(() => document.getElementById(id).remove());
   } else {
     txt = "You pressed Cancel!";
   }
 }
 
-function handleDeleteReply(obj1,obj2) {
-
-    const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+obj2+"/replies/");
-    var txt;
-          if (confirm("Are you sure you want to delete this chat ?")) {
-             return docRefreply
-            .doc(obj1)
-            .delete()
-            .then(() => document.getElementById(obj1).remove());
-          } else {
-            txt = "You pressed Cancel!";
-          }
- 
+function handleDeleteReply(obj1, obj2) {
+  const docRefreply = db.collection(
+    "/basilPrivateGroup/Test/messages/" + obj2 + "/replies/"
+  );
+  var txt;
+  if (confirm("Are you sure you want to delete this chat ?")) {
+    return docRefreply
+      .doc(obj1)
+      .delete()
+      .then(() => document.getElementById(obj1).remove());
+  } else {
+    txt = "You pressed Cancel!";
+  }
 }
-
 
 function replypopup(id) {
   // alert(id);
- fetchTasksReply(id);
+  fetchTasksReply(id);
 
+  $(document).ready(function() {
+    $(".ckeditor").each(function(_, ckeditor) {
+      var formData = { appUserName: "all" };
+      $.ajax({
+        type: "POST",
+        url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+        data: formData,
+        success: function(datan) {
+          var dataks = JSON.stringify(datan);
+          var users = JSON.parse(dataks);
 
- $(document).ready(function() {
-  $(".ckeditor").each(function(_, ckeditor) {
- 
-   var formData = { appUserName: "all" };
-     $.ajax({
-       type: "POST",
-       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
-       data: formData,
-       success: function (datan) {
-         var dataks = JSON.stringify(datan);
-         var users = JSON.parse(dataks);
- 
-     CKEDITOR.replace(ckeditor , {
-        plugins: 'mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword',
-        height: "50px",
-        width:"86%",
-        toolbarLocation: 'bottom',
-        toolbar: [{
-            name: 'document',
-            items: ['Undo', 'Redo']
-          },
-          {
-            name: 'basicstyles',
-            items: ['Bold', 'Italic', 'Strike']
-          },
-          {
-            name: 'links',
-            items: ['EmojiPanel', 'Link', 'Unlink']
-          }
-        ],
-        mentions: [{
-            feed: dataFeed,
-            itemTemplate: '<li data-id="{id}">' +
-              '<img class="photo" src="" />' +
-              '<strong class="userName">{userName}</strong>' +
-              '<span class="fullname"></span>' +
-              '</li>',
-              outputTemplate: '<a href="#"><b>@{userName}<b></a><span></span>',
-           
-            minChars: 0
-          },
-          {
-           //  feed: tags,
-            // marker: '#',
-            itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
-            // outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
-            minChars: 1
-          }
-        ],
-        removeButtons: 'PasteFromWord'
-      });
- 
-      function dataFeed(opts, callback) {
-        var matchProperty = 'userName',
-          data = users.filter(function(item) {
-           // console.log(item) 
-           return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
- 
-           });
- 
-  
-        data = data.sort(function(a, b) {
-          return a[matchProperty].localeCompare(b[matchProperty], undefined, {
-            sensitivity: 'accent'
+          CKEDITOR.replace(ckeditor, {
+            plugins:
+              "mentions,emoji,basicstyles,undo,link,wysiwygarea,toolbar, pastefromgdocs, pastefromlibreoffice, pastefromword",
+            height: "50px",
+            width: "86%",
+            toolbarLocation: "bottom",
+            toolbar: [
+              {
+                name: "document",
+                items: ["Undo", "Redo"],
+              },
+              {
+                name: "basicstyles",
+                items: ["Bold", "Italic", "Strike"],
+              },
+              {
+                name: "links",
+                items: ["EmojiPanel", "Link", "Unlink"],
+              },
+            ],
+            mentions: [
+              {
+                feed: dataFeed,
+                itemTemplate:
+                  '<li data-id="{id}" id="IDData" onclick="FunctionClick(this.id)">' +
+                  '<img class="photo" src="" />' +
+                  '<strong class="userName">{userName}</strong>' +
+                  '<span class="fullname"></span>' +
+                  "</li>",
+                outputTemplate:
+                  '<a href="#"><b>@{userName}<b></a><span></span>',
+
+                minChars: 0,
+              },
+              // // {
+              //   //  feed: tags,
+              //   // marker: '#',
+              //   itemTemplate: '<li data-id="{id}"><strong>{name}</strong></li>',
+              //   // outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
+              //   minChars: 1,
+              // },
+            ],
+            removeButtons: "PasteFromWord",
           });
-        });
-  
-        callback(data);
-      }
-    }
- 
+
+          function dataFeed(opts, callback) {
+            var matchProperty = "userName",
+              data = users.filter(function(item) {
+                // console.log(item)
+                return (
+                  item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                );
+              });
+
+            data = data.sort(function(a, b) {
+              return a[matchProperty].localeCompare(
+                b[matchProperty],
+                undefined,
+                {
+                  sensitivity: "accent",
+                }
+              );
+            });
+
+            callback(data);
+          }
+        },
+      });
+
+      // var formData = { appUserName: "all" };
+      //     $.ajax({
+      //       type: "POST",
+      //       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
+      //       data: formData,
+      //       success: function (datan) {
+      //         var dataks = JSON.stringify(datan);
+      //         var users = JSON.parse(dataks);
+
+      //  },
+      //   });
+    });
   });
- 
- // var formData = { appUserName: "all" };
- //     $.ajax({
- //       type: "POST",
- //       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
- //       data: formData,
- //       success: function (datan) {
- //         var dataks = JSON.stringify(datan);
- //         var users = JSON.parse(dataks);
- 
- 
- 
- 
-  
-   
- 
-   //  },
-  //   });
-   });
- 
-  
- });
-
 }
-
 
 // dom functions
 function createTask(task) {
-// alert(task);
-// var sData = localStorage.getItem('allTokenData');
-// var storageData= JSON.parse(sData);
-var loggedInVal = user_id.value;
- var loggedInName = "<%= userName %>";
+  // alert(task);
+  // var sData = localStorage.getItem('allTokenData');
+  // var storageData= JSON.parse(sData);
+  var loggedInVal = user_id.value;
+  var loggedInName = "<%= userName %>";
 
- messaging.onMessage((payload) => {
-alert('Message received. ', payload);
-// ...
-});
+  messaging.onMessage((payload) => {
+    alert("Message received. ", payload);
+    // ...
+  });
 
-const elem = document.createElement("li");
-// elem.id = task.id;
-// elem.innerHTML = reviewTemplate(task)
-elem.setAttribute("id", task.id);
-// elem.setAttribute("class", "admin clearfix");
-let taskElem;
+  const elem = document.createElement("li");
+  // elem.id = task.id;
+  // elem.innerHTML = reviewTemplate(task)
+  elem.setAttribute("id", task.id);
+  // elem.setAttribute("class", "admin clearfix");
+  let taskElem;
 
-// alert(task.createdDate);
+  // alert(task.createdDate);
 
-if (task.userId === loggedInVal) {
+  if (task.userId === loggedInVal) {
+    // taskElem = document.createElement("li");
+    elem.setAttribute("class", "admin clearfix");
 
-  // taskElem = document.createElement("li");
-  elem.setAttribute("class", "admin clearfix");
-
-    if(task.messageType === "photo"){
-
-      elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive w-100"/></p></div>'
-
-
-    } else if(task.messageType === "audio"){
-
-      elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
-
-    } else if(task.messageType === "video"){
-
-      elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
-
+    if (task.messageType === "photo") {
+      elem.innerHTML =
+        '<span class="chat-img right clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="right primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><p class="message"><img src="' +
+        task.message +
+        '" class="img-responsive w-100"/></p></div>';
+    } else if (task.messageType === "audio") {
+      elem.innerHTML =
+        '<span class="chat-img right clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="right primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><audio controls><source src="' +
+        task.message +
+        '" type="audio/mpeg"></audio></div>';
+    } else if (task.messageType === "video") {
+      elem.innerHTML =
+        '<span class="chat-img right clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="right primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><video controls style="width:100%;"><source src="' +
+        task.message +
+        '" type="video/mp4"></video></div>';
     } else {
-
-      elem.innerHTML = '<span class="chat-img right clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="right primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
-
+      elem.innerHTML =
+        '<span class="chat-img right clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="left text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="right primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><p class="message">' +
+        task.message +
+        "</p></div>";
     }
+  } else {
+    // taskElem = document.createElement("li");
+    elem.setAttribute("class", "agent clearfix");
 
-} else {
-  // taskElem = document.createElement("li");
-  elem.setAttribute("class", "agent clearfix");
-
-    if(task.messageType === "photo"){
-
-        elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message"><img src="'+ task.message +'" class="img-responsive w-100"/></p></div>'
-
-
-    } else if(task.messageType === "audio"){
-
-       elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><audio controls><source src="' + task.message +'" type="audio/mpeg"></audio></div>'
-
-     
-    } else if(task.messageType === "video"){
-
-       elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><video controls style="width:100%;"><source src="' + task.message +'" type="video/mp4"></video></div>'
-
-     
-    } else{
-
-       elem.innerHTML = '<span class="chat-img left clearfix mx-2"><img src="'+ task.profileImageUrl +'" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' + task.createdDate + '</small><strong class="primary-font" class="fullName">'+ task.userName +'</strong></div><p class="message">' + task.message +'</p></div>'
-
-     
+    if (task.messageType === "photo") {
+      elem.innerHTML =
+        '<span class="chat-img left clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><p class="message"><img src="' +
+        task.message +
+        '" class="img-responsive w-100"/></p></div>';
+    } else if (task.messageType === "audio") {
+      elem.innerHTML =
+        '<span class="chat-img left clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><audio controls><source src="' +
+        task.message +
+        '" type="audio/mpeg"></audio></div>';
+    } else if (task.messageType === "video") {
+      elem.innerHTML =
+        '<span class="chat-img left clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><video controls style="width:100%;"><source src="' +
+        task.message +
+        '" type="video/mp4"></video></div>';
+    } else {
+      elem.innerHTML =
+        '<span class="chat-img left clearfix mx-2"><img src="' +
+        task.profileImageUrl +
+        '" alt="Admin" class="img-circle w-100"/></span><div class="chat-body clearfix"><div class="header clearfix"><small class="right text-muted"><span class="glyphicon glyphicon-time"></span>' +
+        task.createdDate +
+        '</small><strong class="primary-font" class="fullName">' +
+        task.userName +
+        '</strong></div><p class="message">' +
+        task.message +
+        "</p></div>";
     }
+  }
+  tasksDOM.append(elem);
 
+  // if (task.status === "incomplete") {
+  //   const updateBtn = document.createElement("button");
+  //   updateBtn.setAttribute("class", "btn btn-success col-2 text-white mr-1");
+  //   updateBtn.innerHTML =
+  //     '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+  //   updateBtn.addEventListener("click", function () {
+  //     return handleStatusUpdate(task);
+  //   });
+  //   elem.append(updateBtn);
+  // }
+
+  // const deleteBtn = document.createElement("button");
+  // deleteBtn.setAttribute("class", "btn btn-danger col-2 text-white");
+  // deleteBtn.innerHTML =
+  //   '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>';
+  // deleteBtn.addEventListener("click", function () {
+  //   return handleDelete(task.id);
+  // });
+  // elem.append(deleteBtn);
+
+  // tasksDOM.append(elem);
 }
-tasksDOM.append(elem);
-
-// if (task.status === "incomplete") {
-//   const updateBtn = document.createElement("button");
-//   updateBtn.setAttribute("class", "btn btn-success col-2 text-white mr-1");
-//   updateBtn.innerHTML =
-//     '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-//   updateBtn.addEventListener("click", function () {
-//     return handleStatusUpdate(task);
-//   });
-//   elem.append(updateBtn);
-// }
-
-// const deleteBtn = document.createElement("button");
-// deleteBtn.setAttribute("class", "btn btn-danger col-2 text-white");
-// deleteBtn.innerHTML =
-//   '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>';
-// deleteBtn.addEventListener("click", function () {
-//   return handleDelete(task.id);
-// });
-// elem.append(deleteBtn);
-
-// tasksDOM.append(elem);
-}
-
 
 // ///////////////////////////////
 //   Chat Filter usernamae
 
 function myFunction(event, ids) {
-  var uniqueChatIds = ids
+  var uniqueChatIds = ids;
   var unicode = event.charCode;
   if (unicode == 64) {
     let newuser = [];
@@ -855,23 +967,20 @@ function myFunction(event, ids) {
       type: "POST",
       url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
       data: formData,
-      success: function (datan) {
+      success: function(datan) {
         var dataks = JSON.stringify(datan);
         var dataResults = JSON.parse(dataks);
       },
     });
-
-
   } else {
-
     if (unicode == 32) {
       var edValue = document.getElementById(uniqueChatIds);
-      
+
       var s = edValue.value;
       var str = s;
       str = str.substring(str.lastIndexOf(" ") + 1);
       // console.log(str)
-      str1 = s.substring(0, s.length - str.length );
+      str1 = s.substring(0, s.length - str.length);
       // console.log(str1)
       let result = str.slice(1);
       var formData = { appUserName: "all" };
@@ -879,20 +988,20 @@ function myFunction(event, ids) {
         type: "POST",
         url: "https://apistest.tradetipsapp.com/api/appUser/getAllUserDetails",
         data: formData,
-        success: function (datan) {
+        success: function(datan) {
           var dataks = JSON.stringify(datan);
           var dataResults = JSON.parse(dataks);
-          var countdataa = dataResults.filter(function (s) {
+          var countdataa = dataResults.filter(function(s) {
             return s.userName == result;
           });
 
           if (countdataa.length == 0) {
             // alert("no user found")
           } else {
-            alert("user found")
+            alert("user found");
             str = str.bold();
-            console.log(str)
-            document.getElementById(uniqueChatIds).value =  str1 + str;
+            console.log(str);
+            document.getElementById(uniqueChatIds).value = str1 + str;
           }
         },
       });
@@ -904,276 +1013,272 @@ function myFunction(event, ids) {
 
 // Firebase functions
 function fetchTasks() {
+  docRef.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
+    snapshot.docChanges().forEach(function(change) {
+      const docRefreply = db.collection(
+        "/basilPrivateGroup/Test/messages/" + change.doc.id + "/replies/"
+      );
+      docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
+        // console.log(snapshots.size);
+        $("#sizedata" + change.doc.id).html(snapshots.size);
+        $("#sizedatan" + change.doc.id).html(snapshots.size);
 
-   docRef.orderBy("createdDate", "asc").onSnapshot(function(snapshot) {
-      snapshot.docChanges().forEach(function(change) {
-
-          const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+change.doc.id+"/replies/");
-          docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {       
-              // console.log(snapshots.size);
-              $("#sizedata"+change.doc.id).html(snapshots.size);
-              $("#sizedatan"+change.doc.id).html(snapshots.size);
-
-              if(snapshots.size == 0){
-                // $("#finalVal"+change.doc.id).css("display", "block");
-                $("#finalValn"+change.doc.id).css("display", "none");
-              }else{
-                $("#finalValn"+change.doc.id).css("display", "block");
-                // $("#finalVal"+change.doc.id).css("display", "none");
-              }
-
-          });
-         
-       
-
-          if (change.type === "added") {
-             
-              var task = change.doc.data();
-              var uniqueId = change.doc.id;
-              // console.log(uniqueId);
-
-               // var loggedInVal = "<%= userid %>";
-               // var loggedInName = "<%= userName %>";
-                  var loggedInVal = user_id.value;
-                 // alert(loggedInVal);
-                 var loggedInName = user_nickname.value;
-              // alert(loggedInName)
-              if(task.flag){
-                  const result = task.flag.some(obj => obj.messageFlagedUserId === loggedInVal);
-                   console.log("checking flag result  " + result);
-                   if(result == true){
-                     const elem = document.createElement("li");
-                     elem.id = change.doc.id;
-                     elem.innerHTML = "";
-                     tasksDOM.append(elem);
-
-                   }else{
-                       // var countReply = countReplyss;
-                       const elem = document.createElement("li");
-                       elem.id = change.doc.id;
-                       elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,uniqueId);
-                       tasksDOM.append(elem);
-                   }
-                 }else{
-                       // var countReply = countReplyss;
-                       const elem = document.createElement("li");
-                       elem.id = change.doc.id;
-                       elem.innerHTML = reviewTemplate(task,loggedInVal,loggedInName,uniqueId);
-                       tasksDOM.append(elem);
-                 }
-
-               $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
-
-                  }
-          if (change.type === "modified") {
-              // console.log("Modified city: ", change.doc.data());
-          }
-          if (change.type === "removed") {
-              // console.log("Removed city: ", change.doc.data());
-          }
-
+        if (snapshots.size == 0) {
+          // $("#finalVal"+change.doc.id).css("display", "block");
+          $("#finalValn" + change.doc.id).css("display", "none");
+        } else {
+          $("#finalValn" + change.doc.id).css("display", "block");
+          // $("#finalVal"+change.doc.id).css("display", "none");
+        }
       });
+
+      if (change.type === "added") {
+        var task = change.doc.data();
+        var uniqueId = change.doc.id;
+        // console.log(uniqueId);
+
+        // var loggedInVal = "<%= userid %>";
+        // var loggedInName = "<%= userName %>";
+        var loggedInVal = user_id.value;
+        // alert(loggedInVal);
+        var loggedInName = user_nickname.value;
+        // alert(loggedInName)
+        if (task.flag) {
+          const result = task.flag.some(
+            (obj) => obj.messageFlagedUserId === loggedInVal
+          );
+          console.log("checking flag result  " + result);
+          if (result == true) {
+            const elem = document.createElement("li");
+            elem.id = change.doc.id;
+            elem.innerHTML = "";
+            tasksDOM.append(elem);
+          } else {
+            // var countReply = countReplyss;
+            const elem = document.createElement("li");
+            elem.id = change.doc.id;
+            elem.innerHTML = reviewTemplate(
+              task,
+              loggedInVal,
+              loggedInName,
+              uniqueId
+            );
+            tasksDOM.append(elem);
+          }
+        } else {
+          // var countReply = countReplyss;
+          const elem = document.createElement("li");
+          elem.id = change.doc.id;
+          elem.innerHTML = reviewTemplate(
+            task,
+            loggedInVal,
+            loggedInName,
+            uniqueId
+          );
+          tasksDOM.append(elem);
+        }
+
+        $(".card-body").scrollTop($(".card-body")[0].scrollHeight);
+      }
+      if (change.type === "modified") {
+        // console.log("Modified city: ", change.doc.data());
+      }
+      if (change.type === "removed") {
+        // console.log("Removed city: ", change.doc.data());
+      }
+    });
   });
-
-
 }
 
 fetchTasks();
 
-
-
 function fetchTasksReply(id) {
+  var docId = id;
+  const docRefreply = db.collection(
+    "/basilPrivateGroup/Test/messages/" + docId + "/replies/"
+  );
 
-  var docId     = id;
-    const docRefreply = db.collection("/basilPrivateGroup/Test/messages/"+docId+"/replies/");
-  
-    docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
-     const tasksDOMReply = document.getElementById("tasksreply"+docId);
-     if(snapshots.size == 0){
-
-      if($('li#testingIds').size() > 0){
-        $('li#testingIds').remove();
-      }    
-          const elemreplys = document.createElement("li");
-                elemreplys.id = "testingIds";
-                elemreplys.innerHTML = "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:32.5%'><h2 class='text-center'><b>No Replies Yet</b></h2><br><p class='text-center'>Enter your messages here.</p>";
-                // alert(elemreplys);
-                tasksDOMReply.append(elemreplys);
-                $('ul#tasksreply'+id).show();      
-
-      }else{
-
-        if($('li#testingIds').size() > 0){
-          $('li#testingIds').remove();
-        }    
+  docRefreply.orderBy("createdDate", "asc").onSnapshot(function(snapshots) {
+    const tasksDOMReply = document.getElementById("tasksreply" + docId);
+    if (snapshots.size == 0) {
+      if ($("li#testingIds").size() > 0) {
+        $("li#testingIds").remove();
+      }
+      const elemreplys = document.createElement("li");
+      elemreplys.id = "testingIds";
+      elemreplys.innerHTML =
+        "<img src='/images/noreply.png' style='display:block;margin:0 auto; overflow:auto; width:32.5%'><h2 class='text-center'><b>No Replies Yet</b></h2><br><p class='text-center'>Enter your messages here.</p>";
+      // alert(elemreplys);
+      tasksDOMReply.append(elemreplys);
+      $("ul#tasksreply" + id).show();
+    } else {
+      if ($("li#testingIds").size() > 0) {
+        $("li#testingIds").remove();
+      }
 
       snapshots.docChanges().forEach(function(changes) {
-          // alert(snapshots.size);
-          const tasksDOMReply = document.getElementById("tasksreply"+docId);
-          var taskreply = changes.doc.data();
-          var taskId = changes.doc.id;
+        // alert(snapshots.size);
+        const tasksDOMReply = document.getElementById("tasksreply" + docId);
+        var taskreply = changes.doc.data();
+        var taskId = changes.doc.id;
 
-          if (changes.type === "added") {
-              var userIdcs     = document.getElementById('user_id');
-                  // console.log(userIdcs.value);
-                  var userNamescs = document.getElementById("user_nickname");
-                 // console.log(userNamecss.value);
-                  var loggedInVal = userIdcs.value;
-                  // console.log(loggedInVal);
-                 var loggedInName = userNamescs.value;
-                  // console.log(loggedInName);
-                  if($("li#"+taskId).size() > 0){
-                    $("li#"+taskId).remove();
-                  }    
-
-              const elemreply = document.createElement("li");
-              elemreply.id = changes.doc.id;
-              elemreply.innerHTML = reviewTemplateReply(taskreply,loggedInVal,loggedInName,taskId,docId);
-              tasksDOMReply.append(elemreply);
-
+        if (changes.type === "added") {
+          var userIdcs = document.getElementById("user_id");
+          // console.log(userIdcs.value);
+          var userNamescs = document.getElementById("user_nickname");
+          // console.log(userNamecss.value);
+          var loggedInVal = userIdcs.value;
+          // console.log(loggedInVal);
+          var loggedInName = userNamescs.value;
+          // console.log(loggedInName);
+          if ($("li#" + taskId).size() > 0) {
+            $("li#" + taskId).remove();
           }
 
+          const elemreply = document.createElement("li");
+          elemreply.id = changes.doc.id;
+          elemreply.innerHTML = reviewTemplateReply(
+            taskreply,
+            loggedInVal,
+            loggedInName,
+            taskId,
+            docId
+          );
+          tasksDOMReply.append(elemreply);
+        }
       });
-
-
     }
   });
-
-
 }
 
-
-
 function fetchUserList() {
+  docRefUserList.onSnapshot(function(snapshot) {
+    // alert(snapshot.docChanges().length);
+    snapshot.docChanges().forEach(function(change) {
+      if (change.type === "added") {
+        var tasks = change.doc.data();
 
-   docRefUserList.onSnapshot(function(snapshot) {
-       
-       // alert(snapshot.docChanges().length);
-      snapshot.docChanges().forEach(function(change) {
+        // var loggedInVal = user_id.value;
+        // var loggedInName = user_nickname.value;
+        const elems = document.createElement("li");
+        elems.id = tasks.userId;
+        elems.innerHTML = reviewTemplateUserList(tasks);
+        tasksDOMUserlist.append(elems);
+        // alert(elems);
 
-           if (change.type === "added") {
-             
-              var tasks = change.doc.data();
+        // $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
+      }
+    });
 
-              // var loggedInVal = user_id.value;
-              // var loggedInName = user_nickname.value;
-              const elems = document.createElement("li");
-              elems.id = tasks.userId;
-              elems.innerHTML = reviewTemplateUserList(tasks);
-              tasksDOMUserlist.append(elems);
-              // alert(elems);
+    const elemCount = document.createElement("li");
+    elemCount.innerHTML = "Members : " + snapshot.docChanges().length;
+    tasksDOMTotalUserlist.append(elemCount);
 
-               // $('.card-body').scrollTop($('.card-body')[0].scrollHeight);
-
-           }
-
-      });
-
-              const elemCount = document.createElement("li");
-              elemCount.innerHTML = "Members : " + snapshot.docChanges().length;
-              tasksDOMTotalUserlist.append(elemCount);
-
-       // var tasksDOMTotalUserlist = snapshot.docChanges().length;
-       // alert(tasksDOMTotalUserlist);
-
+    // var tasksDOMTotalUserlist = snapshot.docChanges().length;
+    // alert(tasksDOMTotalUserlist);
   });
-
-
 }
 
 fetchUserList();
 
-
-function reviewTemplateUserList({userName,userId}){
-// alert(userName);
- return `<a class="dropdown-item" href="#">${userName}</a>`
+function reviewTemplateUserList({ userName, userId }) {
+  // alert(userName);
+  return `<a class="dropdown-item" href="#">${userName}</a>`;
 }
 
-function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInName,loggedInVal,uniqueId) {
-
- // alert(user_id.value);
-// alert(userId);
-// fetch(profileImageUrl, { method: 'HEAD' })
-//   .then(res => {
-//       if (res.ok) {
-//           alert('Image exists.');
-//       } else {
-//           alert('Image does not exist.');
-//       }
-//   }).catch(err => alert('Error:', err));
+function reviewTemplate(
+  {
+    profileImageUrl,
+    userName,
+    userId,
+    message,
+    createdDate,
+    messageType,
+    messageId,
+  },
+  loggedInName,
+  loggedInVal,
+  uniqueId
+) {
+  // alert(user_id.value);
+  // alert(userId);
+  // fetch(profileImageUrl, { method: 'HEAD' })
+  //   .then(res => {
+  //       if (res.ok) {
+  //           alert('Image exists.');
+  //       } else {
+  //           alert('Image does not exist.');
+  //       }
+  //   }).catch(err => alert('Error:', err));
   var loggedInVal = user_id.value;
- //alert(loggedInName);
- var loggedInName = user_nickname.value;
-// alert(loggedInVal);
-// alert(userId);
-// var todate=new Date(createdDate).getDate();
-// var tomonth=new Date(createdDate).getMonth()+1;
-// var toyear=new Date(createdDate).getFullYear();
-// var original_date=tomonth+'/'+todate+'/'+toyear;
-// alert(original_date);
-// alert(uniqueId);
-              const date = new Date(createdDate); //new Date(createdDate).toDateString();
-                //console.log(date);
-              var options = {year: "numeric", month: "long", day: "numeric"};
-              var newdate = date.toGMTString('en-US', options);  
-                //console.log(newdate);
-              const stripped = newdate.replace(/GMT/g, '');
-                //console.log(stripped);
-                // alert(date);
-              var newdate1 = stripped.toString(stripped);  
-              var newdate2 = newdate1.split(/(\s+)/);
-               newdate2.splice(11, 18);
-               newdate2.splice(0, 2);
-               newdate2.splice(3,3);
-                //console.log(newdate2);
-               function moveArrayItemToNewIndex(arr, old_index, new_index) {
-               if (new_index >= arr.length) {
-                    var k = new_index - arr.length + 1;
-                    while (k--) {
-                        arr.push(undefined);
-                    }
-                }
-               arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-               return arr;
-               };
+  //alert(loggedInName);
+  var loggedInName = user_nickname.value;
+  // alert(loggedInVal);
+  // alert(userId);
+  // var todate=new Date(createdDate).getDate();
+  // var tomonth=new Date(createdDate).getMonth()+1;
+  // var toyear=new Date(createdDate).getFullYear();
+  // var original_date=tomonth+'/'+todate+'/'+toyear;
+  // alert(original_date);
+  // alert(uniqueId);
+  const date = new Date(createdDate); //new Date(createdDate).toDateString();
+  //console.log(date);
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  var newdate = date.toGMTString("en-US", options);
+  //console.log(newdate);
+  const stripped = newdate.replace(/GMT/g, "");
+  //console.log(stripped);
+  // alert(date);
+  var newdate1 = stripped.toString(stripped);
+  var newdate2 = newdate1.split(/(\s+)/);
+  newdate2.splice(11, 18);
+  newdate2.splice(0, 2);
+  newdate2.splice(3, 3);
+  //console.log(newdate2);
+  function moveArrayItemToNewIndex(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+      var k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+  }
 
-              moveArrayItemToNewIndex(newdate2, 0, 2);
-              var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
-              //console.log(result1);
-              result1.splice(1, 0, ' ');
-              var newdate3 = result1.toString(result1);
-              var result = newdate3.replace(/,/g, "");
-              //console.log(result);
-              x = result.substring(0, 6) + "," + result.substring(6, result.length);
-              //console.log(x);
-              function formatAMPM(date) {
-                  var hours = date.getHours();
-                  var minutes = date.getMinutes();
-                  var ampm = hours >= 12 ? 'PM' : 'AM';
-                  hours = hours % 12;
-                  hours = hours ? hours : 12; // the hour '0' should be '12'
-                  minutes = minutes < 10 ? '0'+minutes : minutes;
-                  var strTime = hours + ':' + minutes + ' ' + ampm;
-                  return strTime;
-                }
+  moveArrayItemToNewIndex(newdate2, 0, 2);
+  var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
+  //console.log(result1);
+  result1.splice(1, 0, " ");
+  var newdate3 = result1.toString(result1);
+  var result = newdate3.replace(/,/g, "");
+  //console.log(result);
+  x = result.substring(0, 6) + "," + result.substring(6, result.length);
+  //console.log(x);
+  function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    var strTime = hours + ":" + minutes + " " + ampm;
+    return strTime;
+  }
 
-                var date1 = formatAMPM(date);
-                //console.log(date1);
-                //console.log(newdate2);
-                const stripped1 = x.replace(newdate2[4], date1);
-                //console.log(stripped1);
-                
-                var fileName = message.substring(message.lastIndexOf('%') + 3);
-                // console.log(fileName)
-                var fName = fileName.substring(0, fileName.indexOf("?"));
-                //  console.log(fName+"this is fNAME")
- if(loggedInVal == userId){
+  var date1 = formatAMPM(date);
+  //console.log(date1);
+  //console.log(newdate2);
+  const stripped1 = x.replace(newdate2[4], date1);
+  //console.log(stripped1);
 
-      if(messageType == "text"){
-
-
-
-         return `
+  var fileName = message.substring(message.lastIndexOf("%") + 3);
+  // console.log(fileName)
+  var fName = fileName.substring(0, fileName.indexOf("?"));
+  //  console.log(fName+"this is fNAME")
+  if (loggedInVal == userId) {
+    if (messageType == "text") {
+      return `
 
          <li class="admin clearfix">
            
@@ -1243,10 +1348,8 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              </form>
              </div>
            </div>
-     `
-
-   }else if(messageType == "photo"){
-
+     `;
+    } else if (messageType == "photo") {
       return `
 
       <li class="admin clearfix">
@@ -1308,11 +1411,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                   </form>
                   </div>
                 </div>
-     `
-
-   }else if(messageType == "video"){
-
-     return `
+     `;
+    } else if (messageType == "video") {
+      return `
 
      <li class="admin clearfix">
      <span class="chat-img right clearfix mx-2">
@@ -1374,10 +1475,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          </form>
          </div>
        </div>
-     `
-   }else if(messageType == "document"){
-
-     return `
+     `;
+    } else if (messageType == "document") {
+      return `
      <li class="admin clearfix">
      <span class="chat-img right clearfix mx-2">
          <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
@@ -1442,10 +1542,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          </form>
          </div>
        </div>
-     `
-   } else {
-
-     return `
+     `;
+    } else {
+      return `
 
      <li class="admin clearfix">
      <span class="chat-img right clearfix mx-2">
@@ -1511,18 +1610,11 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
          </form>
          </div>
        </div>
-     `
-
-   }
-
-}else{
-
-
-
-  if(messageType == "text"){
-
-
-    return `
+     `;
+    }
+  } else {
+    if (messageType == "text") {
+      return `
 
    <li class="agent clearfix">
      <span class="chat-img left clearfix mx-2">
@@ -1612,10 +1704,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
              </div>
            </div>
 
- `
-} else if(messageType == "video"){
-
-    return `
+ `;
+    } else if (messageType == "video") {
+      return `
 
    <li class="agent clearfix">
      <span class="chat-img left clearfix mx-2">
@@ -1698,10 +1789,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                </div>
              </div>
            </div>
- `
-}else if(messageType == "photo"){
-
-    return `
+ `;
+    } else if (messageType == "photo") {
+      return `
 
    <li class="agent clearfix">
      <span class="chat-img left clearfix mx-2">
@@ -1782,10 +1872,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                </div>
              </div>
            </div>
- `
-}else if(messageType == "document"){
-
-    return `
+ `;
+    } else if (messageType == "document") {
+      return `
 
    <li class="agent clearfix">
      <span class="chat-img left clearfix mx-2">
@@ -1867,10 +1956,9 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                </div>
              </div>
            </div>
- `
-}else{
-
-    return `
+ `;
+    } else {
+      return `
 
    <li class="agent clearfix">
      <span class="chat-img left clearfix mx-2">
@@ -1954,78 +2042,87 @@ function reviewTemplate({profileImageUrl,userName,userId, message,createdDate,me
                </div>
              </div>
            </div>
- `     }
-
- }
-
-
-};
+ `;
+    }
+  }
+}
 
 // //////////////////////////////////////////////////////
 
-
-function reviewTemplateReply({profileImageUrl,userName,userId, message,createdDate,messageType,messageId},loggedInVal,loggedInName,docId,mainId) {
-
+function reviewTemplateReply(
+  {
+    profileImageUrl,
+    userName,
+    userId,
+    message,
+    createdDate,
+    messageType,
+    messageId,
+  },
+  loggedInVal,
+  loggedInName,
+  docId,
+  mainId
+) {
   const date = new Date(createdDate); //new Date(createdDate).toDateString();
-    //console.log(date);
-  var options = {year: "numeric", month: "long", day: "numeric"};
-  var newdate = date.toGMTString('en-US', options);  
-    //console.log(newdate);
-  const stripped = newdate.replace(/GMT/g,"" );
-    //console.log(stripped);
-    // alert(date);
-  var newdate1 = stripped.toString(stripped);  
+  //console.log(date);
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  var newdate = date.toGMTString("en-US", options);
+  //console.log(newdate);
+  const stripped = newdate.replace(/GMT/g, "");
+  //console.log(stripped);
+  // alert(date);
+  var newdate1 = stripped.toString(stripped);
   var newdate2 = newdate1.split(/(\s+)/);
-   newdate2.splice(11, 18);
-   newdate2.splice(0, 2);
-   newdate2.splice(3,3);
-    //console.log(newdate2);
-   function moveArrayItemToNewIndex(arr, old_index, new_index) {
-   if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
+  newdate2.splice(11, 18);
+  newdate2.splice(0, 2);
+  newdate2.splice(3, 3);
+  //console.log(newdate2);
+  function moveArrayItemToNewIndex(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+      var k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
     }
-   arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-   return arr;
-   };
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+  }
 
   moveArrayItemToNewIndex(newdate2, 0, 2);
   var result1 = moveArrayItemToNewIndex(newdate2, 0, 2);
   //console.log(result1);
-  result1.splice(1, 0, ' ');
+  result1.splice(1, 0, " ");
   var newdate3 = result1.toString(result1);
   var result = newdate3.replace(/,/g, "");
   //console.log(result);
   x = result.substring(0, 6) + "," + result.substring(6, result.length);
   //console.log(x);
   function formatAMPM(date) {
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
-      var ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12;
-      hours = hours ? hours : 12; // the hour '0' should be '12'
-      minutes = minutes < 10 ? '0'+minutes : minutes;
-      var strTime = hours + ':' + minutes + ' ' + ampm;
-      return strTime;
-    }
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    var strTime = hours + ":" + minutes + " " + ampm;
+    return strTime;
+  }
 
-    var date1 = formatAMPM(date);
-    //console.log(date1);
-    //console.log(newdate2);
-    const stripped1 = x.replace(newdate2[4], date1);
-    //console.log(stripped1);
+  var date1 = formatAMPM(date);
+  //console.log(date1);
+  //console.log(newdate2);
+  const stripped1 = x.replace(newdate2[4], date1);
+  //console.log(stripped1);
 
-    var fileName = message.substring(message.lastIndexOf('%') + 3);
-    // console.log(fileName)
-var fName = fileName.substring(0, fileName.indexOf("?"));
-//  console.log(fName+"this is fNAME")
+  var fileName = message.substring(message.lastIndexOf("%") + 3);
+  // console.log(fileName)
+  var fName = fileName.substring(0, fileName.indexOf("?"));
+  //  console.log(fName+"this is fNAME")
 
-if(loggedInVal == userId){
-if(messageType == "text"){
-
-return `
+  if (loggedInVal == userId) {
+    if (messageType == "text") {
+      return `
 
 <li class="admin clearfix">
 <span class="chat-img right clearfix mx-2">
@@ -2055,11 +2152,9 @@ return `
     </p>
 </div>
 </li>
-`
-
-}else if(messageType == "photo"){
-
-return `
+`;
+    } else if (messageType == "photo") {
+      return `
 
 <li class="admin clearfix">
 <span class="chat-img right clearfix mx-2">
@@ -2087,11 +2182,9 @@ return `
       <p class='message'><img src="${message}" class="img-responsive" style="width:150px;"/></p>
 </div>
 </li>
-`
-
-}else if(messageType == "video"){
-
-return `
+`;
+    } else if (messageType == "video") {
+      return `
 
 <li class="admin clearfix">
 <span class="chat-img right clearfix mx-2">
@@ -2119,10 +2212,9 @@ return `
    <p class='message'><video controls style="width:100%;"><source src="${message}" type="video/mp4"></video></p>
 </div>
 </li>
-`
-} else if(messageType == "document"){
-
-return `
+`;
+    } else if (messageType == "document") {
+      return `
 
 <li class="admin clearfix">
 <span class="chat-img right clearfix mx-2">
@@ -2155,11 +2247,9 @@ return `
           ${fName}</a></p>
 </div>
 </li>
-`
-} 
-else {
-
-return `
+`;
+    } else {
+      return `
 
 <li class="admin clearfix">
 <span class="chat-img right clearfix mx-2">
@@ -2191,16 +2281,11 @@ return `
     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h82.41667c8.89025,0 16.125,-7.23475 16.125,-16.125v-69.875h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892z"></path></g></g></svg>
      ${fName}</a></p>
 </li>
-`
-
-}
-
-}else{
-
-if(messageType == "text"){
-
-
-return `
+`;
+    }
+  } else {
+    if (messageType == "text") {
+      return `
 
 <li class="agent clearfix">
 <span class="chat-img left clearfix mx-2">
@@ -2216,10 +2301,9 @@ return `
     </p>
 </div>
 </li>
-`
-} else if(messageType == "video"){
-
-return `
+`;
+    } else if (messageType == "video") {
+      return `
 
 <li class="agent clearfix">
 <span class="chat-img left clearfix mx-2">
@@ -2236,10 +2320,9 @@ return `
 
 </div>
 </li>
-`
-}else if(messageType == "photo"){
-
-return `
+`;
+    } else if (messageType == "photo") {
+      return `
 
 <li class="agent clearfix">
 <span class="chat-img left clearfix mx-2">
@@ -2254,10 +2337,9 @@ return `
 
 </div>
 </li>
-`
-}else if(messageType == "document"){
-
-return `
+`;
+    } else if (messageType == "document") {
+      return `
 
 <li class="admin clearfix">
 <span class="chat-img right clearfix mx-2">
@@ -2276,10 +2358,9 @@ return `
           ${fName}</a></p>
 </div>
 </li>
-`
-} else{
-
-return `
+`;
+    } else {
+      return `
 
 <li class="agent clearfix">
 <span class="chat-img left clearfix mx-2">
@@ -2299,27 +2380,21 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
  ${fName}</a></p>
 </div>
 </li>
-`
+`;
+    }
+  }
 }
 
-}
+$("#submit").click(function() {
+  $(".model-content").css("display", "none");
+});
 
-
-};
-
-
-
-$("#submit").click(function(){
-  $(".model-content").css("display", "none")
-})
-
-
-function TogglePopup(e){
-  $("#Popup"+e).toggle()
+function TogglePopup(e) {
+  $("#Popup" + e).toggle();
 }
 
 function togglePopup(e) {
-  $("#popup"+e).toggle()
+  $("#popup" + e).toggle();
 }
 
 function imgError(image) {
@@ -2329,51 +2404,44 @@ function imgError(image) {
 }
 
 // to close popup outside
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".content").length
-              === 0) {
-      $(".content").hide();
-    }
+$(document).mouseup(function(e) {
+  if ($(e.target).closest(".content").length === 0) {
+    $(".content").hide();
+  }
 });
 
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".content-2").length
-              === 0) {
-      $(".content-2").hide();
-    }
+$(document).mouseup(function(e) {
+  if ($(e.target).closest(".content-2").length === 0) {
+    $(".content-2").hide();
+  }
 });
 
-
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".Content").length
-              === 0) {
-      $(".Content").hide();
-    }
+$(document).mouseup(function(e) {
+  if ($(e.target).closest(".Content").length === 0) {
+    $(".Content").hide();
+  }
 });
 
-$(document).mouseup(function (e) {
-  if ($(e.target).closest(".Content-2").length
-              === 0) {
-      $(".Content-2").hide();
-    }
+$(document).mouseup(function(e) {
+  if ($(e.target).closest(".Content-2").length === 0) {
+    $(".Content-2").hide();
+  }
 });
 
-
-function emojifunction(e) 
- {
+function emojifunction(e) {
   //  alert(e);
   //  alert("hii");
-     new EmojiPicker({
-        trigger: [
-            {
-                selector: '#emoji-buttons'+e,
-                insertInto: ['#btn-input-replymsg'+e] // '.selector' can be used without array
-            }
-        ],
-        closeButton: false,
-        //specialButtons: green
-    });
- }
+  new EmojiPicker({
+    trigger: [
+      {
+        selector: "#emoji-buttons" + e,
+        insertInto: ["#btn-input-replymsg" + e], // '.selector' can be used without array
+      },
+    ],
+    closeButton: false,
+    //specialButtons: green
+  });
+}
 
 function imgError(image) {
   image.onerror = "";
@@ -2381,100 +2449,103 @@ function imgError(image) {
   return true;
 }
 
-function copyClipboard(e){
-var copyText = document.getElementById("textMessage"+e).innerText;
-// alert(copyText);
- var elem = document.createElement("textarea");
+function copyClipboard(e) {
+  var copyText = document.getElementById("textMessage" + e).innerText;
+  // alert(copyText);
+  var elem = document.createElement("textarea");
   document.body.appendChild(elem);
   elem.value = copyText;
   elem.select();
   document.execCommand("copy");
   document.body.removeChild(elem);
-  // alert("Message has been copied to clipboard..");   
-  $(".successmsg").html('<span>Message has been copied to clipboard..</span>');
-  setTimeout(function(){$(".successmsg").empty()}, 5000);                          
-                               
+  // alert("Message has been copied to clipboard..");
+  $(".successmsg").html("<span>Message has been copied to clipboard..</span>");
+  setTimeout(function() {
+    $(".successmsg").empty();
+  }, 5000);
 }
 
-
-
-function flagData(e){
-  var userIds     = document.getElementById('user_id');
+function flagData(e) {
+  var userIds = document.getElementById("user_id");
   // console.log(userIds.value);
   var userNamess = document.getElementById("user_nickname");
- // console.log(userNamess.value);
-  var id=e;
+  // console.log(userNamess.value);
+  var id = e;
 
+  var loggedInValss = userIds.value;
+  console.log("id  " + loggedInValss);
+  var loggedInNamess = userNamess.value;
+  console.log("usernames   " + loggedInNamess);
 
-     var loggedInValss = userIds.value;
-     console.log("id  " + loggedInValss);
-     var loggedInNamess = userNamess.value;
-     console.log("usernames   " + loggedInNamess);
+  docRef
+    .doc(id)
+    .get()
+    .then(function(doc) {
+      console.log(doc.id, " => ", doc.data());
 
+      var id = doc.id;
 
-    docRef.doc(id).get().then(function(doc) {
-  
-       console.log(doc.id, " => ", doc.data());
+      var fulldata = doc.data();
 
-        var id = doc.id;
+      const cityRef = docRef.doc(id);
 
-        var fulldata = doc.data();
+      console.log(doc.data().flag);
 
-        const cityRef = docRef.doc(id);
+      var txt;
+      if (confirm("Are you sure you want to flag this chat ?")) {
+        if (doc.data().flag == undefined) {
+          const res = cityRef.update({
+            flag: [
+              {
+                messageFlag: true,
+                messageFlagMsg: "Offensive",
+                messageFlagedUserId: loggedInValss,
+                messageFlagedUserName: loggedInNamess,
+              },
+            ],
+          });
+          console.log("if value " + res);
+          $("li#" + id).css("display", "none");
+        } else {
+          const fruits = doc.data().flag;
+          fruits.push({
+            messageFlag: true,
+            messageFlagMsg: "Offensive",
+            messageFlagedUserId: loggedInValss,
+            messageFlagedUserName: loggedInNamess,
+          });
+          console.log("else value " + JSON.stringify(fruits));
+          const res = cityRef.update({ flag: fruits });
 
-        console.log(doc.data().flag);
-
-         var txt;
-          if (confirm("Are you sure you want to flag this chat ?")) {
-              if(doc.data().flag == undefined){
-
-                  const res = cityRef.update({flag: [{messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess}]});
-                  console.log("if value " + res);
-                  $("li#"+id).css("display","none");
-
-                }else{
-
-                  const fruits = doc.data().flag;
-                  fruits.push({messageFlag : true, messageFlagMsg : "Offensive", messageFlagedUserId : loggedInValss, messageFlagedUserName : loggedInNamess});
-                    console.log("else value " + JSON.stringify(fruits));
-                  const res = cityRef.update({flag: fruits});
-
-                   console.log("else value update " + res);
-                   $("li#"+id).css("display","none");
-
-                }
-          } else {
-            txt = "You pressed Cancel!";
-          }
-
-
+          console.log("else value update " + res);
+          $("li#" + id).css("display", "none");
+        }
+      } else {
+        txt = "You pressed Cancel!";
+      }
     });
-                     
 }
 
-
-function closepopup(id){
+function closepopup(id) {
   // alert(id);
-   $('ul#tasksreply'+id).empty()
-   $('li#testingIds').empty();
+  $("ul#tasksreply" + id).empty();
+  $("li#testingIds").empty();
   // alert('exampleModalCenter'+id);
   // alert('exampleModalCenteraJWnlbLqkTu8K5P7Dtf8');
   // var finaldataval = '#exampleModalCenter'+id;
-//   $('#exampleModalCenter'+id).on('hidden.bs.modal', function() {
-    // $(this).find('form#'+id).trigger('reset');
-    // alert('hidden event fired!');
+  //   $('#exampleModalCenter'+id).on('hidden.bs.modal', function() {
+  // $(this).find('form#'+id).trigger('reset');
+  // alert('hidden event fired!');
 
-//      $(this).removeData();
+  //      $(this).removeData();
 
-// });
+  // });
 }
 
-
-$(document).keypress(function (e) {
-    
+$(document).keypress(function(e) {
   if (e.which == 13) {
-   e.preventDefault();
-   $('.Btn').click();
-  //  alert('Click button was trigger');
+    e.preventDefault();
+    $(".Btn").click();
+    //  alert('Click button was trigger');
   }
- });
+});

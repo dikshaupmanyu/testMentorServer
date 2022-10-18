@@ -128,14 +128,6 @@ function handleCreate(event) {
   var loggedInVal = document.getElementById("user_id").value;
   var loggedInName = document.getElementById("user_nickname").value;
   var logintoken = document.getElementById("tokenval").value;
-  // alert(logintoken)
-  // var today = Date.now();
-  //var str = today.toDateString().split(' ').slice(1).join(' ') + " at " + today.toLocaleTimeString() + " GMT+5:30";
-  // const utilityteam = document.getElementById("");
-  // utilityteam.onclick = function (evt) {
-  // alert('hii')
-  // var addedtext = evt.target.innerHTML;
-  // console.log(addedtext.bold())
 
   var editorText = CKEDITOR.instances.editor1.getData();
   //  var editID =  $('#editor1').html(editorText);
@@ -145,15 +137,6 @@ function handleCreate(event) {
   // alert(PNames)
   // var text111 = $("#btn-input :selected").text();
   var text12 = document.getElementById("editor1").value;
-  // var selectedValue =  $("input.select2-search__field").css("color","red");
-  // alert(text12);
-  // console.log(selectedValue)
-  // alert(text111)
-  // alert(text12)
-  // var Sdata = document.getElementById('spanId').innerHTML = addedtext.bold();
-
-  // document.getElementById('buttonID').innerHTML = addedtext;
-  // };
 
   if (message.value != "") {
     let task = {
@@ -184,15 +167,13 @@ function handleCreate(event) {
           userNames : PNames
         },
         success: function (data) {
-          // console.log(data[0].message)
           var dataks = JSON.stringify(data);
           var dataResults = JSON.parse(dataks);
-          // alert(dataResults[0].message);
-          // console.log(dataResults[0].message);
-          $(".successmsg").html(dataResults[0].message);
-          setTimeout(function() {
-            $(".successmsg").empty();
-          }, 3000);
+          console.log(dataResults[0].message);
+          // $(".successmsg").html(dataResults[0].message);
+          // setTimeout(function() {
+          //   $(".successmsg").empty();
+          // }, 3000);
         },
       });
       //  console.log(ref.id);
@@ -510,26 +491,9 @@ function popupCreate(event) {
   $("ul#tasksreply" + event).show();
 
   var docId = document.getElementById("btn-input-replyId" + event).value;
-  //alert(docId);
-  // var ids = docId.value;
-  // docRef.doc(ids).get().then(function(doc) {
-
-  //     console.log(doc.id, " => ", doc.data());
-
-  //      });
   var fullName = document.getElementById("user_nickname");
-
   var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
-  // console.log(message)
-
   var PName = document.getElementById("pTag").innerHTML
-  // alert(PName)
-  // var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
-
-  //alert(datap);
-
-  //var message = document.getElementById("btn-input-replymsg" + event);
-  // alert(message.value);
   var userId = document.getElementById("user_id");
   var loggedInVal = userId.value;
   var loggedInName = fullName.value;
@@ -540,8 +504,6 @@ function popupCreate(event) {
   );
 
   if (message != "") {
-    // alert("message")
-
     let taskR = {
       userName: loggedInName,
       userId: loggedInVal,
@@ -557,9 +519,6 @@ function popupCreate(event) {
     };
 
     return docReply.add(taskR).then((ref) => {
-
-      // alert("hii")
-      
       $.ajax({
         type: "POST",
         url: "https://apistest.tradetipsapp.com/api/chatNotificationActivity/sendNotificationForChat",
@@ -576,10 +535,10 @@ function popupCreate(event) {
           var dataResults = JSON.parse(dataks);
           // alert(dataResults);
           console.log(dataResults);
-          $(".successmsg").html(dataResults[0].message);
-          setTimeout(function() {
-            $(".successmsg").empty();
-          }, 3000);
+          // $(".successmsg").html(dataResults[0].message);
+          // setTimeout(function() {
+          //   $(".successmsg").empty();
+          // }, 3000);
   
         },
       });
@@ -835,13 +794,13 @@ function replypopup(id) {
                   '<a href="#"><b id="dataID">@{userName}<b></a><span></span>',
                 minChars: 0,
               },
-              {
-                //  feed: tags,
-                //  marker: '#',
-                // itemTemplate: '<li data-id="{id}"><strong id="{id}">{name}</strong></li>',
-                //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
-                minChars: 1,
-              },
+              // {
+              //   //  feed: tags,
+              //   //  marker: '#',
+              //   // itemTemplate: '<li data-id="{id}"><strong id="{id}">{name}</strong></li>',
+              //   //  outputTemplate: '<a href="https://example.com/social?tag={name}">{name}</a><span></span>',
+              //   minChars: 1,
+              // },
             ],
             removeButtons: "PasteFromWord",
           });
@@ -849,13 +808,17 @@ function replypopup(id) {
        
 
           function dataFeed(opts, callback) {
-            var matchProperty = "userName",
+            var userNamescs = document.getElementById("user_nickname");
+            // alert(userNamescs.value)
+            var matchProperty = "userName";
+            // if(userNamescs.value != matchProperty){
               data = users.filter(function(item) {
                 return (
                   item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                  // userNamescs.value
                 );
               });
-
+              // alert(data)
             data = data.sort(function(a, b) {
               return a[matchProperty].localeCompare(
                 b[matchProperty],
@@ -867,6 +830,7 @@ function replypopup(id) {
             });
 
             callback(data);
+            // }
           }
         },
       });
@@ -959,7 +923,7 @@ function fetchTasks() {
             var userIdcs = document.getElementById("user_id");
             // console.log(userIdcs.value);
             var userNamescs = document.getElementById("user_nickname");
-            // console.log(userNamecss.value);
+            // console.log(userNamescs.value);
             var loggedInVal = userIdcs.value;
             // console.log(loggedInVal);
             var loggedInName = userNamescs.value;
