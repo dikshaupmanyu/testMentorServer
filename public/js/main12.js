@@ -110,7 +110,7 @@ var userId = document.getElementById("user_id");
 // alert(userId.value);
 var hiddenId = document.getElementById("hiddenId");
 var tokenlogin = document.getElementById('tokenval');
-console.log(tokenlogin)
+//console.log(tokenlogin)
 
 var date = document.getElementById("dateval");
 // utility functions
@@ -169,7 +169,7 @@ function handleCreate(event) {
         success: function (data) {
           var dataks = JSON.stringify(data);
           var dataResults = JSON.parse(dataks);
-          console.log(dataResults[0].message);
+        //  console.log(dataResults[0].message);
           // $(".successmsg").html(dataResults[0].message);
           // setTimeout(function() {
           //   $(".successmsg").empty();
@@ -584,9 +584,9 @@ $("#imageUploaddata").on("change", function(e) {
     .text(val);
 
   const file = e.target.files[0];
-  console.log(file);
-  console.log(file.name);
-  console.log(file.type);
+  // console.log(file);
+  // console.log(file.name);
+  // console.log(file.type);
 
   var loggedInVal = user_id.value;
   var loggedInName = user_nickname.value;
@@ -663,7 +663,7 @@ $("#imageUploaddata").on("change", function(e) {
           messageSource: "Web",
         };
         return docRef.add(task).then((ref) => {
-          console.log(ref.id);
+          //console.log(ref.id);
           task.id = ref.id;
           // fullName.value = '';
           message.value = "";
@@ -681,7 +681,7 @@ $("#imageUploaddata").on("change", function(e) {
         return snapshot.ref.getDownloadURL();
       })
       .then((url) => {
-        console.log("Firebase storage image uploaded : ", url);
+      //  console.log("Firebase storage image uploaded : ", url);
 
         let task = {
           userName: loggedInName,
@@ -697,7 +697,7 @@ $("#imageUploaddata").on("change", function(e) {
           messageSource: "Web",
         };
         return docRef.add(task).then((ref) => {
-          console.log(ref.id);
+         // console.log(ref.id);
           task.id = ref.id;
           // fullName.value = '';
           message.value = "";
@@ -809,12 +809,16 @@ function replypopup(id) {
 
           function dataFeed(opts, callback) {
             var userNamescs = document.getElementById("user_nickname");
-            // alert(userNamescs.value)
+            //alert(opts);
+            //alert(userNamescs.value);
             var matchProperty = "userName";
-            // if(userNamescs.value != matchProperty){
-              data = users.filter(function(item) {
+              // users.filter(function(s) { return s.userName == "yash01" });
+              var countdata = users.filter(function(s) { return s.userName != userNamescs.value });
+              data = countdata.filter(function(item) {
+               // alert(item.userName)
                 return (
-                  item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                 item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                 //item.userName != "yash01"
                   // userNamescs.value
                 );
               });
@@ -830,7 +834,6 @@ function replypopup(id) {
             });
 
             callback(data);
-            // }
           }
         },
       });
