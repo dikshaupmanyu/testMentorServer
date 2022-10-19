@@ -361,8 +361,10 @@
 
 
         function dataFeed(opts, callback) {
-          var matchProperty = 'userName',
-            data = users.filter(function (item) {
+          var userNamescs = "<%= userName %>";
+          var matchProperty = 'userName';
+          var countdata = users.filter(function(s) { return s.userName != userNamescs });
+            data = countdata.filter(function (item) {
               // console.log(item) 
               return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
 

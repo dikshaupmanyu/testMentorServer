@@ -770,14 +770,21 @@ function replypopup(id) {
           });
 
           function dataFeed(opts, callback) {
-            var matchProperty = "userName",
-              data = users.filter(function(item) {
-                // console.log(item)
+            var userNamescs = document.getElementById("user_nickname");
+            //alert(opts);
+            //alert(userNamescs.value);
+            var matchProperty = "userName";
+              // users.filter(function(s) { return s.userName == "yash01" });
+              var countdata = users.filter(function(s) { return s.userName != userNamescs.value });
+              data = countdata.filter(function(item) {
+               // alert(item.userName)
                 return (
-                  item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                 item[matchProperty].indexOf(opts.query.toLowerCase()) == 0
+                 //item.userName != "yash01"
+                  // userNamescs.value
                 );
               });
-
+              // alert(data)
             data = data.sort(function(a, b) {
               return a[matchProperty].localeCompare(
                 b[matchProperty],
@@ -1621,7 +1628,7 @@ function reviewTemplate(
          <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
      </span>
      
-     <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;" >
+     <div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;" >
      
      <div class="overlay">
          <div class="overlay-1">
@@ -1712,7 +1719,7 @@ function reviewTemplate(
      <span class="chat-img left clearfix mx-2">
          <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
      </span>
-     <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+     <div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
    <div class="overlay">
        <div class="overlay-1">
          <div class="content-2"  id='popup${uniqueId}'>
@@ -1797,7 +1804,7 @@ function reviewTemplate(
      <span class="chat-img left clearfix mx-2">
          <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
      </span>
-     <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+     <div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
        <div class="overlay">
            <div class="overlay-1">
              <div class="content-2"  id='popup${uniqueId}'>
@@ -1880,7 +1887,7 @@ function reviewTemplate(
      <span class="chat-img left clearfix mx-2">
          <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
      </span>
-     <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+     <div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
        <div class="overlay">
            <div class="overlay-1">
              <div class="content-2"  id='popup${uniqueId}'>
@@ -1964,7 +1971,7 @@ function reviewTemplate(
      <span class="chat-img left clearfix mx-2">
          <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
      </span>
-     <div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+     <div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
 
        <div class="overlay">
            <div class="overlay-1">
@@ -2291,7 +2298,7 @@ function reviewTemplateReply(
 <span class="chat-img left clearfix mx-2">
 <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
 </span>
-<div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+<div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
 <div class="header clearfix">              
     <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
     <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
@@ -2309,7 +2316,7 @@ function reviewTemplateReply(
 <span class="chat-img left clearfix mx-2">
 <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
 </span>
-<div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+<div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
 
 <div class="header clearfix">
     <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
@@ -2328,7 +2335,7 @@ function reviewTemplateReply(
 <span class="chat-img left clearfix mx-2">
 <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
 </span>
-<div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+<div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
 <div class="header clearfix">
     <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
     <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
@@ -2345,7 +2352,7 @@ function reviewTemplateReply(
 <span class="chat-img right clearfix mx-2">
     <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
 </span>
-<div class="chat-body clearfix">
+<div class="chat-body1 clearfix">
     <div class="header clearfix">
         <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
         <strong class="right primary-font" class='fullName'>${userName}</strong>
@@ -2366,7 +2373,7 @@ function reviewTemplateReply(
 <span class="chat-img left clearfix mx-2">
 <img onerror="imgError(this);" src="${profileImageUrl}" alt="Admin" class="img-circle" style="width: 50px;height: 50px;"/>
 </span>
-<div class="chat-body clearfix agent" style="float:none;background:#77839647;color:#000;">
+<div class="chat-body1 clearfix agent" style="float:none;background:#77839647;color:#000;">
 <div class="header clearfix">
     <small class="right text-muted" style="color: #000"><span class="glyphicon glyphicon-time"></span>${stripped1}</small>
     <strong class="primary-font" class='fullName' style="color: #000">${userName}</strong>
