@@ -791,7 +791,7 @@ function replypopup(id) {
                   '<span class="fullname"></span>' +
                   "</li>",
                 outputTemplate:
-                  '<a href="#"><b id="dataID">@{userName}<b></a><span></span>',
+                  '<a><b id="dataID">@{userName}<b></a><span>&nbsp;</span>',
                 minChars: 0,
               },
               // {

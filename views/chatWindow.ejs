@@ -37,6 +37,10 @@
       margin: 5px 0;
       border-bottom: 1px solid #e4e4e4;
     }
+
+    #LinkID{
+      text-decoration: none;
+    }
   </style>
 
 
@@ -361,7 +365,8 @@
               '<strong class="userName">{userName}</strong>' +
               '<span class="fullname"></span>' +
               '</li>',
-            outputTemplate: '<a href="#"><b>@{userName}<b></a><span></span>',
+            // outputTemplate: '<b>@{userName}<b><span></span>',
+            outputTemplate: '<a style="color:blue"><b>@{userName}<b></a><span>&nbsp;</span>',
             minChars: 0
           },
             //  {
