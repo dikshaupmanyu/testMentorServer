@@ -135,7 +135,7 @@ function handleCreate(event) {
    console.log(editorText)
 
   var PNames = document.getElementById("pTag").innerHTML
-  alert(PNames)
+  // alert(PNames)
   // var text111 = $("#btn-input :selected").text();
   var text12 = document.getElementById("editor1").value;
 
