@@ -129,12 +129,13 @@ function handleCreate(event) {
   var loggedInName = document.getElementById("user_nickname").value;
   var logintoken = document.getElementById("tokenval").value;
 
-  var editorText = CKEDITOR.instances.editor1.getData();
+  var editorText = CKEDITOR.instances.editor1.document.getBody().getText();;
+  // var editorText = CKEDITOR.instances.editor1.getData();
   //  var editID =  $('#editor1').html(editorText);
-  //  console.log(editorText)
+   console.log(editorText)
 
   var PNames = document.getElementById("pTag").innerHTML
-  // alert(PNames)
+  alert(PNames)
   // var text111 = $("#btn-input :selected").text();
   var text12 = document.getElementById("editor1").value;
 
@@ -492,7 +493,8 @@ function popupCreate(event) {
 
   var docId = document.getElementById("btn-input-replyId" + event).value;
   var fullName = document.getElementById("user_nickname");
-  var message = CKEDITOR.instances["btn-input-replymsg" + event].getData();
+  var message = CKEDITOR.instances["btn-input-replymsg" + event].document.getBody().getText();
+  console.log(message)
   var PName = document.getElementById("pTag").innerHTML
   var userId = document.getElementById("user_id");
   var loggedInVal = userId.value;

@@ -203,7 +203,7 @@
                       placeholder="Type your message here..." autocomplete="off" /> -->
                     <textarea cols="100" class="form-control" id="editor1" name="editor1" rows="2"
                       style="width: 100%; height:30px"></textarea>
-                    <p id="pTag" hidden></p>
+                    
                     <span class="input-group-btn">
                       <button class="btn btn-primary" type="submit" id="Btn_1">
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -343,7 +343,7 @@
               '<strong class="userName">{userName}</strong>' +
               '<span class="fullname"></span>' +
               '</li>',
-            outputTemplate: '<a><b>@{userName}<b></a><span>&nbsp;</span>',
+            outputTemplate: '<a><b id="IDA" style="color:blue">@{userName}<b></a><span>&nbsp;</span>',
 
             minChars: 0
           },
