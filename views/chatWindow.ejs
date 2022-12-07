@@ -1,7 +1,11 @@
 <%- include partials/innerheader %>
 
 
-
+<style>
+      a {
+      text-decoration: none!important;
+    }
+</style>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/emoji.css">
   <link rel="stylesheet" href="css/chatWindow.css">
@@ -38,9 +42,8 @@
       border-bottom: 1px solid #e4e4e4;
     }
 
-    #LinkID{
-      text-decoration: none;
-    }
+
+
   </style>
 
 
@@ -309,10 +312,6 @@
 
       //  var dataID =  document.getElementById("IDData").value
       var dataIDs = document.getElementsByTagName("li")
-      //  console.log(dataID);
-      // console.log(dataIDs);
-      //  var MM = document.getElementById("#cke_1532").innerText
-      //  console.log(MM)
 
       var mm1 = document.getElementsByClassName("cke_autocomplete_selected")[0].innerText
       console.log(mm1)
@@ -366,7 +365,11 @@
               '<span class="fullname"></span>' +
               '</li>',
             // outputTemplate: '<b>@{userName}<b><span></span>',
+<<<<<<< HEAD
             outputTemplate: '<p style"color:blue;"><b>@{userName}<b></p><span>&nbsp;</span>',
+=======
+            outputTemplate: '<a href="#">@{userName}</a><span>&nbsp;</span>',
+>>>>>>> 5085245c9d952e7e69c39721c91c57a61b7e2a35
             minChars: 0
           },
             //  {
@@ -385,12 +388,12 @@
         function dataFeed(opts, callback) {
           var userNamescs = "<%= userName %>";
           var matchProperty = 'userName';
-          var countdata = users.filter(function(s) { return s.userName != userNamescs });
-            data = countdata.filter(function (item) {
-              // console.log(item) 
-              return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
+          var countdata = users.filter(function (s) { return s.userName != userNamescs });
+          data = countdata.filter(function (item) {
+            // console.log(item) 
+            return item[matchProperty].indexOf(opts.query.toLowerCase()) == 0;
 
-            });
+          });
 
 
           data = data.sort(function (a, b) {
