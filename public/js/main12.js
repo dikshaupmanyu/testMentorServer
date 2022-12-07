@@ -876,10 +876,21 @@ function fetchTasks() {
   //     querySnapshot.docChanges().forEach(function(change) {
   // console.log(doc.id);
   // console.log(change.doc.data().flag);
-
+  // var currentDate=  new Date().toLocaleString();
+  // var queryDate= currentDate.substract(2);
+  // var timestamp= Timestamp.fromDate(queryDate);
+  // alert(timestamp);
+  var lastmonthdate = new Date().setDate(new Date().getDate() - 30);
+ // alert(lastmonthdate);
+  const t = firebase.firestore.Timestamp.now();
+ // alert(t.toMillis());
+  // const daten = firebase.firestore.Timestamp.fromDate(new Date("2022-06-06"));
+  // alert(daten.toMillis());
   docRef
+  .where("createdDate" , '<=' , t.toMillis())
+    .where("createdDate" , '>' ,lastmonthdate)
     .orderBy("createdDate", "desc")
-    .limit(100)
+    //.limit(100)
     .onSnapshot(function(snapshot) {
       snapshot
         .docChanges()
